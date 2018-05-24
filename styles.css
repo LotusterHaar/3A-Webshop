@@ -81,20 +81,17 @@ body {
 }
 
 .wrapper {
-    background: #734d26;
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-gap: 10px;
+    float: left;
 }
 
 .contentwrapper {
-    grid-column: 1;
+    background: #734d26;
+    width: 75%;
 }
 
 .advertisementwrapper {
+    width: 25%;
     background: #bf8040;
-    grid-column: 2;
-    min-width: 0;
 }
 
 article {
