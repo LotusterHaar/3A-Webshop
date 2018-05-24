@@ -19,24 +19,29 @@ File: styles CSS
             <div class="row">
                 <div class="leftcolumn">
                     <img src="images/logo_icoon_tuneshop.png" id="logo" alt="Logo TuneShop">
-                    <img src="images/logo_tuneshop.png" id="logoTekst" alt="TuneShop">
+                </div>
+                <div class="middlecolumn">
+                    <img src="images/logo_tuneshop.png" id="logoText" alt="TuneShop">
                 </div>
                 <div class="rightcolumn">
                     <form action="/action_page.php">
-                        <div class="imgcontainer">
+                        <!--<div class="imgcontainer">-->
                             <img src="images/avatar.png" alt="Avatar" class="avatar">
-                        </div>
+                        <!--</div>-->
                         <h3>LOGIN</h3>
                         <div class="container">
                             <input type="text" placeholder="Gebruikersnaam" name="uname" required>
                             <input type="password" placeholder="Wachtwoord" name="psw" required>
                         </div>
-                        <div class="container" style="background-color:#f1f1f1">
-                            <button type="submit">Login</button>
+                        <div class="container">
                             <label>
                                 <input type="checkbox" checked="checked" name="remember"> Onthouden
                             </label>
-                            <span class="psw"><a href="#">Wachtwoord</a> vergeten?</span>
+                            <button type="submit">Login</button>
+                        </div>
+                        <div class="container">
+                            <span class="psw"><a href="#">Vergeten?</a></span>
+                            <a href="#">Registreer</a>
                         </div>
                     </form>
                 </div>

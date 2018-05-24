@@ -48,28 +48,39 @@ body {
 
 .leftcolumn {
     display: flex;
-    justify-content: flex-start;
+    align-content: left;
+}
+
+.middlecolumn {
+    display: flex;
+    align: center;
 }
 
 .rightcolumn {
     display: flex;
-    justify-content: right;
-    padding-right: 75%;
+    justify-content: left;
+    padding-left: 20px;
+}
+
+.imgcontainer {
+    text-align: center;
 }
 
 #logo {
     margin-left: auto;
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: auto;
 }
 
-#logoTekst {
-    height: 200px;
+#logoText {
+    width: 100%;
+    height: auto;
 }
 
 .avatar {
-    width: 100px;
-    height: 100px;
+    width: 30%;
+    height: auto;
+    align: right;
 }
 
 .row {
@@ -115,5 +126,9 @@ article img {
 
 .clearfix {
     overflow: auto;
+}
+
+.container {
+    font-size: 80%;
 }
 
