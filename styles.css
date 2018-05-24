@@ -4,6 +4,7 @@ Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
 https://www.w3schools.com/css/tryit.asp?filename=trycss_layout_clearfix
+https://www.w3schools.com/howto/howto_css_login_form.asp
 File: styles CSS
 ==========================
 */
@@ -51,8 +52,8 @@ body {
 }
 
 .rightcolumn {
-    margin-left: auto;
-    justify-content: center;
+    display: flex;
+    justify-content: right;
 }
 
 #logo {
@@ -73,7 +74,8 @@ body {
 .row {
     background-color: #ebcb7a;
     width: 100%;
-    height: 300px;
+    height: 200px;
+    padding: 50px;
     display: flex;
     justify-content: space-between;
 }
@@ -92,6 +94,7 @@ body {
 .advertisementwrapper {
     background: #bf8040;
     grid-column: 2;
+    min-width: 0;
 }
 
 article {
@@ -110,3 +113,4 @@ article {
 .clearfix {
     overflow: auto;
 }
+
