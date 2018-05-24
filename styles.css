@@ -53,7 +53,8 @@ body {
 
 .rightcolumn {
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
+    margin-right: 20px;
 }
 
 #logo {
@@ -81,6 +82,7 @@ body {
 }
 
 .wrapper {
+    display: flex;
     float: left;
 }
 
