@@ -32,18 +32,21 @@ File: style for the product page CSS
     justify-content: space-around;
 }
 
-.row1 {
+.row1, .descriptionInStock {
     display: flex;
     align-items: stretch;
     justify-content: flex-start;
 }
 
+.inStock {
+    padding: 10px;
+}
 /*.row1> div {
     background-color: #f1f1f1;
     margin: 10px;
     padding: 20px;
 }*/
-.column {
+.column, .productInfo {
     display: flex;
     flex-direction: column;
 }
