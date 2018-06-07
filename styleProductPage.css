@@ -9,9 +9,9 @@ File: style for the product page CSS
 
 .productImage {
     background-color: #e6d6ca;
-    height: 300px;
-    width: 1000px;
     margin: 15px;
+    width: 1000px;
+    align-content:center;
 }
 
 .smallProductImage{
@@ -21,6 +21,12 @@ File: style for the product page CSS
     margin: 20px;
 }
 
+
+
+.inStock {
+    text-align: center;
+}
+
 .row2 {
     display: flex;
     justify-content: space-around;
@@ -28,9 +34,15 @@ File: style for the product page CSS
 
 .row1 {
     display: flex;
+    align-items: stretch;
     justify-content: flex-start;
 }
 
+/*.row1> div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+}*/
 .column {
     display: flex;
     flex-direction: column;

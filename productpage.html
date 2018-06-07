@@ -57,24 +57,26 @@ File: styles CSS
             </div>
         </header>
         <main>
-            <button onclick="goBack()">Terug</button>
-            <script>
-                function goBack() {
-                    window.history.back();
-                }
-            </script>
             <div class = "column">
+                <div class = "buttonRow">
+                    <button onclick="goBack()">Terug</button>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                </div>
                 <div class = "row1">
                     <div class = "productImage">
                     </div>
-                    <div>
+                    <div class = "productInfo">
                         <article>
                             <p><h1>Naam product</h1>
                             <h2>€15,19</h2>
                             Omschrijving product. De Kawai CN27 is een fantastische digitale piano met een uitstekende prijs/kwaliteit-verhouding. Mede door zijn warme klank en uitstekende aanslag weet deze Kawai digitale piano menig pianist te inspireren. Door de geïntegreerde Bluetooth(™)-mogelijkheid kunt u bovendien nieuwe manieren van musiceren ontdekken.</p>
                         </article>
                     </div>
-                    <div>
+                    <div class="inStock">
                         <p>Op voorraad: Ja</p>
                     </div>
                 </div>
