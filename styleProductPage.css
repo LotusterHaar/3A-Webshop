@@ -1,0 +1,37 @@
+/*========================
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: https://www.thesitewizard.com/css/rectangular-box-border.shtml
+
+File: style for the product page CSS
+==========================
+*/
+
+.productImage {
+    background-color: #e6d6ca;
+    height: 300px;
+    width: 1000px;
+    margin: 15px;
+}
+
+.smallProductImage{
+    background-color: #e6d6ca;
+    height: 100px;
+    width: 300px;
+    margin: 20px;
+}
+
+.row2 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.row1 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
