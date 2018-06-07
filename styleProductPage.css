@@ -16,15 +16,18 @@ File: style for the product page CSS
 
 .smallProductImage{
     background-color: #e6d6ca;
-    height: 100px;
-    width: 300px;
+    height: 250px;
+    width: 500px;
     margin: 20px;
 }
 
-
-
+.buttonRow {
+    padding-left: 15px;
+    padding-top: 15px;
+}
 .inStock {
     text-align: center;
+    padding-left: 75px;
 }
 
 .row2 {
@@ -38,9 +41,6 @@ File: style for the product page CSS
     justify-content: flex-start;
 }
 
-.inStock {
-    padding: 10px;
-}
 /*.row1> div {
     background-color: #f1f1f1;
     margin: 10px;
