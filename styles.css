@@ -136,3 +136,7 @@ article img {
     font-size: 80%;
 }
 
+form {
+    overflow: hidden;
+    float: right;
+}
