@@ -2,6 +2,8 @@
 Template Name: TuneShop
 Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_his_back
+https://www.w3schools.com/howto/howto_css_overlay.asp : (voor vergroten plaatje)
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_lightbox
 File: styles CSS
 ==========================-->
 
@@ -57,46 +59,63 @@ File: styles CSS
             </div>
         </header>
         <main>
-            <div class = "column">
-                <div class = "buttonRow">
-                    <button  class = "buttonBack" onclick="goBack()">Terug</button>
+            <div class="column">
+                <div class="buttonRow">
+                    <button class="buttonBack" onclick="goBack()">Terug</button>
                     <script>
                         function goBack() {
                             window.history.back();
                         }
                     </script>
                 </div>
-                <div class = "row1">
-                    <div class = "productImage">
+                <div class="row1">
+                    <div class="productImage">
                     </div>
-                    <div class = "productInfo">
+                    <div class="productInfo">
                         <article>
-                            <div class = "nameProduct">
+                            <div class="nameProduct">
                                 <h1>Naam product</h1>
                                 <h2>€15,19</h2>
                             </div>
-                            <div class = "descriptionInStock">
-                                <div class = "description">
-                                    <p>Omschrijving product. De Kawai CN27 is een fantastische digitale piano met een uitstekende prijs/kwaliteit-verhouding. Mede door zijn warme klank en uitstekende aanslag weet deze Kawai digitale piano menig pianist te inspireren. Door de geïntegreerde Bluetooth(™)-mogelijkheid kunt u bovendien nieuwe manieren van musiceren ontdekken.</p>
+                            <div class="descriptionInStock">
+                                <div class="description">
+                                    <p>Omschrijving product. De Kawai CN27 is een fantastische digitale piano met een
+                                        uitstekende prijs/kwaliteit-verhouding. Mede door zijn warme klank en
+                                        uitstekende aanslag weet deze Kawai digitale piano menig pianist te inspireren.
+                                        Door de geïntegreerde Bluetooth(™)-mogelijkheid kunt u bovendien nieuwe manieren
+                                        van musiceren ontdekken.</p>
                                 </div>
                                 <div class="inStock">
                                     <p><b>Op voorraad: Ja</b></p>
                                 </div>
                             </div>
-                            <div class = "productToCart">
+                            <div class="productToCart">
                                 <form action="/action_page.php">
                                     <b>Aantal:</b>
-                                    <input type="text"  size="3" name="amount" value="1">
+                                    <input type="text" size="3" name="amount" value="1">
                                     <input type="submit" value="Toevoegen aan winkelwagen">
                                 </form>
                             </div>
                         </article>
                     </div>
                 </div>
-                <div class = "row2">
-                    <div class = "smallProductImage"></div>
-                    <div class = "smallProductImage"></div>
-                    <div class = "smallProductImage"></div>
+                <div class="row2">
+                    <div class="imageBoxSmall">
+                        <div class="smallRelatedProductImage"><img src="images/instrument.jpg" alt="Instrument"></div>
+                        <div class="nameRelatedProduct"><p>Naam gerelateerd product</p></div>
+                        <div class="priceRelatedProduct"><p>€36,70</p><input type="submit" value="In winkelwagen"></div>
+                    </div>
+                    <div class="imageBoxSmall">
+                        <div class="smallRelatedProductImage"><img src="images/instrument.jpg" alt="Instrument"></div>
+                        <div class="nameRelatedProduct"><p>Naam gerelateerd product</p></div>
+                        <div class="priceRelatedProduct"><p>€44,98</p><input type="submit" value="In winkelwagen"></div>
+
+                    </div>
+                    <div class="imageBoxSmall">
+                        <div class="smallRelatedProductImage"><img src="images/instrument.jpg" alt="Instrument"></div>
+                        <div class="nameRelatedProduct"><p>Naam gerelateerd product</p></div>
+                        <div class="priceRelatedProduct"><p>€32,80</p><input type="submit" value="In winkelwagen"></div>
+                    </div>
                 </div>
             </div>
         </main>

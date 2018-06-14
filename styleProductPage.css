@@ -2,7 +2,7 @@
 Template Name: TuneShop
 Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen: https://www.thesitewizard.com/css/rectangular-box-border.shtml
-
+https://www.w3.org/Style/Examples/007/center.en.html
 File: style for the product page CSS
 ==========================
 */
@@ -11,20 +11,40 @@ File: style for the product page CSS
     background-color: #e6d6ca;
     margin: 15px;
     width: 1000px;
-    align-content:center;
+    align-content: center;
 }
 
-.smallProductImage{
+.imageBoxSmall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center;*/
     background-color: #e6d6ca;
-    height: 250px;
-    width: 500px;
+    background-color: red;
     margin: 20px;
+/*    height: 250px;
+    width: 500px;
+    margin: 20px;*/
+}
+.smallRelatedProductImage {
+    background-color: #d79628;
+    width: 75%;
+    height: 25%;
+    top: 10%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.smallRelatedProductImage img {
+    width: 100%;
+    align-content: center;
 }
 
 .buttonRow {
     padding-left: 15px;
     padding-top: 15px;
 }
+
 .inStock {
     text-align: center;
     padding-left: 75px;
@@ -49,4 +69,28 @@ File: style for the product page CSS
 .column, .productInfo {
     display: flex;
     flex-direction: column;
+}
+
+form {
+    overflow: hidden;
+    float: right;
+}
+
+
+/*.nameRelatedProduct{
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}*/
+
+.nameRelatedProduct{
+    background: plum;
+}
+
+.priceRelatedProduct{
+    background: cornflowerblue;
 }
