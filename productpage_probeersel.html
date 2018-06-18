@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="contentwrapper">
+        <header>
+            <div class="row">
+                <div class="leftcolumn">
+                    <img src="images/logo_icoon_tuneshop.png" id="logo" alt="Logo TuneShop">
+                </div>
+                <div class="middlecolumn">
+                    <img src="images/logo_tuneshop.png" id="logoText" alt="TuneShop">
+                </div>
+                <div class="rightcolumn">
+                    <form action="/action_page.php">
+                        <!--<div class="imgcontainer">-->
+                        <img src="images/avatar.png" alt="Avatar" class="avatar">
+                        <!--</div>-->
+                        <h3>LOGIN</h3>
+                        <div class="container">
+                            <input type="text" placeholder="Gebruikersnaam" name="uname" required>
+                            <input type="password" placeholder="Wachtwoord" name="psw" required>
+                        </div>
+                        <div class="container">
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember"> Onthouden
+                            </label>
+                            <button type="submit">Login</button>
+                        </div>
+                        <div class="container">
+                            <span class="psw"><a href="#">Vergeten?</a></span>
+                            <a href="#">Registreer</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="topnav">
+                <a class="active" href="#home">Home</a>
+                <a href="#nieuws">Nieuws</a>
+                <a href="#acties">Contact</a>
+                <a href="#overons">Over ons</a>
+                <a href="#vacatures">Vacatures</a>
+                <a href="#webshop">Webshop</a>
+            </div>
+        </header>
+        <main>
+            <div class="column">
+                <div class="buttonRow">
+                    <button class="buttonBack" onclick="goBack()">Terug</button>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                </div>
+                <div class="row1">
+                    <div class="productImage">
+                    </div>
+                    <div class="productInfo">
+                        <article>
+                            <div class="nameProduct">
+                                <h1>Naam product</h1>
+                                <h2>€15,19</h2>
+                            </div>
+                            <div class="descriptionInStock">
+                                <div class="description">
+                                    <p>Omschrijving product. De Kawai CN27 is een fantastische digitale piano met een
+                                        uitstekende prijs/kwaliteit-verhouding. Mede door zijn warme klank en
+                                        uitstekende aanslag weet deze Kawai digitale piano menig pianist te inspireren.
+                                        Door de geïntegreerde Bluetooth(™)-mogelijkheid kunt u bovendien nieuwe manieren
+                                        van musiceren ontdekken.</p>
+                                </div>
+                                <div class="inStock">
+                                    <p><b>Op voorraad: Ja</b></p>
+                                </div>
+                            </div>
+                            <div class="productToCart">
+                                <form action="/action_page.php">
+                                    <b>Aantal:</b>
+                                    <input type="text" size="3" name="amount" value="1">
+                                    <input type="submit" value="Toevoegen aan winkelwagen">
+                                </form>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="row2">
+                    <div class="imageBoxSmall">
+                        <div class="smallRelatedProductImage"><img src="images/instrument.jpg" alt="Instrument"></div>
+                        <div class="nameRelatedProduct"><p>Naam gerelateerd product</p></div>
+                        <div class="priceRelatedProduct"><p>€36,70</p><p><input type="submit" value="In winkelwagen"></p>
+                        </div>
+                        <div class="imageBoxSmall">
+                            <div class="smallRelatedProductImage"><img src="images/instrument.jpg" alt="Instrument"></div>
+                            <div class="nameRelatedProduct"><p>Naam gerelateerd product</p></div>
+                            <div class="priceRelatedProduct">€36,70<input type="submit" value="In winkelwagen"></div>
+                        </div>
+                        <div class="imageBoxSmall">
+                            <div class="smallRelatedProductImage"><img src="images/instrument.jpg" alt="Instrument"></div>
+                            <div class="nameRelatedProduct"><p>Naam gerelateerd product</p></div>
+                            <div class="priceRelatedProduct">€36,70<input type="submit" value="In winkelwagen"></div>
+                        </div>
+                    </div>
+                </div>
+        </main>
+    </div>
+    <div class="advertisementwrapper">
+    </div>
+</div>
+</body>
+</html>

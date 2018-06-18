@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--
+<?php
+if (isset($_GET["verzenden"]) == 0)
+{
+?>
+<form name = "formulier2" action = "formulier2-php" method = "get">
+    Typ hier uw voornaam: <input type = "text" name = "voornaam"><br><br>
+    Typ hier uw achternaam: <input type = "text" name =
+        "achternaam"><br><br>
+    <input type = "submit" name = "verzenden">
+</form>
+<?php
+}
+else
+{
+echo "<b>Welkom " . $_GET["voornaam"] . " " . $_GET["achternaam"] .
+"</b>";
+}
+?>-->
+<?php
+
+echo "<ul>";
+    $myFavoriteMusic = ["Imagine Dragons", "Ed Sheeran", "Snow Patrol", "Coldplay", "Green Day", "Muse"];
+    for ($i = 0; $i< count($myFavoriteMusic); $i++){
+    echo "<li>".$myFavoriteMusic[$i]."</li>";
+    }
+    echo"</ul>";
+
+?>
+</body>
+</html>

@@ -17,11 +17,11 @@ File: style for the product page CSS
 .imageBoxSmall {
     display: flex;
     flex-direction: column;
-    align-items: center;
+/*    align-items: center;*/
     /*justify-content: center;*/
     background-color: #e6d6ca;
     background-color: red;
-    margin: 20px;
+   margin: 20px;
 /*    height: 250px;
     width: 500px;
     margin: 20px;*/
@@ -89,8 +89,14 @@ form {
 
 .nameRelatedProduct{
     background: plum;
+    text-align: left;
+    margin-top: 30%;
+/*    align-self: flex-start;  !* left *!
+    align-items: flex-end;   !* vertical-align to bottom *!*/
 }
 
 .priceRelatedProduct{
     background: cornflowerblue;
+    text-align: left;
+    width:30%;
 }
