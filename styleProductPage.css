@@ -3,6 +3,7 @@ Template Name: TuneShop
 Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen: https://www.thesitewizard.com/css/rectangular-box-border.shtml
 https://www.w3.org/Style/Examples/007/center.en.html
+http://nl.learnlayout.com/inline-block.html
 File: style for the product page CSS
 ==========================
 */
@@ -10,34 +11,27 @@ File: style for the product page CSS
 .productImage {
     background-color: #e6d6ca;
     margin: 15px;
-    width: 1000px;
+    width: 1250px;
     align-content: center;
+}
+
+.productImage img{
+    position: center;
 }
 
 .imageBoxSmall {
     display: flex;
     flex-direction: column;
-/*    align-items: center;*/
-    /*justify-content: center;*/
     background-color: #e6d6ca;
-    background-color: red;
-   margin: 20px;
-/*    height: 250px;
-    width: 500px;
-    margin: 20px;*/
+    margin: 20px;
 }
-.smallRelatedProductImage {
-    background-color: #d79628;
+
+.imageBoxSmall img {
     width: 75%;
-    height: 25%;
+    height: 50%;
     top: 10%;
     margin: 0 auto;
     position: relative;
-}
-
-.smallRelatedProductImage img {
-    width: 100%;
-    align-content: center;
 }
 
 .buttonRow {
@@ -61,11 +55,6 @@ File: style for the product page CSS
     justify-content: flex-start;
 }
 
-/*.row1> div {
-    background-color: #f1f1f1;
-    margin: 10px;
-    padding: 20px;
-}*/
 .column, .productInfo {
     display: flex;
     flex-direction: column;
@@ -76,27 +65,24 @@ form {
     float: right;
 }
 
-
-/*.nameRelatedProduct{
-    text-align: center;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-}*/
-
-.nameRelatedProduct{
-    background: plum;
+.imageBoxSmall h1 {
+    font-size: 1.5em;
     text-align: left;
-    margin-top: 30%;
-/*    align-self: flex-start;  !* left *!
-    align-items: flex-end;   !* vertical-align to bottom *!*/
+    margin-top: 15%;
+    margin-left: 12%;
 }
 
-.priceRelatedProduct{
-    background: cornflowerblue;
-    text-align: left;
-    width:30%;
+.priceline h2 {
+    font-size: 1.5em;
+    width: 30%;
+    display: inline-block;
+    margin: auto;
+    margin-left: 12%;
+}
+
+.priceline input {
+    display: inline-block;
+    width: 45%;
+    margin-right: 10%;
+    float: right;
 }
