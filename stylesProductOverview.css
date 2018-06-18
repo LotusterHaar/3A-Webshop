@@ -1,0 +1,196 @@
+/*Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: https://www.w3schools.com/howto/howto_css_animated_search.asp
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_search_button
+https://www.w3schools.com/howto/howto_css_vertical_menu.asp
+https://codepen.io/raubaca/pen/PZzpVe
+File: style for the product overview page CSS*/
+
+body {
+    font-family: Arial;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*!* When the input field gets focus, change its width to 100% *!*/
+form.searchform input[type=text]:focus {
+    width: 60%;
+}
+
+form.searchform input[type=text] {
+    padding: 10px;
+    margin: 20px 0px 20px 20px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 250px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background: #f1f1f1;
+}
+
+form.searchform {
+    text-align: center;
+}
+form.searchform button {
+    width: 20%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #330601;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.searchform button:hover {
+    background: #770e02;
+}
+
+form.searchform::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/*
+
+.vertical-menu {
+    width: 200px; !* Set a width if you like *!
+}
+
+.vertical-menu a {
+    background-color: #eee; !* Grey background color *!
+    color: black; !* Black text color *!
+    display: block; !* Make the links appear below each other *!
+    padding: 12px; !* Add some padding *!
+    text-decoration: none; !* Remove underline from links *!
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc; !* Dark grey background on mouse-over *!
+}
+
+.vertical-menu a.active {
+    background-color: #a99d94; !* Add a green color to the "active/current" link *!
+    color: white;
+}*/
+
+.categoryMenu body {
+    color: #2c3e50;
+    background: #ecf0f1;
+}
+
+.categoryMenu {
+    float: left;
+    width: 250px;
+    padding: 0 1em;
+}
+/* Acordeon styles */
+.categoryMenu .tab {
+    position: relative;
+    margin-bottom: 1px;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+}
+.categoryMenu input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.categoryMenu label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    background: #16a085;
+    font-weight: bold;
+    line-height: 3;
+    cursor: pointer;
+}
+.blue label {
+    background: #2980b9;
+}
+.tab-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #1abc9c;
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height .35s;
+}
+.blue .tab-content {
+    background: #3498db;
+
+}
+.tab-content p {
+    /*margin: 1em;*/
+}
+.tab-content a {
+    /*   width:100%;
+   display: inline-block;
+ */
+    background: #3498db;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+.categoryMenu a:link, a:visited {
+    color:white
+}
+
+.categoryMenu a:hover{
+    background-color:#2980b9;
+}
+.categoryMenu a:active {
+
+}
+/* :checked */
+.categoryMenu input:checked ~ .tab-content {
+    max-height: 10em;
+}
+/* Icon */
+.categoryMenu label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+.categoryMenu input[type=checkbox] + label::after {
+    content: "+";
+}
+.categoryMenu input[type=radio] + label::after {
+    content: "\25BC";
+}
+.categoryMenu input[type=checkbox]:checked + label::after {
+    transform: rotate(315deg);
+}
+.categoryMenu input[type=radio]:checked + label::after {
+    transform: rotateX(180deg);
+}
+
+.flexcontainer{
+    display:flex;
+}
+.flexcolumn{
+flex-direction: column;
+}
+
+.productAmountItem {
+    display: inline-block;
+}
+
+.startMargin {
+    margin-left: 10px;
+}

@@ -1,0 +1,135 @@
+<!--========================
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen:
+File: styles CSS
+==========================-->
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Music WebShop</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel='stylesheet' href='stylesProductOverview.css'/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="contentwrapper">
+        <header>
+            <div class="row">
+                <div class="leftcolumn">
+                    <img src="images/logo_icoon_tuneshop.png" id="logo" alt="Logo TuneShop">
+                </div>
+                <div class="middlecolumn">
+                    <img src="images/logo_tuneshop.png" id="logoText" alt="TuneShop">
+                </div>
+                <div class="rightcolumn">
+                    <form action="/action_page.php">
+                        <!--<div class="imgcontainer">-->
+                        <img src="images/avatar.png" alt="Avatar" class="avatar">
+                        <!--</div>-->
+                        <h3>LOGIN</h3>
+                        <div class="container">
+                            <input type="text" placeholder="Gebruikersnaam" name="uname" required>
+                            <input type="password" placeholder="Wachtwoord" name="psw" required>
+                        </div>
+                        <div class="container">
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember"> Onthouden
+                            </label>
+                            <button type="submit">Login</button>
+                        </div>
+                        <div class="container">
+                            <span class="psw"><a href="#">Vergeten?</a></span>
+                            <a href="#">Registreer</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="topnav">
+                <a class="active" href="#home">Home</a>
+                <a href="#nieuws">Nieuws</a>
+                <a href="#acties">Contact</a>
+                <a href="#overons">Over ons</a>
+                <a href="#vacatures">Vacatures</a>
+                <a href="#webshop">Webshop</a>
+            </div>
+        </header>
+        <main>
+            <!-- The form -->
+
+            <form class="searchform" action="action_page.php">
+                <input type="text" name="search" placeholder="Zoektermen ingeven">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div class="flexcontainer">
+<!--                <div class="vertical-menu flexcolumn">
+                    <a href="#" class="active">Categorieën </a>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                    <a href="#">Link 4</a>
+                </div>-->
+
+                <div class="wrapper">
+
+                    <div class="categoryMenu">
+                        <div class="tab blue">
+                            <input id="tab-one" type="radio" name="tabs">
+                            <label for="tab-one">Toetsinstrumenten</label>
+                            <div class="tab-content">
+                                <P><A HREF="">Piano</A></P>
+                                <P><A HREF="">Stage Piano</A></P>
+                                <P><A HREF="">Keyboard</A></P>
+                            </div>
+                        </div>
+                        <div class="tab blue">
+                            <input id="tab-two" type="radio" name="tabs">
+                            <label for="tab-two">Snaarinstrumenten</label>
+                            <div class="tab-content">
+                                <P><A HREF="">Piano</A></P>
+                                <P><A HREF="">Stage Piano</A></P>
+                                <P><A HREF="">Keyboard</A></P>
+                            </div>
+                        </div>
+                        <div class="tab blue">
+                            <input id="tab-three" type="radio" name="tabs">
+                            <label for="tab-three">Blaasinstrumenten</label>
+                            <div class="tab-content">
+                                <P><A HREF="">Piano</A></P>
+                                <P><A HREF="">Stage Piano</A></P>
+                                <P><A HREF="">Keyboard</A></P>
+                            </div>
+                        </div>
+                        <div class="tab blue">
+                            <input id="tab-four" type="radio" name="tabs">
+                            <label for="tab-four">Druminstrumenten</label>
+                            <div class="tab-content">
+                                <P><A HREF="">Piano</A></P>
+                                <P><A HREF="">Stage Piano</A></P>
+                                <P><A HREF="">Keyboard</A></P>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flexcolumn">
+                    <p class="productAmountItem startMargin">1376 Producten | Toon</p>
+                    <select class="productAmountItem">
+                        <option value="ten">10</option>
+                        <option value="twenty">20</option>
+                        <option value="thirty">30</option>
+                        <option value="forty">40</option>
+                        <option value="fifty">50</option>
+                    </select>
+                    <p class="productAmountItem">per pagina</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="advertisementwrapper">
+    </div>
+</div>
+</body>
+</html>
