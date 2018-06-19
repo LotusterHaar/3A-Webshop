@@ -80,6 +80,9 @@ form.searchform::after {
     color: white;
 }*/
 
+.categoryMenu{
+    margin: 20px;
+}
 .categoryMenu body {
     color: #2c3e50;
     background: #ecf0f1;
