@@ -4,6 +4,8 @@ Bronnen: https://www.w3schools.com/howto/howto_css_animated_search.asp
 https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_search_button
 https://www.w3schools.com/howto/howto_css_vertical_menu.asp
 https://codepen.io/raubaca/pen/PZzpVe
+https://codyhouse.co/gem/css-multi-level-accordion-menu
+https://codepen.io/flyholander/pen/zacpv
 File: style for the product overview page CSS*/
 
 body {
@@ -112,9 +114,7 @@ form.searchform::after {
     line-height: 3;
     cursor: pointer;
 }
-.blue label {
 
-}
 .tab-content {
     max-height: 0;
     overflow: hidden;
@@ -123,6 +123,7 @@ form.searchform::after {
     -o-transition: max-height .35s;
     transition: max-height .35s;
 }
+
 /*.blue .tab-content {
     background: #3498db;
 
@@ -165,6 +166,13 @@ form.searchform::after {
     -webkit-transition: all .35s;
     -o-transition: all .35s;
     transition: all .35s;
+}
+
+.categoryMenu input[type='radio']:checked ~ .tab-content {
+    max-height: 1000px;
+    opacity: 1;
+    z-index: 10;
+    overflow-y: auto;
 }
 
 .categoryMenu input[type=radio] + label::after {
