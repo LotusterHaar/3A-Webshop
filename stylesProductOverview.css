@@ -106,34 +106,33 @@ form.searchform::after {
     position: relative;
     display: block;
     padding: 0 0 0 1em;
-    background: #16a085;
+   /* background: #16a085;*/
+    background: #330601;
     font-weight: bold;
     line-height: 3;
     cursor: pointer;
 }
 .blue label {
-    background: #2980b9;
+
 }
 .tab-content {
     max-height: 0;
     overflow: hidden;
-    background: #1abc9c;
+/*    background: #1abc9c;*/
     -webkit-transition: max-height .35s;
     -o-transition: max-height .35s;
     transition: max-height .35s;
 }
-.blue .tab-content {
+/*.blue .tab-content {
     background: #3498db;
 
-}
-.tab-content p {
-    /*margin: 1em;*/
-}
+}*/
+
 .tab-content a {
     /*   width:100%;
    display: inline-block;
  */
-    background: #3498db;
+    background: #ac7e54;
     color: black;
     display: block;
     padding: 12px;
@@ -144,7 +143,7 @@ form.searchform::after {
 }
 
 .categoryMenu a:hover{
-    background-color:#2980b9;
+    background-color: #ecad73;
 }
 .categoryMenu a:active {
 
@@ -167,15 +166,11 @@ form.searchform::after {
     -o-transition: all .35s;
     transition: all .35s;
 }
-.categoryMenu input[type=checkbox] + label::after {
-    content: "+";
-}
+
 .categoryMenu input[type=radio] + label::after {
     content: "\25BC";
 }
-.categoryMenu input[type=checkbox]:checked + label::after {
-    transform: rotate(315deg);
-}
+
 .categoryMenu input[type=radio]:checked + label::after {
     transform: rotateX(180deg);
 }
