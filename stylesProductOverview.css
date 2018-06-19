@@ -59,29 +59,6 @@ form.searchform::after {
     display: table;
 }
 
-/*
-
-.vertical-menu {
-    width: 200px; !* Set a width if you like *!
-}
-
-.vertical-menu a {
-    background-color: #eee; !* Grey background color *!
-    color: black; !* Black text color *!
-    display: block; !* Make the links appear below each other *!
-    padding: 12px; !* Add some padding *!
-    text-decoration: none; !* Remove underline from links *!
-}
-
-.vertical-menu a:hover {
-    background-color: #ccc; !* Dark grey background on mouse-over *!
-}
-
-.vertical-menu a.active {
-    background-color: #a99d94; !* Add a green color to the "active/current" link *!
-    color: white;
-}*/
-
 .categoryMenu {
     margin: 20px;
 }
@@ -195,11 +172,28 @@ form.searchform::after {
     transform: rotateX(180deg);
 }
 
-.flexcontainer {
+.flexwrapper {
+    display: flex;
+}
+.flexcontainer1 {
+    display: flex;
+    flex-direction: column;
+}
+.flexcontainer2 {
     display: flex;
 }
 
-.flexcolumn {
+.flexcontainer3{
+    display: flex;
+    flex-direction:column;
+
+}
+
+.flexcontainerSmallImageBox{
+    display: flex;
+    justify-content: space-around;
+}
+.flexline{
     flex-direction: column;
 }
 
@@ -209,4 +203,67 @@ form.searchform::after {
 
 .startMargin {
     margin-left: 10px;
+}
+
+.imageBoxSmall {
+    display: flex;
+    flex-direction: column;
+    background-color: #e6d6ca;
+    margin: 20px;
+}
+
+.flexcontainerSmallImageBox .imageBoxSmall img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10%;
+}
+
+.flexcontainerSmallImageBox .imageBoxSmall h1 {
+    font-size: 0.8em;
+    text-align: left;
+    margin-top: 15%;
+    margin-left: 12%;
+}
+
+.flexcontainerSmallImageBox .priceline h2 {
+    font-size: .8em;
+    width: 30%;
+    display: inline-block;
+    margin: auto;
+    margin-left: 12%;
+}
+
+/*.flexcontainerSmallImageBox .priceline input {
+    display: inline-block;
+    width: 45%;
+    margin-right: 10%;
+    float: right;
+}
+
+.flexcontainerSmallImageBox .priceline input {
+    display: inline-block;
+    width: 45%;
+    margin-right: 10%;
+    float: right;
+}*/
+
+#submit-form{
+    display:none;
+}
+
+.flexcontainerSmallImageBox .priceline label{
+    display: inline-block;
+    width: 20%;
+    margin-top:-5%;
+    margin-right: 20%;
+    float: right;
+}
+
+.flexcontainerSmallImageBox .priceline label span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
 }
