@@ -35,6 +35,7 @@ form.searchform input[type=text] {
 form.searchform {
     text-align: center;
 }
+
 form.searchform button {
     width: 20%;
     padding: 10px;
@@ -57,6 +58,7 @@ form.searchform::after {
     clear: both;
     display: table;
 }
+
 /*
 
 .vertical-menu {
@@ -80,9 +82,10 @@ form.searchform::after {
     color: white;
 }*/
 
-.categoryMenu{
+.categoryMenu {
     margin: 20px;
 }
+
 .categoryMenu body {
     color: #2c3e50;
     background: #ecf0f1;
@@ -93,6 +96,7 @@ form.searchform::after {
     width: 250px;
     padding: 0 1em;
 }
+
 /* Acordeon styles */
 .categoryMenu .tab {
     position: relative;
@@ -101,6 +105,7 @@ form.searchform::after {
     color: #fff;
     overflow: hidden;
 }
+
 .categoryMenu input {
     position: absolute;
     opacity: 0;
@@ -111,7 +116,7 @@ form.searchform::after {
     position: relative;
     display: block;
     padding: 0 0 0 1em;
-   /* background: #16a085;*/
+    /* background: #16a085;*/
     background: #330601;
     font-weight: bold;
     line-height: 3;
@@ -121,7 +126,7 @@ form.searchform::after {
 .tab-content {
     max-height: 0;
     overflow: hidden;
-/*    background: #1abc9c;*/
+    /*    background: #1abc9c;*/
     -webkit-transition: max-height .35s;
     -o-transition: max-height .35s;
     transition: max-height .35s;
@@ -142,20 +147,24 @@ form.searchform::after {
     padding: 12px;
     text-decoration: none;
 }
+
 .categoryMenu a:link, a:visited {
-    color:white
+    color: white
 }
 
-.categoryMenu a:hover{
+.categoryMenu a:hover {
     background-color: #ecad73;
 }
+
 .categoryMenu a:active {
 
 }
+
 /* :checked */
 .categoryMenu input:checked ~ .tab-content {
     max-height: 10em;
 }
+
 /* Icon */
 .categoryMenu label::after {
     position: absolute;
@@ -186,11 +195,12 @@ form.searchform::after {
     transform: rotateX(180deg);
 }
 
-.flexcontainer{
-    display:flex;
+.flexcontainer {
+    display: flex;
 }
-.flexcolumn{
-flex-direction: column;
+
+.flexcolumn {
+    flex-direction: column;
 }
 
 .productAmountItem {

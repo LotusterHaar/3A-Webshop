@@ -64,6 +64,14 @@ body {
     padding-left: 20px;
 }
 
+.rightcolumn img{
+    display:inline-block;
+}
+
+.rightcolumn h3{
+    display:inline-block;
+}
+
 .imgcontainer {
     text-align: center;
 }

@@ -19,21 +19,6 @@ File: style for the product page CSS
     position: center;
 }
 
-.imageBoxSmall {
-    display: flex;
-    flex-direction: column;
-    background-color: #e6d6ca;
-    margin: 20px;
-}
-
-.imageBoxSmall img {
-    width: 75%;
-    height: 50%;
-    top: 10%;
-    margin: 0 auto;
-    position: relative;
-}
-
 .buttonRow {
     padding-left: 15px;
     padding-top: 15px;
@@ -65,24 +50,3 @@ form {
     float: right;
 }
 
-.imageBoxSmall h1 {
-    font-size: 1.2em;
-    text-align: left;
-    margin-top: 15%;
-    margin-left: 12%;
-}
-
-.priceline h2 {
-    font-size: 1.2em;
-    width: 30%;
-    display: inline-block;
-    margin: auto;
-    margin-left: 12%;
-}
-
-.priceline input {
-    display: inline-block;
-    width: 45%;
-    margin-right: 10%;
-    float: right;
-}
