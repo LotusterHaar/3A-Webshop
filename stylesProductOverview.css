@@ -6,6 +6,8 @@ https://www.w3schools.com/howto/howto_css_vertical_menu.asp
 https://codepen.io/raubaca/pen/PZzpVe
 https://codyhouse.co/gem/css-multi-level-accordion-menu
 https://codepen.io/flyholander/pen/zacpv
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_animate1
+https://codepen.io/toddsynan/full/pJuyx
 File: style for the product overview page CSS*/
 
 body {
@@ -191,7 +193,8 @@ form.searchform::after {
 
 .flexcontainerSmallImageBox{
     display: flex;
-    justify-content: space-around;
+/*    justify-content: space-around;*/
+    flex-wrap: wrap;
 }
 .flexline{
     flex-direction: column;
@@ -205,11 +208,15 @@ form.searchform::after {
     margin-left: 10px;
 }
 
+.flexcolumn{
+    width: 25%;
+}
 .imageBoxSmall {
     display: flex;
     flex-direction: column;
     background-color: #e6d6ca;
-    margin: 20px;
+/*    width: 25%;*/
+    margin: 10px;
 }
 
 .flexcontainerSmallImageBox .imageBoxSmall img {
@@ -233,6 +240,7 @@ form.searchform::after {
     display: inline-block;
     margin: auto;
     margin-left: 12%;
+    margin-bottom: 15%;
 }
 
 /*.flexcontainerSmallImageBox .priceline input {
@@ -249,13 +257,14 @@ form.searchform::after {
     float: right;
 }*/
 
-#submit-form{
+/*#submit-form{
     display:none;
 }
 
 .flexcontainerSmallImageBox .priceline label{
     display: inline-block;
-    width: 20%;
+    min-width: 25%;
+    width: 25%;
     margin-top:-5%;
     margin-right: 20%;
     float: right;
@@ -266,4 +275,52 @@ form.searchform::after {
     display: inline-block;
     position: relative;
     transition: 0.5s;
+}*/
+
+.button {
+    border-radius: 4px;
+    background-color: #330601;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 25px;
+/*    padding: 20px;*/
+    width: 45%;
+    transition: all 0.5s;
+    cursor: cell;
+    margin: 5px;
+}
+
+.button span {
+    cursor: cell;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background: #770e02;
+}
+.button:hover span {
+    padding-right: 10px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+button a{
+    text-decoration: none;
+    cursor: cell;
+    color: white;
 }
