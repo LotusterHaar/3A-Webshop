@@ -47,6 +47,7 @@ body {
     border-right: none;
 }
 
+.
 .leftcolumn {
     display: flex;
     align-content: left;
@@ -90,6 +91,7 @@ body {
     height: 200px;
     padding: 50px;
     display: flex;
+/*    flex-direction: row;*/
     justify-content: space-between;
 }
 
