@@ -136,11 +136,13 @@ li.dropdown {
 .row {
     background-color: #ebcb7a;
     width: 100%;
-    height: 200px;
     padding: 50px;
     display: flex;
     /*    flex-direction: row;*/
     justify-content: space-between;
+    min-height: 250px;
+    height: 200px;
+    min-width: 750px;
 }
 
 .wrapper {
@@ -156,6 +158,7 @@ li.dropdown {
 .advertisementwrapper {
     width: 25%;
     background: #bf8040;
+    max-width: 400px;
 }
 
 article {

@@ -1,3 +1,9 @@
+/*Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_register_form
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_form_icon
+File: style for the product registration page CSS*/
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
@@ -7,61 +13,223 @@ body {
     box-sizing: border-box;
 }
 
-h1{
-    align:center;
+h1 {
+    align: center;
 }
 
-
-/* Add padding to containers */
-.container {
-    padding: 16px;
-    background-color: white;
+table {
+    margin: 50px;
+    color: black;
 }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
+table, th, td {
+    border: 2px solid #BEBEBE;
+    border-collapse: collapse;
+}
+
+th, td {
     padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
+    text-align: left;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
+th {
+    background-color: #330601;
+    color: white;
+}
+
+.accountInfo {
+    background-color: #dfbf9f;
+}
+
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.icon {
+    padding: 10px;
+    background: #dd7c03;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
     outline: none;
 }
 
-/* Overwrite default styles of hr */
-hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
+.input-field:focus {
+    border: 2px solid #dd7c03;
+}
+
+.billing-addressInfo {
+    background-color: #fed9b6;
+}
+
+.billing-address {
+    margin: 10px auto;
+/*    max-width: 400px;*/
+    /*    padding: 20px 12px 10px 20px;*/
+    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.billing-address li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+
+.billing-address label {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: bold;
+}
+
+.billing-address input[type=text],
+.billing-address input[type=date],
+.billing-address input[type=datetime],
+.billing-address input[type=number],
+.billing-address input[type=search],
+.billing-address input[type=time],
+.billing-address input[type=url],
+.billing-address input[type=email],
+textarea,
+select {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #BEBEBE;
+/*    padding: 7px;*/
+    margin: 0px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+}
+
+.billing-address input[type=text]:focus,
+.billing-address input[type=date]:focus,
+.billing-address input[type=datetime]:focus,
+.billing-address input[type=number]:focus,
+.billing-address input[type=search]:focus,
+.billing-address input[type=time]:focus,
+.billing-address input[type=url]:focus,
+.billing-address input[type=email]:focus,
+.billing-address textarea:focus,
+.billing-address select:focus {
+    -moz-box-shadow: 0 0 8px #dd7c03;
+    -webkit-box-shadow: 0 0 8px #dd7c03;
+    box-shadow: 0 0 8px #dd7c03;
+    border: 1px solid #dd7c03;
+}
+
+/*.billing-address .field-divided {
+    width: 25%;
+}*/
+
+.billing-address .field-long {
+    width: 100%;
+}
+
+.billing-address .field-select {
+    width: 100%;
+}
+
+.billing-address .field-textarea {
+    height: 100px;
+}
+
+.billing-address input[type=submit], .billing-address input[type=button] {
+    background: #dd7c03;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+}
+
+.billing-address input[type=submit]:hover, .billing-address input[type=button]:hover {
+    background: #dd7c03;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.billing-address .required {
+    color: red;
+}
+
+/*.labelInput{
+    float:left;
+    clear:both;
+}*/
+
+/*
+.billingInfo ul
+{
+    list-style-type: none;
+}
+
+.billingInfo label {
+    display:block;
+    background: green;
+}
+
+.billinginfo li
+{
+    clear: both;
+}
+.billingInfo label
+{
+    width: 80px;
+    text-align: left;
+    float: left;
+    margin-top: -16px;
+}
+.billingInfo input[type=text]
+{
+    float: left;
+    font-family: Verdana,"Sans-serif";
+    size: 8pt;
+    border: solid 1px #d5d5d5;
+    margin: 6px 12px 20px -80px;
+}
+*/
+
+/*.billing-addressInfo form { width: 400px; }*/
+.billing-addressInfo form section div {
+    float: left;
+}
+
+.billing-addressInfo form section div.full {
+    clear: both;
+}
+
+.billing-addressInfo form section div label {
+    display: block;
+}
+
+.billing-addressInfo form section div label {
+    display: block;
 }
 
 /* Set a style for the submit button */
-.registerbtn {
-    background-color: #4CAF50;
+.btn {
+    background-color: #dd7c03;
     color: white;
-    padding: 16px 20px;
-    margin: 8px 0;
+    padding: 15px 20px;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 30%;
     opacity: 0.9;
+    float: right;
 }
 
-.registerbtn:hover {
+.btn:hover {
     opacity: 1;
-}
-
-/* Add a blue text color to links */
-a {
-    color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-    background-color: #f1f1f1;
-    text-align: center;
 }

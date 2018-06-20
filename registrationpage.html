@@ -1,7 +1,8 @@
 <!--========================
 Template Name: TuneShop
 Author: Jan Willem Lenting, Lotus ter Haar
-Bronnen:
+Bronnen: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_form_icon
+https://www.sanwebe.com/2014/08/css-html-forms-designs
 File: styles registration CSS
 ==========================-->
 
@@ -12,6 +13,7 @@ File: styles registration CSS
     <title>Music WebShop</title>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
     <link rel="stylesheet" type="text/css" href="stylesRegistration.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="wrapper">
@@ -47,40 +49,127 @@ File: styles registration CSS
                     </form>
                 </div>
             </div>
-            <div class="topnav">
-                <a class="active" href="#home">Home</a>
-                <a href="#nieuws">Nieuws</a>
-                <a href="#acties">Contact</a>
-                <a href="#overons">Over ons</a>
-                <a href="#vacatures">Vacatures</a>
-                <a href="#webshop">Webshop</a>
+            <div>
+                <nav id="top-menu-nav">
+                    <ul id="top-menu" class="nav">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">Nieuws</a></li>
+                        <li><a href="#">Acties</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropbtn">Over Ons</a>
+                            <div class="dropdown-content">
+                                <ul class="sub-menu dropdown-content">
+                                    <li><a href="#" class="sub-menu-link">Contact</a>
+                                    </li>
+                                    <li><a href="#" class="sub-menu-link">Team</a>
+                                    </li>
+                                    <li><a href="#" class="sub-menu-link">Betaalmethodes</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Vacatures</a></li>
+                        <li class="dropdown"><a href="#" class="dropbtn">Webshop</a>
+                            <div class="dropdown-content">
+                                <ul class="sub-menu dropdown-content">
+                                    <li><a href="#" class="sub-menu-link">Producten</a>
+                                    </li>
+                                    <li><a href="#" class="sub-menu-link">Winkelwagen</a>
+                                    </li>
+                                    <li><a href="#" class="sub-menu-link">Afrekenen</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </header>
         <main>
-            <form action="/action_page.php">
-                <div class="container">
-                    <h1 id="registrationTitle">Register</h1>
-                    <p>Please fill in this form to create an account.</p>
-                    <hr>
+            <table>
+                <tr>
+                    <th><h2>Accountgegevens</h2></th>
+                    <th><h2>Factuuradres</h2></th>
+                </tr>
+                <tr>
+                    <td class="accountInfo">
+                        <form action="/action_page.php" style="max-width:500px;margin:auto">
+                            <div class="input-container">
+                                <i class="fa fa-user icon"></i>
+                                <input class="input-field" type="text" placeholder="Gebruikersnaam*" name="usrnm">
+                            </div>
 
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required>
+                            <div class="input-container">
+                                <i class="fa fa-key icon"></i>
+                                <input class="input-field" type="password" placeholder="Wachtwoord*" name="psw">
+                            </div>
+                            <div class="input-container">
+                                <i class="fa fa-key icon"></i>
+                                <input class="input-field" type="password" placeholder="Herhaal wachtwoord" name="psw2">
+                            </div>
 
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                            <div style="float:left;margin-right:20px;">
+                                <label for="name">Name</label>
+                                <input id="name" type="text" value="" name="name">
+                            </div>
 
-                    <label for="psw-repeat"><b>Repeat Password</b></label>
-                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                    <hr>
-                    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                        </form>
+                    </td>
+                    <td class="billing-addressInfo">
+                        <form>
+                            <ul class="billing-address">
+                                <li class="billingInfo">
+                                    <section>
+                                        <div class="labelInput"><label>Aanhef</label>
+                                            <select>
+                                                <option>Dhr.</option>
+                                                <option>Mevr.</option>
+                                            </select>&nbsp;
+                                        </div>
+                                        <div class="labelInput"><label>Voornaam <span class="required">*</span></label>
+                                            <input type="text" name="field2" class="field-divided"
+                                                   placeholder="Voornaam"/>&nbsp;
+                                        </div>
+                                        <div class="labelInput"><label>Tussenvoeg. </label> <input type="text"
+                                                                                                   name="field1"
+                                                                                                   class="field-divided"
+                                                                                                   placeholder="Tussenvoegsel"/>&nbsp;
+                                        </div>
+                                        <div class="labelInput"><label>Achternaam <span
+                                                class="required">*</span></label><input type="text" name="field3"
+                                                                                        class="field-divided"
+                                                                                        placeholder="Achternaam"/></div>
+                                    </section>
+                                <li>
+                                    <label>Emailadres <span class="required">*</span></label>
+                                    <input type="email" name="field5" class="field-long"/>
+                                </li>
+                                <li>
+                                    <label>Straatnaam <span class="required">*</span></label>
+                                    <input type="street" name="field5" class="field-long"/>
+                                </li>
+                                <li>
+                                    <label>Subject</label>
+                                    <select name="field4" class="field-select">
+                                        <option value="Advertise">Advertise</option>
+                                        <option value="Partnership">Partnership</option>
+                                        <option value="General Question">General</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <label>Your Message <span class="required">*</span></label>
+                                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                                </li>
+                                <li>
+                                    <input type="submit" value="Submit"/>
+                                </li>
+                            </ul>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" class="btn">Opslaan</button>
 
-                    <button type="submit" class="registerbtn">Register</button>
-                </div>
-
-                <div class="container signin">
-                    <p>Already have an account? <a href="#">Sign in</a>.</p>
-                </div>
-            </form>
         </main>
     </div>
     <div class="advertisementwrapper">
