@@ -30,15 +30,11 @@ body {
 #top-menu-nav li a:not(.sub-menu-link), .dropbtn{
     /*display: block;*/
     display:inline-block;
-/*    float: left;*/
+    /*    float: left;*/
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-}
-
-#top-menu-nav li a:hover:not(.active) {
-    background-color: #550a02;
 }
 
 #top-menu-nav .active {
@@ -70,31 +66,27 @@ li.dropdown {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
-/*Animation Submenu Fold Out 1*/
 
-.nav ul > li:hover ul li {
-    height: 36px;
-}
-.nav li ul {
-    position: absolute;
-    left: 0;
-    top: 36px;
-    z-index: 1;
+#top-menu-nav #top-menu li li a {
+    width:200px;
 }
 
-.nav li ul li {
-    overflow: hidden;
-    height: 0;
-    -webkit-transition: height 200ms ease-in;
-    -moz-transition: height 200ms ease-in;
-    -o-transition: height 200ms ease-in;
-    transition: height 200ms ease-in;
+#top-menu-nav #top-menu li li {
+    padding: 0px; /*!*!important;*!*/
+    background-color: #540901; /*!*!important;*!*/
 }
+
+#top-menu-nav li a:hover:not(.active) {
+    background-color: rgb(179, 137, 116);
+}
+
 
 .leftcolumn {
     display: flex;
@@ -195,4 +187,3 @@ article img {
 .container {
     font-size: 80%;
 }
-
