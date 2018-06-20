@@ -1,0 +1,33 @@
+.topnav {
+    overflow: hidden;
+    background-color: #330601;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: #000000;
+}
+
+.topnav a.active {
+    background-color: #dd7c03;
+    color: white;
+}
+
+/*!* Add a gray right border to all list items, except the last item (last-child) *!*/
+.topnav a {
+    border-right: 1px solid #bbb;
+}
+
+.topnav a:last-child {
+    border-right: none;
+}
+

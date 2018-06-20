@@ -75,149 +75,25 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+/*Animation Submenu Fold Out 1*/
 
-/* Prepare the menu for applying animations */
+.nav ul > li:hover ul li {
+    height: 36px;
+}
+.nav li ul {
+    position: absolute;
+    left: 0;
+    top: 36px;
+    z-index: 1;
+}
 
-#top-menu-nav ul.sub-menu {
+.nav li ul li {
     overflow: hidden;
-    background-color: transparent; /*!important;*/
-    padding: 0px; /*!important;*/
-    -webkit-box-shadow: none; /*!important;*/
-    -moz-box-shadow: none; /*!important;*/
-    box-shadow: none; /*!important;*/
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu,
-#top-menu-nav ul#top-menu > li:focus ul.sub-menu {
-    max-height: 2000px;
-}
-
-#top-menu-nav #top-menu li li a {
-    width: 240px; /*!important;*/
-    color: #fff; /* !important;*/
-}
-
-#top-menu-nav #top-menu li li {
-    padding: 0px; /*!important;*/
-    background-color: #ddd; /*!important;*/
-}
-
-/*
-
- * Menu Effects: A collection of CSS3 menu effects (degrades gracefully in IE8).
- *
- * Don't hesitate to create new effects and remove the ones you don't need.
- *
- * latest version and complete README available on Github:
- * https://github.com/louisremi/menu-effects
- *
- * Copyright 2012 @louis_remi
- * Licensed under the MIT license.
- */
-
-/* Progressive Animations
- * ==================================================================
- * This is a lot of redundant code but the result is worth it
- * This should be edited for menus with more or much less than 8 items
- */
-
-/* forward */
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li:nth-child(1) {
-    -webkit-transition-delay: 0s;
-    -moz-transition-delay: 0s;
-    -ms-transition-delay: 0s;
-    -o-transition-delay: 0s;
-    transition-delay: 0s;
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li:nth-child(2) {
-    -webkit-transition-delay: 66ms;
-    -moz-transition-delay: 66ms;
-    -ms-transition-delay: 66ms;
-    -o-transition-delay: 66ms;
-    transition-delay: 66ms;
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li:nth-child(3) {
-    -webkit-transition-delay: 133ms;
-    -moz-transition-delay: 133ms;
-    -ms-transition-delay: 133ms;
-    -o-transition-delay: 133ms;
-    transition-delay: 133ms;
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li:nth-child(4) {
-    -webkit-transition-delay: 200ms;
-    -moz-transition-delay: 200ms;
-    -ms-transition-delay: 200ms;
-    -o-transition-delay: 200ms;
-    transition-delay: 200ms;
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li:nth-child(5) {
-    -webkit-transition-delay: 266ms;
-    -moz-transition-delay: 266ms;
-    -ms-transition-delay: 266ms;
-    -o-transition-delay: 266ms;
-    transition-delay: 266ms;
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li:nth-child(6) {
-    -webkit-transition-delay: 333ms;
-    -moz-transition-delay: 333ms;
-    -ms-transition-delay: 333ms;
-    -o-transition-delay: 333ms;
-    transition-delay: 333ms;
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li:nth-child(7) {
-    -webkit-transition-delay: 400ms;
-    -moz-transition-delay: 400ms;
-    -ms-transition-delay: 400ms;
-    -o-transition-delay: 400ms;
-    transition-delay: 400ms;
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li:nth-child(8) {
-    -webkit-transition-delay: 466ms;
-    -moz-transition-delay: 466ms;
-    -ms-transition-delay: 466ms;
-    -o-transition-delay: 466ms;
-    transition-delay: 466ms;
-}
-
-/* Default
- ================================================================= */
-#top-menu-nav ul.sub-menu li {
-    margin: 0px; /*!important;*/
-    opacity: 0;
-    -webkit-transition: opacity .4s, -webkit-transform .6s, max-height .6s;
-    -moz-transition: opacity .4s, -moz-transform .6s, max-height .6s;
-    -ms-transition: opacity .4s, -ms-transform .6s, max-height .6s;
-    -o-transition: opacity .4s, -o-transform .6s, max-height .6s;
-    transition: opacity .4s, transform .6s, max-height .6s;
-}
-
-#top-menu-nav ul#top-menu > li:hover ul.sub-menu li,
-#top-menu-nav ul#top-menu > li:focus ul.sub-menu li {
-    opacity: 1;
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
-    transform: none;
-}
-
-/* Blind
- ================================================================= */
-#top-menu-nav li.blind ul.sub-menu li {
-    max-height: 0;
-}
-
-#top-menu-nav li.blind:hover ul.sub-menu li,
-#top-menu-nav li.blind:focus ul.sub-menu li {
-    /* This should be changed to the normal height of list-items */
-    max-height: 40px;
+    height: 0;
+    -webkit-transition: height 200ms ease-in;
+    -moz-transition: height 200ms ease-in;
+    -o-transition: height 200ms ease-in;
+    transition: height 200ms ease-in;
 }
 
 .leftcolumn {
