@@ -130,7 +130,7 @@ File: styles registration CSS
                                             <input type="text" name="field2" class="field-divided"
                                                    placeholder="Voornaam"/>&nbsp;
                                         </div>
-                                        <div class="labelInput"><label>Tussenvoeg. </label> <input type="text"
+                                        <div class="labelInput"><label>Tussenv. </label> <input type="text"
                                                                                                    name="field1"
                                                                                                    class="field-divided"
                                                                                                    placeholder="Tussenvoegsel"/>&nbsp;
@@ -141,27 +141,42 @@ File: styles registration CSS
                                                                                         placeholder="Achternaam"/></div>
                                     </section>
                                 <li>
-                                    <label>Emailadres <span class="required">*</span></label>
-                                    <input type="email" name="field5" class="field-long"/>
+                                <section>
+                                    <label class="emailLabel">Emailadres <span class="required">*</span></label>
+                                    <input type="email" name="field5" class="field-long" placeholder="Emailadres"/>
+                                </section>
                                 </li>
                                 <li>
-                                    <label>Straatnaam <span class="required">*</span></label>
-                                    <input type="street" name="field5" class="field-long"/>
+                                    <section>
+                                    <div class="labelInput"><label>Straatnaam <span class="required">*</span></label>
+                                        <input type="text" name="field2" class="field-divided"
+                                               placeholder="Straatnaam"/>&nbsp;
+                                    </div>
+                                    <div class="labelInput"><label>Huisnummer </label> <span class="required">*</span><input type="text"
+                                                                                               name="field1"
+                                                                                               class="field-divided"
+                                                                                               placeholder="Huisnummer"/>&nbsp;
+                                    </div>
+                                    </section>
                                 </li>
                                 <li>
-                                    <label>Subject</label>
-                                    <select name="field4" class="field-select">
-                                        <option value="Advertise">Advertise</option>
-                                        <option value="Partnership">Partnership</option>
-                                        <option value="General Question">General</option>
-                                    </select>
+                                    <section>
+                                        <div class="labelInput"><label>Postcode <span class="required">*</span></label>
+                                            <input type="text" name="field2" class="field-divided"
+                                                   placeholder="Postcode"/>&nbsp;
+                                        </div>
+                                        <div class="labelInput"><label>Plaatsnaam </label> <span class="required">*</span><input type="text"
+                                                                                                                                 name="field1"
+                                                                                                                                 class="field-divided"
+                                                                                                                                 placeholder="Plaatsnaam"/>&nbsp;
+                                        </div>
+                                    </section>
                                 </li>
                                 <li>
-                                    <label>Your Message <span class="required">*</span></label>
-                                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
-                                </li>
-                                <li>
-                                    <input type="submit" value="Submit"/>
+                                    <section>
+                                        <label class="emailLabel">Telefoon <span class="required">*</span></label>
+                                        <input type="email" name="field5" class="field-divided" placeholder="Emailadres"/>
+                                    </section>
                                 </li>
                             </ul>
                         </form>
