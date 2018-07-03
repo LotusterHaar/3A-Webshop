@@ -127,15 +127,16 @@ select {
 .billing-address input[type=email]:focus,
 .billing-address textarea:focus,
 .billing-address select:focus {
-    -moz-box-shadow: 0 0 8px #dd7c03;
+/*    -moz-box-shadow: 0 0 8px #dd7c03;
     -webkit-box-shadow: 0 0 8px #dd7c03;
-    box-shadow: 0 0 8px #dd7c03;
-    border: 1px solid #dd7c03;
+    box-shadow: 0 0 8px #dd7c03;*/
+    border: 2px solid #dd7c03;
 }
 
-/*.billing-address .field-divided {
-    width: 25%;
-}*/
+.billing-address .field-divided-half {
+    width:100%;
+    display: block;
+}
 
 .billing-address .field-long {
     width: 100%;
