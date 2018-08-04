@@ -26,8 +26,9 @@ table {
     margin: 50px;
 }
 
-tr {
-    border: 2px solid #BEBEBE;
+tr, td {
+    /*border: 2px solid #BEBEBE;*/
+    border: 2px solid #948473;
 }
 
 table {
@@ -35,7 +36,7 @@ table {
 
 }
 
-th, td {
+th, td{
     padding: 15px;
     text-align: center;
     width: auto;
@@ -49,15 +50,33 @@ th {
 
 table tr:nth-child(even){background-color: #dfbf9f;}
 
-table tr:nth-child(odd){  background-color: #fed9b6;;}
+table tr:nth-child(odd){  background-color: #fed9b6;}
 
 table tr:hover {background-color: #cbae91;}
 
-.productImage {
-    background-color: #e6d6ca;
-    margin: 15px;
+#endTotalRow{
+    background: none;
+    border: none;
+}
+
+.colorColumn{
+    background: #fed9b6;;
+  /*  border: 2px solid #BEBEBE;*/
+    border: 2px solid #948473;
+}
+
+#firstColumnTotalRow{
+    border: none;
+}
+.pImage {
     width: 17%;
     height: 17%;
+}
+.productImage {
+    background-color: #e6d6ca;
+    margin: 10px;
+    width: 100%;
+    height: 25%;
     position: relative;
     align-content: left;
     margin: 0 auto;
@@ -69,7 +88,7 @@ table tr:hover {background-color: #cbae91;}
     background-color: inherit;
     padding: 14px 28px;
     font-size: 2em;
-    cursor: no-drop;
+    cursor: pointer;
     color: white;
 /*    display: inline-block;*/
 }
@@ -77,7 +96,7 @@ table tr:hover {background-color: #cbae91;}
 .deleteBtn:hover {color: #dd7c03;}
 
 .deleteBtn span {
-    cursor: no-drop;
+    cursor: pointer;
     display: inline-block;
     position: relative;
     color:white;
@@ -86,6 +105,50 @@ table tr:hover {background-color: #cbae91;}
 
 .deleteBtn a{
     text-decoration: none;
-    cursor: no-drop;
+    cursor: pointer;
     color: white;
+}
+
+.flex-columnContainer{
+    display: flex;
+    flex-direction:column;
+}
+
+.tableRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+
+.orangeBtn{
+    background-color: #dd7c03;
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    padding: 15px;
+    margin-right: 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 4px;
+}
+
+orangeBtn:hover {
+    opacity: 1;
+}
+
+.payButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 15px 20px;
+}
+
+.pay{
+    float: right;
+}
+
+.recalculate{
+    float: right;
 }

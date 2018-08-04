@@ -84,7 +84,7 @@ File: styles shoppingcart CSS
                 </nav>
             </div>
         </header>
-        <main>
+        <main class="flex-columnContainer">
             <div class="tablecontainer">
             <div class="buttonRow">
                 <button class="buttonShopMore onclick="goBack()>Winkelwagen</button>
@@ -105,7 +105,7 @@ File: styles shoppingcart CSS
                     <th>Verwijderen</th>
                 </tr>
                 <tr>
-                    <td> <img src="images/instrumentImage.jpg" alt="Instrument Image" class="productImage"></td>
+                    <td class="pImage"><img src="images/instrumentImage.jpg" alt="Instrument Image" class="productImage"></td>
                     <td>Naam product</td>
                     <td>€25.00</td>
                     <td><form action="/action_page.php">
@@ -149,6 +149,19 @@ File: styles shoppingcart CSS
                             class="fa fa-trash" aria-hidden="true"></i></a></span></button></td>
                 </tr>
             </table>
+            </div>
+            <div class="tableRow">
+                <table>
+                    <tr id="endTotalRow">
+                    <td id="firstColumnTotalRow"><button type="button" class="orangeBtn recalculate">Herbereken bedrag</button></td>
+                    <td class="colorColumn">Eindtotaal: </td>
+                    <td class="colorColumn">€109,60</td>
+                    </tr>
+                </table>
+                </table>
+            </div>
+            <div class="payButton">
+                <button type="submit" class="orangeBtn pay">Afrekenen</button>
             </div>
         </main>
     </div>
