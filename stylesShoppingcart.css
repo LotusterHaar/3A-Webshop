@@ -9,6 +9,18 @@
     text-align: center;
 }
 
+.buttonShopMore{
+    background-color: #540901;
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    padding: 15px;
+    margin-right: 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 4px;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
@@ -123,7 +135,7 @@ table tr:hover {background-color: #cbae91;}
 
 
 .orangeBtn{
-    background-color: #dd7c03;
+
     color: white;
     border: none;
     cursor: pointer;
@@ -146,9 +158,11 @@ orangeBtn:hover {
 }
 
 .pay{
+    background-color: #dd7c03;
     float: right;
 }
 
 .recalculate{
     float: right;
+    background-color: rgb(179, 137, 116);
 }

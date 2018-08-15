@@ -217,6 +217,7 @@ form.searchform::after {
     background-color: #e6d6ca;
 /*    width: 25%;*/
     margin: 10px;
+    border-radius: 16px;
 }
 
 .flexcontainerSmallImageBox .imageBoxSmall img {
@@ -224,7 +225,8 @@ form.searchform::after {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 10%;
+    margin-top: 10%;
+    border-radius: 16px;
 }
 
 .flexcontainerSmallImageBox .imageBoxSmall h1 {
