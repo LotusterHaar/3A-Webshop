@@ -96,7 +96,8 @@ File: styles registration CSS
                 </tr>
                 <tr>
                     <td class="accountInfo">
-                        <form action="/action_page.php" style="max-width:500px;margin:auto">
+                        <form action="/action_page.php">
+                            <div class="accountInfoForm">
                             <div class="input-container">
                                 <i class="fa fa-user icon"></i>
                                 <input class="input-field" type="text" placeholder="Gebruikersnaam*" name="usrnm">
@@ -110,7 +111,6 @@ File: styles registration CSS
                                 <i class="fa fa-key icon"></i>
                                 <input class="input-field" type="password" placeholder="Herhaal wachtwoord" name="psw2">
                             </div>
-
                         </form>
                     </td>
                     <td class="billing-addressInfo">
@@ -144,38 +144,63 @@ File: styles registration CSS
                                         <input type="email" name="field5" class="field-long" placeholder="Emailadres"/>
                                     </section>
                                 </li>
-                                <li>
-                                    <section>
-                                        <div class="labelInput"><label>Straatnaam <span class="required"> *</span></label>
-                                            <input type="text" name="field1" class="field-divided-half" placeholder="Straatnaam"/>&nbsp;
-                                        </div>
-                                        <div class="labelInput"><label>Huisnummer <span
-                                                class="required"> *</span></label><input type="text" name="field3"
-                                                                                        class="field-divided-half"
-                                                                                        placeholder="Huisnummer"/></div>
-                                    </section>
-                                </li>
-                                <li>
-                                    <section>
-                                        <div class="labelInput"><label>Postcode<span class="required"> *</span></label>
-                                            <input type="text" name="field3" class="field-divided-half" placeholder="Postcode"/></div>
-                                        <div class="labelInput"><label>Plaatsnaam <span
-                                                class="required">*</span></label><input type="text" name="field3"
-                                                                                        class="field-divided-half"
-                                                                                        placeholder="Plaatsnaam"/></div>
-                                    </section>
-                                </li>
-                                <li>
-                                    <section>
-                                    <div class="labelInput"><label>Telefoonnummer  <span
-                                            class="required">*</span></label><input type="text"
-                                                                            name="field1"
-                                                                            class="field-divided-half"
-                                                                            placeholder="Telefoonnummer"/>&nbsp;
-                                    </div>
-                                    </section>
-                                </li>
                             </ul>
+
+                            <div class="billing-address twoColumns">
+                            <div class="billingAddressColumn">
+                                <ul>
+                                    <li>
+                                        <section>
+                                            <div class="labelInput"><label>Straatnaam <span
+                                                    class="required"> *</span></label>
+                                                <input type="text" name="field1" class="field-divided-half"
+                                                       placeholder="Straatnaam"/>&nbsp;
+                                            </div>
+                                        </section>
+                                        </li>
+                                    <li>
+                                        <section>
+                                            <div class="labelInput"><label>Postcode<span
+                                                    class="required"> *</span></label>
+                                                <input type="text" name="field3" class="field-divided-half"
+                                                       placeholder="Postcode"/></div>
+                                       </section>
+                                    </li>
+                                    <li>
+                                        <section>
+                                            <div class="labelInput"><label>Telefoonnummer <span
+                                                    class="required">*</span></label><input type="text"
+                                                                                            name="field1"
+                                                                                            class="field-divided-half"
+                                                                                            placeholder="Telefoonnummer"/>&nbsp;
+                                            </div>
+                                        </section>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="billingAddressColumn">
+                                <ul>
+                                    <li>
+                                        <section>
+                                            <div class="labelInput"><label>Huisnummer <span
+                                                    class="required"> *</span></label><input type="text" name="field3"
+                                                                                             class="field-divided-half"
+                                                                                             placeholder="Huisnummer"/>
+                                            </div>
+                                        </section>
+                                            </li>
+                                    <li>
+                                        <section>
+                                            <div class="labelInput"><label>Plaatsnaam <span
+                                                    class="required">*</span></label><input type="text" name="field3"
+                                                                                            class="field-divided-half"
+                                                                                            placeholder="Plaatsnaam"/>
+                                            </div>
+                                        </section>
+                                    </li>
+                                </ul>
+                            </div>
+                            </div>
                         </form>
                     </td>
                 </tr>
