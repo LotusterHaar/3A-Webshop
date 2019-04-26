@@ -1,6 +1,22 @@
+/**, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: rem-calc(16);
+    color: #ffffff;
+}*/
+
 main, header, section, aside, footer {
     margin: 0;
-    padding: rem-calc(20);
+    padding: 1.25rem;
     border: 1px solid #000000;
     color: #ffffff;
 }
@@ -24,9 +40,20 @@ header {
 .sidebar {
     border: 1px solid #000000;
     background: #673ab7;
+    flex: 0 1 300px;
 }
 
 footer {
     border: 1px solid #000000;
     background: #616161;
+}
+
+@media screen and (min-width: 640px) {
+    .flex-container {
+        display: flex;
+    }
+}
+
+.wrapper{
+    flex: 1;
 }
