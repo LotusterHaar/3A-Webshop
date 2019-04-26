@@ -1,0 +1,328 @@
+/*Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: https://www.w3schools.com/howto/howto_css_animated_search.asp
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_search_button
+https://www.w3schools.com/howto/howto_css_vertical_menu.asp
+https://codepen.io/raubaca/pen/PZzpVe
+https://codyhouse.co/gem/css-multi-level-accordion-menu
+https://codepen.io/flyholander/pen/zacpv
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_animate1
+https://codepen.io/toddsynan/full/pJuyx
+File: style for the product overview page CSS*/
+
+body {
+    font-family: Arial;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*!* When the input field gets focus, change its width to 100% *!*/
+form.searchform input[type=text]:focus {
+    width: 60%;
+}
+
+form.searchform input[type=text] {
+    padding: 10px;
+    margin: 20px 0px 20px 20px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 250px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background: #f1f1f1;
+}
+
+form.searchform {
+    text-align: center;
+}
+
+form.searchform button {
+    width: 20%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #330601;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.searchform button:hover {
+    background: #770e02;
+}
+
+form.searchform::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.categoryMenu {
+    margin: 20px;
+}
+
+.categoryMenu body {
+    color: #2c3e50;
+    background: #ecf0f1;
+}
+
+.categoryMenu {
+    float: left;
+    width: 250px;
+    padding: 0 1em;
+}
+
+/* Acordeon styles */
+.categoryMenu .tab {
+    position: relative;
+    margin-bottom: 1px;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+}
+
+.categoryMenu input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.categoryMenu label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+    /* background: #16a085;*/
+    background: #330601;
+    font-weight: bold;
+    line-height: 3;
+    cursor: pointer;
+}
+
+.tab-content {
+    max-height: 0;
+    overflow: hidden;
+    /*    background: #1abc9c;*/
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height .35s;
+}
+
+/*.blue .tab-content {
+    background: #3498db;
+
+}*/
+
+.tab-content a {
+    /*   width:100%;
+   display: inline-block;
+ */
+    background: #ac7e54;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.categoryMenu a:link, a:visited {
+    color: white
+}
+
+.categoryMenu a:hover {
+    background-color: #ecad73;
+}
+
+.categoryMenu a:active {
+
+}
+
+/* :checked */
+.categoryMenu input:checked ~ .tab-content {
+    max-height: 10em;
+}
+
+/* Icon */
+.categoryMenu label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+
+.categoryMenu input[type='radio']:checked ~ .tab-content {
+    max-height: 1000px;
+    opacity: 1;
+    z-index: 10;
+    overflow-y: auto;
+}
+
+.categoryMenu input[type=radio] + label::after {
+    content: "\25BC";
+}
+
+.categoryMenu input[type=radio]:checked + label::after {
+    transform: rotateX(180deg);
+}
+
+.flexwrapper {
+    display: flex;
+}
+.flexcontainer1 {
+    display: flex;
+    flex-direction: column;
+}
+.flexcontainer2 {
+    display: flex;
+}
+
+.flexcontainer3{
+    display: flex;
+    flex-direction:column;
+
+}
+
+.flexcontainerSmallImageBox{
+    display: flex;
+/*    justify-content: space-around;*/
+    flex-wrap: wrap;
+}
+.flexline{
+    flex-direction: column;
+}
+
+.productAmountItem {
+    display: inline-block;
+}
+
+.startMargin {
+    margin-left: 10px;
+}
+
+.flexcolumn{
+    width: 25%;
+}
+.imageBoxSmall {
+    display: flex;
+    flex-direction: column;
+    background-color: #e6d6ca;
+/*    width: 25%;*/
+    margin: 10px;
+    border-radius: 16px;
+}
+
+.flexcontainerSmallImageBox .imageBoxSmall img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    border-radius: 16px;
+}
+
+.flexcontainerSmallImageBox .imageBoxSmall h1 {
+    font-size: 0.8em;
+    text-align: left;
+    margin-top: 15%;
+    margin-left: 12%;
+}
+
+.flexcontainerSmallImageBox .priceline h2 {
+    font-size: .8em;
+    width: 30%;
+    display: inline-block;
+    margin: auto;
+    margin-left: 12%;
+    margin-bottom: 15%;
+}
+
+/*.flexcontainerSmallImageBox .priceline input {
+    display: inline-block;
+    width: 45%;
+    margin-right: 10%;
+    float: right;
+}
+
+.flexcontainerSmallImageBox .priceline input {
+    display: inline-block;
+    width: 45%;
+    margin-right: 10%;
+    float: right;
+}*/
+
+/*#submit-form{
+    display:none;
+}
+
+.flexcontainerSmallImageBox .priceline label{
+    display: inline-block;
+    min-width: 25%;
+    width: 25%;
+    margin-top:-5%;
+    margin-right: 20%;
+    float: right;
+}
+
+.flexcontainerSmallImageBox .priceline label span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}*/
+
+.button {
+    border-radius: 4px;
+    background-color: #330601;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 25px;
+/*    padding: 20px;*/
+    width: 45%;
+    transition: all 0.5s;
+    cursor: cell;
+    margin: 5px;
+}
+
+.button span {
+    cursor: cell;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background: #770e02;
+}
+.button:hover span {
+    padding-right: 10px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+button a{
+    text-decoration: none;
+    cursor: cell;
+    color: white;
+}

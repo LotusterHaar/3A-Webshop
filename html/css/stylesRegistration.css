@@ -1,0 +1,221 @@
+/*Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_register_form
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_form_icon
+https://stackoverflow.com/questions/37305595/how-to-remove-border-of-last-row-of-table?rq=1
+http://jsfiddle.net/H3y8j/
+https://stackoverflow.com/questions/4907275/how-can-i-get-two-form-fields-side-by-side-with-each-field-s-label-above-the-fi
+File: style for the product registration page CSS*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    align: center;
+}
+
+table {
+    margin: 50px;
+}
+
+tr {
+    border: 2px solid #BEBEBE;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+.noborders th, .noborders td {
+    padding: 15px 0px 0px 0px;
+}
+
+th {
+    background-color: #330601;
+    color: white;
+}
+
+.accountInfo {
+    background-color: #dfbf9f;
+}
+
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.icon {
+    padding: 10px;
+    background: #dd7c03;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+.input-field:focus {
+    border: 2px solid #dd7c03;
+}
+
+/* Set a style for the submit button */
+.btn {
+    background-color: #dd7c03;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    float: right;
+    margin-right: 0;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+tr:last-of-type {
+    border: 0;
+}
+
+.billing-addressInfo {
+    background-color: #fed9b6;
+}
+
+.billing-address {
+    margin: 10px auto;
+    /*    max-width: 400px;*/
+    /*    padding: 20px 12px 10px 20px;*/
+    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.billing-address li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+
+.billing-address label {
+    margin: 0 0 3px 0;
+    padding: 0px;
+    display: block;
+    font-weight: bold;
+}
+
+.emailLabel{
+    float: left;
+}
+.billing-address input[type=text],
+.billing-address input[type=date],
+.billing-address input[type=datetime],
+.billing-address input[type=number],
+.billing-address input[type=search],
+.billing-address input[type=time],
+.billing-address input[type=url],
+.billing-address input[type=email],
+textarea,
+select {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /*    border: 1px solid #BEBEBE;*/
+    padding: 7px;
+    margin: 0px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    clear:left;
+}
+
+.billing-address input[type=text]:focus,
+.billing-address input[type=date]:focus,
+.billing-address input[type=datetime]:focus,
+.billing-address input[type=number]:focus,
+.billing-address input[type=search]:focus,
+.billing-address input[type=time]:focus,
+.billing-address input[type=url]:focus,
+.billing-address input[type=email]:focus,
+.billing-address textarea:focus,
+.billing-address select:focus {
+    /*    -moz-box-shadow: 0 0 8px #dd7c03;
+        -webkit-box-shadow: 0 0 8px #dd7c03;
+        box-shadow: 0 0 8px #dd7c03;*/
+    border: 2px solid #dd7c03;
+}
+
+/*.billing-address .field-divided-half {
+    width:100%;
+    display: block;
+}*/
+
+/*.billing-address .field-divided-half{
+       width: 49%;
+       display: block;
+   }*/
+
+.billing-address .field-long {
+    width: 100%;
+}
+
+.billing-address .field-select {
+    width: 100%;
+}
+
+.billing-address .field-textarea {
+    height: 100px;
+}
+
+.billing-address input[type=submit], .billing-address input[type=button] {
+    background: #dd7c03;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+}
+
+.billing-address input[type=submit]:hover, .billing-address input[type=button]:hover {
+    background: #dd7c03;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.billing-address .required {
+    color: red;
+}
+
+/*.billing-addressInfo form { width: 400px; }*/
+.billing-addressInfo form section div {
+    float: left;
+}
+
+.billing-addressInfo form section div.full {
+    clear: left;
+}
+
+.billing-addressInfo form section div label {
+    display: block;
+}
+
+.billing-addressInfo form section div label {
+    display: block;
+}

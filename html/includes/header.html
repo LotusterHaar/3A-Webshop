@@ -1,0 +1,118 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
+?>
+<!--========================
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+==========================-->
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Music WebShop</title>
+    <link rel="stylesheet" href="/css/styles.css">
+<?php ?>
+<!--
+    <link rel="stylesheet" href="/css/stylesProductPage.css">
+<?php
+if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
+  echo '    <link rel="stylesheet" href="/css/stylesProductOverview.css">'."\r\n";
+if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
+  echo '    <link rel="stylesheet" href="/css/stylesProductOverview.css">'."\r\n";
+if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
+  echo '    <link rel="stylesheet" href="/css/stylesProductOverview.css">'."\r\n";
+if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
+  echo '    <link rel="stylesheet" href="/css/stylesProductOverview.css">'."\r\n";
+?>
+    <link rel="stylesheet" href="/css/stylesRegistration.css">
+    <link rel="stylesheet" href="/css/stylesReviewPage.css">
+    <link rel="stylesheet" href="/css/stylesShoppingcart.css">
+    <link rel="stylesheet" href="/css/topnav_original.css">
+-->
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="contentwrapper">
+        <header>
+            <div class="row">
+                <div class="leftcolumn">
+                    <img src="/images/logo_icoon_tuneshop.png" id="logo" alt="Logo TuneShop">
+                </div>
+                <div class="middlecolumn">
+                    <img src="/images/logo_tuneshop.png" id="logoText" alt="TuneShop">
+                </div>
+                <div class="rightcolumn">
+<?php if (isLoggedin()): ?>
+                    <form action="/logout">
+                        <!--<div class="imgcontainer">-->
+                        <img src="/images/avatar?<?php echo uniqid(); ?>" alt="Avatar" class="avatar">
+                        <!--</div>-->
+                        <h3><?php echo $_SESSION['FullName']; ?></h3>
+                        <button type="submit">Logout</button><?php else: ?>
+                    <form action="/login">
+                        <!--<div class="imgcontainer">-->
+                        <img src="/images/avatar" alt="Avatar" class="avatar">
+                        <!--</div>-->
+                        <h3>LOGIN</h3>
+<?php if (hasError()): ?>                        <div class="alert"><?php echo $_SESSION['error']; ?></div>
+<?php unset($_SESSION['error']); endif; ?>                          <div class="container">
+                            <input type="text" placeholder="Gebruikersnaam" value="<?php if (isset($_SESSION['loginform']) && !empty($_SESSION['loginform'])) echo $_SESSION['loginform'];?>" name="username" required>
+                            <input type="password" placeholder="Wachtwoord" name="password" required>
+                        </div>
+                        <div class="container">
+                            <label>
+                                <input type="checkbox" <?php if (isset($_SESSION['forgetsession']) && !($_SESSION['forgetsession'])) echo 'checked="checked"'; ?> name="remember"> Onthouden
+                            </label>
+                            <button type="submit">Login</button>
+                        </div>
+                        <div class="container">
+                            <span class="psw"><a href="/vergeten">Vergeten?</a></span>
+                            <a href="/registreer">Registreer</a>
+                        </div>
+                    </form>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div>
+                <nav id="top-menu-nav">
+                    <ul id="top-menu" class="nav">
+                        <li><a href="/" class="active">Home</a></li>
+                        <li><a href="/nieuws">Nieuws</a></li>
+                        <li><a href="/acties">Acties</a></li>
+                        <li class="dropdown">
+                            <a href="/overons" class="dropbtn">Over Ons</a>
+                            <div class="dropdown-content">
+                                <ul class= "sub-menu dropdown-content">
+                                    <li><a href="/contact" class="sub-menu-link">Contact</a>
+                                    </li>
+                                    <li><a href="/team" class="sub-menu-link">Team</a>
+                                    </li>
+                                    <li><a href="/betaalmethodes" class="sub-menu-link">Betaalmethodes</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="/vacatures">Vacatures</a></li>
+                        <li class="dropdown"><a href="/webshop" class="dropbtn">Webshop</a>
+                            <div class="dropdown-content">
+                                <ul class="sub-menu dropdown-content">
+                                    <li><a href="/producten" class="sub-menu-link">Producten</a>
+                                    </li>
+<?php if (isLoggedin()): ?>
+                                    <li><a href="/producthistorie" class="sub-menu-link">Product Historie</a>
+                                    </li>
+ <?php endif; ?>
+                                    <li><a href="/winkelwagen" class="sub-menu-link">Winkelwagen</a>
+                                    </li>
+                                    <li><a href="/afrekenen" class="sub-menu-link">Afrekenen</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>

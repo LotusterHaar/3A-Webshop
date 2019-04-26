@@ -1,0 +1,7 @@
+SetEnvIf Referer tuneshop\.online localreferer
+<Files avatar.php>
+Order deny,allow
+Deny from all
+#Allow from env=localreferer
+Allow from All
+</Files>
