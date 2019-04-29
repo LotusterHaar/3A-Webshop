@@ -35,14 +35,18 @@ Associated files: index CSS
                     <form action="/action_page.php">
                         <img src="images/login_logo_aqua.png" alt="Avatar" id="avatar">
                         <h3>LOGIN</h3>
-                        <input type="text" placeholder="Gebruikersnaam" name="username" required>
-                        <input type="password" placeholder="Wachtwoord" name="password" required>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Onthouden
-                        </label>
-                        <span class="psw"><a href="#">Vergeten?</a></span>
-                        <a href="#">Registreer</a>
-                        <button type="submit">Login</button>
+                        <span >
+                            <input class="loginInput" type="text" placeholder="Gebruikersnaam" name="username" required/>
+                            <input class="loginInput" type="password" placeholder="Wachtwoord" name="password" required/>
+                        </span>
+                        <span>
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember"/> Onthouden
+                            </label>
+                            <span class="psw"><a href="#">Vergeten?</a></span>
+                            <a href="#">Registreer</a>
+                            <button type="submit">Login</button>
+                        </span>
                     </form>
                 </div>
             </header>
