@@ -1,35 +1,57 @@
+/*========== Begin CSS for All =============*/
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+/*    background: #e3fded;*/
+    box-shadow:0px 0px 100px 20px #e3fded ;
+    margin: 20px;
+
+    /*    box-shadow:0px 0px 55px 30px #386a5d;*/
+/*    background:
+            linear-gradient(90deg,#e6ffed, #88d3f0), !* Links naar Rechts*!
+    linear-gradient(180deg,#e6ffed,#88d3f0),!* Boven naar Onder*!
+    linear-gradient(270deg,#e6ffed, #88d3f0), !* Rechts naar Links *!
+    linear-gradient(0deg,#e6ffed, #88d3f0); !* Onder naar Boven *!*/
+    /* background: #000000;*/
+
+}
+/*
 main, header, section, aside, footer {
     margin: 0;
     padding: 1.25rem;
     border: 1px solid #000000;
-    color: #ffffff;
+    background: #e3fded;
+!*    color: #ffffff;*!
 }
+*/
 
+/*========== Begin CSS for Main =============*/
 main {
-    background: #000000;
+    background:#e3fded;
+
 }
 
+/*========== End CSS for Main =============*/
 /*========== Begin CSS for Header =============*/
 
 header {
-    background: #03a9f4;
+ /*   background: #e6ffed;*/
     padding: 3%;
     display: flex;
     align-items: stretch;
+
 }
 
 .header-small-logo {
-    background-color: red;
 }
 
 .header-logo {
-    background-color: grey;
 }
 
 .header-account {
-    background-color: #ff3ded;
     text-align:center;
 }
+
 
 #logo, #logoText {
     width: 100%;
@@ -57,8 +79,12 @@ header {
 /*========== End CSS for Header =============*/
 
 /*========== Begin CSS for Navbar=============*/
-.nav {
-    background: #d22b1f;
+nav {
+    background: linear-gradient(90deg, #176756, rgba(54, 186, 214, 0.6));
+    border-radius: 5px;
+/*    min-height: 30px;*/
+  /*  padding: 20px;*/
+    margin: 5px;
 }
 
 #top-menu-nav ul {
@@ -66,16 +92,25 @@ header {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #330601;
 }
 
 #top-menu-nav li {
     float: left;
 }
+/* Add a gray right border to all list items, except the last item (last-child) */
+#top-menu-nav li {
+    border-right: 1.5px solid #dddddd;
+}
+
+#top-menu-nav li:last-child {
+    border-right: none;
+}
+
+
 
 #top-menu-nav li a:not(.sub-menu-link), .dropbtn {
-/ display: block;
-/ display: inline-block;
+    display: block;
+    display: inline-block;
     /*    float: left;*/
     color: white;
     text-align: center;
@@ -84,11 +119,12 @@ header {
 }
 
 #top-menu-nav .active {
-    background-color: #dd7c03;
+    border-radius: 5px;
+    background-color: #509ed8;;
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #ecad73;
+    background-color: #88d3f0
 }
 
 li.dropdown {
@@ -98,10 +134,9 @@ li.dropdown {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ac7e54;
+/*    background-color: #ac7e54;*/
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    border-radius: 5px
 }
 
 .dropdown-content a {
@@ -126,19 +161,21 @@ li.dropdown {
 
 #top-menu-nav #top-menu li li {
     padding: 0px;
-    background-color: #540901;
+    background-color: #509ed8;
 }
 
 #top-menu-nav li a:hover:not(.active) {
-    background-color: rgb(179, 137, 116);
+    background-color: #73b2cb
 }
+
+
 
 /*========== End CSS for Navbar=============*/
 
 /*==========CSS for Navbar=============*/
 
 .content {
-    background: #129a22;
+/*    background: #129a22;*/
 }
 
 .sidebar {
