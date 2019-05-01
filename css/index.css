@@ -23,6 +23,9 @@ main, header, section, aside, footer {
 !*    color: #ffffff;*!
 }
 */
+hr{
+    border-top: 1px solid rgba(0, 0, 0, 0.1)
+}
 /*========== Begin CSS for Top Header =============*/
 #top-header{
     background: #0f4237;
@@ -147,7 +150,7 @@ nav {
 
 #top-menu-nav .active {
     border-radius: 5px;
-    background-color: #509ed8;;
+    background-color: #0facf3;
 }
 
 .dropdown:hover .dropbtn {
@@ -188,6 +191,7 @@ li.dropdown {
 #top-menu-nav #top-menu li li {
     padding: 0px;
     background-color: #509ed8;
+    border-top: 1.5px solid #dddddd;
 }
 
 #top-menu-nav li a:hover:not(.active) {
@@ -205,11 +209,12 @@ li.dropdown {
 }
 
 article {
-    border-radius: 25px;
+    border-radius: 0.3rem;
     background: #c7ecee7a;
     padding: 50px;
     margin: 50px;
     text-align: start;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
 }
 
 article img {
