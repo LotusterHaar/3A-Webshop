@@ -165,7 +165,8 @@ li.dropdown {
     display: none;
     position: absolute;
     min-width: 160px;
-    border-radius: 5px
+    border-radius: 5px;
+    z-index: 20;
 }
 
 .dropdown-content a {
