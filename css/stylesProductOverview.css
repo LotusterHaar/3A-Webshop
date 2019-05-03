@@ -1,0 +1,300 @@
+
+/*========== Begin CSS for Form =============*/
+/*!* When the input field gets focus, change its width to 100% *!*/
+form.search-form input[type=text]:focus {
+    width: 60%;
+}
+
+form.search-form input[type=text] {
+    padding: 10px;
+    margin: 20px 0px 20px 20px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 250px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background: #f1f1f1;
+}
+
+form.search-form {
+    text-align: center;
+    flex: 1;
+}
+
+form.search-form button {
+    width: 20%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #0facf3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.search-form button:hover {
+    background:  #0facf366;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+}
+
+form.search-form::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*========== End CSS for Form =============*/
+
+/*========== Begin CSS for title =============*/
+#categoryTitle{
+    margin: 16px 20px;
+    padding: 0 16px;
+    font-size: larger;
+}
+/*========== End CSS for title =============*/
+/*========== Begin CSS for product-option-chooser=============*/
+.product-option-chooser{
+    flex-direction: column;
+}
+
+.productAmountItem {
+    display: inline-block;
+}
+
+/*========== End CSS for sort-bar =============*/
+/*========== Begin CSS for Flex Container =============*/
+.flex-container{
+    display: flex;
+    flex-direction: row;
+}
+.flex-container-column {
+    display: flex;
+    flex-direction: column;
+}
+/*========== End CSS for Flex Container =============*/
+/*========== Begin CSS for Category Menu =============*/
+
+.categoryMenu {
+    margin: 20px;
+}
+
+.categoryMenu body {
+    color: #2c3e50;
+    background: #ecf0f1;
+}
+
+.categoryMenu {
+    float: left;
+    width: 250px;
+    padding: 0 1em;
+}
+
+/* Acordeon styles */
+.categoryMenu .tab {
+    position: relative;
+    margin-bottom: 1px;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+}
+
+.categoryMenu input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.categoryMenu label {
+    position: relative;
+    display: block;
+    padding: 0 0 0 1em;
+/*    !* background: #16a085;*!
+    background: #330601;*/
+    font-weight: bold;
+    line-height: 3;
+    cursor: pointer;
+    background: linear-gradient(0deg, #176756, rgba(54, 186, 214, 0.6));
+    border-radius: 0.3rem;
+}
+.categoryMenu{
+    background: transparent;
+}
+/* Add a gray right border to all list items, except the last item (last-child) */
+.categoryMenu label {
+    border-bottom: 1.5px solid #dddddd;
+}
+
+.categoryMenu label:last-child {
+    border-bottom: none;
+}
+
+.tab-content {
+    max-height: 0;
+    overflow: hidden;
+    /*    background: #1abc9c;*/
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height .35s;
+}
+
+/*.blue .tab-content {
+    background: #3498db;
+
+}*/
+
+.tab-content a {
+    /*   width:100%;
+   display: inline-block;
+ */
+    background: linear-gradient(0deg, #629bb4, rgba(115, 178, 203, 0.4));
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.categoryMenu a:link, a:visited {
+    color: white
+}
+
+.categoryMenu a:hover {
+ /*   background-color: #88d3f0*/
+    background: #0facf3;
+}
+
+.categoryMenu a:active {
+
+}
+
+/* :checked */
+.categoryMenu input:checked ~ .tab-content {
+    max-height: 10em;
+}
+
+/* Icon */
+.categoryMenu label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+
+.categoryMenu input[type=checkbox]:checked ~ .tab-content {
+    max-height: 1000px;
+    opacity: 1;
+    z-index: 10;
+    overflow-y: auto;
+}
+
+.categoryMenu input[type=checkbox] + label::after {
+    content: "\25BC";
+}
+
+.categoryMenu input[type=checkbox]:checked + label::after {
+    transform: rotateX(180deg);
+}
+
+/*========== End CSS for Category Menu =============*/
+/*========== Begin CSS for Image Box Small =============*/
+.flex-container-ImageBoxSmall{
+    display: flex;
+    /*    justify-content: space-around;*/
+    flex-wrap: wrap;
+}
+
+.flex-column{
+    width: 25%;
+}
+.imageBoxSmall {
+    display: flex;
+    flex-direction: column;
+    background: #c7ecee7a;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
+}
+
+.flex-container-ImageBoxSmall .imageBoxSmall img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    border-radius: 5px;
+}
+
+.flex-container-ImageBoxSmall .imageBoxSmall h1 {
+    font-size: 0.8em;
+    text-align: left;
+    margin-top: 15%;
+    margin-left: 12%;
+}
+
+.flex-container-ImageBoxSmall .priceline h2 {
+    font-size: .8em;
+    width: 30%;
+    display: inline-block;
+    margin: auto;
+    margin-left: 12%;
+    margin-bottom: 15%;
+}
+
+.button {
+    border-radius: 2px;
+    background-color:  #176756;
+    border: 1px solid grey;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 25px;
+    /*    padding: 20px;*/
+    width: 45%;
+    transition: all 0.5s;
+    cursor: cell;
+    margin: 5px;
+}
+
+.button span {
+    cursor: cell;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background: #0f4237;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+}
+.button:hover span {
+    padding-right: 10px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button a{
+    text-decoration: none;
+    cursor: cell;
+    color: white;
+}
+
+/*========== End CSS for Image Box Small =============*/

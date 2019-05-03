@@ -1,0 +1,274 @@
+/*========== Begin CSS for All =============*/
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+/*    background: #e3fded;*/
+    margin: 0px;
+
+    /*    box-shadow:0px 0px 55px 30px #386a5d;*/
+/*    background:
+            linear-gradient(90deg,#e6ffed, #88d3f0), !* Links naar Rechts*!
+    linear-gradient(180deg,#e6ffe,#88d3f0),!* Boven naar Onder*!
+    linear-gradient(270deg,#e6ffed, #88d3f0), !* Rechts naar Links *!
+    linear-gradient(0deg,#e6ffed, #88d3f0); !* Onder naar Boven *!*/
+    /* background: #000000;*/
+
+}
+/*
+main, header, section, aside, footer {
+    margin: 0;
+    padding: 1.25rem;
+    border: 1px solid #000000;
+    background: #e3fded;
+!*    color: #ffffff;*!
+}
+*/
+hr{
+    border-top: 1px solid rgba(0, 0, 0, 0.1)
+}
+/*========== Begin CSS for Top Header =============*/
+#top-header{
+    background: #0f4237;
+    line-height: 1.5rem;
+    color: #fff;
+    width: 100%;
+    position: fixed; /* the top-header stays in the screen, if you scroll with the window*/
+    z-index: 40;
+}
+
+#info-phone{
+    margin-left: 5%;
+    margin-right: 3%;
+    position: relative;
+}
+
+#info-email{
+    padding-right: 10px;
+    border-right: 1.5px solid #dddddd;
+}
+
+#top-header a{
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/*========== End CSS for Top Header =============*/
+/*========== Begin CSS for Main =============*/
+main {
+    /*
+    background:#e3fded;
+    */
+
+}
+
+/*========== End CSS for Main =============*/
+/*========== Begin CSS for Header =============*/
+
+header {
+ /*   background: #e6ffed;*/
+    padding: 3% 3% 1.5% 3%;
+    display: flex;
+    align-items: stretch;
+
+}
+
+.header-small-logo {
+}
+
+.header-logo {
+}
+
+.header-account {
+    text-align:center;
+    margin-left: 4%;
+}
+
+
+#logo, #logoText {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.header-account > form > h3{
+    margin: 0px;
+}
+
+.header-account > form > span{
+    display: flex;
+    justify-content: space-around;
+}
+/* selects every second right side of the input to give margin*/
+.loginInput:nth-of-type(2n){
+    margin-right: 5px;
+}
+
+.loginInput{
+    margin-left: 5px;
+}
+
+/*========== End CSS for Header =============*/
+
+/*========== Begin CSS for Navbar=============*/
+nav {
+    background: linear-gradient(0deg, #176756, rgba(54, 186, 214, 0.6));
+    border-radius: 5px;
+/*    min-height: 30px;*/
+  /*  padding: 20px;*/
+    margin: 5px 5px 5px 10px;
+}
+
+#top-menu-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#top-menu-nav li {
+    float: left;
+}
+/* Add a gray right border to all list items, except the last item (last-child) */
+#top-menu-nav li {
+    border-right: 1.5px solid #dddddd;
+}
+
+#top-menu-nav li:last-child {
+    border-right: none;
+}
+
+
+
+#top-menu-nav li a:not(.sub-menu-link), .dropbtn {
+    display: block;
+    display: inline-block;
+    /*    float: left;*/
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#top-menu-nav .active {
+    border-radius: 5px;
+    background-color: #0facf3;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #88d3f0
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    border-radius: 5px;
+    z-index: 20;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#top-menu-nav #top-menu li li a {
+    width: 200px;
+}
+
+#top-menu-nav #top-menu li li {
+    padding: 0px;
+    background-color: #509ed8;
+    border-top: 1.5px solid #dddddd;
+}
+
+#top-menu-nav li a:hover:not(.active) {
+    background-color: #73b2cb
+}
+
+
+
+/*========== End CSS for Navbar=============*/
+
+/*========== Begin CSS for content=============*/
+
+.content {
+/*    background: #129a22;*/
+}
+
+article {
+    border-radius: 0.3rem;
+    background: #c7ecee7a;
+    padding: 50px;
+    margin: 50px;
+    text-align: start;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+}
+
+article img {
+    margin-left: 5%;
+}
+
+#routeMap {
+    margin-left: 5%;
+}
+
+#whoAreWe {
+    width: 35%;
+    height: 35%;
+    float: right;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.container {
+    font-size: 80%;
+}
+
+#routeMap {
+    width: 30%;
+    height: 300px;
+    float: right;
+    border: none;
+}
+
+/*========== End CSS for content=============*/
+/*========== Begin CSS for sidebar=============*/
+.sidebar {
+    background: #196e5c;
+    flex: 0 1 300px;
+    margin-left: 4px;
+}
+
+footer {
+    background: #0f4237;
+    color: #fff;
+    padding: 1em;
+}
+
+@media screen and (min-width: 640px) {
+    .flex-container {
+        display: flex;
+    }
+}
+
+.wrapper {
+    flex: 1;
+}

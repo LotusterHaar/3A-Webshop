@@ -1,0 +1,160 @@
+<!--========================
+Page: About Us
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: https://codepen.io/torbencolding/pen/ogYjJP
+https://coder-coder.com/build-flexbox-website-layout/
+Associated files: index CSS
+==========================-->
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music WebShop</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+
+<!-- Main Content -->
+<main>
+    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email" href="mailto:info@tuneshop.online"><i class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
+    <div class="flex-container">
+        <div class="wrapper">
+            <!-- Header -->
+            <header>
+                <div class="header-small-logo">
+                    <img src="images/logo_tuneshop_small_aqua_transparant.png" id="logo" alt="Logo TuneShop">
+                </div>
+                <div class="header-logo">
+                    <img src="images/logo_tuneshop_aqua.png" id="logoText" alt="TuneShop">
+                </div>
+                <div class="header-account">
+                    <form action="/action_page.php">
+                        <img src="images/login_logo_aqua.png" alt="Avatar" id="avatar">
+                        <h3>LOGIN</h3>
+                        <span >
+                            <input class="loginInput" type="text" placeholder="Gebruikersnaam" name="username" required/>
+                            <input class="loginInput" type="password" placeholder="Wachtwoord" name="password" required/>
+                        </span>
+                        <span>
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember"/> Onthouden
+                            </label>
+                            <span class="psw"><a href="#">Vergeten?</a></span>
+                            <a href="#">Registreer</a>
+                            <button type="submit">Login</button>
+                        </span>
+                    </form>
+                </div>
+            </header>
+            <!-- Nav -->
+            <section class="nav">
+                <nav id="top-menu-nav">
+                    <ul id="top-menu" class="nav">
+                        <li><a href="/" class="active">Home</a></li>
+                        <li><a href="/nieuws">Nieuws</a></li>
+                        <li><a href="/acties">Acties</a></li>
+                        <li class="dropdown">
+                            <a href="/over-ons" class="dropbtn">Over Ons</a>
+                            <div class="dropdown-content">
+                                <ul class="sub-menu dropdown-content">
+                                    <li><a href="/over-ons/contact" class="sub-menu-link">Contact</a>
+                                    </li>
+                                    <li><a href="/over-ons/team" class="sub-menu-link">Team</a>
+                                    </li>
+                                    <li><a href="/over-ons/betaalmethodes" class="sub-menu-link">Betaalmethodes</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="/vacatures">Vacatures</a></li>
+                        <li class="dropdown"><a href="/webshop" class="dropbtn">Webshop</a>
+                            <div class="dropdown-content">
+                                <ul class="sub-menu dropdown-content">
+                                    <li><a href="/producten" class="sub-menu-link">Producten</a>
+                                    </li>
+                                    <li><a href="/winkelwagen" class="sub-menu-link">Winkelwagen</a>
+                                    </li>
+                                    <li><a href="/afrekenen" class="sub-menu-link">Afrekenen</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+            <!-- Content -->
+            <section class="content">
+                <article>
+                    <h1>Over Ons</h1>
+                    <h2>Wie zijn wij</h2>
+                    <hr>
+                    <div class="clearfix">
+                        <img src="images/musicstore.jpg" id="whoAreWe" alt="Muziekwinkel">
+                        <p>Op deze website is een breed assortiment aan professionele muziekinstrumenten,
+                            geluidsinstallaties en
+                            andere
+                            benodigdheden voor de muziek zoals bladmuziek te vinden. Music Webshop is een betrouwbare
+                            online
+                            webwinkel
+                            met
+                            service, vakkennis en passie voor muziek!
+                            Wij staan bekend om deskundig advies en een goede, vertrouwde service. Ons assortiment
+                            bestaat
+                            uit
+                            acoustische
+                            en
+                            elektrische instrumenten van gerenommeerde fabrikanten zoals Yamaha, Roland, Kawai, Fender
+                            en
+                            Ibanez.
+                            Wij verkopen muziekinstrumenten tegen een lage prijs. Als u op zoek bent naar goede
+                            muziekinstrumenten
+                            of
+                            geluidsinstallaties dan kunnen wij u helpen met aantrekkelijke aanbiedingen. Topprijzen zijn
+                            gegarandeerd!
+                        </p></div>
+                </article>
+                <article>
+                    <h2>Routebeschrijving</h2>
+                    <hr>
+                    <div class="clearfix">
+                        <iframe id="routeMap"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d548.9793552276695!2d5.862302858947662!3d51.84572267227551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c7084371b5c6f7%3A0xc3a579dda0fbe9b7!2sEethuis+Plein+1944!5e0!3m2!1snl!2snl!4v1526668803475"
+                                allowfullscreen></iframe>
+                        <p>Music Webshop is dé plek voor al jouw muziek gerelateerde gear. Dit nieuwe pand is een
+                            servicepunt
+                            voor
+                            alle
+                            Nijmeegse muzikanten, producers en dj's. Onze 800 vierkante meter grote muziekwinkel is op
+                            loopafstand
+                            van
+                            Nijmegen
+                            Centraal Station, is zes dagen per week geopend en goed te bereiken per de auto.<br><br>
+                            <em>Adres</em>:&nbsp;&nbsp;Plein 44-20<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6511 JC Nijmegen<br>
+                            <em>Telefoonnummer</em>: 024-1122334<br>
+                            <em>E-mailadres</em>: info@music_webshop.nl<br><br>
+                            OPENINGSTIJDEN<br>
+                            Maandag - vrijdag 10:00 - 18:00<br>
+                            Donderdag 10:00-21:00<br>
+                            Zaterdag 10:00-17:00<br></p>
+                    </div>
+                </article>
+            </section>
+            <!-- Footer -->
+            <footer>
+                TuneShop © 2019 | Jan Willem Lenting & Lotus ter Haar
+            </footer>
+        </div>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            Sidebar
+        </aside>
+    </div>
+</main>
+</body>
+</html>
