@@ -33,6 +33,7 @@ hr{
     color: #fff;
     width: 100%;
     position: fixed; /* the top-header stays in the screen, if you scroll with the window*/
+    z-index: 40;
 }
 
 #info-phone{
@@ -80,6 +81,7 @@ header {
 
 .header-account {
     text-align:center;
+    margin-left: 4%;
 }
 
 
