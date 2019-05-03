@@ -233,14 +233,14 @@ form.search-form::after {
 }
 
 .flex-container-ImageBoxSmall .imageBoxSmall h1 {
-    font-size: 0.8em;
+    font-size: 0.9em;
     text-align: left;
     margin-top: 15%;
     margin-left: 12%;
 }
 
 .flex-container-ImageBoxSmall .priceline h2 {
-    font-size: .8em;
+    font-size: .9em;
     width: 30%;
     display: inline-block;
     margin: auto;
@@ -249,9 +249,10 @@ form.search-form::after {
 }
 
 .button {
-    border-radius: 2px;
-    background-color:  #176756;
+    border-radius: .25em;
+    background: linear-gradient(-180deg, #1f8972,#176756 90%);
     border: 1px solid grey;
+    padding: 4px 0px 4px 0px;
     color: #FFFFFF;
     text-align: center;
     font-size: 25px;
