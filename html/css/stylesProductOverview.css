@@ -26,7 +26,8 @@ form.search-form button {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
-    background: #0facf3;
+    background: linear-gradient(-180deg, #0facf3, #0a6e9b 90%);
+    border-radius: .25em;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
