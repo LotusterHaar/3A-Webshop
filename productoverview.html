@@ -12,7 +12,8 @@ Associated files: producten CSS
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music WebShop</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/stylesProductOverview.css">
 </head>
@@ -21,7 +22,9 @@ Associated files: producten CSS
 
 <!-- Main Content -->
 <main>
-    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email" href="mailto:info@tuneshop.online"><i class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
+    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email"
+                                                                                                href="mailto:info@tuneshop.online"><i
+            class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
     <div class="flex-container">
         <div class="wrapper">
             <!-- Header -->
@@ -36,9 +39,11 @@ Associated files: producten CSS
                     <form action="/action_page.php">
                         <img src="images/login_logo_aqua.png" alt="Avatar" id="avatar">
                         <h3>LOGIN</h3>
-                        <span >
-                            <input class="loginInput" type="text" placeholder="Gebruikersnaam" name="username" required/>
-                            <input class="loginInput" type="password" placeholder="Wachtwoord" name="password" required/>
+                        <span>
+                            <input class="loginInput" type="text" placeholder="Gebruikersnaam" name="username"
+                                   required/>
+                            <input class="loginInput" type="password" placeholder="Wachtwoord" name="password"
+                                   required/>
                         </span>
                         <span>
                             <label>
@@ -93,77 +98,275 @@ Associated files: producten CSS
                     <input type="text" name="search" placeholder="Zoektermen ingeven">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
-                <section class="flex-container">
-                    <nav class="categoryMenu">
-                        <div class="tab brown">
-                            <input id="tab-one" type="checkbox" name="tabs">
-                            <label for="tab-one">Toetsinstrumenten</label>
-                            <div class="tab-content">
-                                <a href="">Piano's</a>
-                                <a href="">Stage Piano's</a>
-                                <a href="">Digitale Piano's</a>
-                                <a href="">Keyboards</a>
-                                <a href="">Vleugels</a>
-                                <a href="">Synthesizers</a>
-                                <a href="">Elektronische orgels</a>
-                                <a href="">Accordeons</a>
-                                <a href="">Accesoires voor Piano's</a>
-                            </div>
-                        </div>
-                        <div class="tab brown">
-                            <input id="tab-two" type="checkbox" name="tabs">
-                            <label for="tab-two">Tokkelinstrumenten</label>
-                            <div class="tab-content">
-                                <a href="">Elektrische Gitaren</a>
-                                <a href="">Akoustische Gitaren</a>
-                                <a href="">Klassieke Gitaren</a>
-                                <a href="">Basgitaren</a>
-                                <a href="">Traditionele Snaarinstrumenten</a>
-                                <a href="">Versterkers</a>
-                                <a href="">Accesoires voor Gitaar en Bas</a>
-                            </div>
-                        </div>
-                        <div class="tab brown">
-                            <input id="tab-three" type="checkbox" name="tabs">
-                            <label for="tab-three">Blaasinstrumenten</label>
-                            <div class="tab-content">
-                                <a href="">Mondharmonica's</a>
-                                <a href="">Blokfluiten</a>
-                                <a href="">Dwarsfluiten</a>
-                                <a href="">Trompetten</a>
-                                <a href="">Piccolo's</a>
-                                <a href="">Klarinetten</a>
-                                <a href="">Saxofoon's</a>
-                                <a href="">Trombone's</a>
-                                <a href="">Assesoires voor Blaasinstrumenten</a>
-                            </div>
-                        </div>
-                        <div class="tab brown">
-                            <input id="tab-four" type="checkbox" name="tabs">
-                            <label for="tab-four">Slaginstrumenten</label>
-                            <div class="tab-content">
-                                <a href="">Akoustische Drums</a>
-                                <a href="">Percussie</a>
-                                <a href="">Digitale Drums</a>
-                                <a href="">Accesoires voor Drums en Percussie</a>
-                            </div>
-                        </div>
-                        <div class="tab brown">
-                            <input id="tab-five" type="checkbox" name="tabs">
-                            <label for="tab-five">Strijkinstrumenten</label>
-                            <div class="tab-content">
-                                <a href="">Violen</a>
-                                <a href="">Cello's</a>
-                                <a href="">Contrabassen</a>
-                                <a href="">Accesoires voor Strijkinstrumenten</a>
-                            </div>
-                        </div>
-                </nav>
-                    <section>
+                <section class="flex-wrapper">
 
+                    <section class="flex-container">
+                        <section class="flex-container-column">
+                        <h1 id="categoryTitle">Categorie</h1>
+                        <nav class="categoryMenu">
+                            <div class="tab brown">
+                                <input id="tab-one" type="checkbox" name="tabs">
+                                <label for="tab-one">Toetsinstrumenten</label>
+                                <div class="tab-content">
+                                    <a href="">Piano's</a>
+                                    <a href="">Stage Piano's</a>
+                                    <a href="">Digitale Piano's</a>
+                                    <a href="">Keyboards</a>
+                                    <a href="">Vleugels</a>
+                                    <a href="">Synthesizers</a>
+                                    <a href="">Elektronische orgels</a>
+                                    <a href="">Accordeons</a>
+                                    <a href="">Accesoires voor Piano's</a>
+                                </div>
+                            </div>
+                            <div class="tab brown">
+                                <input id="tab-two" type="checkbox" name="tabs">
+                                <label for="tab-two">Tokkelinstrumenten</label>
+                                <div class="tab-content">
+                                    <a href="">Elektrische Gitaren</a>
+                                    <a href="">Akoustische Gitaren</a>
+                                    <a href="">Klassieke Gitaren</a>
+                                    <a href="">Basgitaren</a>
+                                    <a href="">Traditionele Snaarinstrumenten</a>
+                                    <a href="">Versterkers</a>
+                                    <a href="">Accesoires voor Gitaar en Bas</a>
+                                </div>
+                            </div>
+                            <div class="tab brown">
+                                <input id="tab-three" type="checkbox" name="tabs">
+                                <label for="tab-three">Blaasinstrumenten</label>
+                                <div class="tab-content">
+                                    <a href="">Mondharmonica's</a>
+                                    <a href="">Blokfluiten</a>
+                                    <a href="">Dwarsfluiten</a>
+                                    <a href="">Trompetten</a>
+                                    <a href="">Piccolo's</a>
+                                    <a href="">Klarinetten</a>
+                                    <a href="">Saxofoon's</a>
+                                    <a href="">Trombone's</a>
+                                    <a href="">Assesoires voor Blaasinstrumenten</a>
+                                </div>
+                            </div>
+                            <div class="tab brown">
+                                <input id="tab-four" type="checkbox" name="tabs">
+                                <label for="tab-four">Slaginstrumenten</label>
+                                <div class="tab-content">
+                                    <a href="">Akoustische Drums</a>
+                                    <a href="">Percussie</a>
+                                    <a href="">Digitale Drums</a>
+                                    <a href="">Accesoires voor Drums en Percussie</a>
+                                </div>
+                            </div>
+                            <div class="tab brown">
+                                <input id="tab-five" type="checkbox" name="tabs">
+                                <label for="tab-five">Strijkinstrumenten</label>
+                                <div class="tab-content">
+                                    <a href="">Violen</a>
+                                    <a href="">Cello's</a>
+                                    <a href="">Contrabassen</a>
+                                    <a href="">Accesoires voor Strijkinstrumenten</a>
+                                </div>
+                            </div>
+                        </nav>
+                       </section>
+                        <section class="flex-container-column">
+                            <div class="product-option-chooser">
+                                <p class="productAmountItem startMargin">1376 Producten | Toon</p>
+                                <select class="productAmountItem">
+                                    <option value="ten">10</option>
+                                    <option value="twenty">20</option>
+                                    <option value="thirty">30</option>
+                                    <option value="forty">40</option>
+                                    <option value="fifty">50</option>
+                                </select>
+                                <p class="productAmountItem">per pagina</p>
+                            </div>
+
+                            <section class="flex-container-ImageBoxSmall">
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-column">
+                                    <div class="imageBoxSmall">
+                                        <img src="images/instrument.jpg" alt="Instrument">
+                                        <h1>Naam gerelateerd product</h1>
+                                        <div class="priceline"><h2>€36,70</h2>
+                                            <button class="button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
                     </section>
                 </section>
-
             </section>
             <!-- Footer -->
             <footer>

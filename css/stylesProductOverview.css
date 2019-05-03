@@ -1,3 +1,4 @@
+
 /*========== Begin CSS for Form =============*/
 /*!* When the input field gets focus, change its width to 100% *!*/
 form.search-form input[type=text]:focus {
@@ -17,6 +18,7 @@ form.search-form input[type=text] {
 
 form.search-form {
     text-align: center;
+    flex: 1;
 }
 
 form.search-form button {
@@ -44,9 +46,32 @@ form.search-form::after {
 }
 
 /*========== End CSS for Form =============*/
+
+/*========== Begin CSS for title =============*/
+#categoryTitle{
+    margin: 16px 20px;
+    padding: 0 16px;
+    font-size: larger;
+}
+/*========== End CSS for title =============*/
+/*========== Begin CSS for product-option-chooser=============*/
+.product-option-chooser{
+    flex-direction: column;
+}
+
+.productAmountItem {
+    display: inline-block;
+}
+
+/*========== End CSS for sort-bar =============*/
 /*========== Begin CSS for Flex Container =============*/
-.flex-container {
+.flex-container{
     display: flex;
+    flex-direction: row;
+}
+.flex-container-column {
+    display: flex;
+    flex-direction: column;
 }
 /*========== End CSS for Flex Container =============*/
 /*========== Begin CSS for Category Menu =============*/
@@ -179,3 +204,97 @@ form.search-form::after {
 }
 
 /*========== End CSS for Category Menu =============*/
+/*========== Begin CSS for Image Box Small =============*/
+.flex-container-ImageBoxSmall{
+    display: flex;
+    /*    justify-content: space-around;*/
+    flex-wrap: wrap;
+}
+
+.flex-column{
+    width: 25%;
+}
+.imageBoxSmall {
+    display: flex;
+    flex-direction: column;
+    background: #0facf34d;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
+}
+
+.flex-container-ImageBoxSmall .imageBoxSmall img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    border-radius: 5px;
+}
+
+.flex-container-ImageBoxSmall .imageBoxSmall h1 {
+    font-size: 0.8em;
+    text-align: left;
+    margin-top: 15%;
+    margin-left: 12%;
+}
+
+.flex-container-ImageBoxSmall .priceline h2 {
+    font-size: .8em;
+    width: 30%;
+    display: inline-block;
+    margin: auto;
+    margin-left: 12%;
+    margin-bottom: 15%;
+}
+
+.button {
+    border-radius: 2px;
+    background-color:  #176756;
+    border: 1px solid grey;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 25px;
+    /*    padding: 20px;*/
+    width: 45%;
+    transition: all 0.5s;
+    cursor: cell;
+    margin: 5px;
+}
+
+.button span {
+    cursor: cell;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover {
+    background: #0f4237;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+}
+.button:hover span {
+    padding-right: 10px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button a{
+    text-decoration: none;
+    cursor: cell;
+    color: white;
+}
+
+/*========== End CSS for Image Box Small =============*/
