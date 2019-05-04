@@ -1,0 +1,164 @@
+/*========================
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: https://www.thesitewizard.com/css/rectangular-box-border.shtml
+https://www.w3.org/Style/Examples/007/center.en.html
+http://nl.learnlayout.com/inline-block.html
+https://codepen.io/jamesbarnett/pen/vlpkh
+https://codemyui.com/pure-css-star-rating-snippet/
+https://codepen.io/magnus16/pen/buGiB
+https://codepen.io/Creaticode/pen/ijExL
+File: style for the product page CSS
+==========================
+*/
+
+.productImage {
+/*    background-color: #e6d6ca;*/
+   /* margin: 15px;
+    width: 1250px;
+    align-content: center;*/
+}
+
+.productImage img{
+    margin: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+}
+
+.buttonRow {
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.inStock {
+    text-align: center;
+    padding-left: 75px;
+}
+
+.row2 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.row1, .descriptionInStock {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.column, .productInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    overflow: hidden;
+    float: right;
+}
+
+.imageBoxSmall {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 5px 0px 30px 0px;
+}
+
+.imageBoxSmall img {
+    width: 75%;
+/*    height: 50%;*/
+    top: 10%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.imageBoxSmall h1 {
+    font-size: 1.2em;
+    text-align: left;
+    margin-top: 15%;
+    margin-left: 12%;
+}
+
+.priceline h2 {
+    font-size: 1.2em;
+    width: 30%;
+    display: inline-block;
+    margin: auto;
+    margin-left: 12%;
+}
+
+.priceline input {
+    display: inline-block;
+    width: 45%;
+    margin-right: 10%;
+    float: right;
+}
+
+#userRatings{
+    width: 50%;
+    padding: 15px;
+    margin-left: 15px;
+   /* background-color: #e6d6ca;*/
+}
+
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top:10px;
+}
+
+.middle {
+    margin-top:10px;
+    float: left;
+    width: 70%;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.rowUserRating:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 99%;
+    background-color: #fff;
+    text-align: center;
+    color: white;
+/*    border: 1px solid black;*/
+}
+
+/* Individual bars */
+.bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+    .side, .middle {
+        width: 100%;
+    }
+    .right {
+        display: none;
+    }
+}

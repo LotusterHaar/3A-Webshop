@@ -13,15 +13,19 @@ Associated files: index CSS
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music WebShop</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesProductPage.css"/>
 </head>
 
 <body>
 
 <!-- Main Content -->
 <main>
-    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email" href="mailto:info@tuneshop.online"><i class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
+    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email"
+                                                                                                href="mailto:info@tuneshop.online"><i
+            class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
     <div class="flex-container">
         <div class="wrapper">
             <!-- Header -->
@@ -36,9 +40,11 @@ Associated files: index CSS
                     <form action="/action_page.php">
                         <img src="images/login_logo_aqua.png" alt="Avatar" id="avatar">
                         <h3>LOGIN</h3>
-                        <span >
-                            <input class="loginInput" type="text" placeholder="Gebruikersnaam" name="username" required/>
-                            <input class="loginInput" type="password" placeholder="Wachtwoord" name="password" required/>
+                        <span>
+                            <input class="loginInput" type="text" placeholder="Gebruikersnaam" name="username"
+                                   required/>
+                            <input class="loginInput" type="password" placeholder="Wachtwoord" name="password"
+                                   required/>
                         </span>
                         <span>
                             <label>
@@ -46,7 +52,7 @@ Associated files: index CSS
                             </label>
                             <span class="psw"><a href="#">Vergeten?</a></span>
                             <a href="#">Registreer</a>
-                            <button type="submit">Login</button>
+                            <button class="button" type="submit">Login</button>
                         </span>
                     </form>
                 </div>
@@ -89,7 +95,145 @@ Associated files: index CSS
             </section>
             <!-- Content -->
             <section class="content">
-                
+                <div class="column">
+                    <div class="buttonRow">
+                        <button class="button buttonBack" onclick="goBack()">Terug</button>
+                        <script>
+                            function goBack() {
+                                window.history.back();
+                            }
+                        </script>
+                    </div>
+                    <div class="row1">
+                        <div class="productImage">
+                            <img src="images/instrumentImage.jpg" alt="Instrument Image">
+                        </div>
+                        <div class="productInfo">
+                            <article>
+                                <div class="nameProduct">
+                                    <h1>Naam product</h1>
+                                    <h2>€15,19</h2>
+                                </div>
+                                <div class="descriptionInStock">
+                                    <div class="description">
+                                        <p>Omschrijving product. De Kawai CN27 is een fantastische digitale piano met
+                                            een
+                                            uitstekende prijs/kwaliteit-verhouding. Mede door zijn warme klank en
+                                            uitstekende aanslag weet deze Kawai digitale piano menig pianist te
+                                            inspireren.
+                                            Door de geïntegreerde Bluetooth(™)-mogelijkheid kunt u bovendien nieuwe
+                                            manieren
+                                            van musiceren ontdekken.</p>
+                                    </div>
+                                    <div class="inStock">
+                                        <p><b>Op voorraad: Ja</b></p>
+                                    </div>
+                                </div>
+                                <div class="productToCart">
+                                    <form action="/action_page.php">
+                                        <b>Aantal:</b>
+                                        <input type="text" size="3" name="amount" value="1">
+                                        <input class="button" type="submit" value="Toevoegen aan winkelwagen">
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <article class="imageBoxSmall">
+                            <img src="images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button></div>
+                        </article>
+                        <article class="imageBoxSmall">
+                            <img src="images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€44,98</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button></div>
+                        </article>
+                        <article class="imageBoxSmall">
+                            <img src="images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€32,80</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button></div>
+                        </article>
+                    </div>
+                </div>
+
+                <article id="userRatings">
+
+                    <span class="heading">Reviews</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <p><strong>4.1</strong> van de 5, gebaseerd op 254 reviews.</p>
+                    <hr>
+
+                    <div class="rowUserRating">
+                        <div class="side">
+                            <div>5 sterren</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-5"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>150</div>
+                        </div>
+                        <div class="side">
+                            <div>4 sterren</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-4"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>63</div>
+                        </div>
+                        <div class="side">
+                            <div>3 sterren</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-3"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>15</div>
+                        </div>
+                        <div class="side">
+                            <div>2 sterren</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-2"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>6</div>
+                        </div>
+                        <div class="side">
+                            <div>1 sterren</div>
+                        </div>
+                        <div class="middle">
+                            <div class="bar-container">
+                                <div class="bar-1"></div>
+                            </div>
+                        </div>
+                        <div class="side right">
+                            <div>20</div>
+                        </div>
+                    </div>
+                </article>
+
             </section>
             <!-- Footer -->
             <footer>

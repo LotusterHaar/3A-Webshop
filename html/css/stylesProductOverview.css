@@ -248,54 +248,7 @@ form.search-form::after {
     margin-bottom: 15%;
 }
 
-.button {
-    border-radius: .25em;
-    background: linear-gradient(-180deg, #1f8972,#176756 90%);
-    border: 1px solid grey;
-    padding: 4px 0px 4px 0px;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 25px;
-    /*    padding: 20px;*/
-    width: 45%;
-    transition: all 0.5s;
-    cursor: cell;
-    margin: 5px;
-}
 
-.button span {
-    cursor: cell;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
 
-.button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.button:hover {
-    background: #0f4237;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
-}
-.button:hover span {
-    padding-right: 10px;
-}
-
-.button:hover span:after {
-    opacity: 1;
-    right: 0;
-}
-
-.button a{
-    text-decoration: none;
-    cursor: cell;
-    color: white;
-}
 
 /*========== End CSS for Image Box Small =============*/
