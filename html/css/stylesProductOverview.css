@@ -236,7 +236,8 @@ form.search-form::after {
     font-size: 0.9em;
     text-align: left;
     margin-top: 15%;
-    margin-left: 12%;
+    margin-left: 8%;
+    margin-right: 8%;
 }
 
 .flex-container-ImageBoxSmall .priceline h2 {
