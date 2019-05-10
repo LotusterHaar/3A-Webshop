@@ -52,16 +52,13 @@ article {
 }
 
 .description {
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 200px;
-    padding:10px;
 }
 
 .productToCart form {
     display: flex;
     justify-content: flex-end;
-
-    /*    float: right;*/
 }
 
 label.form-item {
@@ -117,7 +114,6 @@ label.form-item {
     width: 50%;
     padding: 15px;
     margin-left: 15px;
-    /* background-color: #e6d6ca;*/
 }
 
 .heading {
