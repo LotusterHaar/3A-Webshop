@@ -28,7 +28,7 @@ hr{
 }
 
 .button {
-    padding: 5px;
+    padding: 12px;
     background: linear-gradient(-180deg, #0facf3, #0a6e9b 90%);
     border-radius: .25em;
     color: white;
@@ -38,7 +38,7 @@ hr{
 }
 
 .button:hover {
-    background:  #0facf366;
+    background: linear-gradient(-180deg, rgba(15, 182, 255, 0.85), #0facf366 90%);
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
 }
 
