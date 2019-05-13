@@ -95,8 +95,49 @@ Associated files: index CSS
             </section>
             <!-- Content -->
             <section class="content">
+<form class="registration-form">
+    <div class="column">
+    <h3><label>Accountgegevens</label></h3>
+    <label>Gebruikersnaam *</label>
+    <input name="username" type="text" placeholder="Gebruikersnaam *" required />
+    <label>Wachwoord *</label>
+    <input name="password" type="password" required />
+    <label>Herhaal wachwoord *</label>
+    <input name="password2" type="password" required />
+</div>
+<div class="column">
+    <h3><label>Factuuradres</label></h3>
+    <label>Aanhef *</label>
+    <select name="aanhef">
+        <option value="Dhr.">Dhr.</option>
+        <option value="Mevr.">Mevr.</option>
+    </select>
 
+    <label>Voornaam *</label>
+    <input name="voornaam" type="text" placeholder="Voornaam" required />
 
+    <label>Tussenv.</label>
+    <input name="tussenv" type="text" placeholder="Tussenvoegsel"/>
+
+    <label>Achternaam *</label>
+    <input name="achternaam" type="text" placeholder="Achternaam" required />
+
+    <label>Emailadres *</label>
+    <input name="e-mail" type="email" placeholder="email@voorbeeld.com" required />
+
+    <label>Straatnaam *</label>
+    <input name="straatnaam" type="text" placeholder="Straatnaam" required />
+
+    <label>Huisnummer *</label>
+    <input name="huisnummer" type="text" required />
+
+    <label>Postcode *</label>
+    <input name="postcode" type="text" required />
+
+    <label>Telefoon *</label>
+    <input name="telefoonnummer "type="text" aria-placeholder="Telefoonnummer" required />
+</div>
+</form>
             </section>
             <!-- Footer -->
             <footer>
