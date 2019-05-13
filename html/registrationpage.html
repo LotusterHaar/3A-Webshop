@@ -1,0 +1,113 @@
+<!--========================
+Page: About Us
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: https://codepen.io/torbencolding/pen/ogYjJP
+https://coder-coder.com/build-flexbox-website-layout/
+Associated files: index CSS
+==========================-->
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music WebShop</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesRegistrationPage.css">
+</head>
+
+<body>
+
+<!-- Main Content -->
+<main>
+    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email"
+                                                                                                href="mailto:info@tuneshop.online"><i
+            class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
+    <div class="flex-container">
+        <div class="wrapper">
+            <!-- Header -->
+            <header>
+                <div class="header-small-logo">
+                    <img src="images/logo_tuneshop_small_aqua_transparant.png" id="logo" alt="Logo TuneShop">
+                </div>
+                <div class="header-logo">
+                    <img src="images/logo_tuneshop_aqua.png" id="logoText" alt="TuneShop">
+                </div>
+                <div class="header-account">
+                    <form action="/action_page.php">
+                        <img src="images/login_logo_aqua.png" alt="Avatar" id="avatar">
+                        <h3>LOGIN</h3>
+                        <span>
+                            <input class="loginInput" type="text" placeholder="Gebruikersnaam" name="username"
+                                   required/>
+                            <input class="loginInput" type="password" placeholder="Wachtwoord" name="password"
+                                   required/>
+                        </span>
+                        <span>
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember"/> Onthouden
+                            </label>
+                            <span class="psw"><a href="#">Vergeten?</a></span>
+                            <a href="#">Registreer</a>
+                            <button class="button login-button" type="submit">Login</button>
+                        </span>
+                    </form>
+                </div>
+            </header>
+            <!-- Nav -->
+            <section class="nav">
+                <nav id="top-menu-nav">
+                    <ul id="top-menu" class="nav">
+                        <li><a href="/" class="active">Home</a></li>
+                        <li><a href="/nieuws">Nieuws</a></li>
+                        <li><a href="/acties">Acties</a></li>
+                        <li class="dropdown">
+                            <a href="/over-ons" class="dropbtn">Over Ons</a>
+                            <div class="dropdown-content">
+                                <ul class="sub-menu dropdown-content">
+                                    <li><a href="/over-ons/contact" class="sub-menu-link">Contact</a>
+                                    </li>
+                                    <li><a href="/over-ons/team" class="sub-menu-link">Team</a>
+                                    </li>
+                                    <li><a href="/over-ons/betaalmethodes" class="sub-menu-link">Betaalmethodes</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="/vacatures">Vacatures</a></li>
+                        <li class="dropdown"><a href="/webshop" class="dropbtn">Webshop</a>
+                            <div class="dropdown-content">
+                                <ul class="sub-menu dropdown-content">
+                                    <li><a href="/producten" class="sub-menu-link">Producten</a>
+                                    </li>
+                                    <li><a href="/winkelwagen" class="sub-menu-link">Winkelwagen</a>
+                                    </li>
+                                    <li><a href="/afrekenen" class="sub-menu-link">Afrekenen</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+            <!-- Content -->
+            <section class="content">
+
+
+            </section>
+            <!-- Footer -->
+            <footer>
+                TuneShop © 2019 | Jan Willem Lenting & Lotus ter Haar
+            </footer>
+        </div>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            Sidebar
+        </aside>
+    </div>
+</main>
+</body>
+</html>
