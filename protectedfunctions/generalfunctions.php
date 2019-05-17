@@ -5,7 +5,7 @@ function startprotectedsession()
 {
     $sessionsettings = array();
 
-    #see for my security choices: https://stackoverflow.com/a/5081453 && http://php.net/manual/en/session.security.ini.php && https://www.simonholywell.com/post/2013/04/three-things-i-set-on-new-servers/
+   /* #see for my security choices: https://stackoverflow.com/a/5081453 && http://php.net/manual/en/session.security.ini.php && https://www.simonholywell.com/post/2013/04/three-things-i-set-on-new-servers/
     if (version_compare(PHP_VERSION, '7.1.0') >= 0)
     {
         ini_set('session.sid_bits_per_character','6'); #replacement for hash_function
@@ -30,7 +30,7 @@ function startprotectedsession()
     else
     {
 
-    }
+    }*/
 
     # not include the identifier in the URL, and not to read the URL for identifiers.
     session_name('Tuneshop');
@@ -39,8 +39,6 @@ function startprotectedsession()
     ini_set('session.use_strict_mode', '1');
     ini_set('session.cookie_httponly', '1'); # XSS beveiliging https://www.simonholywell.com/post/2013/05/improve-php-session-cookie-security/
     ini_set('session.use_only_cookies', '1'); # Make sure that PHP only uses cookies for sessions and disallow session ID passing as a GET parameter
-    ini_set('session.entropy_file', '/dev/urandom');  // better session id's
-    ini_set('session.entropy_length', 512); // and going overkill with entropy length for maximum security
     ini_set('session.cookie_secure','1'); # Ensuring session cookies are only sent over secure connections
     ini_set('expose_php','off'); # When the expose_php directive is enabled, PHP includes the following line in the HTTP response header when a PHP page is requested (X-Powered-By: PHP VERSIONNUJMBER)
     $sessionsettings += array(
@@ -49,8 +47,6 @@ function startprotectedsession()
         'use_strict_mode' => '1',
         'cookie_httponly' => '1',
         'use_only_cookies' => '1',
-        'entropy_file' => '/dev/urandom',
-        'entropy_length' => 512,
         'cookie_secure' => '1'
     );
 
@@ -68,9 +64,9 @@ function startprotectedsession()
     else
     {
         $lifetime = 604800;
-        ini_set('session.cookie_lifetime', $lifetime); # 1 week (client-site) https://stackoverflow.com/a/16965363
+      /*  ini_set('session.cookie_lifetime', $lifetime); # 1 week (client-site) https://stackoverflow.com/a/16965363*/
         ini_set('gc_maxlifetime', $lifetime); #set cookie garbage collection to 1 week (server-side)
-        session_set_cookie_params($lifetime);
+     /*   session_set_cookie_params($lifetime);*/
         $sessionsettings += array(
             'cookie_lifetime' => $lifetime,
             'gc_maxlifetime' => $lifetime);
