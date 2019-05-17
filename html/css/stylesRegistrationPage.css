@@ -1,0 +1,19 @@
+.registration-form {
+    display: flex;
+}
+
+.registration-form h3 {
+    background:red;
+    display: grid;
+}
+.row {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+    border: 1px solid #0f4237;
+    display:flex;
+    padding: 10px;
+    flex-direction: column;
+}
