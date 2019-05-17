@@ -1,6 +1,6 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
+require_once('../protectedfunctions/generalfunctions.php');
+require_once('../protectedfunctions/dbfunctions.php');
 #reset all old session info
 resetsession();
 #Browser already checks this but just to be sure

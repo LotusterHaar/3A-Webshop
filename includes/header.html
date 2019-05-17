@@ -1,6 +1,6 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'../protectedfunctions/generalfunctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'../protectedfunctions/user.php');
+require_once('../protectedfunctions/generalfunctions.php');
+require_once('../protectedfunctions/user.php');
 ?>
 
 <!DOCTYPE html>
@@ -51,12 +51,12 @@ require_once($_SERVER['DOCUMENT_ROOT'].'../protectedfunctions/user.php');
                 </div>
                 <div class="header-account">
                     <?php if (isLoggedin()): ?>
-                    <form action="/logout">
+                    <form action="/logout" method="post">
                         <img src="images/avatar?<?php echo uniqid(); ?>" alt="Avatar" id="avatar">
                         <h3><?php echo $_SESSION['FullName']; ?></h3>
                         <button type="submit">Uitloggen</button>
                         <?php else: ?>
-                        <form action="/login">
+                        <form action="/login" method="post">
                             <img src="images/login_logo_aqua.png" alt="Avatar" id="avatar">
                             <h3>LOGIN</h3>
                             <?php if (hasError()): ?>
