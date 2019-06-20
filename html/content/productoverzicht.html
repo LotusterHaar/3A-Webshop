@@ -38,35 +38,33 @@ $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` ORDER BY `Ca
 $stmt = $database->prepare($sql);
                             $stmt->execute();
                             $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                            $database=null; #RESET database session
+                            $database=null;
 
 foreach ($categories as $categoryName) {
                             ?>
                             <div class="tab brown">
-                                <?php echo ('<input id="tab-'.<$categoryName['MainCategoryID'].'" type="checkbox" name="tabs">');
-                                echo ('<label for="tab-'.$categoryName['MainCategoryID'].'">');
-                                    <?php echo ($categoryName['MainCategoryName'])?></label>
-                                <?php
+                                <?php echo ('<input id="tab-'.$categoryName['MainCategoryID'].'" type="checkbox" name="tabs">');
+                                <!-- echo ('<label for="tab-'.$categoryName['MainCategoryID'].'">'.($categoryName['MainCategoryName'].'</label>');
+-->
                                 $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY  `CategoryOrder` ASC";
-    $query = $database2->prepare($sqlQuery);
+                                $query = $database2->prepare($sqlQuery);
                                 $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
                                 $subcategories = $query->fetchAll(PDO::FETCH_ASSOC);
                                 foreach($subcategory as $subcategories){
-                                    ?>
-                                <div class="tab-content">
-                                    <a href="<?php echo ($subcategory['CategoryID'].'">'.$subcategory['CategoryName'])?>
-                                    </a>
+                                    ?> <div class="tab-content">
+                                <?php echo ('<a href="'.$subcategory['CategoryID'].'">'.$subcategory['CategoryName'].'</a>');?>
                                 </div>
                             </div>
-
-                            <div class="tab brown">
+                            <?php } ?>
+}
+                     <!--       <div class="tab brown">
                                 <input id="tab-one" type="checkbox" name="tabs">
                                 <label for="tab-one">Toetsinstrumenten</label>
                                 <div class="tab-content">
                                     <a href="">Piano's</a>
                                 </div>
                             </div>
-
+-->
                         </nav>
                        </section>
                         <section class="flex-container-column">
