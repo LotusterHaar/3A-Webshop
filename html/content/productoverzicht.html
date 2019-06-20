@@ -19,79 +19,6 @@ Associated files: producten CSS
 </head>
 
 <body>
-
-<!-- Main Content -->
-<main>
-    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email"
-                                                                                                href="mailto:info@tuneshop.online"><i
-            class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
-    <div class="flex-container">
-        <div class="wrapper">
-            <!-- Header -->
-            <header>
-                <div class="header-small-logo">
-                    <img src="../images/logo_tuneshop_small_aqua_transparant.png" id="logo" alt="Logo TuneShop">
-                </div>
-                <div class="header-logo">
-                    <img src="../images/logo_tuneshop_aqua.png" id="logoText" alt="TuneShop">
-                </div>
-                <div class="header-account">
-                    <form action="/action_page.php">
-                        <img src="../images/login_logo_aqua.png" alt="Avatar" id="avatar">
-                        <h3>LOGIN</h3>
-                        <span>
-                            <input class="loginInput" type="text" placeholder="Gebruikersnaam" name="username"
-                                   required/>
-                            <input class="loginInput" type="password" placeholder="Wachtwoord" name="password"
-                                   required/>
-                        </span>
-                        <span>
-                            <label>
-                                <input type="checkbox" checked="checked" name="remember"/> Onthouden
-                            </label>
-                            <span class="psw"><a href="#">Vergeten?</a></span>
-                            <a href="#">Registreer</a>
-                            <button class="button login-button" type="submit">Login</button>
-                        </span>
-                    </form>
-                </div>
-            </header>
-            <!-- Nav -->
-            <section class="nav">
-                <nav id="top-menu-nav">
-                    <ul id="top-menu" class="nav">
-                        <li><a href="/" class="active">Home</a></li>
-                        <li><a href="/nieuws">Nieuws</a></li>
-                        <li><a href="/acties">Acties</a></li>
-                        <li class="dropdown">
-                            <a href="/over-ons" class="dropbtn">Over Ons</a>
-                            <div class="dropdown-content">
-                                <ul class="sub-menu dropdown-content">
-                                    <li><a href="/over-ons/contact" class="sub-menu-link">Contact</a>
-                                    </li>
-                                    <li><a href="/over-ons/team" class="sub-menu-link">Team</a>
-                                    </li>
-                                    <li><a href="/over-ons/betaalmethodes" class="sub-menu-link">Betaalmethodes</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="/vacatures">Vacatures</a></li>
-                        <li class="dropdown"><a href="/webshop" class="dropbtn">Webshop</a>
-                            <div class="dropdown-content">
-                                <ul class="sub-menu dropdown-content">
-                                    <li><a href="/producten" class="sub-menu-link">Producten</a>
-                                    </li>
-                                    <li><a href="/winkelwagen" class="sub-menu-link">Winkelwagen</a>
-                                    </li>
-                                    <li><a href="/afrekenen" class="sub-menu-link">Afrekenen</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </section>
             <!-- Content -->
             <section class="content">
                 <form class="search-form" action="action_page.php">
@@ -104,69 +31,42 @@ Associated files: producten CSS
                         <section class="flex-container-column">
                         <h1 id="categoryTitle">Categorie</h1>
                         <nav class="categoryMenu">
+                            <?php
+$database = db_con();
+$database2 = db_con();
+$sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` ORDER BY `CategoryOrder` ASC";
+$stmt = $database->prepare($sql);
+                            $stmt->execute();
+                            $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            $database=null; #RESET database session
+
+foreach ($categories as $categoryName) {
+                            ?>
+                            <div class="tab brown">
+                                <?php echo ('<input id="tab-'.<$categoryName['MainCategoryID'].'" type="checkbox" name="tabs">');
+                                echo ('<label for="tab-'.$categoryName['MainCategoryID'].'">');
+                                    <?php echo ($categoryName['MainCategoryName'])?></label>
+                                <?php
+                                $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY  `CategoryOrder` ASC";
+    $query = $database2->prepare($sqlQuery);
+                                $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
+                                $subcategories = $query->fetchAll(PDO::FETCH_ASSOC);
+                                foreach($subcategory as $subcategories){
+                                    ?>
+                                <div class="tab-content">
+                                    <a href="<?php echo ($subcategory['CategoryID'].'">'.$subcategory['CategoryName'])?>
+                                    </a>
+                                </div>
+                            </div>
+
                             <div class="tab brown">
                                 <input id="tab-one" type="checkbox" name="tabs">
                                 <label for="tab-one">Toetsinstrumenten</label>
                                 <div class="tab-content">
                                     <a href="">Piano's</a>
-                                    <a href="">Stage Piano's</a>
-                                    <a href="">Digitale Piano's</a>
-                                    <a href="">Keyboards</a>
-                                    <a href="">Vleugels</a>
-                                    <a href="">Synthesizers</a>
-                                    <a href="">Elektronische orgels</a>
-                                    <a href="">Accordeons</a>
-                                    <a href="">Accesoires voor Piano's</a>
                                 </div>
                             </div>
-                            <div class="tab brown">
-                                <input id="tab-two" type="checkbox" name="tabs">
-                                <label for="tab-two">Tokkelinstrumenten</label>
-                                <div class="tab-content">
-                                    <a href="">Elektrische Gitaren</a>
-                                    <a href="">Akoustische Gitaren</a>
-                                    <a href="">Klassieke Gitaren</a>
-                                    <a href="">Basgitaren</a>
-                                    <a href="">Traditionele Snaarinstrumenten</a>
-                                    <a href="">Versterkers</a>
-                                    <a href="">Accesoires voor Gitaar en Bas</a>
-                                </div>
-                            </div>
-                            <div class="tab brown">
-                                <input id="tab-three" type="checkbox" name="tabs">
-                                <label for="tab-three">Blaasinstrumenten</label>
-                                <div class="tab-content">
-                                    <a href="">Mondharmonica's</a>
-                                    <a href="">Blokfluiten</a>
-                                    <a href="">Dwarsfluiten</a>
-                                    <a href="">Trompetten</a>
-                                    <a href="">Piccolo's</a>
-                                    <a href="">Klarinetten</a>
-                                    <a href="">Saxofoon's</a>
-                                    <a href="">Trombone's</a>
-                                    <a href="">Assesoires voor Blaasinstrumenten</a>
-                                </div>
-                            </div>
-                            <div class="tab brown">
-                                <input id="tab-four" type="checkbox" name="tabs">
-                                <label for="tab-four">Slaginstrumenten</label>
-                                <div class="tab-content">
-                                    <a href="">Akoustische Drums</a>
-                                    <a href="">Percussie</a>
-                                    <a href="">Digitale Drums</a>
-                                    <a href="">Accesoires voor Drums en Percussie</a>
-                                </div>
-                            </div>
-                            <div class="tab brown">
-                                <input id="tab-five" type="checkbox" name="tabs">
-                                <label for="tab-five">Strijkinstrumenten</label>
-                                <div class="tab-content">
-                                    <a href="">Violen</a>
-                                    <a href="">Cello's</a>
-                                    <a href="">Contrabassen</a>
-                                    <a href="">Accesoires voor Strijkinstrumenten</a>
-                                </div>
-                            </div>
+
                         </nav>
                        </section>
                         <section class="flex-container-column">
@@ -368,17 +268,5 @@ Associated files: producten CSS
                     </section>
                 </section>
             </section>
-            <!-- Footer -->
-            <footer>
-                TuneShop © 2019 | Jan Willem Lenting & Lotus ter Haar
-            </footer>
 
-        </div>
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            Sidebar
-        </aside>
-    </div>
-</main>
 </body>
-</html>
