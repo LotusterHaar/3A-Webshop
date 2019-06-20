@@ -2,7 +2,7 @@
 require_once('../protectedfunctions/generalfunctions.php');
 require_once('../protectedfunctions/dbfunctions.php');
 #reset all old session info
-resetsession();
+#resetsession();
 #Browser already checks this but just to be sure
 if (isset($_REQUEST['username']) && !empty($_REQUEST['username']))
 {
