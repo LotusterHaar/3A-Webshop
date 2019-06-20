@@ -94,54 +94,78 @@ Associated files: index CSS
             </section>
             <!-- Content -->
             <section class="content">
-                <form class="registration-form">
-                    <div class="column">
-                        <h3><label>Accountgegevens</label></h3>
+                <form>
+                    <div class="registration-form">
 
-                        <label for="username"><span>Gebruikersnaam *</span> <input name="username" id="username"
-                                                                                   type="text"
-                                                                                   placeholder="Gebruikersnaam *"
-                                                                                   required/></label>
-
-
-                        <label for="password"><span>Wachtwoord *</span> <input name="password" id="password"
-                                                                               type="password" required/></label>
+                        <div class="column1">
+                            <div class="registration-form-header"><h3><label>Accountgegevens</label></h3></div>
+                            <div class="column-body">
+                                <label for="username"><span>Gebruikersnaam *</span> <input name="username" id="username"
+                                                                                           type="text"
+                                                                                           placeholder="Gebruikersnaam"
+                                                                                           required/></label>
 
 
-                        <label for="password2"><span>Herhaal wachwoord *</span> <input name="password2" id="password2"
+                                <label for="password"><span>Wachtwoord *</span> <input name="password" id="password"
+                                                                                       placeholder="Wachtwoord"
                                                                                        type="password"
                                                                                        required/></label>
-                    </div>
-                    <div class="column">
-                        <h3><label>Factuuradres</label></h3>
-                        <div class="address-row">
-                            <label><span>Aanhef *</span> <select name="aanhef">
-                                <option value="Dhr.">Dhr.</option>
-                                <option value="Mevr.">Mevr.</option>
-                            </select></label>
-                            <label><span>Voornaam *</span><input name="voornaam" type="text" placeholder="Voornaam"
-                                                                 required/></label>
-                            <label><span>Tussenv.</span><input name="tussenv" type="text" placeholder="Tussenvoegsel"/></label>
-                            <label><span>Achternaam *</span> <input name="achternaam" type="text"
-                                                                    placeholder="Achternaam" required/></label>
-                        </div>
-                        <div class="address-row">
-                            <label><span>Emailadres *</span><input name="e-mail" type="email"
-                                                                   placeholder="email@voorbeeld.com" required/></label>
-                        </div>
-                        <div class="address-row">
-                            <label><span>Straatnaam *</span> <input name="straatnaam" type="text"
-                                                                    placeholder="Straatnaam" required/></label>
-                            <label><span>Huisnummer *</span> <input name="huisnummer" type="text" required/></label>
-                        </div>
-                        <div class="address-row">  <label><span>Postcode *</span><input name="postcode" type="text" required/></label>
-                            <label><span>Plaatsnaam *</span><input name="plaatsnaam" type="text" required/></label></div>
-                        <div class="address-row">
-                            <label><span>Telefoon *</span> <input name="telefoonnummer " type="text"
-                                                                  aria-placeholder="Telefoonnummer" required/></label>
-                        </div>
-                    </div>
 
+
+                                <label for="password2"><span>Herhaal wachwoord *</span> <input name="password2"
+                                                                                               id="password2"
+                                                                                               placeholder="Herhaal wachtwoord"
+                                                                                               type="password"
+                                                                                               required/></label>
+                            </div>
+                        </div>
+                        <div class="column2">
+                            <div class="registration-form-header"><h3><label>Factuuradres</label></h3></div>
+                            <div class="column-body">
+                                <div class="address-row">
+                                    <label><span>Aanhef *</span> <select name="aanhef">
+                                        <option value="Dhr.">Dhr.</option>
+                                        <option value="Mevr.">Mevr.</option>
+                                    </select></label>
+                                    <label><span>Voornaam *</span><input name="voornaam" type="text"
+                                                                         placeholder="Voornaam"
+                                                                         required/></label>
+                                    <label><span>Tussenv.</span><input name="tussenv" type="text"
+                                                                       placeholder="Tussenvoegsel"/></label>
+                                    <label><span>Achternaam *</span> <input name="achternaam" type="text"
+                                                                            placeholder="Achternaam" required/></label>
+                                </div>
+                                <div class="address-row">
+                                    <label><span>Emailadres *</span><input name="e-mail" type="email"
+                                                                           placeholder="email@voorbeeld.com"
+                                                                           required/></label>
+                                </div>
+                                <div class="address-row">
+                                    <label><span>Straatnaam *</span> <input name="straatnaam" type="text"
+                                                                            placeholder="Straatnaam" required/></label>
+                                    <label><span>Huisnummer *</span> <input name="huisnummer" placeholder="Huisnummer"
+                                                                            type="text" required/></label>
+                                </div>
+                                <div class="address-row"><label><span>Postcode *</span><input name="postcode"
+                                                                                              placeholder="Postcode"
+                                                                                              type="text"
+                                                                                              required/></label>
+                                    <label><span>Plaatsnaam *</span><input name="plaatsnaam" type="text"
+                                                                           placeholder="Plaatsnaam" required/></label>
+                                </div>
+                                <div class="address-row">
+                                    <label><span>Telefoon *</span> <input name="telefoonnummer " type="text"
+                                                                          placeholder="Telefoonnummer"
+                                                                          aria-placeholder="Telefoonnummer"
+                                                                          required/></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="save-button-row">
+                        <button class="button save-button"><i
+                                class="fas fa-save" aria-hidden="true"></i> Opslaan</button>
+                    </div>
                 </form>
             </section>
             <!-- Footer -->
