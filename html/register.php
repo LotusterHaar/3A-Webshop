@@ -1,7 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lotus
- * Date: 20/06/2019
- * Time: 19:42
- */
+include '../includes/header.html';
+include './registrationpage.html';
+include '../includes/footer.html';
