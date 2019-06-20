@@ -1,8 +1,15 @@
+.header-register{
+    text-align: center
+}
+
 .registration-form {
     display: flex;
     padding: 25px;
 }
 
+.fill-in-data{
+    margin-left: 25px;
+}
 .registration-form h3 {
     color: white;
     display: grid;
