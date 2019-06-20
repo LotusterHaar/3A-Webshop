@@ -14,7 +14,7 @@ function db_con($arg = NULL)
     $DB_name = "tuneshop";
 
     try {
-        $DB = new PDO("mysql:host={$DB_host};dbname={$DB_name}", $DB_user, $DB_pass);
+        $DB = new PDO("mysql:host={$DB_host};dbname={$DB_name};port=3333;", $DB_user, $DB_pass);
         $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $DB->exec("SET CHARACTER SET utf8");
     } catch (PDOException $exception) {
