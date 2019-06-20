@@ -2,8 +2,7 @@
 Page: About Us
 Template Name: TuneShop
 Author: Jan Willem Lenting, Lotus ter Haar
-Bronnen: https://codepen.io/torbencolding/pen/ogYjJP
-https://coder-coder.com/build-flexbox-website-layout/
+Bronnen: http://jsfiddle.net/H3y8j/
 Associated files: index CSS
 ==========================-->
 
@@ -95,49 +94,55 @@ Associated files: index CSS
             </section>
             <!-- Content -->
             <section class="content">
-<form class="registration-form">
-    <div class="column">
-    <h3><label>Accountgegevens</label></h3>
-    <label>Gebruikersnaam *</label>
-    <input name="username" type="text" placeholder="Gebruikersnaam *" required />
-    <label>Wachwoord *</label>
-    <input name="password" type="password" required />
-    <label>Herhaal wachwoord *</label>
-    <input name="password2" type="password" required />
-</div>
-<div class="column">
-    <h3><label>Factuuradres</label></h3>
-    <label>Aanhef *</label>
-    <select name="aanhef">
-        <option value="Dhr.">Dhr.</option>
-        <option value="Mevr.">Mevr.</option>
-    </select>
+                <form class="registration-form">
+                    <div class="column">
+                        <h3><label>Accountgegevens</label></h3>
 
-    <label>Voornaam *</label>
-    <input name="voornaam" type="text" placeholder="Voornaam" required />
+                        <label for="username"><span>Gebruikersnaam *</span> <input name="username" id="username"
+                                                                                   type="text"
+                                                                                   placeholder="Gebruikersnaam *"
+                                                                                   required/></label>
 
-    <label>Tussenv.</label>
-    <input name="tussenv" type="text" placeholder="Tussenvoegsel"/>
 
-    <label>Achternaam *</label>
-    <input name="achternaam" type="text" placeholder="Achternaam" required />
+                        <label for="password"><span>Wachtwoord *</span> <input name="password" id="password"
+                                                                               type="password" required/></label>
 
-    <label>Emailadres *</label>
-    <input name="e-mail" type="email" placeholder="email@voorbeeld.com" required />
 
-    <label>Straatnaam *</label>
-    <input name="straatnaam" type="text" placeholder="Straatnaam" required />
+                        <label for="password2"><span>Herhaal wachwoord *</span> <input name="password2" id="password2"
+                                                                                       type="password"
+                                                                                       required/></label>
+                    </div>
+                    <div class="column">
+                        <h3><label>Factuuradres</label></h3>
+                        <div class="address-row">
+                            <label><span>Aanhef *</span> <select name="aanhef">
+                                <option value="Dhr.">Dhr.</option>
+                                <option value="Mevr.">Mevr.</option>
+                            </select></label>
+                            <label><span>Voornaam *</span><input name="voornaam" type="text" placeholder="Voornaam"
+                                                                 required/></label>
+                            <label><span>Tussenv.</span><input name="tussenv" type="text" placeholder="Tussenvoegsel"/></label>
+                            <label><span>Achternaam *</span> <input name="achternaam" type="text"
+                                                                    placeholder="Achternaam" required/></label>
+                        </div>
+                        <div class="address-row">
+                            <label><span>Emailadres *</span><input name="e-mail" type="email"
+                                                                   placeholder="email@voorbeeld.com" required/></label>
+                        </div>
+                        <div class="address-row">
+                            <label><span>Straatnaam *</span> <input name="straatnaam" type="text"
+                                                                    placeholder="Straatnaam" required/></label>
+                            <label><span>Huisnummer *</span> <input name="huisnummer" type="text" required/></label>
+                        </div>
+                        <div class="address-row">  <label><span>Postcode *</span><input name="postcode" type="text" required/></label>
+                            <label><span>Plaatsnaam *</span><input name="plaatsnaam" type="text" required/></label></div>
+                        <div class="address-row">
+                            <label><span>Telefoon *</span> <input name="telefoonnummer " type="text"
+                                                                  aria-placeholder="Telefoonnummer" required/></label>
+                        </div>
+                    </div>
 
-    <label>Huisnummer *</label>
-    <input name="huisnummer" type="text" required />
-
-    <label>Postcode *</label>
-    <input name="postcode" type="text" required />
-
-    <label>Telefoon *</label>
-    <input name="telefoonnummer "type="text" aria-placeholder="Telefoonnummer" required />
-</div>
-</form>
+                </form>
             </section>
             <!-- Footer -->
             <footer>

@@ -3,9 +3,10 @@
 }
 
 .registration-form h3 {
-    background:red;
-    display: grid;
+    background: green;
+    /*    display: grid;*/
 }
+
 .row {
     box-sizing: border-box;
 }
@@ -13,7 +14,25 @@
 /* Create two equal columns that sits next to each other */
 .column {
     border: 1px solid #0f4237;
-    display:flex;
+    display: flex;
     padding: 10px;
     flex-direction: column;
 }
+
+label {
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+span {
+    display: block;
+    margin: 0 0 3px;
+}
+
+input {
+    width: 200px;
+    border: 1px solid #000;
+    padding: 5px;
+}
+
+
