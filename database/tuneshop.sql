@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 03, 2019 at 10:23 PM
--- Server version: 10.1.37-MariaDB-0+deb9u1
--- PHP Version: 7.1.26-1+0~20190113101810.12+stretch~1.gbp7077bb
+-- Host: 127.0.0.1:3333
+-- Gegenereerd op: 20 jun 2019 om 22:57
+-- Serverversie: 10.1.32-MariaDB
+-- PHP-versie: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,85 +25,85 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Category`
+-- Tabelstructuur voor tabel `category`
 --
 
-CREATE TABLE `Category` (
+CREATE TABLE `category` (
+  `CategorieID` int(11) NOT NULL,
   `CategoryName` varchar(35) NOT NULL,
   `MainCategoryID` int(3) NOT NULL,
   `CategoryOrder` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Category`
+-- Gegevens worden geëxporteerd voor tabel `category`
 --
 
-INSERT INTO `Category` (`CategoryName`, `MainCategoryID`, `CategoryOrder`) VALUES
-('Accesoires voor Blaasinstrumenten', 3, 9),
-('Accesoires voor Drums en Percussie', 4, 4),
-('Accesoires voor Gitaar en Bas', 2, 7),
-('Accesoires voor Piano\'s', 1, 9),
-('Accesoires voor Strijkinstrumenten', 5, 4),
-('Accordeons', 1, 8),
-('Akoustische Drums', 4, 1),
-('Akoustische Gitaren', 2, 2),
-('Basgitaren', 2, 4),
-('Blokfluiten', 3, 2),
-('Cello\'s', 5, 2),
-('Contrabassen', 5, 3),
-('Digitale Drums', 4, 3),
-('Digitale Piano\'s', 1, 3),
-('Dwarsfluiten', 3, 3),
-('Elektrische Gitaren', 2, 1),
-('Elektronische Orgels', 1, 7),
-('Keyboards', 1, 4),
-('Klarinetten', 3, 6),
-('Klassieke Gitaren', 2, 3),
-('Mondharmonica\'s', 3, 1),
-('Percussie', 4, 2),
-('Piano\'s', 1, 1),
-('Piccolo\'s', 3, 5),
-('Saxofoon\'s', 3, 7),
-('Stage Piano\'s', 1, 2),
-('Synthesizers', 1, 6),
-('Traditionele Snaainstrumenten', 2, 5),
-('Trombone', 3, 8),
-('Trompetten', 3, 4),
-('Versterkers', 2, 6),
-('Violen', 5, 1),
-('Vleugels', 1, 5);
+INSERT INTO `category` (`CategorieID`, `CategoryName`, `MainCategoryID`, `CategoryOrder`) VALUES
+(1, 'Accesoires voor Drums en Percussie', 4, 4),
+(2, 'Accesoires voor Gitaar en Bas', 2, 7),
+(3, 'Accesoires voor Piano\'s', 1, 9),
+(4, 'Accesoires voor Strijkinstrumenten', 5, 4),
+(5, 'Accordeons', 1, 8),
+(6, 'Akoustische Drums', 4, 1),
+(7, 'Akoustische Gitaren', 2, 2),
+(8, 'Basgitaren', 2, 4),
+(9, 'Blokfluiten', 3, 2),
+(10, 'Cello\'s', 5, 2),
+(11, 'Contrabassen', 5, 3),
+(12, 'Digitale Drums', 4, 3),
+(13, 'Digitale Piano\'s', 1, 3),
+(14, 'Dwarsfluiten', 3, 3),
+(15, 'Elektrische Gitaren', 2, 1),
+(16, 'Elektronische Orgels', 1, 7),
+(17, 'Keyboards', 1, 4),
+(18, 'Klarinetten', 3, 6),
+(19, 'Klassieke Gitaren', 2, 3),
+(20, 'Mondharmonica\'s', 3, 1),
+(21, 'Percussie', 4, 2),
+(22, 'Piano\'s', 1, 1),
+(23, 'Piccolo\'s', 3, 5),
+(24, 'Saxofoon\'s', 3, 7),
+(25, 'Stage Piano\'s', 1, 2),
+(26, 'Synthesizers', 1, 6),
+(27, 'Traditionele Snaainstrumenten', 2, 5),
+(28, 'Trombone', 3, 8),
+(29, 'Trompetten', 3, 4),
+(30, 'Versterkers', 2, 6),
+(31, 'Violen', 5, 1),
+(32, 'Vleugels', 1, 5),
+(33, 'Accesoires voor Blaasinstrumenten', 3, 9);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `MainCategory`
+-- Tabelstructuur voor tabel `maincategory`
 --
 
-CREATE TABLE `MainCategory` (
+CREATE TABLE `maincategory` (
   `MainCategoryID` int(3) NOT NULL,
   `CategoryName` varchar(35) NOT NULL,
   `CategoryOrder` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `MainCategory`
+-- Gegevens worden geëxporteerd voor tabel `maincategory`
 --
 
-INSERT INTO `MainCategory` (`MainCategoryID`, `CategoryName`, `CategoryOrder`) VALUES
+INSERT INTO `maincategory` (`MainCategoryID`, `CategoryName`, `CategoryOrder`) VALUES
 (1, 'Toetsinstrumenten', 1),
 (2, 'Tokkelinstrumenten', 2),
 (3, 'Blaasinstrumenten', 3),
 (4, 'Slaginstrumenten', 4),
-(5, 'Strijkinstrumenten', 5),
-(6, 'Drums and Percussion', 0);
+(5, 'Strijkinstrumenten', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Product`
+-- Tabelstructuur voor tabel `product`
 --
 
-CREATE TABLE `Product` (
+CREATE TABLE `product` (
   `ProductNumber` int(11) DEFAULT NULL,
   `ProductName` varchar(100) DEFAULT NULL,
   `Description` longtext,
@@ -117,10 +117,10 @@ CREATE TABLE `Product` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Product_Related_Product`
+-- Tabelstructuur voor tabel `product_related_product`
 --
 
-CREATE TABLE `Product_Related_Product` (
+CREATE TABLE `product_related_product` (
   `ProductNumber` int(11) DEFAULT NULL,
   `ProductNumber_Related_Product` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -128,10 +128,10 @@ CREATE TABLE `Product_Related_Product` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `User`
+-- Tabelstructuur voor tabel `user`
 --
 
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   `ID` int(11) NOT NULL,
   `UserName` varchar(15) DEFAULT NULL,
   `FullName` varchar(255) DEFAULT NULL,
@@ -147,45 +147,47 @@ CREATE TABLE `User` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `User`
+-- Gegevens worden geëxporteerd voor tabel `user`
 --
 
-INSERT INTO `User` (`ID`, `UserName`, `FullName`, `Adres`, `HouseNumber`, `ZipCode`, `City`, `E-Mail`, `Gender`, `Avatar`, `Password`, `Deleted`) VALUES
-(1, 'janwil', 'Jan Willem Lenting', 'Spaaksingel', 30, '6716KG', 'EDE', 'tuneshop@janwil.nl', 'M', 'janwil.png', '$2y$10$rM0yWRSGfxVXT6cOHO2OS.ScnB8zpMcy/g0PS8gYNE2VKYyNScxmy', 0),
-(2, 'lotus', 'Lotus ter Haar', 'Straatnaam', 123, '1234AA', 'PLAATS', NULL, 'F', '', '$2y$10$v3GK9i6TDBLHzWIzNlkrROYSLgRYr4Oy9mAmCuKqP/mDKnnTnju4u', 0);
+INSERT INTO `user` (`ID`, `UserName`, `FullName`, `Adres`, `HouseNumber`, `ZipCode`, `City`, `E-Mail`, `Gender`, `Avatar`, `Password`, `Deleted`) VALUES
+(1, 'janwil', 'Jan Willem Lenting', 'Spaaksingel', 30, '6716KG', 'EDE', 'tuneshop@janwil.nl', 'M', 'janwil.png', '$2y$10$nkXLfvvEwsX5y/YoYOJcVeM7Tc3y/KD9ExrIqGYgGpmXrpIyOroZe', 0),
+(2, 'lotus', 'Lotus ter Haar', 'Straatnaam', 123, '1234AA', 'PLAATS', 'lotus.ter.haar@gmail.com', 'F', '', '$2y$10$Ygs4c9mUXO.yWB5h1h2cNev7G1KHKMfNQDHwHL2qMWTUofZmtu00K', 0);
 
 --
--- Indexes for dumped tables
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `Category`
+-- Indexen voor tabel `category`
 --
-ALTER TABLE `Category`
-  ADD PRIMARY KEY (`CategoryName`),
-  ADD UNIQUE KEY `CategoryName` (`CategoryName`);
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`CategorieID`),
+  ADD UNIQUE KEY `CategoryName` (`CategoryName`),
+  ADD UNIQUE KEY `CategorieID` (`CategorieID`),
+  ADD KEY `CategorieID_2` (`CategorieID`);
 
 --
--- Indexes for table `MainCategory`
+-- Indexen voor tabel `maincategory`
 --
-ALTER TABLE `MainCategory`
+ALTER TABLE `maincategory`
   ADD UNIQUE KEY `MainCategoryID` (`MainCategoryID`);
 
 --
--- Indexes for table `User`
+-- Indexen voor tabel `user`
 --
-ALTER TABLE `User`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `ID` (`ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `User`
+-- AUTO_INCREMENT voor een tabel `user`
 --
-ALTER TABLE `User`
+ALTER TABLE `user`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
