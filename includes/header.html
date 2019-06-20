@@ -79,7 +79,7 @@ require_once('../protectedfunctions/user.php');
                                 name="remember"> Onthouden
                             </label>
                             <span class="psw"><a href="/vergeten">Vergeten?</a></span>
-                            <a href="/registreer">Registreer</a>
+                            <a href="/registrationpage">Registreer</a>
                             <button class="button login-button" type="submit">Login</button>
                         </span>
                         </form>
@@ -110,13 +110,13 @@ require_once('../protectedfunctions/user.php');
                         <li class="dropdown"><a href="/webshop" class="dropbtn">Webshop</a>
                             <div class="dropdown-content">
                                 <ul class="sub-menu dropdown-content">
-                                    <li><a href="/producten" class="sub-menu-link">Producten</a>
+                                    <li><a href="/productoverview.html" class="sub-menu-link">Producten</a>
                                     </li>
                                     <?php if (isLoggedin()): ?>
-                                    <li><a href="/bestelgeschiedenis" class="sub-menu-link">Bestel geschiedenis</a>
+                                    <li><a href="/history" class="sub-menu-link">Bestel geschiedenis</a>
                                     </li>
                                         <?php endif; ?>
-                                    <li><a href="/winkelwagen" class="sub-menu-link">Winkelwagen</a>
+                                    <li><a href="/shoppingcartpage.html" class="sub-menu-link">Winkelwagen</a>
                                     </li>
                                     <li><a href="/afrekenen" class="sub-menu-link">Afrekenen</a>
                                     </li>
