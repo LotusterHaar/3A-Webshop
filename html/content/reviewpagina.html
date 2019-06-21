@@ -1,0 +1,68 @@
+<!--========================
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen:
+File: styles shoppingcart CSS
+==========================-->
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Music WebShop</title>
+    <link rel="stylesheet" type="text/css" href="../css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/stylesReviewPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<section class="content">
+    <div class="writeReview">
+        <h1>Schrijf een review</h1>
+        <h2>Over de <a href="https://www.w3schools.com/html/">Yamaha piano</a></h2>
+        <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als
+            je
+            vragen of opmerkingen hebt over bijvoorbeeld de prijs of de levertijd kunnen we je beter helpen bij
+            de
+            klantenservioce.</p>
+        <h2>Je beoordeling</h2>
+        <p>1. Aantal sterren<span class="required"> *</span></p>
+        <p>2. Zou je het artikel aan vrienden aanbevelen?<span class="required"> *</span></p>
+        <form>
+            <label class="radioContainer">Ja, een aanrader
+                <input type="radio" name="radio" checked="checked">
+                <span class="checkmark"></span>
+            </label>
+            <label class="radioContainer">Nee, geen aanrader
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label>
+        </form>
+        <p>3. Geef je review een titel</p>
+        <input type="text" name="titleReview">
+        <p>4. Wat vind je van het artikel?</p>
+        <textarea class="text-input" name="reviewDescription" rows="9" cols="70"
+                  placeholder="Beschrijf je ervaringen met het artikel ..."></textarea>
+        <div id="plusAndMinus"><p>5. Plus- en minpunten</p></div>
+        <h2>Je gegevens</h2>
+        <p>6. Jouw naam</p>
+        <input type="text" name="nameReview" placeholder="Je eigen naam of kies een nickname">
+        <p>7. E-mailadres</p>
+        <input type="text" placeholder="Vul emailadres in" name="email">
+        <p>8. Leeftijd</p>
+        <select>
+            <option value="fourteen">Tot 14 jaar</option>
+            <option value="fourteenNineteen">14-19</option>
+            <option value="twentyTwentynine">20-29</option>
+            <option value="thirtyThirtynine">30-39</option>
+            <option value="fortyFortynine">40-49</option>
+            <option value="fiftyFiftynine">50-59</option>
+            <option value="sixtyFiftynine">60-69</option>
+            <option value="seventyPlus">70+ jaar</option>
+        </select>
+        <p>9. Woonplaats</p>
+        <input type="text" placeholder="Vul emailadres in" name="residence" placeholder="">
+        <button type="submit" class="button send">Review verzenden</button>
+    </div>
+</section>
+</body>
+</html>

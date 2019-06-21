@@ -20,89 +20,92 @@ Associated files: index CSS
 </head>
 
 <body>
+</section>
+<!-- Content -->
+<section class="content">
+    <h1 class="header-register">Registreren</h1>
+    <h2 class="fill-in-data">Vul uw gegevens in:</h2>
+    <form action="registreer.php" method="post">
+        <div class="registration-form">
+            <?php if(!empty($success_message)) { ?>
+            <div class="success-message"><?php if(isset($success_message)) echo $success_message; ?></div>
+            <?php } ?>
+            <?php if(!empty($error_message)) { ?>
+            <div class="error-message"><?php if(isset($error_message)) echo $error_message; ?></div>
+            <?php } ?>
+            <div class="column1">
+                <div class="registration-form-header"><h3><label>Accountgegevens</label></h3></div>
+                <div class="column-body1">
 
-            </section>
-            <!-- Content -->
-            <section class="content">
-                <h1 class="header-register">Registreren</h1>
-                <h2 class="fill-in-data">Vul uw gegevens in:</h2>
-                <form action="registreer.php" method="post">
-                    <div class="registration-form">
-                        <?php if(!empty($success_message)) { ?>
-                        <div class="success-message"><?php if(isset($success_message)) echo $success_message; ?></div>
-                        <?php } ?>
-                        <?php if(!empty($error_message)) { ?>
-                        <div class="error-message"><?php if(isset($error_message)) echo $error_message; ?></div>
-                        <?php } ?>
-                        <div class="column1">
-                            <div class="registration-form-header"><h3><label>Accountgegevens</label></h3></div>
-                            <div class="column-body1">
-
-                                <label for="username"><span>Gebruikersnaam *</span> <input name="username" id="username"
-                                                                                           type="text"
-                                                                                           placeholder="Gebruikersnaam" value="<?php echo $username; ?>"
-                                                                                           required/></label>
+                    <label for="username"><span>Gebruikersnaam *</span> <input name="username" id="username"
+                                                                               type="text"
+                                                                               placeholder="Gebruikersnaam"
+                                                                               value="<?php echo $username; ?>"
+                                                                               required/></label>
 
 
-                                <label for="password"><span>Wachtwoord *</span> <input name="password" id="password"
-                                                                                       placeholder="Wachtwoord"
-                                                                                       type="password" value="<?php echo $password; ?>"
-                                                                                       required/></label>
-
-                                <label for="confirm-password"><span>Herhaal wachwoord *</span> <input name="confirm-password"
-                                                                                               id="confirm-password"
-                                                                                               placeholder="Herhaal wachtwoord"
-                                                                                               type="password"  value="<?php echo $confirm_password; ?>"
-                                                                                               required/></label>
-                            </div>
-                        </div>
-                        <div class="column2">
-                            <div class="registration-form-header"><h3><label>Factuuradres</label></h3></div>
-                            <div class="column-body2">
-                                <div class="address-row">
-                                    <label><span>Aanhef *</span> <select name="gender">
-                                        <option value="M">Dhr.</option>
-                                        <option value="F">Mevr.</option>
-                                    </select></label>
-                                    <label><span>Voornaam *</span><input name="firstname" type="text"
-                                                                         placeholder="Voornaam"
-                                                                         required/></label>
-                                    <label><span>Tussenv.</span><input name="prefix" type="text"
-                                                                       placeholder="Tussenvoegsel"/></label>
-                                    <label><span>Achternaam *</span> <input name="surname" type="text"
-                                                                            placeholder="Achternaam" required/></label>
-                                </div>
-                                <div class="address-row">
-                                    <label><span>Emailadres *</span><input name="email" type="email" id="e-mail"
-                                                                           placeholder="email@voorbeeld.com"
+                    <label for="password"><span>Wachtwoord *</span> <input name="password" id="password"
+                                                                           placeholder="Wachtwoord"
+                                                                           type="password"
+                                                                           value="<?php echo $password; ?>"
                                                                            required/></label>
-                                </div>
-                                <div class="address-row">
-                                    <label><span>Straatnaam *</span> <input name="address" type="text"
-                                                                            placeholder="Straatnaam" required/></label>
-                                    <label><span>Huisnummer *</span> <input name="housenumber" placeholder="Huisnummer"
-                                                                            type="text" required/></label>
-                                </div>
-                                <div class="address-row"><label><span>Postcode *</span><input name="zipcode"
-                                                                                              placeholder="Postcode"
-                                                                                              type="text"
-                                                                                              required/></label>
-                                    <label><span>Plaatsnaam *</span><input name="city" type="text"
-                                                                           placeholder="Plaatsnaam" required/></label>
-                                </div>
-                                <div class="address-row">
-                                    <label><span>Telefoon *</span> <input name="phonenumber" type="text"
-                                                                          placeholder="Telefoonnummer"
-                                                                          aria-placeholder="Telefoonnummer"
-                                                                          required/></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <div class="save-button-row">
-                    <button type="submit" class="button save-button"><i
-                            class="fas fa-save" aria-hidden="true"></i> Opslaan</button>
+
+                    <label for="confirm-password"><span>Herhaal wachwoord *</span> <input name="confirm-password"
+                                                                                          id="confirm-password"
+                                                                                          placeholder="Herhaal wachtwoord"
+                                                                                          type="password"
+                                                                                          value="<?php echo $confirm_password; ?>"
+                                                                                          required/></label>
                 </div>
-                </form>
-            </section>
+            </div>
+            <div class="column2">
+                <div class="registration-form-header"><h3><label>Factuuradres</label></h3></div>
+                <div class="column-body2">
+                    <div class="address-row">
+                        <label><span>Aanhef *</span> <select name="gender">
+                            <option value="M">Dhr.</option>
+                            <option value="F">Mevr.</option>
+                        </select></label>
+                        <label><span>Voornaam *</span><input name="firstname" type="text"
+                                                             placeholder="Voornaam"
+                                                             required/></label>
+                        <label><span>Tussenv.</span><input name="prefix" type="text"
+                                                           placeholder="Tussenvoegsel"/></label>
+                        <label><span>Achternaam *</span> <input name="surname" type="text"
+                                                                placeholder="Achternaam" required/></label>
+                    </div>
+                    <div class="address-row">
+                        <label><span>Emailadres *</span><input name="email" type="email" id="e-mail"
+                                                               placeholder="email@voorbeeld.com"
+                                                               required/></label>
+                    </div>
+                    <div class="address-row">
+                        <label><span>Straatnaam *</span> <input name="address" type="text"
+                                                                placeholder="Straatnaam" required/></label>
+                        <label><span>Huisnummer *</span> <input name="housenumber" placeholder="Huisnummer"
+                                                                type="text" required/></label>
+                    </div>
+                    <div class="address-row"><label><span>Postcode *</span><input name="zipcode"
+                                                                                  placeholder="Postcode"
+                                                                                  type="text"
+                                                                                  required/></label>
+                        <label><span>Plaatsnaam *</span><input name="city" type="text"
+                                                               placeholder="Plaatsnaam" required/></label>
+                    </div>
+                    <div class="address-row">
+                        <label><span>Telefoon *</span> <input name="phonenumber" type="text"
+                                                              placeholder="Telefoonnummer"
+                                                              aria-placeholder="Telefoonnummer"
+                                                              required/></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="save-button-row">
+            <button type="submit" class="button save-button"><i
+                    class="fas fa-save" aria-hidden="true"></i> Opslaan
+            </button>
+        </div>
+    </form>
+</section>
 </body>
