@@ -32,20 +32,23 @@ Associated files: producten CSS
                         <h1 id="categoryTitle">Categorie</h1>
                         <nav class="categoryMenu">
                             <?php
-$database = db_con();
-$database2 = db_con();
-$sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` ORDER BY `CategoryOrder` ASC";
-$stmt = $database->prepare($sql);
+
+                            require_once('../../protectedfunctions/generalfunctions.php');
+                            require_once('../../protectedfunctions/dbfunctions.php');
+                            $database = db_con();
+                            $database2 = db_con();
+                            $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` ORDER BY `CategoryOrder` ASC";
+                            $stmt = $database->prepare($sql);
                             $stmt->execute();
                             $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             $database=null;
 
-foreach ($categories as $categoryName) {
+                            foreach ($categories as $categoryName) {
                             ?>
                             <div class="tab brown">
-                                echo '<input id="tab-' . $categoryName['MainCategoryID'] . '" type="checkbox" name="tabs">';
+                                <?php echo '<input id="tab-' . $categoryName['MainCategoryID'] . '" type="checkbox" name="tabs">';
                                 echo('<label for="tab-' . $categoryName['MainCategoryID'] . '">' . $categoryName['CategoryName'] . '</label>');
-                                
+
                                 $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY  `CategoryOrder` ASC";
                                 $query = $database2->prepare($sqlQuery);
                                 $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
@@ -55,8 +58,8 @@ foreach ($categories as $categoryName) {
                                 <?php echo ('<a href="'.$subcategory['CategoryID'].'">'.$subcategory['CategoryName'].'</a>');?>
                                 </div>
                             </div>
-                            <?php } ?>
-}
+                            <?php } }?>
+
                      <!--       <div class="tab brown">
                                 <input id="tab-one" type="checkbox" name="tabs">
                                 <label for="tab-one">Toetsinstrumenten</label>
@@ -268,3 +271,4 @@ foreach ($categories as $categoryName) {
             </section>
 
 </body>
+</html>
