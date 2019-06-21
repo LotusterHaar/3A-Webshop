@@ -43,9 +43,9 @@ $stmt = $database->prepare($sql);
 foreach ($categories as $categoryName) {
                             ?>
                             <div class="tab brown">
-                                <?php echo ('<input id="tab-'.$categoryName['MainCategoryID'].'" type="checkbox" name="tabs">');
-                                <!-- echo ('<label for="tab-'.$categoryName['MainCategoryID'].'">'.($categoryName['MainCategoryName'].'</label>');
--->
+                                echo '<input id="tab-' . $categoryName['MainCategoryID'] . '" type="checkbox" name="tabs">';
+                                echo('<label for="tab-' . $categoryName['MainCategoryID'] . '">' . $categoryName['CategoryName'] . '</label>');
+                                
                                 $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY  `CategoryOrder` ASC";
                                 $query = $database2->prepare($sqlQuery);
                                 $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
