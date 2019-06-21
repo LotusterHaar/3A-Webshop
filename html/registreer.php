@@ -62,8 +62,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO `user` (`UserName`, `FullName`, `Adres`, `HouseNumber`, `ZipCode`, `City`, `E-Mail`, `Gender`, `Avatar`, `Password`, `Deleted`) VALUES
-        (:username, :fullname, `Adres`, `HouseNumber`, `ZipCode`, `City`, `E-Mail`, `Gender`, `Avatar`, `Password`, `Deleted`)";
+        $sql = "INSERT INTO `user` (`UserName`, `FirstName`, `Prefix`, `Surname`, `Adress`, `HouseNumber`, `ZipCode`, `City`, `PhoneNumber`, `E-Mail`, `Gender`, `Avatar`, `Password`, `Deleted`) VALUES
+        (username, :firstname, :prefix, :surname, :address`, :housenumber`, :zipcode, :city, :phonenumber, :email, :gender, :avatar, :password, :deleted)";
         $sql = "INSERT INTO user (username, password) VALUES (:username, :password)";
 
         if($stmt = $pdo->prepare($sql)){
@@ -91,9 +91,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     unset($pdo);
 }
-?>
+
 
 include '../includes/header.html';
-include './registratiepagina.html';
+include './content/registratiepagina.html';
 include '../includes/footer.html';
 
+?>
