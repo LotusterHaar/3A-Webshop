@@ -25,14 +25,13 @@ Associated files: index CSS
 <section class="content">
     <h1 class="header-register">Registreren</h1>
     <h2 class="fill-in-data">Vul uw gegevens in:</h2>
-    <form action="registreer.php" method="post">
+    <pre><?php print_r($_SESSION); ?></pre>
+    <form action="/registreer" method="post">
         <div class="registration-form">
-            <?php if(!empty($success_message)) { ?>
-            <div class="success-message"><?php if(isset($success_message)) echo $success_message; ?></div>
-            <?php } ?>
-            <?php if(!empty($error_message)) { ?>
-            <div class="error-message"><?php if(isset($error_message)) echo $error_message; ?></div>
-            <?php } ?>
+            <?php if ((isset($_SESSION['registration-error']) && !empty($_SESSION['registration-error']))): ?>
+            <div class="alert"><?php echo $_SESSION['registration-error']; ?></div>
+            <?php unset($_SESSION['registration-error']); endif; ?>
+
             <div class="column1">
                 <div class="registration-form-header"><h3><label>Accountgegevens</label></h3></div>
                 <div class="column-body1">
@@ -40,21 +39,21 @@ Associated files: index CSS
                     <label for="username"><span>Gebruikersnaam *</span> <input name="username" id="username"
                                                                                type="text"
                                                                                placeholder="Gebruikersnaam"
-                                                                               value="<?php echo $username; ?>"
+                                                                               value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['username']);?>"
                                                                                required/></label>
 
 
                     <label for="password"><span>Wachtwoord *</span> <input name="password" id="password"
                                                                            placeholder="Wachtwoord"
                                                                            type="password"
-                                                                           value="<?php echo $password; ?>"
+                                                                           value=""
                                                                            required/></label>
 
                     <label for="confirm-password"><span>Herhaal wachwoord *</span> <input name="confirm-password"
                                                                                           id="confirm-password"
                                                                                           placeholder="Herhaal wachtwoord"
                                                                                           type="password"
-                                                                                          value="<?php echo $confirm_password; ?>"
+                                                                                          value=""
                                                                                           required/></label>
                 </div>
             </div>
@@ -67,34 +66,34 @@ Associated files: index CSS
                             <option value="F">Mevr.</option>
                         </select></label>
                         <label><span>Voornaam *</span><input name="firstname" type="text"
-                                                             placeholder="Voornaam"
+                                                             placeholder="Voornaam" value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['firstname']);?>"
                                                              required/></label>
                         <label><span>Tussenv.</span><input name="prefix" type="text"
                                                            placeholder="Tussenvoegsel"/></label>
                         <label><span>Achternaam *</span> <input name="surname" type="text"
-                                                                placeholder="Achternaam" required/></label>
+                                                               value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['prefix']);?>" placeholder="Achternaam" required/></label>
                     </div>
                     <div class="address-row">
                         <label><span>Emailadres *</span><input name="email" type="email" id="e-mail"
-                                                               placeholder="email@voorbeeld.com"
+                                                               placeholder="email@voorbeeld.com" value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['email']);?>"
                                                                required/></label>
                     </div>
                     <div class="address-row">
-                        <label><span>Straatnaam *</span> <input name="address" type="text"
+                        <label><span>Straatnaam *</span> <input name="address" type="text" value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['address']);?>"
                                                                 placeholder="Straatnaam" required/></label>
-                        <label><span>Huisnummer *</span> <input name="housenumber" placeholder="Huisnummer"
+                        <label><span>Huisnummer *</span> <input name="housenumber" placeholder="Huisnummer" value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['housenumber']);?>"
                                                                 type="text" required/></label>
                     </div>
                     <div class="address-row"><label><span>Postcode *</span><input name="zipcode"
                                                                                   placeholder="Postcode"
-                                                                                  type="text"
+                                                                                  type="text" value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['zipcode']);?>"
                                                                                   required/></label>
-                        <label><span>Plaatsnaam *</span><input name="city" type="text"
+                        <label><span>Plaatsnaam *</span><input name="city" type="text" value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['city']);?>"
                                                                placeholder="Plaatsnaam" required/></label>
                     </div>
                     <div class="address-row">
                         <label><span>Telefoon *</span> <input name="phonenumber" type="text"
-                                                              placeholder="Telefoonnummer"
+                                                              placeholder="Telefoonnummer" value="<?php checkIfSetAndShow($_SESSION['Registerform-values']['phonenumber']);?>"
                                                               aria-placeholder="Telefoonnummer"
                                                               required/></label>
                     </div>
