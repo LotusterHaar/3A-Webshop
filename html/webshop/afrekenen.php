@@ -1,5 +1,5 @@
 <?php
 include '../../includes/header.html';
-include '../content/over-ons.html';
+include '../content/registratiepagina.html';
 include '../../includes/footer.html';
 ?>
