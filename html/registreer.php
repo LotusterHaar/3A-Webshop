@@ -10,9 +10,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     unset ($_SESSION['Registerform-values']);
     unset ($_SESSION['registration-error']);
 
+    $_SESSION['Registerform-values'] = array();
     // Fill Registerform-values
-    foreach($_POST as $key => $value)
-        $_SESSION['Registerform-values'] = array_push_assoc($_SESSION['Registerform-values'], $key, $value );
+    foreach($_POST as $key => $value) {
+        $_SESSION['Registerform-values'] = array_push_assoc($_SESSION['Registerform-values'], $key, $value);
+    }
 
     // Validate username
     if(empty($_SESSION['Registerform-values']['username'])){
@@ -58,19 +60,17 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     }
 
     // Validate confirm password
-    if(empty($_SESSION['Registerform-values']['confirm-password'])){
+    if(empty($_SESSION['Registerform-values']['confirm_password'])){
         $_SESSION['Registerform-values']= "Bevestig het wachtwoord";
         toonRedirectHeader();
     } else{
-        $confirm_password = $_SESSION['Registerform-values']['confirm-password'];
+        $confirm_password = $_SESSION['Registerform-values']['confirm_password'];
         if($password != $confirm_password){
             $_SESSION['registration-error'] = "Het wachtwoord komt niet overeen.";
             toonRedirectHeader();
         }
     }
 
-    print_r($_SESSION);
-    die();
     // Check input errors before inserting in database
     if(empty($_SESSION['registration-error']) && empty($password_err) && empty($confirm_password_err)){
 
