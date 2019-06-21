@@ -3,6 +3,7 @@ Page: About Us
 Template Name: TuneShop
 Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen: http://jsfiddle.net/H3y8j/
+https://phppot.com/php/php-user-registration-form/
 Associated files: index CSS
 ==========================-->
 
@@ -25,9 +26,14 @@ Associated files: index CSS
             <section class="content">
                 <h1 class="header-register">Registreren</h1>
                 <h2 class="fill-in-data">Vul uw gegevens in:</h2>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <form action="registreer.php" method="post">
                     <div class="registration-form">
-
+                        <?php if(!empty($success_message)) { ?>
+                        <div class="success-message"><?php if(isset($success_message)) echo $success_message; ?></div>
+                        <?php } ?>
+                        <?php if(!empty($error_message)) { ?>
+                        <div class="error-message"><?php if(isset($error_message)) echo $error_message; ?></div>
+                        <?php } ?>
                         <div class="column1">
                             <div class="registration-form-header"><h3><label>Accountgegevens</label></h3></div>
                             <div class="column-body1">
@@ -94,7 +100,7 @@ Associated files: index CSS
                         </div>
                     </div>
                 <div class="save-button-row">
-                    <button class="button save-button"><i
+                    <button type="submit" class="button save-button"><i
                             class="fas fa-save" aria-hidden="true"></i> Opslaan</button>
                 </div>
                 </form>

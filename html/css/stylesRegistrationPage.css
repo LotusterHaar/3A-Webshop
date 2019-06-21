@@ -93,4 +93,18 @@
     margin: 0 25px 25px 0px;
 }
 
+.error-message {
+    padding: 7px 10px;
+    background: #fff1f2;
+    border: #ffd5da 1px solid;
+    color: #d6001c;
+    border-radius: 4px;
+}
 
+.success-message {
+    padding: 7px 10px;
+    background: #cae0c4;
+    border: #c3d0b5 1px solid;
+    color: #027506;
+    border-radius: 4px;
+}

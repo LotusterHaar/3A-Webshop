@@ -50,11 +50,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";
+        $confirm_password_err = "Bevestig het wachtwoord";
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+            $confirm_password_err = "Het wachtwoord komt niet overeen.";
         }
     }
 
@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Redirect to login page
                 header("location: login.php");
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Error: Er ging iets mis, probeer het later.";
             }
         }
 
