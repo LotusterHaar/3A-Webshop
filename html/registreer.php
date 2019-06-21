@@ -19,7 +19,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $_SESSION['registration-error'] = "Voer een gebruikersnaam in"; //  Browser should check this but just in case
         toonRedirectHeader();
     } else{
-        $_SESSION['registration-error'] = "Voer een gebruikersnaam in"; //  Browser should check this but just in case
         // Prepare a select statement
         $sql = "SELECT ID FROM user WHERE UserName = :username and Deleted!=1;";
 
@@ -50,8 +49,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     // Validate password
     if(empty($_SESSION['Registerform-values']['password'])){
         $_SESSION['registration-error'] = "Vul een wachtwoord in";
+        toonRedirectHeader();
     } elseif(strlen($_SESSION['Registerform-values']['password']) < 6){
         $_SESSION['registration-error'] = "Het wachtwoord moet minstens 6 karakters hebben";
+        toonRedirectHeader();
     } else{
         $password = $_SESSION['Registerform-values']['password'];
     }
@@ -59,10 +60,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     // Validate confirm password
     if(empty($_SESSION['Registerform-values']['confirm-password'])){
         $_SESSION['Registerform-values']= "Bevestig het wachtwoord";
+        toonRedirectHeader();
     } else{
         $confirm_password = $_SESSION['Registerform-values']['confirm-password'];
         if($password != $confirm_password){
             $_SESSION['registration-error'] = "Het wachtwoord komt niet overeen.";
+            toonRedirectHeader();
         }
     }
 
