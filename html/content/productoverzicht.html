@@ -51,12 +51,10 @@ Associated files: producten CSS
                         echo('<label for="tab-' . $categoryName['MainCategoryID'] . '">' . $categoryName['CategoryName']
                         . '</label>');
 
-                        $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY
-                        `CategoryOrder` ASC";
+                        $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY `CategoryOrder` ASC";
                         $query = $database2->prepare($sqlQuery);
                         $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
                         $subcategories = $query->fetchAll(PDO::FETCH_ASSOC);
-                        print_r($subcategories);
                         echo('<div class="tab-content">');
                         foreach($subcategories as $subcategory){
                         echo ('<a href="productpagina-' . $subcategory['CategoryID'] . '">'.$subcategory['CategoryName'].'</a>');
@@ -65,16 +63,6 @@ Associated files: producten CSS
 
                     </div>
                     <?php  }?>
-
-
-                    <!--       <div class="tab brown">
-                               <input id="tab-one" type="checkbox" name="tabs">
-                               <label for="tab-one">Toetsinstrumenten</label>
-                               <div class="tab-content">
-                                   <a href="">Piano's</a>
-                               </div>
-                           </div>
--->
                 </nav>
             </section>
             <section class="flex-container-column">
