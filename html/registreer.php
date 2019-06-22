@@ -1,10 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
-echo ("<PRE>");
-print_r($_SERVER);
-print_r($_SESSION);
-echo ("</PRE>");
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $database = db_con('rw');
@@ -79,15 +76,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     if(empty($_SESSION['registration-error']) && empty($password_err) && empty($confirm_password_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO `user` (`UserName`, `FirstName`, `Prefix`, `Surname`, `Adress`, `HouseNumber`, `ZipCode`, `City`, `PhoneNumber`, `E-Mail`, `Gender`, `Avatar`, `Password`, `Deleted`) VALUES
-        (username, :firstname, :prefix, :surname, :address`, :housenumber`, :zipcode, :city, :phonenumber, :email, :gender, :avatar, :password, :deleted)";
-        $sql = "INSERT INTO user (username, password) VALUES (:username, :password)";
+        $sql = "INSERT INTO `user` (UserName, FirstName, Prefix, Surname, Adress, HouseNumber, ZipCode, City, PhoneNumber, E-Mail, Gender, Avatar, Password) VALUES
+        (:username, :firstname, :prefix, :surname, :address, :housenumber, :zipcode, :city, :phonenumber, :email, :gender, :avatar, :password, :)";
 
         if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-            echo ('Password: '.$_REQUEST['password'].' = ' . password_hash($_REQUEST['password'],PASSWORD_DEFAULT));
-            $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
+            stmt->execute(['username' => $_SESSION['Registerform-values']['username']
+            ])
 
             // Set parameters
             $param_username = $username;

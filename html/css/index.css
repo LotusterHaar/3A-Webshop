@@ -121,6 +121,15 @@ hr{
     text-decoration: none;
 }
 
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button a:visited {
+    color: white;
+    text-decoration: none;
+}
 
 /*========== End CSS for Top Header =============*/
 /*========== Begin CSS for Main =============*/
