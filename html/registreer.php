@@ -74,7 +74,7 @@ if($_SERVER['REQUEST_METHOD']=="POST") {
     if (empty($_SESSION['registration-error'])) {
 
         // Prepare an insert statement
-        $sql = "INSERT INTO `user` (UserName, FirstName, Prefix, Surname, Adress, HouseNumber, ZipCode, City, PhoneNumber, E-Mail, Gender, Avatar, Password) VALUES
+        $sql = "INSERT INTO `user` ('UserName', 'FirstName', 'Prefix', 'Surname', 'Adress', 'HouseNumber', 'ZipCode', 'City', 'PhoneNumber', 'E-Mail', 'Gender', 'Avatar', 'Password') VALUES
         (:username, :firstname, :prefix, :surname, :address, :housenumber, :zipcode, :city, :phonenumber, :email, :gender, :avatar, :password)";
 
         if ($stmt = $database_rw->prepare($sql)) {
