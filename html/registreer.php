@@ -99,7 +99,7 @@ if($_SERVER['REQUEST_METHOD']=="POST") {
                 //Success!
                 // Redirect to login page
                 unset ($_SESSION['Registerform-values']);
-                header("location: index.php");
+                header("location: /);
             } else {
                 echo "Error: Er ging iets mis, probeer het later.";
             }
