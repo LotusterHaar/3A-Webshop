@@ -1,8 +1,3 @@
-<?php 
-require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
-?>
-
 <!--========================
 Page: Productoverview
 Template Name: TuneShop
@@ -11,7 +6,6 @@ Bronnen:
 Associated files: producten CSS
 ==========================-->
 
-    <link rel="stylesheet" type="text/css" href="/css/stylesProductOverview.css">
 <!-- Content -->
 <section class="content">
     <form class="search-form" action="action_page.php">
@@ -74,7 +68,7 @@ Associated files: producten CSS
                             <img src="/webshop/producten/images/instrument.jpg" alt="Instrument">
                             <h1>Naam gerelateerd product</h1>
                             <div class="priceline"><h2>€36,70</h2>
-                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                <button class="shopping-cart-button"><span><a href="#toevoegen=2552"><i
                                         class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
                             </div>
                         </div>

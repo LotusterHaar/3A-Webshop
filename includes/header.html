@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
 ?>
 
@@ -12,24 +13,17 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
-    <?php ?>
-    <!--
-        <link rel="stylesheet" href="/css/stylesProductPage.css">
     <?php
-    if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
-      echo '    <link rel="stylesheet" href="/css/stylesProductOverview.css">'."\r\n";
-    if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
-      echo '    <link rel="stylesheet" href="/css/stylesProductOverview.css">'."\r\n";
-    if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
-      echo '    <link rel="stylesheet" href="/css/stylesProductOverview.css">'."\r\n";
-    if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
-      echo '    <link rel="stylesheet" href="/css/stylesProductOverview.css">'."\r\n";
+    if (strpos($_SERVER['REQUEST_URI'],'/webshop/winkelwagen') !== false)
+        echo '<link rel="stylesheet" type="text/css" href="/css/stylesShoppingCartPage.css">'."\r\n";
+    else if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
+        echo '<link rel="stylesheet" type="text/css" href="/css/stylesShoppingCartPage.css">'."\r\n";
+    else if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
+        echo '<link rel="stylesheet" type="text/css" href="/css/stylesShoppingCartPage.css">'."\r\n";
+    else if (strpos($_SERVER['REQUEST_URI'],'/producten') !== false)
+        echo '<link rel="stylesheet" type="text/css" href="/css/stylesShoppingCartPage.css">'."\r\n";
     ?>
-        <link rel="stylesheet" href="/css/stylesRegistration.css">
-        <link rel="stylesheet" href="/css/stylesReviewPage.css">
-        <link rel="stylesheet" href="/css/stylesShoppingcart.css">
-        <link rel="stylesheet" href="/css/topnav_original.css">
-    -->
+
 </head>
 
 <body>

@@ -1,12 +1,16 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
+echo ("<PRE>");
+print_r($_SERVER);
+print_r($_SESSION);
+echo ("</PRE>");
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $database = db_con('rw');
-    //$_SESSION['registration-error'] = "test";
-    //print_r($_SERVER);
-    //die();
+    $_SESSION['registration-error'] = "test";
+    print_r($_SERVER);
+    die();
     unset ($_SESSION['Registerform-values']);
     unset ($_SESSION['registration-error']);
 
