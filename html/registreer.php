@@ -1,6 +1,6 @@
 <?php
-require_once('../protectedfunctions/generalfunctions.php');
-require_once('../protectedfunctions/dbfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $database = db_con('rw');
@@ -109,10 +109,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     $database=null; #RESET database session
 }
 else {
-    include '../includes/header.html';
+    include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
     include './content/registratiepagina.html';
-    include '../includes/footer.html';
-    //Cleanup
+    include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
+    //Cleanup old errors
     unset ($_SESSION['registration-error']);
     unset ($_SESSION['Registerform-values']);
 }

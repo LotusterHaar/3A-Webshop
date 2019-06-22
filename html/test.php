@@ -1,6 +1,7 @@
 <?php
-require_once('../protectedfunctions/generalfunctions.php');
-require_once('../protectedfunctions/dbfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
+
 $database = db_con();
 $database2 = db_con();
 $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` ORDER BY `CategoryOrder` ASC";

@@ -1,5 +1,5 @@
 <?php
-include '../../includes/header.html';
-include '../content/over-ons.html';
-include '../../includes/footer.html';
+include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
+include './content/productoverzicht.html';
+include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
 ?>

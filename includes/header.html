@@ -11,7 +11,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
     <title>Music WebShop</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <?php ?>
     <!--
         <link rel="stylesheet" href="/css/stylesProductPage.css">
@@ -36,28 +36,27 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
 
 <!-- Main Content -->
 <main>
-    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email"
-                                                                                                href="mailto:info@tuneshop.online"><i
-            class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
+    <div id="top-header"><span id="info-phone"><i class="fas fa-phone"></i> 06-1234567</span><a id="info-email" href="mailto:info@tuneshop.online">
+        <i class="fas fa-envelope"></i> info@tuneshop.nl</a></div>
     <div class="flex-container">
         <div class="wrapper">
             <!-- Header -->
             <header>
                 <div class="header-small-logo">
-                    <img src="../images/logo_tuneshop_small_aqua_transparant.png" id="logo" alt="Logo TuneShop">
+                    <img src="/images/logo_tuneshop_small_aqua_transparant.png" id="logo" alt="Logo TuneShop">
                 </div>
                 <div class="header-logo">
-                    <img src="../images/logo_tuneshop_aqua.png" id="logoText" alt="TuneShop">
+                    <img src="/images/logo_tuneshop_aqua.png" id="logoText" alt="TuneShop">
                 </div>
                 <div class="header-account">
                     <?php if (isLoggedin()): ?>
                     <form action="/logout" method="post">
-                        <img src="../images/avatar?<?php echo uniqid(); ?>" alt="Avatar" id="avatar">
+                        <img src="/images/avatar?<?php echo uniqid(); ?>" alt="Avatar" id="avatar">
                         <h3><?php echo $_SESSION['FullName']; ?></h3>
                         <button type="submit">Uitloggen</button>
                         <?php else: ?>
                         <form action="/login" method="post">
-                            <img src="../images/login_logo_aqua.png" alt="Avatar" id="avatar">
+                            <img src="/images/login_logo_aqua.png" alt="Avatar" id="avatar">
                             <h3>LOGIN</h3>
                             <?php if (hasError()): ?>
                             <div class="alert"><?php echo $_SESSION['error']; ?></div>
