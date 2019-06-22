@@ -13,12 +13,7 @@ Associated files: index CSS
             <section class="content flex-columnContainer">
                 <div class="tablecontainer">
                     <div class="buttonRow">
-                        <button class="button buttonShopMore onclick=" goBack()> <i class="fas fa-shopping-basket"></i> Verder winkelen</button>
-                        <script>
-                            function goBack() {
-                                window.history.back();
-                            }
-                        </script>
+                        <button class="button buttonShopMore" href="/webshop"><a href="/webshop"><i class="fas fa-shopping-basket"></i> Verder winkelen</a></button>
                     </div>
                     <h1 id="headingShoppingCart">Winkelwagen</h1>
                     <table>
@@ -76,7 +71,7 @@ Associated files: index CSS
                                 </form></td>
                             <td>€34.60</td>
                             <td>
-                                <button class="deleteBtn"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                <button class="deleteBtn"><span><a href="#?toevoegen=2552"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a></span></button>
                             </td>
                         </tr>
