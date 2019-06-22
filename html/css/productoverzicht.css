@@ -155,7 +155,7 @@ form.search-form::after {
     text-decoration: none;
 }
 
-.categoryMenu a:link, a:visited {
+.categoryMenu a:link, .categoryMenu a:visited {
     color: white
 }
 
