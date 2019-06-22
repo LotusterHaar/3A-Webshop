@@ -1,0 +1,271 @@
+<?php 
+require_once('../../protectedfunctions/generalfunctions.php');
+require_once('../../protectedfunctions/dbfunctions.php');
+?>
+
+<!--========================
+Page: Productoverview
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen:
+Associated files: producten CSS
+==========================-->
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music WebShop</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylesProductOverview.css">
+</head>
+
+<body>
+<!-- Content -->
+<section class="content">
+    <form class="search-form" action="action_page.php">
+        <input type="text" name="search" placeholder="Zoektermen ingeven">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <section class="flex-wrapper">
+
+        <section class="flex-container">
+            <section class="flex-container-column">
+                <h1 id="categoryTitle">Categorie</h1>
+                <nav class="categoryMenu">
+                    <?php
+                            $database = db_con();
+                            $database2 = db_con();
+                            $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` ORDER BY `CategoryOrder` ASC";
+                            $stmt = $database->prepare($sql);
+                    $stmt->execute();
+                    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $database=null;
+
+                    foreach ($categories as $categoryName) {
+                    ?>
+                    <div class="tab brown">
+                        <?php echo '<input id="tab-' . $categoryName['MainCategoryID'] . '" type="checkbox" name="tabs">
+                        ';
+                        echo('<label for="tab-' . $categoryName['MainCategoryID'] . '">' . $categoryName['CategoryName']
+                        . '</label>');
+
+                        $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY `CategoryOrder` ASC";
+                        $query = $database2->prepare($sqlQuery);
+                        $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
+                        $subcategories = $query->fetchAll(PDO::FETCH_ASSOC);
+                        echo('<div class="tab-content">');
+                        foreach($subcategories as $subcategory){
+                        echo ('<a href="productpagina-' . $subcategory['CategoryID'] . '">'.$subcategory['CategoryName'].'</a>');
+                        } ?>
+                    </div>
+
+                    </div>
+                    <?php  }?>
+                </nav>
+            </section>
+            <section class="flex-container-column">
+                <div class="product-option-chooser">
+                    <p class="productAmountItem startMargin">1376 Producten | Toon</p>
+                    <select class="productAmountItem">
+                        <option value="ten">10</option>
+                        <option value="twenty">20</option>
+                        <option value="thirty">30</option>
+                        <option value="forty">40</option>
+                        <option value="fifty">50</option>
+                    </select>
+                    <p class="productAmountItem">per pagina</p>
+                </div>
+
+                <section class="flex-container-ImageBoxSmall">
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column">
+                        <div class="imageBoxSmall">
+                            <img src="../images/instrument.jpg" alt="Instrument">
+                            <h1>Naam gerelateerd product</h1>
+                            <div class="priceline"><h2>€36,70</h2>
+                                <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                        class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+
+</body>
+</html>
