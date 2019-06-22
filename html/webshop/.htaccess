@@ -4,10 +4,22 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ productpagina.php?categorie=$1 [L,QSA]
 
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^/]+)/$ $1.php
-RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.php
+RewriteCond %{REQUEST_URI} ^/webshop/winkelwagen
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
-RewriteRule (.*)$ /$1/ [R=301,L]
+RewriteRule ^(.*)$ winkelwagen.php?uri=$1 [L,QSA]
+
+RewriteCond %{REQUEST_URI} ^/webshop/afrekenen
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ afrekenen.php?uri=$1 [L,QSA]
+#
+#
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^([^/]+)/$ $1.php
+#RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.php
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME}.php !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
+#RewriteRule (.*)$ $1 [R=301,L]
