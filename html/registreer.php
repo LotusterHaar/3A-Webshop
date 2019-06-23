@@ -97,21 +97,40 @@ if($_SERVER['REQUEST_METHOD']=="POST") {
                 ]
             )) {
                 //Success!
-                // Redirect to login page
+                $database = db_con();
+                $sql = "SELECT * FROM User WHERE UserName = :username and Deleted=0";
+                $stmt = $database->prepare($sql);
+                $stmt->execute(['username' => $username]);
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                $database=null; #RESET database session
+                if ($user && password_verify($password, $user['Password']))
+                {
+                    unset($_SESSION['loginform']);
+                    foreach ($user as $key => $value){
+                        if ($key !== 'Password' && !empty($value))
+                            $_SESSION[$key]=$value; #Save all database values without Password
+                    }
+                }
                 unset ($_SESSION['Registerform-values']);
+
+                // Redirect to login page
                 header("location: /");
             } else {
                 echo "Error: Er ging iets mis, probeer het later.";
             }
         }
 
+
         // Close statement
         unset($stmt);
-
 
         // Close connection
         unset($database);
         $database = null; #RESET database session
+
+        // Close connection
+        unset($database_rw);
+        $database_rw = null; #RESET database session
     }
 }
 else {

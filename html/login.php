@@ -4,6 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php')
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
 #reset all old session info
 #resetsession();
+
 #Browser already checks this but just to be sure
 if (isset($_REQUEST['username']) && !empty($_REQUEST['username']))
 {
@@ -42,6 +43,8 @@ if ($user && password_verify($password, $user['Password']))
         if ($key !== 'Password' && !empty($value))
             $_SESSION[$key]=$value; #Save all database values without Password
     }
+    if (!isset($_SESSION['Prefix']))
+        $_SESSION['Prefix'] = '';
 }
 else
 {

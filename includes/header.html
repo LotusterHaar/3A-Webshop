@@ -48,9 +48,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                 </div>
                 <div class="header-account">
                     <?php if (isLoggedin()): ?>
+                      <img src="/images/avatar?<?php echo uniqid(); ?>" alt="Avatar" id="avatar">
+                      <h3><?php echo ("{$_SESSION['FirstName']} {$_SESSION['Prefix']} {$_SESSION['Surname']}" ); ?></h3>
                     <form action="/logout" method="post">
-                        <img src="/images/avatar?<?php echo uniqid(); ?>" alt="Avatar" id="avatar">
-                        <h3><?php echo $_SESSION['FullName']; ?></h3>
                         <button type="submit">Uitloggen</button>
                         <?php else: ?>
                         <form action="/login" method="post">
