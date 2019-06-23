@@ -79,7 +79,16 @@ foreach ($products as $product) {
               <div class="imageBoxSmall"><img src="/webshop/producten/images/'.$product['Picture_Big'].'"
                                               alt="Instrument">');
     echo(' <h1>');
-    echo($product['ProductName']);
+
+    $extraspaties = 70 -  strlen($product['ProductName']);
+    $productname = $product['ProductName'];
+
+    for ($x = 0; $x <= $extraspaties; $x++) {
+        $productname = $productname." ";
+    }
+    $productname = substr($productname,0, 70);
+    $productname = str_replace('  ','&nbsp;&nbsp;',$productname);
+    echo($productname);
     echo('</h1>');
     echo('<div class="priceline"><h2>');
     echo($product['Price']);
