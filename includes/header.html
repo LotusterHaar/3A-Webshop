@@ -108,14 +108,20 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                                 <ul class="sub-menu dropdown-content">
                                     <li><a href="/webshop/producten" class="sub-menu-link">Producten</a>
                                     </li>
-                                    <?php if (isLoggedin()): ?>
-                                    <li><a href="/webshop/geschiedenis" class="sub-menu-link">Bestelgeschiedenis</a>
+                                    <?php if (isAdmin()): ?>
+                                    <li><a href="/webshop/productenbeheren" class="sub-menu-link">Producten beheren</a>
                                     </li>
-                                        <?php endif; ?>
+                                    <li><a href="/webshop/gebruikersbeheren" class="sub-menu-link">Gebruikers beheren</a>
+                                    </li>
+                                    <?php endif; ?>
+                                    <?php if (isLoggedin()): ?>
+                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link">Bestelgeschiedenis</a>
+                                    </li>
                                     <li><a href="/webshop/winkelwagen" class="sub-menu-link">Winkelwagen</a>
                                     </li>
                                     <li><a href="/webshop/afrekenen" class="sub-menu-link">Afrekenen</a>
                                     </li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </li>

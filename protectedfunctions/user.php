@@ -9,6 +9,16 @@ function isLoggedin()
     }
 }
 
+function isAdmin()
+{
+    if (isset($_SESSION['UserName']) && $_SESSION['UserName'] !== '' && ($_SESSION['UserName'] == 'lotus' || $_SESSION['UserName'] == 'janwil'))
+    {
+        return true;
+    } else {
+        false;
+    }
+}
+
 function hasError()
 {
     if (isset($_SESSION['error']) && $_SESSION['error'] !== '')
