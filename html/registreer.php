@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
 
-if($_SERVER['REQUEST_METHOD']=="POST") {
+if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
     $database = db_con();
     $database_rw = db_con('rw');
 
@@ -135,7 +135,11 @@ if($_SERVER['REQUEST_METHOD']=="POST") {
 }
 else {
     include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
-    include './content/registratiepagina.html';
+    if (isLoggedin())
+        include $_SERVER['DOCUMENT_ROOT'].'/content/over-ons.html';
+    else
+        include './content/registratiepagina.html';
+
     include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
     //Cleanup old errors
     unset ($_SESSION['registration-error']);

@@ -14,19 +14,67 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <?php
-    if (strpos($_SERVER['REQUEST_URI'],'/webshop/afrekenen') !== false) {
-        echo '<link rel="stylesheet" type="text/css" href="/css/afrekenen.css">'."\r\n";
-    } else if (strpos($_SERVER['REQUEST_URI'],'/webshop/winkelwagen') !== false) {
-        echo '<link rel="stylesheet" type="text/css" href="/css/afrekenen.css">'."\r\n";
-    } else if (strpos($_SERVER['REQUEST_URI'],'/webshop') !== false) {
-        echo '<link rel="stylesheet" type="text/css" href="/css/productoverzicht.css">'."\r\n";
-    } else if (strpos($_SERVER['REQUEST_URI'],'/registreer') !== false) {
-        echo '<link rel="stylesheet" type="text/css" href="/css/registratiepagina.css">'."\r\n";
-    } else if (strpos($_SERVER['REQUEST_URI'],'/review') !== false) {
-        echo '<link rel="stylesheet" type="text/css" href="/css/reviewpagina.css">'."\r\n";
-    } else if (strpos($_SERVER['REQUEST_URI'],'/webshop/producten/toonproduct') !== false) {
+    $actievepagina = 'Home';
+    $subpagina = '';
+     if (strpos(strtolower($_SERVER['REQUEST_URI']),'/nieuws') !== false) {
+        $actievepagina = 'Nieuws';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/acties') !== false) {
+        $actievepagina = 'Acties';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/over-ons/contact') !== false) {
+        $actievepagina = 'Over-Ons';
+        $subpagina = 'Contact';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/over-ons/team') !== false) {
+        $actievepagina = 'Over-Ons';
+        $subpagina = 'Team';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/over-ons/betaalmethodes') !== false) {
+        $actievepagina = 'Over-Ons';
+        $subpagina = 'Betaalmethodes';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/over-ons') !== false) {
+        $actievepagina = 'Over-Ons';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/vacatures') !== false) {
+        $actievepagina = 'Vacatures';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/producten/toonproduct') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="/css/productpagina.css">'."\r\n";
+        $actievepagina = 'Webshop';
+        $subpagina = 'Producten';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/producten/beheren') !== false) {
+    echo '<link rel="stylesheet" type="text/css" href="/css/productpagina.css">'."\r\n";
+    $actievepagina = 'Webshop';
+    $subpagina = 'Producten-Beheren';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/gebruikers/beheren') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/productpagina.css">'."\r\n";
+        $actievepagina = 'Webshop';
+        $subpagina = 'Gebruikers-Beheren';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/producten/review') !== false) {
+        //echo '<link rel="stylesheet" type="text/css" href="/css/reviewpagina.css">'."\r\n";
+        $actievepagina = 'Webshop';
+        $subpagina = 'Producten';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/bestelgeschiedenis') !== false) {
+        //echo '<link rel="stylesheet" type="text/css" href="/css/bestelgeschiedenis.css">'."\r\n";
+        $actievepagina = 'Webshop';
+        $subpagina = 'Bestelgeschiedenis';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/winkelwagen') !== false) {
+    //echo '<link rel="stylesheet" type="text/css" href="/css/winkelwagen.css">'."\r\n";
+    $actievepagina = 'Webshop';
+    $subpagina = 'Winkelwagen';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/afrekenen') !== false) {
+    //echo '<link rel="stylesheet" type="text/css" href="/css/afrekenen.css">'."\r\n";
+    $actievepagina = 'Webshop';
+    $subpagina = 'Afrekenen';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/producten') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/productoverzicht.css">'."\r\n";
+        $actievepagina = 'Webshop';
+        $subpagina = 'Producten';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop') !== false) {
+    echo '<link rel="stylesheet" type="text/css" href="/css/productoverzicht.css">'."\r\n";
+    $actievepagina = 'Webshop';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/registreer') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/registratiepagina.css">'."\r\n";
+        $actievepagina = 'Home';
+        $subpagina = 'Registreer';
     }
+    echo (strtolower($_SERVER['REQUEST_URI']));
+    echo ('Actievepagina: '.$actievepagina . ' / '.$subpagina);
     ?>
 
 </head>
@@ -87,43 +135,43 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
             <section class="nav">
                 <nav id="top-menu-nav">
                     <ul id="top-menu" class="nav">
-                        <li><a href="/" class="active">Home</a></li>
-                        <li><a href="/nieuws">Nieuws</a></li>
-                        <li><a href="/acties">Acties</a></li>
+                        <li><a href="/" <?php if ($actievepagina=='Home'){  echo ('class="active"'); } ?>>Home</a></li>
+                        <li><a href="/nieuws" <?php if ($actievepagina=='Nieuws'){  echo ('class="active"'); } ?>>Nieuws</a></li>
+                        <li><a href="/acties" <?php if ($actievepagina=='Acties'){  echo ('class="active"'); } ?>>Acties</a></li>
                         <li class="dropdown">
-                            <a href="/over-ons" class="dropbtn">Over Ons</a>
+                            <a href="/over-ons" class="dropbtn<?php if ($actievepagina=='Over-Ons'){  echo (' active"'); } ?>">Over Ons</a>
                             <div class="dropdown-content">
                                 <ul class="sub-menu dropdown-content">
-                                    <li><a href="/over-ons/contact" class="sub-menu-link">Contact</a>
+                                    <li><a href="/over-ons/contact" class="sub-menu-link <?php if ($subpagina=='Contact'){  echo (' active"'); } ?>">Contact</a>
                                     </li>
-                                    <li><a href="/over-ons/team" class="sub-menu-link">Team</a>
+                                    <li><a href="/over-ons/team" class="sub-menu-link <?php if ($subpagina=='Team'){  echo (' active"'); } ?>">Team</a>
                                     </li>
-                                    <li><a href="/over-ons/betaalmethodes" class="sub-menu-link">Betaalmethodes</a>
+                                    <li><a href="/over-ons/betaalmethodes" class="sub-menu-link <?php if ($subpagina=='Betaalmethodes'){  echo (' active"'); } ?>">Betaalmethodes</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="/vacatures">Vacatures</a></li>
-                        <li class="dropdown"><a href="/webshop" class="dropbtn">Webshop</a>
+                        <li><a href="/vacatures" <?php if ($actievepagina=='Vacatures'){  echo ('class="active"'); } ?>>Vacatures</a></li>
+                        <li class="dropdown"><a href="/webshop" class="dropbtn <?php if ($actievepagina=='Webshop'){  echo (' active"'); } ?>">Webshop</a>
                             <div class="dropdown-content">
                                 <ul class="sub-menu dropdown-content">
-                                    <li><a href="/webshop/producten" class="sub-menu-link">Producten</a>
+                                    <li><a href="/webshop/producten" class="sub-menu-link <?php if ($subpagina=='Producten'){  echo (' active"'); } ?>">Producten</a>
                                     </li>
                                     <?php if (isAdmin()): ?>
-                                    <li><a href="/webshop/productenbeheren" class="sub-menu-link">Producten beheren</a>
+                                    <li><a href="/webshop/producten/beheren" class="sub-menu-link <?php if ($subpagina=='Producten-Beheren'){  echo (' active"'); } ?>">Producten beheren</a>
                                     </li>
-                                    <li><a href="/webshop/gebruikersbeheren" class="sub-menu-link">Gebruikers beheren</a>
+                                    <li><a href="/webshop/gebruikers/beheren" class="sub-menu-link <?php if ($subpagina=='Gebruikers-Beheren'){  echo (' active"'); } ?>">Gebruikers beheren</a>
                                     </li>
                                     <?php endif; ?>
                                     <?php if (isLoggedin()): ?>
-                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link">Bestelgeschiedenis</a>
+                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link <?php if ($subpagina=='Bestelgeschiedenis'){  echo (' active"'); } ?>">Bestelgeschiedenis</a>
                                     </li>
-                                    <li><a href="/webshop/winkelwagen" class="sub-menu-link">Winkelwagen</a>
+                                    <li><a href="/webshop/winkelwagen" class="sub-menu-link <?php if ($subpagina=='Winkelwagen'){  echo (' active"'); } ?>">Winkelwagen</a>
                                     </li>
-                                    <li><a href="/webshop/afrekenen" class="sub-menu-link">Afrekenen</a>
+                                    <li><a href="/webshop/afrekenen" class="sub-menu-link <?php if ($subpagina=='Afrekenen'){  echo (' active"'); } ?>">Afrekenen</a>
                                     </li>
                                     <?php else : ?>
-                                    <li><a href="/registreer" class="sub-menu-link">Registreren</a>
+                                    <li><a href="/registreer" class="sub-menu-link <?php if ($subpagina=='Registreren'){  echo (' active"'); } ?>">Registreren</a>
                                     </li>
                                     <?php endif; ?>
                                 </ul>

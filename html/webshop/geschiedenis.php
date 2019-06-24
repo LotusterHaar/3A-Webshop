@@ -1,5 +1,0 @@
-<?php
-include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
-include './content/geschiedenis.html';
-include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
-?>

@@ -233,6 +233,11 @@ nav {
     background-color: #0facf3;
 }
 
+.dropdown .active {
+    border-radius: 5px;
+    background-color: #0facf3;
+}
+
 .dropdown:hover .dropbtn {
     background-color: #88d3f0
 }
