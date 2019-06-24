@@ -92,7 +92,7 @@ if($_SERVER['REQUEST_METHOD']=="POST") {
                     ':phonenumber' => $_SESSION['Registerform-values']['phonenumber'],
                     ':email' => $_SESSION['Registerform-values']['email'],
                     ':gender' => $_SESSION['Registerform-values']['gender'],
-                    ':avatar' => $_SESSION['Registerform-values']['username'],
+                    ':avatar' => $_SESSION['Registerform-values']['username'].'.png',
                     ':password' => $_SESSION['Registerform-values']['password'],
                 ]
             )) {

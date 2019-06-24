@@ -14,18 +14,19 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <?php
-    if (strpos($_SERVER['REQUEST_URI'],'/webshop/afrekenen') !== false)
+    if (strpos($_SERVER['REQUEST_URI'],'/webshop/afrekenen') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="/css/afrekenen.css">'."\r\n";
-    else if (strpos($_SERVER['REQUEST_URI'],'/webshop/winkelwagen') !== false)
-    echo '<link rel="stylesheet" type="text/css" href="/css/afrekenen.css">'."\r\n";
-    else if (strpos($_SERVER['REQUEST_URI'],'/webshop') !== false)
-    echo '<link rel="stylesheet" type="text/css" href="/css/productoverzicht.css">'."\r\n";
-    else if (strpos($_SERVER['REQUEST_URI'],'/registreer') !== false)
-    echo '<link rel="stylesheet" type="text/css" href="/css/registratiepagina.css">'."\r\n";
-    else if (strpos($_SERVER['REQUEST_URI'],'/review') !== false)
-    echo '<link rel="stylesheet" type="text/css" href="/css/reviewpagina.css">'."\r\n";
-    else if (strpos($_SERVER['REQUEST_URI'],'/webshop/producten/toonproduct') !== false)
-    echo '<link rel="stylesheet" type="text/css" href="/css/productpagina.css">'."\r\n"
+    } else if (strpos($_SERVER['REQUEST_URI'],'/webshop/winkelwagen') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/afrekenen.css">'."\r\n";
+    } else if (strpos($_SERVER['REQUEST_URI'],'/webshop') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/productoverzicht.css">'."\r\n";
+    } else if (strpos($_SERVER['REQUEST_URI'],'/registreer') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/registratiepagina.css">'."\r\n";
+    } else if (strpos($_SERVER['REQUEST_URI'],'/review') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/reviewpagina.css">'."\r\n";
+    } else if (strpos($_SERVER['REQUEST_URI'],'/webshop/producten/toonproduct') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/productpagina.css">'."\r\n";
+    }
     ?>
 
 </head>
@@ -120,6 +121,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                                     <li><a href="/webshop/winkelwagen" class="sub-menu-link">Winkelwagen</a>
                                     </li>
                                     <li><a href="/webshop/afrekenen" class="sub-menu-link">Afrekenen</a>
+                                    </li>
+                                    <?php else : ?>
+                                    <li><a href="/registreer" class="sub-menu-link">Registreren</a>
                                     </li>
                                     <?php endif; ?>
                                 </ul>

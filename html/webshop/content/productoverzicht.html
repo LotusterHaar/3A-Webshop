@@ -5,6 +5,12 @@ Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen:
 Associated files: producten CSS
 ==========================-->
+<PRE>
+    <?php
+    print_r($_SERVER);
+    print_r($_POST);
+?>
+</PRE>
 
 <!-- Content -->
 <section class="content">
@@ -93,8 +99,9 @@ foreach ($products as $product) {
     echo('<div class="priceline"><h2>');
     echo($product['Price']);
     echo('</h2>');
-    echo(' <button class="shopping-cart-button"><span><a href="#toevoegen=' . $product['ID'] . '"><i
-                              class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>');
+
+    echo(' <button class="shopping-cart-button"><span><a href="/webshop/producten?toevoegen=' . $product['ID'] . '">');
+    echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>');
     echo('</div>  </div>  </div>');
 }
 ?>

@@ -1,10 +1,36 @@
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+/* The close button */
+.closebtn {
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
 .header-register{
     text-align: center
 }
 
 .registration-form {
     display: flex;
-    padding: 25px;
+    padding: 0px 25px 25px 25px;
 }
 
 .fill-in-data{

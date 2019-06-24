@@ -10,13 +10,16 @@ Associated files: index CSS
 <!-- Content -->
 <section class="content">
     <h1 class="header-register">Registreren</h1>
+    <?php if ((isset($_SESSION['registration-error']) && !empty($_SESSION['registration-error']))): ?>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['registration-error']; ?>
+    </div>
+    <?php unset($_SESSION['registration-error']); endif; ?>
     <h2 class="fill-in-data">Vul uw gegevens in:</h2>
-    <pre><?php print_r($_SESSION); ?></pre>
+
     <form action="#" method="post">
         <div class="registration-form">
-            <?php if ((isset($_SESSION['registration-error']) && !empty($_SESSION['registration-error']))): ?>
-            <div class="alert"><?php echo $_SESSION['registration-error']; ?></div>
-            <?php unset($_SESSION['registration-error']); endif; ?>
 
             <div class="column1">
                 <div class="registration-form-header"><h3><label>Accountgegevens</label></h3></div>
