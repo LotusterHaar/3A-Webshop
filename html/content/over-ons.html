@@ -9,6 +9,13 @@ Associated files: index CSS
 
             <!-- Content -->
             <section class="content">
+                <?php if ((isset($_SESSION['infobox']) && !empty($_SESSION['infobox']))): ?>
+                <div class="alert info">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <?php echo $_SESSION['infobox']; ?>
+                </div>
+                <?php unset($_SESSION['infobox']); endif; ?>
+
                 <article>
                     <h1>Over Ons</h1>
                     <h2>Wie zijn wij</h2>

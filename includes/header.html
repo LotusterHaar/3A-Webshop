@@ -65,16 +65,19 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
         echo '<link rel="stylesheet" type="text/css" href="/css/productoverzicht.css">'."\r\n";
         $actievepagina = 'Webshop';
         $subpagina = 'Producten';
-    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop') !== false) {
-    echo '<link rel="stylesheet" type="text/css" href="/css/productoverzicht.css">'."\r\n";
-    $actievepagina = 'Webshop';
-    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/registreer') !== false) {
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/registreer') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="/css/registratiepagina.css">'."\r\n";
         $actievepagina = 'Home';
         $subpagina = 'Registreer';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/wachtwoord-vergeten') !== false) {
+        echo '<link rel="stylesheet" type="text/css" href="/css/registratiepagina.css">'."\r\n";
+        $actievepagina = 'Home';
+        $subpagina = 'Registreer';
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop') !== false) {
+    echo '<link rel="stylesheet" type="text/css" href="/css/productoverzicht.css">'."\r\n";
+    $actievepagina = 'Webshop';
     }
-    echo (strtolower($_SERVER['REQUEST_URI']));
-    echo ('Actievepagina: '.$actievepagina . ' / '.$subpagina);
+
     ?>
 
 </head>
@@ -123,8 +126,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                                  <input type="checkbox" <?php if (isset($_SESSION['forgetsession']) && !($_SESSION['forgetsession'])) echo 'checked="checked"'; ?>
                                 name="remember"> Onthouden
                             </label>
-                            <span class="psw"><a href="/wachtwoord-vergeten">Vergeten?</a></span>
-                            <a href="/registreer">Registreer</a>
+                            <span class="psw"><a href="/webshop/wachtwoord-vergeten">Vergeten?</a></span>
+                            <a href="/webshop/registreer">Registreer</a>
                             <button class="button login-button" type="submit">Login</button>
                         </span>
                         </form>
