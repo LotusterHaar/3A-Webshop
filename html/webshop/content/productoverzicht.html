@@ -19,10 +19,25 @@ Associated files: producten CSS
                 <h1 id="categoryTitle">Categorie</h1>
                 <nav class="categoryMenu">
                     <?php
-                            $database = db_con();
-                            $database2 = db_con();
-                            $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` WHERE Disabled!=1 ORDER BY `CategoryOrder` ASC";
-                            $stmt = $database->prepare($sql);
+                    $categorieid = 1; // Standaard bij Piano's beginnen
+                    $aantal = 10; // Standaard aantal
+                    $pagina = 1; //Standaard beginpagina
+
+                    parse_str($_SERVER['QUERY_STRING'], $queryresolved);
+                    if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid'])) {
+                        $categorieid=$queryresolved['categorieid'];
+                    }
+
+                    if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal'])) {
+                        $aantal=$queryresolved['aantal'];
+                    }
+
+                    if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina'])) {
+                        $pagina=$queryresolved['pagina'];
+                    }
+                    $database = db_con();
+                    $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` WHERE Disabled!=1 ORDER BY `CategoryOrder` ASC";
+                    $stmt = $database->prepare($sql);
                     $stmt->execute();
                     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     $database=null;
@@ -37,13 +52,15 @@ Associated files: producten CSS
 
                         $database = db_con();
                         $sqlQuery = "SELECT * FROM `category` WHERE Disabled !=1 AND `MainCategoryID`=:categoryID ORDER BY `CategoryOrder` ASC";
-                        $query = $database2->prepare($sqlQuery);
+                        $query = $database->prepare($sqlQuery);
                         $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
                         $subcategories = $query->fetchAll(PDO::FETCH_ASSOC);
+                        $database=null;
+
                         echo('
                         <div class="tab-content">');
                             foreach($subcategories as $subcategory){
-                            echo ('<a href="?categorie=' . $subcategory['CategoryID'] . '">'.$subcategory['CategoryName'].'</a>');
+                            echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
                             } ?>
                         </div>
 
@@ -52,22 +69,31 @@ Associated files: producten CSS
                 </nav>
             </section>
             <?php
+
+            $offset = ($pagina - 1) * $aantal;
+
+            //select * from table limit (offset, row_count);
                     $database = db_con();
-                    $sql = "SELECT * FROM `product`";
+                    $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID LIMIT :offset,:limit";
                     $stmt = $database->prepare($sql);
-            $stmt->execute();
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+                    $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
+                    $stmt->bindParam(':categorieID',$categorieid, PDO::PARAM_INT);
+                    $stmt->execute( );
+                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $database = null; #RESET database session
             ?>
             <section class="flex-container-column">
                 <div class="product-option-chooser">
                     <p class="productAmountItem startMargin">1376 Producten | Toon</p>
                     <select class="productAmountItem">
-                        <option value="ten">10</option>
-                        <option value="twenty">20</option>
-                        <option value="thirty">30</option>
-                        <option value="forty">40</option>
-                        <option value="fifty">50</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
                     </select>
                     <p class="productAmountItem">per pagina</p>
                 </div>
