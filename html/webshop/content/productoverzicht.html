@@ -93,11 +93,13 @@ foreach ($products as $product) {
     echo('<div class="priceline"><h2>');
     echo($product['Price']);
     echo('</h2>');
-    if (isLoggedin())
-        echo(' <button class="shopping-cart-button"><span><a href="/webshop/producten?toevoegen=' . $product['ID'] . '">');
-    else
-        echo(' <button class="shopping-cart-button"><span><a href="/webshop/registreer">');
-    echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></a></span></button>');
+    if (isLoggedin()) {
+        echo('<a href="/webshop/producten?toevoegen=' . $product['ID'] . '"><button class="shopping-cart-button"><span>');
+        echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></span></button></a>');
+    } else {
+        echo('<a href="/webshop/registreer"><button class="shopping-cart-button"><span>');
+        echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button></a>');
+    }
     echo('</div>  </div>  </div>');
 }
 ?>
