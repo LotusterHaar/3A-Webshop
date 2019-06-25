@@ -50,8 +50,6 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
                                 ]
                             )) {
                                 //Success!
-                                echo("GELUKT!");
-
                                 // SEND MAIL WITH TOKEN
                                 $headers = "From: support@tuneshop.online\r\n";
                                 $headers .= "Reply-To:  noreply@tuneshop.online\r\n";
@@ -69,13 +67,9 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
                                 }
                             }
 
-
                             unset ($_SESSION['Registerform-values']);
-
-                            // Redirect to login page
-                            header("location: /");
                         } else {
-                            echo "Error: Er ging iets mis, probeer het later.";
+                            $_SESSION['registration-error']= "Error: Er ging iets mis, probeer het later.";
                         }
                         // Close statement
                         unset($stmt);
@@ -93,12 +87,13 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
         }
 
 
-//        if (isset($_SESSION['infobox']) && !empty($_SESSION['infobox'])|| isset($_SESSION['registration-error']) && !empty($_SESSION['registration-error'])) {
-//            toonRedirectHeader();
-//        }
+    if (isset($_SESSION['infobox']) && !empty($_SESSION['infobox'])|| isset($_SESSION['registration-error']) && !empty($_SESSION['registration-error'])) {
+        //toonRedirectHeader();
+        header ("Location: /");
+    }
 
-        // Close statement
-        unset($stmt);
+    // Close statement
+    unset($stmt);
     }
     // Close connection
     unset($database);
@@ -110,13 +105,9 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
 
 }
     include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
-    if (isset($_SESSION['infobox']) && !empty($_SESSION['infobox']))
-        include $_SERVER['DOCUMENT_ROOT'].'./content/over-ons.html';
-    else
-        include './content/wachtwoord-vergeten.html';
-
-
+    include './content/wachtwoord-vergeten.html';
     include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
+
     //Cleanup old errors
     unset ($_SESSION['infobox']);
     unset ($_SESSION['registration-error']);

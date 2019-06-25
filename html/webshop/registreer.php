@@ -106,10 +106,14 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
                 if ($user && password_verify($password, $user['Password']))
                 {
                     unset($_SESSION['loginform']);
+
                     foreach ($user as $key => $value){
                         if ($key !== 'Password' && !empty($value))
                             $_SESSION[$key]=$value; #Save all database values without Password
                     }
+                    
+                    if (!isset($_SESSION['Prefix']))
+                        $_SESSION['Prefix'] = '';
                 }
                 unset ($_SESSION['Registerform-values']);
 
