@@ -22,15 +22,17 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
         toonRedirectHeader();
     } else {
         // Prepare a select statement
-        $sql = "SELECT ID FROM user WHERE UserName = :username and Deleted!=1;";
+        $sql = "SELECT ID FROM user WHERE (UserName = :username OR EMail = :email);";
 
         if ($stmt = $database->prepare($sql)) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // Attempt to execute the prepared statement
-            if ($stmt->execute(['username' => $_SESSION['Registerform-values']['username']])) {
+            if ($stmt->execute(['username' => $_SESSION['Registerform-values']['username'],
+                                'email' => $_SESSION['Registerform-values']['email'],
+            ])) {
                 if ($stmt->rowCount() == 1) {
-                    $_SESSION['registration-error'] = "Deze gebruikersnaam is al bezet";
+                    $_SESSION['registration-error'] = "Deze gebruikersnaam en/of email adres is al bezet";
                 } else {
                     $username = $_SESSION['Registerform-values']['username'];
                 }
@@ -111,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
                         if ($key !== 'Password' && !empty($value))
                             $_SESSION[$key]=$value; #Save all database values without Password
                     }
-                    
+
                     if (!isset($_SESSION['Prefix']))
                         $_SESSION['Prefix'] = '';
                 }
