@@ -51,6 +51,14 @@ Associated files: producten CSS
                     <?php  }?>
                 </nav>
             </section>
+            <?php
+                    $database = db_con();
+                    $sql = "SELECT * FROM `product`";
+                    $stmt = $database->prepare($sql);
+            $stmt->execute();
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $database = null; #RESET database session
+            ?>
             <section class="flex-container-column">
                 <div class="product-option-chooser">
                     <p class="productAmountItem startMargin">1376 Producten | Toon</p>
@@ -65,14 +73,7 @@ Associated files: producten CSS
                 </div>
 
                 <section class="flex-container-ImageBoxSmall">
-                    <?php
-                    $database = db_con();
-                    $sql = "SELECT * FROM `product`";
-                    $stmt = $database->prepare($sql);
-                    $stmt->execute();
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    $database = null; #RESET database session
-
+                <?php
 foreach ($products as $product) {
 
     echo('<div class="flex-column">
