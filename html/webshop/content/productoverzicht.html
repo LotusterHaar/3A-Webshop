@@ -43,7 +43,7 @@ Associated files: producten CSS
                         echo('
                         <div class="tab-content">');
                             foreach($subcategories as $subcategory){
-                            echo ('<a href="#categorie=' . $subcategory['CategoryID'] . '">'.$subcategory['CategoryName'].'</a>');
+                            echo ('<a href="?categorie=' . $subcategory['CategoryID'] . '">'.$subcategory['CategoryName'].'</a>');
                             } ?>
                         </div>
 
@@ -96,7 +96,7 @@ foreach ($products as $product) {
     if (isLoggedin())
         echo(' <button class="shopping-cart-button"><span><a href="/webshop/producten?toevoegen=' . $product['ID'] . '">');
     else
-        echo(' <button class="shopping-cart-button"><span><a href="/registreer">');
+        echo(' <button class="shopping-cart-button"><span><a href="/webshop/registreer">');
     echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></a></span></button>');
     echo('</div>  </div>  </div>');
 }
