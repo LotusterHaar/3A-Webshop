@@ -21,7 +21,7 @@ Associated files: producten CSS
                     <?php
                             $database = db_con();
                             $database2 = db_con();
-                            $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` ORDER BY `CategoryOrder` ASC";
+                            $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` WHERE Disabled!=1 ORDER BY `CategoryOrder` ASC";
                             $stmt = $database->prepare($sql);
                     $stmt->execute();
                     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
