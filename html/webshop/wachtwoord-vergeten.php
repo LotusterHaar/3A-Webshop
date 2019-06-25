@@ -110,11 +110,15 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
 
 }
     include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
-    include './content/wachtwoord-vergeten.html';
+    if (isset($_SESSION['infobox']) && !empty($_SESSION['infobox']))
+        include $_SERVER['DOCUMENT_ROOT'].'./content/over-ons.html';
+    else
+        include './content/wachtwoord-vergeten.html';
 
 
     include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
     //Cleanup old errors
+    unset ($_SESSION['infobox']);
     unset ($_SESSION['registration-error']);
     unset ($_SESSION['Registerform-values']);
 

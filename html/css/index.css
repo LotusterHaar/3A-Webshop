@@ -334,16 +334,14 @@ article img {
 
 /* The alert message box */
 .alert {
-    padding: 20px;
+    padding-top: 20px;
     background-color: #f44336; /* Red */
     color: white;
     margin-left: 25px;
     margin-right: 25px;
 }
-
-.alert .info {
-    background-color: #2196F3;
-}
+.alert.info {background-color: #2196F3;}
+.alert .info {background-color: #2196F3;}
 
 /* The close button */
 .closebtn {
