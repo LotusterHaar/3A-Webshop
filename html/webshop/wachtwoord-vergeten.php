@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
 
     unset ($_SESSION['Registerform-values']);
     unset ($_SESSION['registration-error']);
+    unset ($_SESSION['infobox']);
 
     $_SESSION['Registerform-values'] = array();
     // Fill Registerform-values
@@ -85,15 +86,6 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
 
             }
         }
-
-
-    if (isset($_SESSION['infobox']) && !empty($_SESSION['infobox'])|| isset($_SESSION['registration-error']) && !empty($_SESSION['registration-error'])) {
-        //toonRedirectHeader();
-        include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
-        include $_SERVER['DOCUMENT_ROOT'].'./content/over-ons.html';
-        include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
-    }
-
     // Close statement
     unset($stmt);
     }
@@ -105,6 +97,10 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
     unset($database_rw);
     $database_rw = null; #RESET database session
 
+    include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
+    include $_SERVER['DOCUMENT_ROOT'].'./content/over-ons.html';
+    include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
+    die();
 }
     include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
     include './content/wachtwoord-vergeten.html';
@@ -114,20 +110,6 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
     unset ($_SESSION['infobox']);
     unset ($_SESSION['registration-error']);
     unset ($_SESSION['Registerform-values']);
-
-
-function toonRedirectHeader(){
-    unset($database);
-    $database=null; #RESET database session
-
-    if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER']))
-#echo ('--');
-        header ("Location: ".$_SERVER['HTTP_REFERER']);
-    else
-#echo ('--');
-        header ("Location: /");
-    exit;
-}
 
 function array_push_assoc($array, $key, $value){
 if (!empty(trim($value)))
