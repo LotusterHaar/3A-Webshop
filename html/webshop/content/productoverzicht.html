@@ -71,21 +71,21 @@ Associated files: producten CSS
             <?php
 
             $offset = ($pagina - 1) * $aantal;
-
-            //select * from table limit (offset, row_count);
-                    $database = db_con();
-                    $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID LIMIT :offset,:limit";
-                    $stmt = $database->prepare($sql);
-                    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-                    $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
-                    $stmt->bindParam(':categorieID',$categorieid, PDO::PARAM_INT);
-                    $stmt->execute( );
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $database = db_con();
+            $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID LIMIT :offset,:limit";
+            $stmt = $database->prepare($sql);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
+            $stmt->bindParam(':categorieID',$categorieid, PDO::PARAM_INT);
+            $stmt->execute( );
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $database = null; #RESET database session
+            $totaalproducten = count($products);
+
             ?>
             <section class="flex-container-column">
                 <div class="product-option-chooser">
-                    <p class="productAmountItem startMargin">1376 Producten | Toon</p>
+                    <p class="productAmountItem startMargin"><?php echo ($totaalproducten)?> Producten | Toon</p>
                     <select class="productAmountItem">
                         <option value="1">1</option>
                         <option value="2">2</option>
