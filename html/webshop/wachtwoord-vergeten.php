@@ -89,7 +89,9 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
 
     if (isset($_SESSION['infobox']) && !empty($_SESSION['infobox'])|| isset($_SESSION['registration-error']) && !empty($_SESSION['registration-error'])) {
         //toonRedirectHeader();
-        header ("Location: /");
+        include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
+        include $_SERVER['DOCUMENT_ROOT'].'./content/over-ons.html';
+        include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
     }
 
     // Close statement
