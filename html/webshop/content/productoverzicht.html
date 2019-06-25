@@ -35,8 +35,8 @@ Associated files: producten CSS
                         echo('<label for="tab-' . $categoryName['MainCategoryID'] . '">' . $categoryName['CategoryName']
                         . '</label>');
 
-                        $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY
-                        `CategoryOrder` ASC";
+                        $database = db_con();
+                        $sqlQuery = "SELECT * FROM `category` WHERE Disabled !=1 AND `MainCategoryID`=:categoryID ORDER BY `CategoryOrder` ASC";
                         $query = $database2->prepare($sqlQuery);
                         $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
                         $subcategories = $query->fetchAll(PDO::FETCH_ASSOC);
