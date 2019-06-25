@@ -63,28 +63,26 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
 
                                 $message .= '<A HREF="localhost/webshop/wachtwoord-vergeten?token=' . $token . "Klik op deze link om het wachtwoord te resetten</A>";
                                 $message .= "</body></html>";
+
                                 if (!mail($email, "Tuneshop.online Wachtwoord Vergeten", $message, $headers)) {
-                                    $_SESSION['registration-error']= 'Er is een probleem opgetreden met versturen van de wachtwoord vergeten mail.';
+                                    $_SESSION['registration-error'] = 'Er is een probleem opgetreden met versturen van de wachtwoord vergeten mail.';
+                                    unset ($_SESSION['infobox']);
                                 }
+
+
+                            } else {
+                                $_SESSION['registration-error'] = "Error: Er ging iets mis, probeer het later.";
+                                unset ($_SESSION['infobox']);
                             }
-
-                            unset ($_SESSION['Registerform-values']);
-                        } else {
-                            $_SESSION['registration-error']= "Error: Er ging iets mis, probeer het later.";
                         }
-                        // Close statement
-                        unset($stmt);
-
-                        // Close connection
-                        unset($database);
-                        $database = null; #RESET database session
-
                     }
+                    include $_SERVER['DOCUMENT_ROOT'] . '/../includes/header.html';
+                    include $_SERVER['DOCUMENT_ROOT'] . './content/over-ons.html';
+                    include $_SERVER['DOCUMENT_ROOT'] . '/../includes/footer.html';
+                    die();
 
                 }
-
-
-            }
+                }
         }
     // Close statement
     unset($stmt);
