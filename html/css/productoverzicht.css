@@ -120,6 +120,10 @@ form.search-form::after {
 .categoryMenu{
     background: transparent;
 }
+
+#categoryMenu .active{
+    background: purple;
+}
 /* Add a gray right border to all list items, except the last item (last-child) */
 .categoryMenu label {
     border-bottom: 1.5px solid #dddddd;
@@ -154,6 +158,12 @@ form.search-form::after {
     text-decoration: none;
 }
 
+.tab active {
+border-radius: 5px;
+background-color: #0facf3;
+}
+
+
 .categoryMenu a:link, .categoryMenu a:visited {
     color: white
 }
@@ -163,8 +173,8 @@ form.search-form::after {
     background: #0facf3;
 }
 
-.categoryMenu a:active {
-
+.categoryMenu a .active {
+    background: red;
 }
 
 /* :checked */

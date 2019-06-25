@@ -17,7 +17,7 @@ Associated files: producten CSS
         <section class="flex-container">
             <section class="flex-container-column">
                 <h1 id="categoryTitle">Categorie</h1>
-                <nav class="categoryMenu">
+                <nav class="categoryMenu" id="categoryMenu">
                     <?php
                     $categorieid = 1; // Standaard bij Piano's beginnen
                     $aantal = 10; // Standaard aantal
@@ -60,7 +60,12 @@ Associated files: producten CSS
                         echo('
                         <div class="tab-content">');
                             foreach($subcategories as $subcategory){
-                            echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
+                               $active='';
+                               if ($subcategory['CategoryID'] == $categorieid) {
+                                    echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
+                               } else {
+                                    echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
+                               }
                             } ?>
                         </div>
 
@@ -72,15 +77,25 @@ Associated files: producten CSS
 
             $offset = ($pagina - 1) * $aantal;
             $database = db_con();
+            $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID;";
+            $stmt = $database->prepare($sql);
+            $stmt->execute( [
+            ':categorieID' => $categorieid,
+            ] );
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $totaalproducten = count($products);
+
             $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID LIMIT :offset,:limit";
             $stmt = $database->prepare($sql);
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
             $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
             $stmt->bindParam(':categorieID',$categorieid, PDO::PARAM_INT);
+            print ($sql);
             $stmt->execute( );
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
             $database = null; #RESET database session
-            $totaalproducten = count($products);
 
             ?>
             <section class="flex-container-column">
