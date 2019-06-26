@@ -98,11 +98,6 @@ Associated files: producten CSS
                         }
                     }
 
-                    echo ('<PRE>');
-                    print_r($_SESSION);
-                    print_r($categorieinfo);
-                    echo ('</PRE>');
-
                     $database = db_con();
                     $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` WHERE Disabled!=1 ORDER BY `CategoryOrder` ASC";
                     $stmt = $database->prepare($sql);
