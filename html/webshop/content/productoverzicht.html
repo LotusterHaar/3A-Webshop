@@ -26,6 +26,7 @@ Associated files: producten CSS
                     $categorieid = 1; // Standaard bij Piano's beginnen
                     $aantal = 1; // Standaard aantal
                     $pagina = 1; //Standaard beginpagina
+                    $totalpages = 1;
 
                     parse_str($_SERVER['QUERY_STRING'], $queryresolved);
                     if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid'])) {
@@ -52,6 +53,7 @@ Associated files: producten CSS
                         $pagina=$queryresolved['pagina'];
                     }
 
+                    // Winkelwagen
                     $toevoegenid=0;
                     if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && isLoggedin()) {
                         $toevoegenid=$queryresolved['toevoegen'];
@@ -98,6 +100,7 @@ Associated files: producten CSS
                         }
                     }
 
+                    // Show Maincategories
                     $database = db_con();
                     $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` WHERE Disabled!=1 ORDER BY `CategoryOrder` ASC";
                     $stmt = $database->prepare($sql);
@@ -118,7 +121,7 @@ Associated files: producten CSS
                         echo('<label for="tab-' . $categoryName['MainCategoryID'] . '">' . $categoryName['CategoryName']
                         . '</label>');
 
-
+                        // Show Subcategories
                         $database = db_con();
                         $sqlQuery = "SELECT * FROM `category` WHERE Disabled !=1 AND `MainCategoryID`=:categoryID ORDER BY `CategoryOrder` ASC";
                         $query = $database->prepare($sqlQuery);
@@ -144,7 +147,7 @@ Associated files: producten CSS
             </section>
             <?php
 
-            $offset = ($pagina - 1) * $aantal;
+            //Load total number of products
             $database = db_con();
             $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID;";
             $stmt = $database->prepare($sql);
@@ -155,32 +158,50 @@ Associated files: producten CSS
 
             $totaalproducten = count($products);
 
+            // Now load the products we want to see with the limit
+
+            $offset = ($pagina - 1) * $aantal;
+            if ($totaalproducten>0 && $aantal>0)
+                $totalpages = round($totaalproducten /$aantal);
+
             $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID LIMIT :offset,:limit";
             $stmt = $database->prepare($sql);
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
             $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
             $stmt->bindParam(':categorieID',$categorieid, PDO::PARAM_INT);
-            
+
             $stmt->execute( );
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $database = null; #RESET database session
 
             ?>
+            <form method="get">
+                <?php
+                //Keep old querystring values
+                if (isset($queryresolved)){
+                    foreach ($queryresolved as $key => $value ) {
+                        if ($key!="aantal")
+                            echo ('<input type="hidden" name="'.$key.'" value="'.$value.'">');
+                    }
+                }
+                ?>
             <section class="flex-container-column">
                 <div class="product-option-chooser">
                     <p class="productAmountItem startMargin"><?php echo ($totaalproducten)?> Producten | Toon</p>
-                    <select class="productAmountItem">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="20">20</option>
-                        <option value="30">30</option>
-                        <option value="40">40</option>
-                        <option value="50">50</option>
+
+                    <select class="productAmountItem" name="aantal" onchange="this.form.submit()">
+                        <option value="1" <?php if (isset($aantal) && $aantal == '1') echo ('selected'); ?>>1</option>
+                        <option value="2" <?php if (isset($aantal) && $aantal == '2') echo ('selected'); ?>>2</option>
+                        <option value="3" <?php if (isset($aantal) && $aantal == '3') echo ('selected'); ?>>3</option>
+                        <option value="20" <?php if (isset($aantal) && $aantal == '20') echo ('selected'); ?>>20</option>
+                        <option value="30" <?php if (isset($aantal) && $aantal == '30') echo ('selected'); ?>>30</option>
+                        <option value="40" <?php if (isset($aantal) && $aantal == '40') echo ('selected'); ?>>40</option>
+                        <option value="50" <?php if (isset($aantal) && $aantal == '50') echo ('selected'); ?>>50</option>
                     </select>
                     <p class="productAmountItem">per pagina</p>
                 </div>
+                </form>
 
                 <section class="flex-container-ImageBoxSmall">
                 <?php
@@ -213,13 +234,21 @@ foreach ($products as $product) {
     }
     echo('</div>  </div>  </div>');
 }
-?>
-
-                </section>
+?></section>
+            Pagina <?php
+            $querystring='';
+            foreach ($queryresolved as $key => $value ){
+                if ($key!="pagina")
+                    $querystring = $querystring.$key.'='.$value;
+            }
+            for($i = 1; $i <= $totalpages; ++$i) {
+                if (empty($_SERVER['QUERY_STRING']))
+                    echo ('<A HREF="?&pagina='.$i.'">'.$i.'</A>');
+                else
+                    echo ('<A HREF="?'.$querystring.'&pagina='.$i.'">'.$i.'</A>');
+            }
+            ?>
             </section>
         </section>
     </section>
 </section>
-
-</body>
-</html>
