@@ -51,7 +51,9 @@ Associated files: producten CSS
 
                     // Winkelwagen
                     $toevoegenid=0;
+                    print_r($queryresolved);
                     if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && isLoggedin()) {
+                    echo ('Toevoegen aan winkelwagen: ');
                         $toevoegenid=$queryresolved['toevoegen'];
                         $database = db_con();
                         $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock` FROM `product` WHERE Disabled!=1;";
@@ -63,37 +65,12 @@ Associated files: producten CSS
                             'ID' => $articleinfo['ID'],
                             'Aantal' => 1,
                             'SKU' => $articleinfo['SKU'],
-                            'Omschrijving' => $articleinfo['ProductName'],
+                            'Omschrijving' => $articleinfo['ID'].'-'.$articleinfo['ProductName'],
                             'Prijs' => $articleinfo['Price'],
                         );
 
-                        //if not empty
-                        if(!empty($_SESSION['Winkelwagen']))
-                        {
-                        //and if session Winkelwagen same
-                        if(isset($_SESSION['Winkelwagen'][$articleinfo['ID']]) == $articleinfo['ID'] && $articleinfo['Stock']>1) {
-                            $_SESSION['Winkelwagen'][$articleinfo['ID']]['Aantal']++;
-                        } else {
-                            //if not same put new string
-                            $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
-                        }
-                        } else  {
-                            $_SESSION['Winkelwagen'] = array();
-                            $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
-                        }    //if not empty
-                        if(!empty($_SESSION['Winkelwagen']))
-                        {
-                            //and if session Winkelwagen same
-                            if(isset($_SESSION['Winkelwagen'][$articleinfo['ID']]) == $articleinfo['ID'] && $articleinfo['Stock']>1) {
-                            $_SESSION['Winkelwagen'][$articleinfo['ID']]['Aantal']++;
-                        } else {
-                            //if not same put new string
-                            $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
-                        }
-                        } else  {
-                            $_SESSION['Winkelwagen'] = array();
-                            $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
-                        }
+                        print_r($bestelling);
+                        $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
                     }
 
                     // Show Maincategories
@@ -106,12 +83,6 @@ Associated files: producten CSS
 
                     foreach ($categories as $categoryName) {
                     ?>
-                    <PRE>
-    <?php
-print_r($_SERVER['QUERY_STRING']);
-print_r($queryresolved);
-    ?>
-</PRE>
 
                     <div class="tab">
                         <?php
@@ -141,7 +112,6 @@ print_r($queryresolved);
                                     $querystring = $querystring.'&'.$key.'='.$value;
                                 }
                             }
-                            echo ('testquerystring: '.$querystring);
 
                             foreach($subcategories as $subcategory){
                                $active='';
@@ -248,7 +218,7 @@ foreach ($products as $product) {
     echo($product['Price']);
     echo('</h2>');
     if (isLoggedin()) {
-        echo('<a href="/webshop/producten?toevoegen=' . $product['ID'] . '"><button class="shopping-cart-button"><span>');
+        echo('<a href="?toevoegen=' . $product['ID'] . '"><button class="shopping-cart-button"><span>');
         echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></span></button></a>');
     } else {
         echo('<a href="/webshop/registreer"><button class="shopping-cart-button"><span>');
