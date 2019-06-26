@@ -1,0 +1,116 @@
+<!--========================
+Page: Productoverview
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen:
+Associated files: producten CSS
+==========================-->
+<PRE>
+    <?php
+    print_r($_SERVER);
+    print_r($_POST);
+?>
+</PRE>
+
+<!-- Content -->
+<section class="content">
+    <form class="search-form" action="action_page.php">
+        <input type="text" name="search" placeholder="Zoektermen ingeven">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <section class="flex-wrapper">
+
+        <section class="flex-container">
+            <section class="flex-container-column">
+                <h1 id="categoryTitle">Categorie</h1>
+                <nav class="categoryMenu">
+                    <?php
+                            $database = db_con();
+                            $database2 = db_con();
+                            $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` ORDER BY `CategoryOrder` ASC";
+                            $stmt = $database->prepare($sql);
+                    $stmt->execute();
+                    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $database=null;
+
+                    foreach ($categories as $categoryName) {
+                    ?>
+                    <div class="tab brown">
+                        <?php echo '<input id="tab-' . $categoryName['MainCategoryID'] . '" type="checkbox" name="tabs">
+                        ';
+                        echo('<label for="tab-' . $categoryName['MainCategoryID'] . '">' . $categoryName['CategoryName']
+                        . '</label>');
+
+                        $sqlQuery = "SELECT * FROM `category` WHERE `MainCategoryID`=:categoryID ORDER BY
+                        `CategoryOrder` ASC";
+                        $query = $database2->prepare($sqlQuery);
+                        $query->execute(['categoryID' => $categoryName['MainCategoryID']]);
+                        $subcategories = $query->fetchAll(PDO::FETCH_ASSOC);
+                        echo('
+                        <div class="tab-content">');
+                            foreach($subcategories as $subcategory){
+                            echo ('<a href="#categorie=' . $subcategory['CategoryID'] . '">'.$subcategory['CategoryName'].'</a>');
+                            } ?>
+                        </div>
+
+                    </div>
+                    <?php  }?>
+                </nav>
+            </section>
+            <section class="flex-container-column">
+                <div class="product-option-chooser">
+                    <p class="productAmountItem startMargin">1376 Producten | Toon</p>
+                    <select class="productAmountItem">
+                        <option value="ten">10</option>
+                        <option value="twenty">20</option>
+                        <option value="thirty">30</option>
+                        <option value="forty">40</option>
+                        <option value="fifty">50</option>
+                    </select>
+                    <p class="productAmountItem">per pagina</p>
+                </div>
+
+                <section class="flex-container-ImageBoxSmall">
+                    <?php
+                    $database = db_con();
+                    $sql = "SELECT * FROM `product`";
+                    $stmt = $database->prepare($sql);
+                    $stmt->execute();
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $database = null; #RESET database session
+
+foreach ($products as $product) {
+
+    echo('<div class="flex-column">
+              <div class="imageBoxSmall"><img src="/webshop/producten/images/'.$product['Picture_Big'].'"
+                                              alt="Instrument">');
+    echo(' <h1>');
+
+    $extraspaties = 70 -  strlen($product['ProductName']);
+    $productname = $product['ProductName'];
+
+    for ($x = 0; $x <= $extraspaties; $x++) {
+        $productname = $productname." ";
+    }
+    $productname = substr($productname,0, 70);
+    $productname = str_replace('  ','&nbsp;&nbsp;',$productname);
+    echo($productname);
+    echo('</h1>');
+    echo('<div class="priceline"><h2>');
+    echo($product['Price']);
+    echo('</h2>');
+
+    echo(' <button class="shopping-cart-button"><span><a href="/webshop/producten?toevoegen=' . $product['ID'] . '">');
+    echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>');
+    echo('</div>  </div>  </div>');
+}
+?>
+
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+
+</body>
+</html>
