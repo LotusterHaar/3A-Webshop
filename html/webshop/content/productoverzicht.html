@@ -29,7 +29,19 @@ Associated files: producten CSS
 
                     parse_str($_SERVER['QUERY_STRING'], $queryresolved);
                     if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid'])) {
-                        $categorieid=$queryresolved['categorieid'];
+                        //Get extra info about the category
+                        $database = db_con();
+                        $sql = "SELECT CategoryID`,CategoryName`,`MainCategoryID` FROM `category` WHERE Disabled!=1 AND CategoryID=:CategoryID;";
+                        $stmt = $database->prepare($sql);
+                        $stmt->execute( [
+                            ':CategoryID' => $queryresolved['categorieid'],
+                        ]);
+                        $categorieinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $database=null;
+                        if (isset($categorieinfo['CategoryID']))
+                            $categorieid=$categorieinfo['CategoryID'];
+                        else
+                            $categorieid=0;
                     }
 
                     if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal'])) {
@@ -64,7 +76,7 @@ Associated files: producten CSS
                         if(isset($_SESSION['Winkelwagen'][$articleinfo['ID']]) == $articleinfo['ID'] && $articleinfo['Stock']>1) {
                             $_SESSION['Winkelwagen'][$articleinfo['ID']]['Aantal']++;
                         } else {
-                        //if not same put new string
+                            //if not same put new string
                             $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
                         }
                         } else  {
@@ -77,18 +89,18 @@ Associated files: producten CSS
                             if(isset($_SESSION['Winkelwagen'][$articleinfo['ID']]) == $articleinfo['ID'] && $articleinfo['Stock']>1) {
                             $_SESSION['Winkelwagen'][$articleinfo['ID']]['Aantal']++;
                         } else {
-                        //if not same put new string
-                        $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
+                            //if not same put new string
+                            $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
                         }
                         } else  {
-                        $_SESSION['Winkelwagen'] = array();
-                        $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
+                            $_SESSION['Winkelwagen'] = array();
+                            $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
+                        }
                     }
 
                     echo ('<PRE>');
                     print_r($_SESSION);
                     echo ('</PRE>');
-}
 
                     $database = db_con();
                     $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` WHERE Disabled!=1 ORDER BY `CategoryOrder` ASC";
@@ -99,11 +111,17 @@ Associated files: producten CSS
 
                     foreach ($categories as $categoryName) {
                     ?>
-                    <div class="tab brown">
-                        <?php echo '<input id="tab-' . $categoryName['MainCategoryID'] . '" type="checkbox" name="tabs">
-                        ';
+                    <div class="tab">
+                        <?php
+                        if (isset($categorieinfo['MainCategoryID']) && $categorieinfo['MainCategoryID'] == $categoryName['MainCategoryID'])
+                            echo '<input id="tab-' . $categoryName['MainCategoryID'] . '" type="checkbox" checked name="tabs">';
+                        else {
+                            echo '<input id="tab-' . $categoryName['MainCategoryID'] . '" type="checkbox" name="tabs">';
+                        }
+
                         echo('<label for="tab-' . $categoryName['MainCategoryID'] . '">' . $categoryName['CategoryName']
                         . '</label>');
+
 
                         $database = db_con();
                         $sqlQuery = "SELECT * FROM `category` WHERE Disabled !=1 AND `MainCategoryID`=:categoryID ORDER BY `CategoryOrder` ASC";
@@ -116,7 +134,7 @@ Associated files: producten CSS
                         <div class="tab-content">');
                             foreach($subcategories as $subcategory){
                                $active='';
-                               if ($subcategory['CategoryID'] == $categorieid) {
+                               if (isset($categorieinfo['CategoryID']) && $categorieinfo['CategoryID'] == $categorieid) {
                                     echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
                                } else {
                                     echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
