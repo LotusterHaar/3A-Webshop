@@ -24,7 +24,7 @@ Associated files: producten CSS
                 <nav class="categoryMenu" id="categoryMenu">
                     <?php
                     $categorieid = 1; // Standaard bij Piano's beginnen
-                    $aantal = 10; // Standaard aantal
+                    $aantal = 1; // Standaard aantal
                     $pagina = 1; //Standaard beginpagina
 
                     parse_str($_SERVER['QUERY_STRING'], $queryresolved);
@@ -160,7 +160,7 @@ Associated files: producten CSS
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
             $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
             $stmt->bindParam(':categorieID',$categorieid, PDO::PARAM_INT);
-            print ($sql);
+            
             $stmt->execute( );
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
