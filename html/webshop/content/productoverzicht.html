@@ -24,7 +24,7 @@ Associated files: producten CSS
                 <nav class="categoryMenu" id="categoryMenu">
                     <?php
                     $categorieid = 1; // Standaard bij Piano's beginnen
-                    $aantal = 1; // Standaard aantal
+                    $aantal = 10; // Standaard aantal per pagina
                     $pagina = 1; //Standaard beginpagina
                     $totalpages = 1;
 
@@ -45,11 +45,11 @@ Associated files: producten CSS
                             $categorieid=0;
                     }
 
-                    if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal'])) {
+                    if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal']) && is_numeric($queryresolved['aantal'])) {
                         $aantal=$queryresolved['aantal'];
                     }
 
-                    if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina'])) {
+                    if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_numeric($queryresolved['pagina'])) {
                         $pagina=$queryresolved['pagina'];
                     }
 
@@ -131,12 +131,20 @@ Associated files: producten CSS
 
                         echo('
                         <div class="tab-content">');
+                            $querystring='';
+                            foreach ($queryresolved as $key => $value ){
+
+                                if (!($key=="categorieid" || $key=="categorienaam")) {
+                                    $querystring = $querystring.'&'.$key.'='.$value;
+                                }
+                            }
+
                             foreach($subcategories as $subcategory){
                                $active='';
                                if (isset($categorieinfo['CategoryID']) && $categorieinfo['CategoryID'] ==  $subcategory['CategoryID']) {
-                                    echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
+                                    echo ('<a href="?'.$querystring .'categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
                                } else {
-                                    echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
+                                    echo ('<a href="?'.$querystring .'categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
                                }
                             } ?>
                         </div>
@@ -158,11 +166,20 @@ Associated files: producten CSS
 
             $totaalproducten = count($products);
 
+            if (($totaalproducten-$aantal) <= 0)
+                $pagina=1;
+
             // Now load the products we want to see with the limit
+            if ($totaalproducten>0 && $aantal>0)
+            $totalpages = round($totaalproducten /$aantal);
+            else {
+            $pagina=1;
+            }
+
+            if ($totaalproducten-$aantal <= 0)
+                $pagina=1;
 
             $offset = ($pagina - 1) * $aantal;
-            if ($totaalproducten>0 && $aantal>0)
-                $totalpages = round($totaalproducten /$aantal);
 
             $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID LIMIT :offset,:limit";
             $stmt = $database->prepare($sql);
@@ -194,6 +211,7 @@ Associated files: producten CSS
                         <option value="1" <?php if (isset($aantal) && $aantal == '1') echo ('selected'); ?>>1</option>
                         <option value="2" <?php if (isset($aantal) && $aantal == '2') echo ('selected'); ?>>2</option>
                         <option value="3" <?php if (isset($aantal) && $aantal == '3') echo ('selected'); ?>>3</option>
+                        <option value="10" <?php if (isset($aantal) && $aantal == '10') echo ('selected'); ?>>10</option>
                         <option value="20" <?php if (isset($aantal) && $aantal == '20') echo ('selected'); ?>>20</option>
                         <option value="30" <?php if (isset($aantal) && $aantal == '30') echo ('selected'); ?>>30</option>
                         <option value="40" <?php if (isset($aantal) && $aantal == '40') echo ('selected'); ?>>40</option>
@@ -234,20 +252,23 @@ foreach ($products as $product) {
     }
     echo('</div>  </div>  </div>');
 }
-?></section>
-            Pagina <?php
+?></section><div class="paginanummering">Pagina <?php
             $querystring='';
             foreach ($queryresolved as $key => $value ){
                 if ($key!="pagina")
-                    $querystring = $querystring.$key.'='.$value;
+                    $querystring = '&'.$querystring.$key.'='.$value;
             }
+            if ($totalpages>0) {
             for($i = 1; $i <= $totalpages; ++$i) {
                 if (empty($_SERVER['QUERY_STRING']))
-                    echo ('<A HREF="?&pagina='.$i.'">'.$i.'</A>');
+                    echo ('<A HREF="?&pagina='.$i.'">'.$i.'</A> ');
                 else
-                    echo ('<A HREF="?'.$querystring.'&pagina='.$i.'">'.$i.'</A>');
-            }
+                    echo ('<A HREF="?'.$querystring.'&pagina='.$i.'">'.$i.'</A> ');
+            }}
+            else
+            echo 1;
             ?>
+              </div>
             </section>
         </section>
     </section>
