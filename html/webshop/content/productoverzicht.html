@@ -31,7 +31,7 @@ Associated files: producten CSS
                     if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid'])) {
                         //Get extra info about the category
                         $database = db_con();
-                        $sql = "SELECT CategoryID`,CategoryName`,`MainCategoryID` FROM `category` WHERE Disabled!=1 AND CategoryID=:CategoryID;";
+                        $sql = "SELECT `CategoryID`,`CategoryName`,`MainCategoryID` FROM `category` WHERE Disabled!=1 AND CategoryID=:CategoryID;";
                         $stmt = $database->prepare($sql);
                         $stmt->execute( [
                             ':CategoryID' => $queryresolved['categorieid'],
@@ -100,6 +100,7 @@ Associated files: producten CSS
 
                     echo ('<PRE>');
                     print_r($_SESSION);
+                    print_r($categorieinfo);
                     echo ('</PRE>');
 
                     $database = db_con();
@@ -134,7 +135,7 @@ Associated files: producten CSS
                         <div class="tab-content">');
                             foreach($subcategories as $subcategory){
                                $active='';
-                               if (isset($categorieinfo['CategoryID']) && $categorieinfo['CategoryID'] == $categorieid) {
+                               if (isset($categorieinfo['CategoryID']) && $categorieinfo['CategoryID'] ==  $subcategory['CategoryID']) {
                                     echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
                                } else {
                                     echo ('<a href="?categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
