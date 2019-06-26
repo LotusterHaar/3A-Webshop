@@ -5,11 +5,7 @@ Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen:
 Associated files: producten CSS
 ==========================-->
-<PRE>
-    <?php
 
-    ?>
-</PRE>
 <!-- Content -->
 <section class="content">
     <form class="search-form" action="action_page.php">
@@ -110,6 +106,13 @@ Associated files: producten CSS
 
                     foreach ($categories as $categoryName) {
                     ?>
+                    <PRE>
+    <?php
+print_r($_SERVER['QUERY_STRING']);
+print_r($queryresolved);
+    ?>
+</PRE>
+
                     <div class="tab">
                         <?php
                         if (isset($categorieinfo['MainCategoryID']) && $categorieinfo['MainCategoryID'] == $categoryName['MainCategoryID'])
@@ -138,13 +141,14 @@ Associated files: producten CSS
                                     $querystring = $querystring.'&'.$key.'='.$value;
                                 }
                             }
+                            echo ('testquerystring: '.$querystring);
 
                             foreach($subcategories as $subcategory){
                                $active='';
                                if (isset($categorieinfo['CategoryID']) && $categorieinfo['CategoryID'] ==  $subcategory['CategoryID']) {
-                                    echo ('<a href="?'.$querystring .'categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
+                                    echo ('<a href="?'.$querystring .'&categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
                                } else {
-                                    echo ('<a href="?'.$querystring .'categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
+                                    echo ('<a href="?'.$querystring .'&categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
                                }
                             } ?>
                         </div>
