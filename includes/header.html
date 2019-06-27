@@ -181,5 +181,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                             </div>
                         </li>
                     </ul>
+                    <?php if (isset($_SESSION['shoppincart'])) : ?>//&& count($_SESSION['shoppingcart'])>0) : ?>
+                        <i class="fas fa-shopping-basket"></i>
+                    <pre><?php print_r($_SESSION['shoppincart']); print (sizeof($_SESSION['shoppingcart'])) ?></pre>
+                    <?php endif; ?>
                 </nav>
             </section>

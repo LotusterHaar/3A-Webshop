@@ -207,6 +207,11 @@ nav {
 #top-menu-nav li {
     float: left;
 }
+
+#top-menu-nav shoppingcart {
+    float: right;
+    margin-right:10%;
+}
 /* Add a gray right border to all list items, except the last item (last-child) */
 #top-menu-nav li {
     border-right: 1.5px solid #dddddd;
@@ -215,8 +220,6 @@ nav {
 #top-menu-nav li:last-child {
     border-right: none;
 }
-
-
 
 #top-menu-nav li a:not(.sub-menu-link), .dropbtn {
     display: block;
