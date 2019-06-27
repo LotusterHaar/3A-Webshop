@@ -5,8 +5,94 @@ Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen:
 Associated files: producten CSS
 ==========================-->
+<?php
+// echo ('<PRE>'.print_r($_SESSION).'</PRE>'); //debug
+$categorieid = 1; // Standaard bij Piano's beginnen
+$aantal = 10; // Standaard aantal per pagina
+$pagina = 1; //Standaard beginpagina
+$totalpages = 1;
 
+parse_str($_SERVER['QUERY_STRING'], $queryresolved);
+
+if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid'])) {
+    //Get extra info about the category
+    $database = db_con();
+    $sql = "SELECT `CategoryID`,`CategoryName`,`MainCategoryID` FROM `category` WHERE Disabled!=1 AND CategoryID=:CategoryID;";
+    $stmt = $database->prepare($sql);
+    $stmt->execute( [
+        ':CategoryID' => $queryresolved['categorieid'],
+    ]);
+    $categorieinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    $database=null;
+    if (isset($categorieinfo['CategoryID']))
+        $categorieid=$categorieinfo['CategoryID'];
+    else
+        $categorieid=0;
+
+    if (isset($categorieinfo['CategoryNaam']))
+        $categorienaam=$categorieinfo['CategoryNaam'];
+}
+
+if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal']) && is_numeric($queryresolved['aantal'])) {
+    $aantal=$queryresolved['aantal'];
+    unset ($queryresolved['aantal']);
+}
+
+if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_numeric($queryresolved['pagina'])) {
+    $pagina=$queryresolved['pagina'];
+    unset ($queryresolved['pagina']);
+}
+
+// Winkelwagen
+$toevoegenid=0;
+
+if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && is_numeric($queryresolved['toevoegen']) && isLoggedin()) {
+    echo ('Toevoegen aan winkelwagen: ('.$queryresolved['toevoegen'].')');
+    $toevoegenid=$queryresolved['toevoegen'];
+    
+    //Ophalen uit database
+    $database = db_con();
+    $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock` FROM `product` WHERE Disabled!=1 AND ID=".$toevoegenid.";";
+    $stmt = $database->prepare($sql);
+    $stmt->execute();
+    $articleinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    $database=null;
+    $bestelling = array(
+        'ID' => $articleinfo['ID'],
+        'Aantal' => 1,
+        'SKU' => $articleinfo['SKU'],
+        'Omschrijving' => $articleinfo['ID'].'-'.$articleinfo['ProductName'],
+        'Prijs' => $articleinfo['Price'],
+    );
+
+    //print_r($bestelling);
+
+    if ($articleinfo['Stock']>=1) {
+        $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
+        $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
+    }
+    else {
+        $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden';
+    }
+    unset ($queryresolved['toevoegen']);
+}
+
+?>
 <!-- Content -->
+<?php if ((isset($_SESSION['infobox']) && !empty($_SESSION['infobox']))): ?>
+<div class="alert info">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['infobox']; ?>
+</div>
+<?php unset($_SESSION['infobox']); endif; ?>
+
+<?php if ((isset($_SESSION['errorbox']) && !empty($_SESSION['errorbox']))): ?>
+<div class="alert error">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['errorbox']; ?>
+</div>
+<?php unset($_SESSION['errorbox']); endif; ?>
+
 <section class="content">
     <form class="search-form" action="action_page.php">
         <input type="text" name="search" placeholder="Zoektermen ingeven">
@@ -19,60 +105,6 @@ Associated files: producten CSS
                 <h1 id="categoryTitle">Categorie</h1>
                 <nav class="categoryMenu" id="categoryMenu">
                     <?php
-                    $categorieid = 1; // Standaard bij Piano's beginnen
-                    $aantal = 10; // Standaard aantal per pagina
-                    $pagina = 1; //Standaard beginpagina
-                    $totalpages = 1;
-
-                    parse_str($_SERVER['QUERY_STRING'], $queryresolved);
-                    if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid'])) {
-                        //Get extra info about the category
-                        $database = db_con();
-                        $sql = "SELECT `CategoryID`,`CategoryName`,`MainCategoryID` FROM `category` WHERE Disabled!=1 AND CategoryID=:CategoryID;";
-                        $stmt = $database->prepare($sql);
-                        $stmt->execute( [
-                            ':CategoryID' => $queryresolved['categorieid'],
-                        ]);
-                        $categorieinfo = $stmt->fetch(PDO::FETCH_ASSOC);
-                        $database=null;
-                        if (isset($categorieinfo['CategoryID']))
-                            $categorieid=$categorieinfo['CategoryID'];
-                        else
-                            $categorieid=0;
-                    }
-
-                    if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal']) && is_numeric($queryresolved['aantal'])) {
-                        $aantal=$queryresolved['aantal'];
-                    }
-
-                    if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_numeric($queryresolved['pagina'])) {
-                        $pagina=$queryresolved['pagina'];
-                    }
-
-                    // Winkelwagen
-                    $toevoegenid=0;
-                    print_r($queryresolved);
-                    if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && isLoggedin()) {
-                    echo ('Toevoegen aan winkelwagen: ');
-                        $toevoegenid=$queryresolved['toevoegen'];
-                        $database = db_con();
-                        $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock` FROM `product` WHERE Disabled!=1;";
-                        $stmt = $database->prepare($sql);
-                        $stmt->execute();
-                        $articleinfo = $stmt->fetch(PDO::FETCH_ASSOC);
-                        $database=null;
-                        $bestelling = array(
-                            'ID' => $articleinfo['ID'],
-                            'Aantal' => 1,
-                            'SKU' => $articleinfo['SKU'],
-                            'Omschrijving' => $articleinfo['ID'].'-'.$articleinfo['ProductName'],
-                            'Prijs' => $articleinfo['Price'],
-                        );
-
-                        print_r($bestelling);
-                        $_SESSION['Winkelwagen'][$articleinfo['ID']] = $bestelling;
-                    }
-
                     // Show Maincategories
                     $database = db_con();
                     $sql = "SELECT `CategoryName`, `MainCategoryID` FROM `maincategory` WHERE Disabled!=1 ORDER BY `CategoryOrder` ASC";
@@ -107,10 +139,7 @@ Associated files: producten CSS
                         <div class="tab-content">');
                             $querystring='';
                             foreach ($queryresolved as $key => $value ){
-
-                                if (!($key=="categorieid" || $key=="categorienaam")) {
                                     $querystring = $querystring.'&'.$key.'='.$value;
-                                }
                             }
 
                             foreach($subcategories as $subcategory){
@@ -124,7 +153,7 @@ Associated files: producten CSS
                         </div>
 
                     </div>
-                    <?php  }?>
+                    <?php  } ?>
                 </nav>
             </section>
             <?php
@@ -193,7 +222,7 @@ Associated files: producten CSS
                     </select>
                     <p class="productAmountItem">per pagina</p>
                 </div>
-                </form>
+                
 
                 <section class="flex-container-ImageBoxSmall">
                 <?php
@@ -218,13 +247,14 @@ foreach ($products as $product) {
     echo($product['Price']);
     echo('</h2>');
     if (isLoggedin()) {
-        echo('<a href="?toevoegen=' . $product['ID'] . '"><button class="shopping-cart-button"><span>');
-        echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></span></button></a>');
+        echo ('<button class="shopping-cart-button" name="toevoegen" type="submit" value="'.$product['ID'].'"><span>');
+        echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></span></button>');
     } else {
         echo('<a href="/webshop/registreer"><button class="shopping-cart-button"><span>');
         echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button></a>');
     }
-    echo('</div>  </div>  </div>');
+    echo('</div>  </div>  </div></form>');
+    
 }
 ?></section><div class="paginanummering">Pagina <?php
             $querystring='';
