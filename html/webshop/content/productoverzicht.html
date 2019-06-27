@@ -7,7 +7,7 @@ Associated files: producten CSS
 ==========================-->
 <?php
 // echo ('<PRE>'.print_r($_SESSION).'</PRE>'); //debug
-$categorieid = 1; // Standaard bij Piano's beginnen
+$categorieid = 22; // Standaard bij Piano's beginnen
 $aantal = 10; // Standaard aantal per pagina
 $pagina = 1; //Standaard beginpagina
 $totalpages = 1;
@@ -35,12 +35,10 @@ if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid']
 
 if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal']) && is_numeric($queryresolved['aantal'])) {
     $aantal=$queryresolved['aantal'];
-    unset ($queryresolved['aantal']);
 }
 
 if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_numeric($queryresolved['pagina'])) {
     $pagina=$queryresolved['pagina'];
-    unset ($queryresolved['pagina']);
 }
 
 // Winkelwagen
@@ -208,20 +206,40 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
                 ?>
             <section class="flex-container-column">
                 <div class="product-option-chooser">
-                    <p class="productAmountItem startMargin"><?php echo ($totaalproducten)?> Producten | Toon</p>
+                    <p class="productAmountItem startMargin"><?php echo ($totaalproducten)?> Producten <?php if ($totaalproducten>1) { echo ('| Toon</p> '); ?>
 
                     <select class="productAmountItem" name="aantal" onchange="this.form.submit()">
-                        <option value="1" <?php if (isset($aantal) && $aantal == '1') echo ('selected'); ?>>1</option>
-                        <option value="2" <?php if (isset($aantal) && $aantal == '2') echo ('selected'); ?>>2</option>
-                        <option value="3" <?php if (isset($aantal) && $aantal == '3') echo ('selected'); ?>>3</option>
-                        <option value="10" <?php if (isset($aantal) && $aantal == '10') echo ('selected'); ?>>10</option>
-                        <option value="20" <?php if (isset($aantal) && $aantal == '20') echo ('selected'); ?>>20</option>
-                        <option value="30" <?php if (isset($aantal) && $aantal == '30') echo ('selected'); ?>>30</option>
-                        <option value="40" <?php if (isset($aantal) && $aantal == '40') echo ('selected'); ?>>40</option>
-                        <option value="50" <?php if (isset($aantal) && $aantal == '50') echo ('selected'); ?>>50</option>
+                        <?php
+                        $numberlist = array (); //Because we have too little products some extra choices
+                        print ('totjw: '.$totaalproducten);
+                        if ($totaalproducten>=1)
+                            array_push($numberlist , 1);
+
+                        if ($totaalproducten>=2) //Because we have too little products some extra choices
+                            array_push($numberlist , 2);
+
+                        if ($totaalproducten>=3) //Because we have too little products some extra choices
+                            array_push($numberlist , 3);
+
+                        if (($totaalproducten/5)>1) { //Add number of pages with steps of 5
+                            for ($i = 1; $i <= ($totaalproducten/5); $i++) {
+                                array_push($numberlist , (5*$i));
+                            }
+                        }
+
+                        foreach ($numberlist as $number) {
+                            if (isset($aantal) && $aantal == '1') {
+                                echo ('<option value="'.$number.'" selected>'.$number.'</option>');
+                            }
+                            else
+                            {
+                                echo ('<option value="'.$number.'">'.$number.'</option>');
+                            }
+                        } ?>
                     </select>
                     <p class="productAmountItem">per pagina</p>
                 </div>
+                <?php } ?>
 
 
                 <section class="flex-container-ImageBoxSmall">
@@ -233,15 +251,7 @@ foreach ($products as $product) {
                                               alt="Instrument">');
     echo(' <h1>');
 
-    $extraspaties = 70 -  strlen($product['ProductName']);
-    $productname = $product['ProductName'];
-
-    for ($x = 0; $x <= $extraspaties; $x++) {
-        $productname = $productname." ";
-    }
-    $productname = substr($productname,0, 70);
-    $productname = str_replace('  ','&nbsp;&nbsp;',$productname);
-    echo($productname);
+    echo(substr($product['ProductName'],0, 70));
     echo('</h1>');
     echo('<div class="priceline"><h2>');
     echo($product['Price']);
@@ -256,23 +266,24 @@ foreach ($products as $product) {
     echo('</div>  </div>  </div></form>');
 
 }
-?></section><div class="paginanummering">Pagina <?php
-            $querystring='';
+?></section>
+    <?php
+        if ($totalpages>1) {
+            echo ('<div class="paginanummering">Pagina ');
+            unset ($queryresolved['pagina']);
+
             foreach ($queryresolved as $key => $value ){
-                if ($key!="pagina")
                     $querystring = '&'.$querystring.$key.'='.$value;
             }
-            if ($totalpages>0) {
+
             for($i = 1; $i <= $totalpages; ++$i) {
                 if (empty($_SERVER['QUERY_STRING']))
                     echo ('<A HREF="?&pagina='.$i.'">'.$i.'</A> ');
                 else
                     echo ('<A HREF="?'.$querystring.'&pagina='.$i.'">'.$i.'</A> ');
-            }}
-            else
-            echo 1;
-            ?>
-              </div>
+            }
+            echo ('</div>');
+        }?>
             </section>
         </section>
     </section>
