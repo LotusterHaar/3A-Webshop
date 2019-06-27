@@ -47,7 +47,7 @@ if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_nu
 $toevoegenid=0;
 
 if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && is_numeric($queryresolved['toevoegen']) && isLoggedin()) {
-    echo ('Toevoegen aan winkelwagen: ('.$queryresolved['toevoegen'].')');
+
     $toevoegenid=$queryresolved['toevoegen'];
 
     //Ophalen uit database

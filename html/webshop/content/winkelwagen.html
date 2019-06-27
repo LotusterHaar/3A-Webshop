@@ -8,16 +8,20 @@ Associated files: index CSS
 ==========================-->
 <PRE>
 <?php
-print_r($_SESSION['Winkelwagen']);
+//print_r($_SESSION['shoppingcart']);
 ?>
     </PRE>
             <!-- Content -->
-            <section class="content flex-columnContainer">
+            <H2 class="content flex-columnContainer">
                 <div class="tablecontainer">
                     <div class="buttonRow">
                         <button class="button buttonShopMore"><a href="/webshop"> <i class="fas fa-shopping-basket"></i> Verder winkelen </a></button>
                     </div>
                     <h1 id="headingShoppingCart">Winkelwagen</h1>
+                    <?php
+                        if (!isset($_SESSION['shoppingcart']) && !empty($_SESSION['shoppingcart'])) {
+                        $shoppingcarttotal = (float) 0;
+                     ?>
                     <table>
                         <tr>
                             <th></th>
@@ -27,56 +31,41 @@ print_r($_SESSION['Winkelwagen']);
                             <th>Subtotaal</th>
                             <th>Verwijderen</th>
                         </tr>
+
+                        <?php
+                        foreach ($_SESSION['shoppingcart'] as $artikel)
+                        {
+
+                        //Get extra info about the category
+                        $database = db_con();
+                        $sql = "SELECT `SKU`, `Picture_Big` FROM `product` WHERE Disabled!=1 AND SKU=:SKU;";
+                        $stmt = $database->prepare($sql);
+                        $stmt->execute( [
+                        ':SKU' => $artikel['SKU'],
+                        ]);
+                        $artikelinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $database=null;
+
+                        $articletotal = ($artikel['Aantal']*$artikel['Prijs']);
+                        ?>
+
                         <tr>
-                            <td class="pImage"><img src="../producten/images/instrumentImage.jpg" alt="Instrument Image"
-                                                    class="productImage"></td>
-                            <td>Naam product</td>
-                            <td>€25.00</td>
+                            <td class="pImage"><img height="150px" width="150px" src="/webshop/producten/images/<?php echo $artikelinfo['Picture_Big']; ?>" alt="Instrument Image" class="productImage"></td>
+                            <td><?php echo $artikel['Omschrijving']; ?></td>
+                            <td>€ <?php echo $artikel['Prijs']; ?></td>
                             <td>
                                 <form action="/action_page.php">
-                                    <select name="number">
-                                        <option value="one">1</option>
-                                        <option value="two">2</option>
-                                        <option value="three" selected>3</option>
-                                        <option value="four">4</option>
-                                        <option value="five">5</option>
-                                        <option value="six">6</option>
-                                        <option value="seven">7</option>
-                                        <option value="eight">8</option>
-                                        <option value="nine">9</option>
-                                        <option value="ten">10</option>
-                                    </select>
+                                  <input type="text" value="<?php echo $artikel['Aantal'] ?>">
                                 </form>
                             </td>
-                            <td>€75.00</td>
+                            <td>€ <?php echo (number_format($articletotal,2)); ?></td>
                             <td>
                                 <button class="deleteBtn"><span><a href="winkelwagen/toevoegen?id=2552"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a></span></button>
                             </td>
                         </tr>
-                        <tr>
-                            <td><img src="../producten/images/instrumentImage.jpg" alt="Instrument Image" class="productImage"></td>
-                            <td>Naam product</td>
-                            <td>€34.60</td>
-                            <td><select name="one">
-                                <option value="one" selected>1</option>
-                                <option value="two">2</option>
-                                <option value="three">3</option>
-                                <option value="four">4</option>
-                                <option value="five">5</option>
-                                <option value="six">6</option>
-                                <option value="seven">7</option>
-                                <option value="eight">8</option>
-                                <option value="nine">9</option>
-                                <option value="ten">10</option>
-                            </select>
-                                </form></td>
-                            <td>€34.60</td>
-                            <td>
-                                <button class="deleteBtn"><span><a href="winkelwagen/toevoegen?id=2552"><i
-                                        class="fa fa-trash" aria-hidden="true"></i></a></span></button>
-                            </td>
-                        </tr>
+
+                        <?php $shoppingcarttotal += $articletotal; } ?>
                     </table>
                 </div>
                 <div class="tableRow">
@@ -86,7 +75,7 @@ print_r($_SESSION['Winkelwagen']);
                                 <button type="button" class="button recalculate"><i class="fas fa-calculator"></i> Herbereken bedrag</button>
                             </td>
                             <td class="colorColumn">Eindtotaal:</td>
-                            <td class="colorColumn">€109,60</td>
+                            <td class="colorColumn">€ <?php print ($shoppingcarttotal); ?></td>
                         </tr>
                     </table>
                     </table>
@@ -94,4 +83,5 @@ print_r($_SESSION['Winkelwagen']);
                 <div class="payButton">
                     <button type="submit" class="button"><i class="fas fa-cart-arrow-down"></i> Afrekenen</button>
                 </div>
+                <?php } else { echo ('<H2>Uw winkelwagen is leeg</H2>'); }?>
             </section>
