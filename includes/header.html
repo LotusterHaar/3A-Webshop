@@ -167,8 +167,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                                     </li>
                                     <?php endif; ?>
                                     <?php if (isLoggedin()): ?>
-                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link <?php if ($subpagina=='Bestelgeschiedenis'){  echo (' active"'); } ?>">Bestelgeschiedenis</a>
-                                    </li>
+<!--                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link <?php if ($subpagina=='Bestelgeschiedenis'){  echo (' active"'); } ?>">Bestelgeschiedenis</a>-->
+<!--                                    </li>-->
                                     <li><a href="/webshop/winkelwagen" class="sub-menu-link <?php if ($subpagina=='Winkelwagen'){  echo (' active"'); } ?>">Winkelwagen</a>
                                     </li>
                                     <li><a href="/webshop/afrekenen" class="sub-menu-link <?php if ($subpagina=='Afrekenen'){  echo (' active"'); } ?>">Afrekenen</a>
@@ -181,9 +181,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                             </div>
                         </li>
                     </ul>
-                    <?php if (isset($_SESSION['shoppincart'])) : ?>//&& count($_SESSION['shoppingcart'])>0) : ?>
+                    <?php if (isset($_SESSION['shoppincart']) && sizeof($_SESSION['shoppingcart'])>0) : ?>
                         <i class="fas fa-shopping-basket"></i>
-                    <pre><?php print_r($_SESSION['shoppincart']); print (sizeof($_SESSION['shoppingcart'])) ?></pre>
+                    <pre><?php print_r($_SESSION['shoppincart']); print (sizeof($_SESSION['shoppingcart'])); ?></pre>
                     <?php endif; ?>
                 </nav>
             </section>
