@@ -14,6 +14,10 @@ $totalpages = 1;
 
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 
+if (isset($queryresolved['zoeken']) && !empty($queryresolved['zoeken'])) {
+    $zoeken=$queryresolved['zoeken'];
+}
+
 if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid'])) {
     //Get extra info about the category
     $database = db_con();
@@ -92,8 +96,8 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 <?php unset($_SESSION['errorbox']); endif; ?>
 
 <section class="content">
-    <form method=get action="search-form">
-        <input type="text" name="search" placeholder="Zoektermen ingeven">
+    <form method="get">
+        <input type="text" name="zoeken" <?php if (isset($zoeken)) echo ('value="'.$zoeken.'" '); ?> placeholder="Zoektermen ingeven">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
     <section class="flex-wrapper">
@@ -159,11 +163,22 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 
             //Load total number of products
             $database = db_con();
+            if (isset($zoeken)) {
+            $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND ProductName LIKE :zoekterm;";
+            }
+            else {
             $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID;";
+            }
             $stmt = $database->prepare($sql);
-            $stmt->execute( [
-            ':categorieID' => $categorieid,
-            ] );
+            if (isset($zoeken)) {
+                $stmt->execute( [
+                    ':zoekterm' => '%'.$zoeken.'%',
+                ] );
+            } else {
+                $stmt->execute( [
+                    ':categorieID' => $categorieid,
+                ] );
+            }
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $totaalproducten = count($products);
@@ -183,13 +198,24 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 
             $offset = ($pagina - 1) * $aantal;
 
-            $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID LIMIT :offset,:limit";
+            if (isset($zoeken)) {
+                $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND ProductName LIKE :zoekterm LIMIT :offset,:limit";
+            } else {
+                $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND Category=:categorieID LIMIT :offset,:limit";
+            }
             $stmt = $database->prepare($sql);
-            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-            $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
-            $stmt->bindParam(':categorieID',$categorieid, PDO::PARAM_INT);
-
-            $stmt->execute( );
+            if (isset($zoeken)) {
+                $zoekterm='%'.$zoeken.'%';
+                $stmt->bindParam(':zoekterm', $zoekterm, PDO::PARAM_STR);
+                $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+                $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
+            } else{
+                $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+                $stmt->bindParam(':limit',$aantal, PDO::PARAM_INT);
+                $stmt->bindParam(':categorieID',$categorieid, PDO::PARAM_INT);
+                
+            }
+            $stmt->execute();
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $database = null; #RESET database session
@@ -204,12 +230,12 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
                 ?>
             <section class="flex-container-column">
                 <div class="product-option-chooser">
-                    <p class="productAmountItem startMargin"><?php echo ($totaalproducten)?> Producten <?php if ($totaalproducten>1) { echo ('| Toon</p> '); ?>
+                    <p class="productAmountItem startMargin"><?php echo ($totaalproducten)?> Producten <?php if (isset($zoeken)) {echo ('Gevonden ');} if ($totaalproducten>1) { echo ('| Toon</p> '); ?>
 
                     <select class="productAmountItem" name="aantal" onchange="this.form.submit()">
                         <?php
                         $numberlist = array (); //Because we have too little products some extra choices
-                        print ('totjw: '.$totaalproducten);
+                        
                         if ($totaalproducten>=1)
                             array_push($numberlist , 1);
 
@@ -224,9 +250,11 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
                                 array_push($numberlist , (5*$i));
                             }
                         }
-
+                        if (!isset($querystring['aantal']) && empty($querystring['aantal'])) {
+                                echo ('<option value="" selected>Alles</option>');
+                        }
                         foreach ($numberlist as $number) {
-                            if (isset($aantal) && $aantal == '1') {
+                            if (isset($aantal) && $aantal == $number) {
                                 echo ('<option value="'.$number.'" selected>'.$number.'</option>');
                             }
                             else
@@ -266,10 +294,11 @@ foreach ($products as $product) {
 }
 ?></section>
     <?php
+    
         if ($totalpages>1) {
             echo ('<div class="paginanummering">Pagina ');
             unset ($queryresolved['pagina']);
-
+            $querystring='';
             foreach ($queryresolved as $key => $value ){
                     $querystring = '&'.$querystring.$key.'='.$value;
             }
