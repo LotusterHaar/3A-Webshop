@@ -139,17 +139,12 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 
                         echo('
                         <div class="tab-content">');
-                            $querystring='';
-                            foreach ($queryresolved as $key => $value ){
-                                    $querystring = $querystring.'&'.$key.'='.$value;
-                            }
-
                             foreach($subcategories as $subcategory){
                                $active='';
                                if (isset($categorieinfo['CategoryID']) && $categorieinfo['CategoryID'] ==  $subcategory['CategoryID']) {
-                                    echo ('<a href="?'.$querystring .'&categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
+                                    echo ('<a href="?'.'categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'" class="active"> '.$subcategory['CategoryName'].'</a>');
                                } else {
-                                    echo ('<a href="?'.$querystring .'&categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
+                                    echo ('<a href="?'.'categorieid=' . $subcategory['CategoryID'] . '&categorienaam='.$subcategory['CategoryName'].'">'.$subcategory['CategoryName'].'</a>');
                                }
                             } ?>
                         </div>
@@ -299,15 +294,16 @@ foreach ($products as $product) {
             echo ('<div class="paginanummering">Pagina ');
             unset ($queryresolved['pagina']);
             $querystring='';
+
             foreach ($queryresolved as $key => $value ){
-                    $querystring = '&'.$querystring.$key.'='.$value;
+                    if (empty($querystring))
+                        $querystring = '?'.$key.'='.$value;
+                    else
+                        $querystring = $querystring.'&'.$key.'='.$value;
             }
 
             for($i = 1; $i <= $totalpages; ++$i) {
-                if (empty($_SERVER['QUERY_STRING']))
-                    echo ('<A HREF="?&pagina='.$i.'">'.$i.'</A> ');
-                else
-                    echo ('<A HREF="?'.$querystring.'&pagina='.$i.'">'.$i.'</A> ');
+                echo ('<A HREF="'.$querystring.'&pagina='.$i.'">'.$i.'</A> ');
             }
             echo ('</div>');
         }?>
