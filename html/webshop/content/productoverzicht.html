@@ -92,7 +92,7 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 <?php unset($_SESSION['errorbox']); endif; ?>
 
 <section class="content">
-    <form class="search-form" action="action_page.php">
+    <form method=get action="search-form">
         <input type="text" name="search" placeholder="Zoektermen ingeven">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
@@ -154,6 +154,7 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
                     <?php  } ?>
                 </nav>
             </section>
+            <form method="get">
             <?php
 
             //Load total number of products
@@ -193,9 +194,6 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 
             $database = null; #RESET database session
 
-            ?>
-            <form method="get">
-                <?php
                 //Keep old querystring values
                 if (isset($queryresolved)){
                     foreach ($queryresolved as $key => $value ) {
