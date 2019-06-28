@@ -183,7 +183,7 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 
             // Now load the products we want to see with the limit
             if ($totaalproducten>0 && $aantal>0)
-            $totalpages = round($totaalproducten /$aantal);
+            $totalpages = round(($totaalproducten/$aantal)+0.4);
             else {
             $pagina=1;
             }
@@ -289,7 +289,7 @@ foreach ($products as $product) {
 }
 ?></section>
     <?php
-    
+    echo $totalpages;
         if ($totalpages>1) {
             echo ('<div class="paginanummering">Pagina ');
             unset ($queryresolved['pagina']);
