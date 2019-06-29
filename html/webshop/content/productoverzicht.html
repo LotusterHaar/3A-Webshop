@@ -94,10 +94,11 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 <?php unset($_SESSION['errorbox']); endif; ?>
 
 <section class="content">
-    <form method="get">
-        <input type="text" name="zoeken" <?php if (isset($zoeken)) echo ('value="'.$zoeken.'" '); ?> placeholder="Zoektermen ingeven">
+    <form method="get" class="search-form">
+        <input type="text" name="zoeken" <?php if (isset($zoeken)) echo ('value="'.$zoeken.'" '); ?>placeholder="Zoektermen ingeven">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
+
     <section class="flex-wrapper">
 
         <section class="flex-container">
