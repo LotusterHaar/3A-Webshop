@@ -6,7 +6,7 @@ Bronnen:
 Associated files: producten CSS
 ==========================-->
 <?php
-// echo ('<PRE>'.print_r($_SESSION).'</PRE>'); //debug
+
 $categorieid = 22; // Standaard bij Piano's beginnen
 $aantal = 10; // Standaard aantal per pagina
 $pagina = 1; //Standaard beginpagina
@@ -64,8 +64,6 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
         'Omschrijving' => $articleinfo['ID'].'-'.$articleinfo['ProductName'],
         'Prijs' => $articleinfo['Price'],
     );
-
-    //print_r($bestelling);
 
     if ($articleinfo['Stock']>=1) {
         $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
