@@ -266,7 +266,7 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
                 <?php
 foreach ($products as $product) {
 
-    echo('<div class="flex-column">
+    echo('<div class="flex-column"><a href="/webshop/producten/productinfo?id='.$product['ID'].'">
               <div class="imageBoxSmall"><img src="/webshop/producten/images/'.$product['Picture_Big'].'"
                                               alt="Instrument">');
     echo(' <h1>');
@@ -283,7 +283,7 @@ foreach ($products as $product) {
         echo('<button class="shopping-cart-button" name="registreren" type="submit"><span>');
         echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button>');
     }
-    echo('</div>  </div>  </div>');
+                      echo('</div>  </div>  </section></a></div>');
 }
 ?></section>
     <?php

@@ -1,61 +1,77 @@
 <?php 
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
+
+parse_str($_SERVER['QUERY_STRING'], $queryresolved);
+
+if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
+    $artikelid=$queryresolved['id'];
+
+
+    //Get extra info about the category
+    $database = db_con();
+    $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND ID=:productid";
+    $stmt = $database->prepare($sql);
+    $stmt->execute( [
+        ':productid' => $artikelid,
+    ]);
+    $artikel = $stmt->fetch(PDO::FETCH_ASSOC);
+    $database=null;
+
+    if ($artikel['Stock']>0) {
+        $opvoorraad='Ja';
+    } else {
+        $opvoorraad='Nee';
+    }
+}
+else {
+die();
+}
+
 ?>
 
             <!-- Content -->
             <section class="content">
                 <div class="column">
                     <div class="buttonRow">
-                        <button class="button buttonBack"><a href="/webshop"><i
+                        <button class="button buttonBack"><a href="/webshop/producten/"><i
                                 class="far fa-arrow-alt-circle-left fa-lg"></i> Terug</a>
                         </button>
                     </div>
                     <div class="row1">
                         <div class="productImage">
-                            <img src="/webshop/producten/images/instrumentImage.jpg" alt="Instrument Image">
+                            <img src="/webshop/producten/images/<?php echo ($artikel['Picture_Big']); ?>" width="50px" height="50px" alt="Image <?php echo (trim($artikel['ProductName'])); ?>">
                         </div>
+
                         <div class="productInfo">
                             <article>
                                 <div class="nameProduct">
-                                    <h1>Naam product</h1>
-                                    <h2>€15,19</h2>
+                                    <h1><?php echo (trim($artikel['ProductName'])); ?></h1>
+                                    <h2>€ <?php echo ($artikel['Price']); ?></h2>
                                 </div>
                                 <div class="descriptionInStock">
                                     <div class="description">
-                                        <p>Voor de beginner die op zoek is naar een akoestische gitaar zijn er door de
-                                            bank genomen 2 mogelijkheden, nl. de klassieke gitaar en de westerngitaar.
-                                            De klassieke gitaar heeft nylon snaren voor een ronde, warme klank en een
-                                            bredere hals dan de westerngitaar. De westerngitaar heeft met zijn stalen
-                                            snaren en doorgaans grotere body een luidere klank en wordt o.a. veel
-                                            gebruikt in de pop, country- en rockmuziek.
-
-                                            De Nashville GSD-60 serie valt onder de westerngitaren en is een ideaal
-                                            instrument voor de beginner of hobbyist die niet meteen teveel geld uit wil
-                                            geven aan een instrument, maar toch op zoek is naar wat extra’s.
-
-                                            Toets en brug zijn gemaakt van Cites vrij engineered houtr. De nieuwzilveren
-                                            frets (vaak pas te vinden in een hogere prijsklasse) garanderen jarenlang
-                                            probleemloos speelgemak. De gesloten oliebadmechanieken zorgen voor
-                                            feilloos, accuraat stemmen en de verstelbare halspen regelt een juiste lijn
-                                            van hals en fretwerk.
-
-                                            De GSD-60 is verkrijgbaar in 4 kleuren: naturel, zwart, roze en sunburst. De
-                                            slagplaat is zwart, evenals de zij- en achterkant.</p>
+                                        <p><?php echo ($artikel['FullDescription']); ?></p>
                                     </div>
                                     <div class="inStock">
-                                        <p><b>Op voorraad: Ja</b></p>
+                                        <p><b>Op voorraad: <?php echo ($opvoorraad); ?></b></p>
                                     </div>
                                 </div>
                                 <div class="productToCart">
-                                    <form action="/action_page.php">
+                                    <form method="get">
                                         <label class="form-item" for="input-number"><strong>Aantal:</strong></label>
                                         <input class="form-item" id="input-number" type="text" size="3" name="amount"
                                                value="1">
-                                        <button class="form-item button" type="submit"><i class="fa fa-cart-plus"
+                                        <?php if ($opvoorraad=='Ja') { echo ('<button class="form-item button" type="submit"><i class="fa fa-cart-plus"
                                                                                           aria-hidden="true"></i>
                                             Toevoegen aan winkelwagen
-                                        </button>
+                                        </button>');
+                                        } else {
+                                            echo ('<button class="form-item button rood" type="submit" name="notify" value="'.$artikel['ID'].'"><i class="fa shipping-fast"
+                                                                                                     aria-hidden="true"></i>
+                                        Artikel niet op voorraad. Bericht zodra op voorraad
+                                    </button>');
+                                        } ?>
                                     </form>
                                 </div>
                             </article>
