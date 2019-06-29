@@ -8,7 +8,7 @@ Associated files: index CSS
 ==========================-->
 <PRE>
 <?php
-//print_r($_SESSION['shoppingcart']);
+print_r($_SESSION['shoppingcart']);
 ?>
     </PRE>
             <!-- Content -->
@@ -19,7 +19,7 @@ Associated files: index CSS
                     </div>
                     <h1 id="headingShoppingCart">Winkelwagen</h1>
                     <?php
-                        if (!isset($_SESSION['shoppingcart']) && !empty($_SESSION['shoppingcart'])) {
+                        if (isset($_SESSION['shoppingcart']) && sizeof($_SESSION['shoppingcart'])>0) {
                         $shoppingcarttotal = (float) 0;
                      ?>
                     <table>
@@ -60,7 +60,7 @@ Associated files: index CSS
                             </td>
                             <td>€ <?php echo (number_format($articletotal,2)); ?></td>
                             <td>
-                                <button class="deleteBtn"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                <button class="deleteBtn" name="verwijder" type="submit" value="<?php echo ($artikel['ID']); ?>"><span><a href="winkelwagen/toevoegen?id=2552"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a></span></button>
                             </td>
                         </tr>
@@ -72,7 +72,7 @@ Associated files: index CSS
                     <table>
                         <tr id="endTotalRow">
                             <td id="firstColumnTotalRow">
-                                <button type="button" class="button recalculate"><i class="fas fa-calculator"></i> Herbereken bedrag</button>
+                                <button type="submit" class="button recalculate"><i class="fas fa-calculator"></i> Herbereken bedrag</button>
                             </td>
                             <td class="colorColumn">Eindtotaal:</td>
                             <td class="colorColumn">€ <?php print ($shoppingcarttotal); ?></td>

@@ -12,6 +12,8 @@ $aantal = 10; // Standaard aantal per pagina
 $pagina = 1; //Standaard beginpagina
 $totalpages = 1;
 
+parse_str($_SERVER['QUERY_STRING'], $queryresolved);
+
 if (isset($queryresolved['zoeken']) && !empty($queryresolved['zoeken'])) {
     $zoeken=$queryresolved['zoeken'];
 }
@@ -92,7 +94,7 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 <?php unset($_SESSION['errorbox']); endif; ?>
 
 <section class="content">
-    <form method="get" class="search-form">
+    <form class="search-form" method="get">
         <input type="text" name="zoeken" <?php if (isset($zoeken)) echo ('value="'.$zoeken.'" '); ?>placeholder="Zoektermen ingeven">
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
@@ -257,10 +259,10 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
                     </select>
                     <p class="productAmountItem">per pagina</p>
                 </div>
-                <?php } ?>
+                <?php } ?></form>
 
 
-                <section class="flex-container-ImageBoxSmall">
+            <section class="flex-container-ImageBoxSmall">
                 <?php
 foreach ($products as $product) {
 
@@ -281,8 +283,7 @@ foreach ($products as $product) {
         echo('<button class="shopping-cart-button" name="registreren" type="submit"><span>');
         echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button>');
     }
-    echo('</div>  </div>  </div></form>');
-
+    echo('</div>  </div>  </div>');
 }
 ?></section>
     <?php
@@ -303,7 +304,7 @@ foreach ($products as $product) {
                 echo ('<A HREF="'.$querystring.'&pagina='.$i.'">'.$i.'</A> ');
             }
             echo ('</div>');
-        }?>
+        }?><BR>
             </section>
         </section>
     </section>
