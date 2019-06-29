@@ -12,8 +12,6 @@ $aantal = 10; // Standaard aantal per pagina
 $pagina = 1; //Standaard beginpagina
 $totalpages = 1;
 
-parse_str($_SERVER['QUERY_STRING'], $queryresolved);
-
 if (isset($queryresolved['zoeken']) && !empty($queryresolved['zoeken'])) {
     $zoeken=$queryresolved['zoeken'];
 }
@@ -272,7 +270,7 @@ foreach ($products as $product) {
                                               alt="Instrument">');
     echo(' <h1>');
 
-    echo(substr($product['ProductName'],0, 70));
+    echo(substr($product['ProductName'],0, 50));
     echo('</h1>');
     echo('<div class="priceline"><h2>');
     echo($product['Price']);
@@ -281,15 +279,15 @@ foreach ($products as $product) {
         echo ('<button class="shopping-cart-button" name="toevoegen" type="submit" value="'.$product['ID'].'"><span>');
         echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></span></button>');
     } else {
-        echo('<a href="/webshop/registreer"><button class="shopping-cart-button"><span>');
-        echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button></a>');
+        echo('<button class="shopping-cart-button" name="registreren" type="submit"><span>');
+        echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button>');
     }
     echo('</div>  </div>  </div></form>');
 
 }
 ?></section>
     <?php
-    echo $totalpages;
+
         if ($totalpages>1) {
             echo ('<div class="paginanummering">Pagina ');
             unset ($queryresolved['pagina']);
