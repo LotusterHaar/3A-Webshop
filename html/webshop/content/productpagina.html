@@ -16,6 +16,10 @@ if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
         ':productid' => $artikelid,
     ]);
     $artikel = $stmt->fetch(PDO::FETCH_ASSOC);
+    $artikel['ProductName']=htmlentities($artikel['ProductName']);
+    $artikel['Description']=htmlentities($artikel['Description']);
+    $artikel['FullDescription']='testhw'.htmlspecialchars($artikel['FullDescription'], ENT_QUOTES);
+
     $database=null;
 
     if ($artikel['Stock']>0) {

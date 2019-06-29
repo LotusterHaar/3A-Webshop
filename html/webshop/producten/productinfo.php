@@ -3,10 +3,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
 
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
-
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 if (isset($queryresolved['notify']) && !empty($queryresolved['notify'])) {
     $notifyid= $queryresolved['notify'];
@@ -18,14 +14,32 @@ if (isset($queryresolved['notify']) && !empty($queryresolved['notify'])) {
     $stmt->execute([
         ':productid' => $notifyid,
     ]);
-    $notify = $stmt->fetch(PDO::FETCH_ASSOC);
+    $articleinfo = $stmt->fetch(PDO::FETCH_ASSOC);
     $database = null;
 
-    if ($notify['Stock'] < 1) {
+    if ( $articleinfo['Stock'] < 1) {
         echo ('<PRE>');
-        print_r($notify);
+        print_r($articleinfo);
         echo ('</PRE>');
         unset($queryresolved['id']);
+    }
+    else {
+        $bestelling = array(
+            'ID' =>  $articleinfo['ID'],
+            'Aantal' => 1,
+            'SKU' =>  $articleinfo['SKU'],
+            'Omschrijving' =>  $articleinfo['ProductName'],
+            'Prijs' =>  $articleinfo['Price'],
+        );
+
+        if ( $articleinfo['Stock']>=1) {
+            $_SESSION['shoppingcart'][ $articleinfo['ID']] = $bestelling;
+            $_SESSION['infobox']='Artikel '. $articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
+        }
+        else {
+            $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden';
+        }
+        header('Location: /webshop/producten/');
     }
 }
 

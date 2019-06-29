@@ -275,15 +275,25 @@ foreach ($products as $product) {
     echo('</h1>');
     echo('<div class="priceline"><h2>');
     echo($product['Price']);
-    echo('</h2>');
-    if (isLoggedin()) {
-        echo ('<button class="shopping-cart-button" name="toevoegen" type="submit" value="'.$product['ID'].'"><span>');
-        echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></span></button>');
-    } else {
-        echo('<button class="shopping-cart-button" name="registreren" type="submit"><span>');
-        echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button>');
+    echo('</h2></a>');
+
+    $querystring='';
+    unset ($queryresolved['toevoegen']);
+    foreach ($queryresolved as $key => $value ){
+        if (empty($querystring))
+            $querystring = '?'.$key.'='.$value;
+        else
+            $querystring = $querystring.'&'.$key.'='.$value;
     }
-                      echo('</div>  </div>  </section></a></div>');
+
+    if (isLoggedin()) {
+        echo ('<a href="'.$querystring.'&toevoegen='.$product['ID'].'"><button class="shopping-cart-button" name="toevoegen"><span>');
+        echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></span></button></a>');
+    } else {
+        echo('<a href="/webshop/registreren"><button class="shopping-cart-button" name="registreren" type="submit"><span>');
+        echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button></a>');
+    }
+                      echo('</div>  </div>  </section></div>');
 }
 ?></section>
     <?php
@@ -301,7 +311,7 @@ foreach ($products as $product) {
             }
 
             for($i = 1; $i <= $totalpages; ++$i) {
-                echo ('<A HREF="'.$querystring.'&pagina='.$i.'">'.$i.'</A> ');
+                echo ('<a href="'.$querystring.'&pagina='.$i.'">'.$i.'</a> ');
             }
             echo ('</div>');
         }?><BR>
