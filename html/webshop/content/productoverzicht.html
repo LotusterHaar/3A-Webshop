@@ -94,6 +94,8 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
 <?php unset($_SESSION['errorbox']); endif; ?>
 
 <section class="content">
+    <form></form> <!-- first form tag gets autoremoved for some wierd reason so workaround-->
+
     <form class="search-form" method="get">
         <input type="text" name="zoeken" <?php if (isset($zoeken)) echo ('value="'.$zoeken.'" '); ?>placeholder="Zoektermen ingeven">
         <button type="submit"><i class="fa fa-search"></i></button>

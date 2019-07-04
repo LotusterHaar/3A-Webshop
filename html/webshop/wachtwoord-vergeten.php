@@ -82,7 +82,7 @@ else if ($_SERVER['REQUEST_METHOD']=="POST" && !isLoggedin()) {
                                 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
                                 $message = '<html><body>';
-                                $message .= '<img src="http://localhost/images/logo_tuneshop_aqua.png" alt="Tuneshop Logo" /><BR><BR>';
+                                $message .= '<img src="'.$_SERVER['SERVER_NAME'].'/images/logo_tuneshop_aqua.png" alt="Tuneshop Logo" /><BR><BR>';
 
 
                                 $message .= '<h1>Hallo,<br>U heeft aangegeven dat u uw wachtwoord vergeten bent.<br><br>';

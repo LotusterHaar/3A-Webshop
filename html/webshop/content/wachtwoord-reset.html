@@ -1,0 +1,75 @@
+<!--========================
+Page: About Us
+Template Name: TuneShop
+Author: Jan Willem Lenting, Lotus ter Haar
+Bronnen: http://jsfiddle.net/H3y8j/
+https://phppot.com/php/php-user-registration-form/
+Associated files: index CSS
+==========================-->
+<?php
+    if (isset($_SESSION['wachtwoordresettoken']]) && !empty($_SESSION['wachtwoordresettoken']])) {
+    $token=$queryresolved['token'];
+    $database = db_con();
+    $sql = "SELECT `ID` FROM `user` WHERE Deleted!=1 AND Token=:Token;";
+    $stmt = $database->prepare($sql);
+$stmt->execute( [
+':Token' => $token,
+]);
+$succesfull = $stmt->fetch(PDO::FETCH_ASSOC);
+$database=null;
+$userid=$succesfull['ID'];
+if (!empty($userid)) {
+$_SESSION['wachtwoordresettoken']=$token;
+}
+
+include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
+include './content/wachtwoord-reset.html';
+include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
+
+die();
+
+}
+else {
+die();}
+}
+?>
+<!-- Content -->
+<section class="content">
+    <h1 class="header-register">Wachtwoordvergeten</h1>
+    <?php if ((isset($_SESSION['registration-error']) && !empty($_SESSION['registration-error']))): ?>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['registration-error']; ?>
+    </div>
+    <?php unset($_SESSION['registration-error']); endif; ?>
+    <?php if ((isset($_SESSION['registration-alert']) && !empty($_SESSION['registration-alert']))): ?>
+    <div class="alert info">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php echo $_SESSION['registration-alert']; ?>
+    </div>
+    <?php unset($_SESSION['registration-alert']); endif; ?>
+
+
+    <form action="#" method="post">
+        <div class="registration-form">
+
+            <div class="column2">
+                <div class="registration-form-header"><h3><label>Wachtwoord Reset</label></h3></div>
+                <div class="column-body2">
+                    <div class="address-row">
+                        <input name="username" id="username" type="text" placeholder="Gebruikersnaam" value="" required=""></label>
+                        <label><span>E-Mail adres*</span><input name="EmailRecovery" type="email"
+                                                             placeholder="Email" value="<?php checkIfSetAndShow('Email');?>"
+                                                             required/></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="save-button-row">
+            <button type="submit" class="button save-button"><i
+                    class="fas fa-save" aria-hidden="true"></i> Verstuur
+            </button>
+        </div>
+    </form>
+</section>
+</body>
