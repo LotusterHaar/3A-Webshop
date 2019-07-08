@@ -14,7 +14,11 @@ File: style for the product page CSS
 */
 
 .productImage img {
+    display: flex;
+    height: 90%;
+    width: 80%;
     margin: 20px;
+    object-fit: contain;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
@@ -35,7 +39,7 @@ File: style for the product page CSS
 
 .row1, .descriptionInStock {
     display: flex;
-    align-items: stretch;
+    /*align-items: stretch;*/
     justify-content: flex-start;
 }
 
