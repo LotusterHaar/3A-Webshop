@@ -42,6 +42,7 @@ File: style for the product page CSS
 .productInfo{
     display:flex;
 }
+
 article {
     margin: 20px;
 }

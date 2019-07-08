@@ -33,7 +33,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
         $actievepagina = 'Over-Ons';
     } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/vacatures') !== false) {
         $actievepagina = 'Vacatures';
-    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/producten/toonproduct') !== false) {
+    } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/producten/productinfo') !== false) {
         echo '<link rel="stylesheet" type="text/css" href="/css/productpagina.css">'."\r\n";
         $actievepagina = 'Webshop';
         $subpagina = 'Producten';
