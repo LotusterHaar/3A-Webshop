@@ -213,6 +213,12 @@ form.search-form::after {
 .flex-column{
     width: 25%;
 }
+
+.flex-column a{
+    text-decoration: none;
+    color: black;
+}
+
 .imageBoxSmall {
     display: flex;
     flex-direction: column;
