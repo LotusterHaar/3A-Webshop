@@ -172,6 +172,10 @@ header {
     object-fit: contain;
 }
 
+.header-account{
+    height: 189px;
+}
+
 .header-account > form > h3{
     margin: 0px;
 }
@@ -187,6 +191,10 @@ header {
 
 .loginInput{
     margin-left: 5px;
+}
+
+.avatar-text{
+    min-width: 336px;
 }
 
 /*========== End CSS for Header =============*/
