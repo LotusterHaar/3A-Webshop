@@ -8,7 +8,9 @@ Associated files: index CSS
 ==========================-->
 <PRE>
 <?php
-print_r($_SESSION['shoppingcart']);
+!-- debug -->
+if (isset($_SESSION['shoppingcart']))
+    print_r($_SESSION['shoppingcart']);
 ?>
     </PRE>
             <!-- Content -->
