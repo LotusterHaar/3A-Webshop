@@ -135,32 +135,33 @@ die();
                 echo('</div>');
                     ?>
 
-               <!-- <div class="row2">
-                    <article class="imageBoxSmall">
-                        <img src="/webshop/producten/images/instrument.jpg" alt="Instrument">
-                        <h1>Naam gerelateerd product</h1>
-                        <div class="priceline"><h2>€36,70</h2>
-                            <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
-                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
-                        </div>
-                    </article>
-                    <article class="imageBoxSmall">
-                        <img src="/webshop/producten/images/instrument.jpg" alt="Instrument">
-                        <h1>Naam gerelateerd product</h1>
-                        <div class="priceline"><h2>€44,98</h2>
-                            <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
-                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
-                        </div>
-                    </article>
-                    <article class="imageBoxSmall">
-                        <img src="/webshop/producten/images/instrument.jpg" alt="Instrument">
-                        <h1>Naam gerelateerd product</h1>
-                        <div class="priceline"><h2>€32,80</h2>
-                            <button class="shopping-cart-button"><span><a href="winkelwagen/toevoegen?id=2552"><i
-                                    class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
-                        </div>
-                    </article>
-                </div>-->
+                <?php
+                    $database = db_con();
+                    $sql = "SELECT AVG(BeoordelingsCijfer) AS AVGRATE FROM `review` WHERE ProductID=:productid";
+                    $stmt = $database->prepare($sql);
+                    $stmt->execute( [
+                        ':productid' => $artikelid,
+                    ]);
+                    $AVGRATE = $stmt->fetch(PDO::FETCH_ASSOC);
+                    print_r($AVGRATE);
+
+                    for($i=1; $i<=5; $i++)
+                    {
+                            $sql = "SELECT count(BeoordelingsCijfer) as Totaal from `review` where ProductID=:productid and BeoordelingsCijfer=:cijfer ";
+                            $stmt = $database->prepare($sql);
+                            $stmt->execute( [
+                            ':productid' => $artikelid,
+                            ':cijfer' => $i,
+                            ]);
+                            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            print_r($result);
+                            $product[$i]=$result[0]['Totaal'];
+                    }
+                print_r($product);
+                print($product[4]);
+                ?>
+
+
                 <article id="userRatings">
 
                     <span class="heading">Reviews</span>
