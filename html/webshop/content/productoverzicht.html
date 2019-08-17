@@ -300,9 +300,12 @@ foreach ($products as $product) {
             $querystring = $querystring.'&'.$key.'='.$value;
     }
 
-    if (isLoggedin()) {
+    if (isLoggedin() && $product['Stock']>1) {
         echo ('<div class="shopping-cart-button"><a href="'.$querystring.'&toevoegen='.$product['ID'].'">');
         echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></a></div>'."\r\n                ");
+    } else if (isLoggedin() && $product['Stock']<1) {
+                echo ('<div class="shopping-cart-button"><a href="'.$querystring.'&reminder='.$product['ID'].'">');
+                echo ('<i class="fa fa-calendar-alt" aria-hidden="true"></i></a></div>'."\r\n                ");
     } else {
         echo('<div class="shopping-cart-button"><a href="/webshop/registreren"><span>');
         echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></a></div>');
