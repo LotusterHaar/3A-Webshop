@@ -11,7 +11,7 @@ $categorieid = 22; // Standaard bij Piano's beginnen
 $aantal = 10; // Standaard aantal per pagina
 $pagina = 1; //Standaard beginpagina
 $totalpages = 1;
-
+//print_r($_SERVER);
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 
 if (isset($queryresolved['zoeken']) && !empty($queryresolved['zoeken'])) {
@@ -51,7 +51,7 @@ $toevoegenid=0;
 if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && is_numeric($queryresolved['toevoegen']) && isLoggedin()) {
 
     $toevoegenid=$queryresolved['toevoegen'];
-
+    print('TOEVOEGENID IS: '. $toevoegenid);
     //Ophalen uit database
     $database = db_con();
     $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock` FROM `product` WHERE Disabled!=1 AND ID=".$toevoegenid.";";
@@ -226,7 +226,7 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
                 ?>
             <section class="flex-container-column">
                 <div class="product-option-chooser">
-                    <p class="productAmountItem startMargin"><?php echo ($totaalproducten)?> Producten <?php if (isset($zoeken)) {echo ('Gevonden ');} if ($totaalproducten>1) { echo ('| Toon</p> '); ?>
+                    <p class="productAmountItem startMargin"><?php echo ($totaalproducten)?> Producten<?php if (isset($zoeken)) {echo (' Gevonden ');} if ($totaalproducten>1) { echo ('| Toon</p> '); ?>
 
                     <select class="productAmountItem" name="aantal" onchange="this.form.submit()">
                         <?php
@@ -258,6 +258,7 @@ if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) &&
                                 echo ('<option value="'.$number.'">'.$number.'</option>');
                             }
                         } ?>
+
                     </select>
                     <p class="productAmountItem">per pagina</p>
                 </div>
@@ -289,8 +290,8 @@ foreach ($products as $product) {
     }
 
     if (isLoggedin()) {
-        echo ('<a href="'.$querystring.'&toevoegen='.$product['ID'].'"><button class="shopping-cart-button" name="toevoegen"><span>');
-        echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></span></button></a>');
+        echo ('<a href="'.$querystring.'&toevoegen='.$product['ID'].'">');
+        echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></a>'."\r\n                ");
     } else {
         echo('<a href="/webshop/registreren"><button class="shopping-cart-button" name="registreren" type="submit"><span>');
         echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></button></a>');
