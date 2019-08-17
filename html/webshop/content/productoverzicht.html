@@ -52,7 +52,7 @@ $toevoegenid=0;
 if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && is_numeric($queryresolved['toevoegen']) && isLoggedin()) {
 
 $toevoegenid=$queryresolved['toevoegen'];
-print('TOEVOEGENID IS: '. $toevoegenid);
+
 //Ophalen uit database
 $database = db_con();
 $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock` FROM `product` WHERE Disabled!=1 AND ID=".$toevoegenid.";";
@@ -82,7 +82,7 @@ unset ($queryresolved['toevoegen']);
 if (isset($queryresolved['reminder']) && !empty($queryresolved['reminder']) && is_numeric($queryresolved['reminder']) && isLoggedin()) {
 
 $reminderid=$queryresolved['reminder'];
-print('REMINDERID IS: '. $reminderid);
+
 remindertoevoegen($reminderid);
 if (isset($queryresolved['reminder']))
 unset ($queryresolved['reminder']);
