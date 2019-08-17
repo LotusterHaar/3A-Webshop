@@ -55,3 +55,34 @@ function remindertoevoegen($reminderid) {
         $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan je herinneringlijst.';
     }
 }
+
+function reviewinfo($productid){
+    $database = db_con();
+    $sql = "SELECT AVG(BeoordelingsCijfer) AS AVGRATE FROM `review` WHERE ProductID=:productid";
+    $stmt = $database->prepare($sql);
+    $stmt->execute( [
+        ':productid' => $productid,
+    ]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $gemiddelde = $result['AVGRATE'];
+
+    $totaal_aantal = 0;
+    for($i=1; $i<=5; $i++)
+    {
+        $sql = "SELECT count(BeoordelingsCijfer) as Totaal from `review` where ProductID=:productid and BeoordelingsCijfer=:cijfer ";
+        $stmt = $database->prepare($sql);
+        $stmt->execute( [
+            ':productid' => $productid,
+            ':cijfer' => $i,
+        ]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $product[$i]=$result[0]['Totaal'];
+        $totaal_aantal += $product[$i];
+    }
+    $review['totaal_aantal'] = $totaal_aantal;
+    $review['product'] = $product;
+    $review['gemiddelde'] = $gemiddelde;
+
+    return $review;
+}
