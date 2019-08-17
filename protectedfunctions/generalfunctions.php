@@ -30,3 +30,28 @@ function resetsession()
 {
     $_SESSION = array();
 }
+
+function remindertoevoegen($reminderid) {
+    //Ophalen uit database
+    $database = db_con();
+    $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock` FROM `product` WHERE Disabled!=1 AND ID=".$reminderid.";";
+    $stmt = $database->prepare($sql);
+    $stmt->execute();
+    $articleinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    $database=null;
+    $bestelling = array(
+        'ID' => $articleinfo['ID'],
+        'Aantal' => 1,
+        'SKU' => $articleinfo['SKU'],
+        'Omschrijving' => $articleinfo['ID'].'-'.$articleinfo['ProductName'],
+        'Prijs' => $articleinfo['Price'],
+    );
+
+    if ($articleinfo['Stock']>=1) {
+        $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
+        $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is toch op voorraad toegevoegd aan winkelwagen.';
+    }
+    else {
+        $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan je herinneringlijst.';
+    }
+}

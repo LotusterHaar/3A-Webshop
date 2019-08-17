@@ -45,36 +45,47 @@ if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_nu
     $pagina=$queryresolved['pagina'];
 }
 
-// Winkelwagen
+//
+// Toevoegen aan Winkelwagen
 $toevoegenid=0;
 
 if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && is_numeric($queryresolved['toevoegen']) && isLoggedin()) {
 
-    $toevoegenid=$queryresolved['toevoegen'];
-    print('TOEVOEGENID IS: '. $toevoegenid);
-    //Ophalen uit database
-    $database = db_con();
-    $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock` FROM `product` WHERE Disabled!=1 AND ID=".$toevoegenid.";";
-    $stmt = $database->prepare($sql);
-    $stmt->execute();
-    $articleinfo = $stmt->fetch(PDO::FETCH_ASSOC);
-    $database=null;
-    $bestelling = array(
-        'ID' => $articleinfo['ID'],
-        'Aantal' => 1,
-        'SKU' => $articleinfo['SKU'],
-        'Omschrijving' => $articleinfo['ID'].'-'.$articleinfo['ProductName'],
-        'Prijs' => $articleinfo['Price'],
-    );
+$toevoegenid=$queryresolved['toevoegen'];
+print('TOEVOEGENID IS: '. $toevoegenid);
+//Ophalen uit database
+$database = db_con();
+$sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock` FROM `product` WHERE Disabled!=1 AND ID=".$toevoegenid.";";
+$stmt = $database->prepare($sql);
+$stmt->execute();
+$articleinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+$database=null;
+$bestelling = array(
+'ID' => $articleinfo['ID'],
+'Aantal' => 1,
+'SKU' => $articleinfo['SKU'],
+'Omschrijving' => $articleinfo['ID'].'-'.$articleinfo['ProductName'],
+'Prijs' => $articleinfo['Price'],
+);
 
-    if ($articleinfo['Stock']>=1) {
-        $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
-        $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
-    }
-    else {
-        $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden';
-    }
-    unset ($queryresolved['toevoegen']);
+if ($articleinfo['Stock']>=1) {
+$_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
+$_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
+}
+else {
+$_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden. Toegevoegd aan je herinneringlijst.';
+}
+unset ($queryresolved['toevoegen']);
+}
+
+// Toevoegen aan Reminder
+if (isset($queryresolved['reminder']) && !empty($queryresolved['reminder']) && is_numeric($queryresolved['reminder']) && isLoggedin()) {
+
+$reminderid=$queryresolved['reminder'];
+print('REMINDERID IS: '. $reminderid);
+remindertoevoegen($reminderid);
+if (isset($queryresolved['reminder']))
+unset ($queryresolved['reminder']);
 }
 
 ?>
