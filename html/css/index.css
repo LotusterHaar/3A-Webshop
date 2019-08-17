@@ -92,7 +92,7 @@ hr{
 .shopping-cart-button a{
     text-decoration: none;
     cursor: cell;
-    color: white;
+    color: white;! important
 }
 
 /*========== Begin CSS for Top Header =============*/

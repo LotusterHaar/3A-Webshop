@@ -255,6 +255,12 @@ form.search-form::after {
     margin-bottom: 15%;
 }
 
+.shopping-cart-button{
+    display: inline-block;
+}
+.shopping-cart-button a{
+    color: white; !important
+}
 
 
 
