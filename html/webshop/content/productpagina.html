@@ -63,7 +63,7 @@ die();
                                 </div>
                                 <div class="productToCart">
                                     <form method="get">
-                                        <label class="form-item" for="input-number"><strong>Aantal:</strong></label>
+                                        <label class="form-item" for="input-number"><strong>Aantal: <?php echo ($artikel['Stock']) ?></strong></label>
                                         <input class="form-item" id="input-number" type="text" size="3" name="amount"
                                                value="1">
                                         <?php if ($opvoorraad=='Ja') { echo ('<button class="form-item button" type="submit"><i class="fa fa-cart-plus"
