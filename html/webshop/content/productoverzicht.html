@@ -277,7 +277,7 @@ foreach ($products as $product) {
     echo(substr($product['ProductName'],0, 50));
     echo('</h1>');
     echo('<div class="priceline"><h2>');
-    echo($product['Price']);
+    echo('€ '.$product['Price']);
     echo('</h2></a>');
 
     $querystring='';
