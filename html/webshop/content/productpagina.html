@@ -104,7 +104,8 @@ die();
                         $product['Price']=htmlentities($product['Price']);
                         $database=null;
 
-                        echo('<article class="imageBoxSmall">
+                        echo('<a href="/webshop/producten/productinfo?id='.$product['ID'].'">
+                        <article class="imageBoxSmall">
                         <img src="/webshop/producten/images/'.$product['Picture_Small'].'" alt="Instrument">');
                         echo('<h1>');
 
@@ -112,7 +113,7 @@ die();
                         echo('</h1>');
                         echo('<div class="priceline"><h2>');
                         echo($product['Price']);
-                        echo('</h2>');
+                        echo('</h2></a>');
                         $querystring='';
                         unset ($queryresolved['toevoegen']);
                         foreach ($queryresolved as $key => $value ){
@@ -134,7 +135,7 @@ die();
                 echo('</div>');
                     ?>
 
-                <div class="row2">
+               <!-- <div class="row2">
                     <article class="imageBoxSmall">
                         <img src="/webshop/producten/images/instrument.jpg" alt="Instrument">
                         <h1>Naam gerelateerd product</h1>
@@ -159,7 +160,7 @@ die();
                                     class="fa fa-cart-plus" aria-hidden="true"></i></a></span></button>
                         </div>
                     </article>
-                </div>
+                </div>-->
                 <article id="userRatings">
 
                     <span class="heading">Reviews</span>
