@@ -57,11 +57,11 @@ function toevoegen($soort,$productid) {
         $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden. Toegevoegd aan je herinneringlijst.';
         remindertoevoegen($productid,$articleinfo['ReminderList']);
     }
-    else if ($articleinfo['Stock']>=1 && $soort == 'reminder') {
+    else if ($articleinfo['Stock']>=1 && $soort == 'notify') {
         $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
         $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
     }
-        else if ($articleinfo['Stock']<1 && $soort == 'reminder') {
+        else if ($articleinfo['Stock']<1 && $soort == 'notify') {
         $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden. Toegevoegd aan je herinneringlijst.';
         remindertoevoegen($productid,$articleinfo['ReminderList']);
     }
