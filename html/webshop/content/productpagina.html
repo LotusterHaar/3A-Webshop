@@ -176,65 +176,22 @@ $review['gemiddelde'] =3.73;
                     }
 
                     ?>
-                    <p><strong><?php echo($review['gemiddelde']);?></strong> van de 5, gebaseerd op <?php echo($review['totaal_aantal']);?> reviews.</p>
+                    <p><strong><?php echo($review['gemiddelde']);?></strong> van de 5, gebaseerd op <?php echo($review['totaal_aantal']);?> reviews. (afgerond op 0.5 punt)</p>
                     <hr>
 
                     <div class="rowUserRating">
-                        <div class="side">
-                            <div>5 sterren</div>
+                        <?php for ($i = 5; $i > 0; $i--) { ?><div class="side">
+                            <div><?php echo ($i); ?> sterren</div>
                         </div>
                         <div class="middle">
                             <div class="bar-container">
-                                <div class="bar-5"></div>
+                                <div class="bar-<?php echo ($i); ?>" style="width: <?php if ($review['product'][$i]>0) echo ($review['product'][$i]/$review['totaal_aantal']*100); else echo('0'); // Dit is de enige plek waar we expres inline css doen ?>%"></div>
                             </div>
                         </div>
                         <div class="side right">
-                            <div><?php echo($review['product'][5]);?></div>
+                            <div><?php echo($review['product'][$i]);?></div>
                         </div>
-                        <div class="side">
-                            <div>4 sterren</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-4"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div><?php echo($review['product'][4]);?></div>
-                        </div>
-                        <div class="side">
-                            <div>3 sterren</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-3"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div><?php echo($review['product'][3]);?></div>
-                        </div>
-                        <div class="side">
-                            <div>2 sterren</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-2"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div><?php echo($review['product'][2]);?></div>
-                        </div>
-                        <div class="side">
-                            <div>1 sterren</div>
-                        </div>
-                        <div class="middle">
-                            <div class="bar-container">
-                                <div class="bar-1"></div>
-                            </div>
-                        </div>
-                        <div class="side right">
-                            <div><?php echo($review['product'][1]);?></div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </article>
 

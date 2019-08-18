@@ -227,7 +227,8 @@ label.form-item {
 
 /* Individual bars */
 .bar-5 {
-    width: 60%;
+    <?php echo ('total:': $review['totaal_aantal']); ?>
+    wssidth: 60%;
     height: 18px;
     background-color: #4CAF50;
 }
