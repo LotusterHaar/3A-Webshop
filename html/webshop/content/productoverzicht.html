@@ -49,7 +49,7 @@ if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_nu
 
 if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && is_numeric($queryresolved['toevoegen']) && isLoggedin()) {
 
-toevoegenaanwinkelmand($queryresolved['toevoegen']);
+toevoegen('toevoegen',$queryresolved['toevoegen']);
 if (isset($queryresolved['toevoegen']))
     unset ($queryresolved['toevoegen']);
 }
@@ -57,7 +57,7 @@ if (isset($queryresolved['toevoegen']))
 // Toevoegen aan Reminder
 if (isset($queryresolved['reminder']) && !empty($queryresolved['reminder']) && is_numeric($queryresolved['reminder']) && isLoggedin()) {
 
-toevoegen('notify',$queryresolved['reminder']);
+toevoegen('reminder',$queryresolved['reminder']);
 if (isset($queryresolved['reminder']))
     unset ($queryresolved['reminder']);
 }
