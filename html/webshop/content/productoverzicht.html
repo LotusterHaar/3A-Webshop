@@ -57,7 +57,7 @@ if (isset($queryresolved['toevoegen']))
 // Toevoegen aan Reminder
 if (isset($queryresolved['reminder']) && !empty($queryresolved['reminder']) && is_numeric($queryresolved['reminder']) && isLoggedin()) {
 
-remindertoevoegen($queryresolved['reminder']);
+toevoegen('notify',$queryresolved['reminder']);
 if (isset($queryresolved['reminder']))
     unset ($queryresolved['reminder']);
 }

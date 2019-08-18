@@ -57,11 +57,11 @@ function toevoegen($soort,$productid) {
         $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden. Toegevoegd aan je herinneringlijst.';
         remindertoevoegen($productid,$articleinfo['ReminderList']);
     }
-    else if ($articleinfo['Stock']>=1 && $soort == 'reminder') {
+    else if ($articleinfo['Stock']>=1 && $soort == 'notify') {
         $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
         $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
     }
-        else if ($articleinfo['Stock']<1 && $soort == 'reminder') {
+        else if ($articleinfo['Stock']<1 && $soort == 'notify') {
         $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden. Toegevoegd aan je herinneringlijst.';
         remindertoevoegen($productid,$articleinfo['ReminderList']);
     }
@@ -71,17 +71,25 @@ function remindertoevoegen($productid,$reminderlist)
 {
     if (empty($reminderlist))
         $reminderlist = $_SESSION['ID'];
-    else
-        $reminderlist = $reminderlist . ',' . $_SESSION['ID'];
+    else {
+        $reminderarray = explode(",", $reminderlist);
+        if (!in_array($_SESSION['ID'],$reminderarray))
+            $reminderlist = $reminderlist . ',' . $_SESSION['ID'];
+        else
+            $_SESSION['errorbox']='Product staat al op je reminderlijst.';
+            die();
+    }
+
     //Ophalen uit database
     $database = db_con('rw');
     // Prepare an insert statement
-    $sql = "INSERT INTO `product` (ReminderList) VALUES (:reminderlist)";
+    $sql = "UPDATE `product` SET ReminderList=:reminderlist WHERE ID=:productid";
 
     if ($stmt = $database->prepare($sql)) {
         if ($stmt->execute(
             [
                 ':reminderlist' => $reminderlist,
+                ':productid' => $productid,
             ]
         )) {
             //Success!
