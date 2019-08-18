@@ -199,18 +199,28 @@ die();
                 ':productid' => $artikelid,
                 ]);
                 $reviews= $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $database = null;
+
                 ?>
                 <div class="wrap-collabsible">
                     <input id="collapsible" class="toggle" type="checkbox">
                     <label for="collapsible" class="lbl-toggle">Reviews</label>
                     <div class="collapsible-content">
                         <?php foreach ($reviews as $review) {
+                        $database = db_con();
+                        $sql = "SELECT * FROM `user` WHERE ID=:userid";
+                        $stmt = $database->prepare($sql);
+                                $stmt->execute( [
+                                ':userid' => $review['UserID']
+                                ]);
+                            $user= $stmt->fetch(PDO::FETCH_ASSOC);
                             echo('<div class="content-inner"><p><em>');
                             echo($review['Datum']);
                             echo('</em> <br> <h3>') ;
                             echo($review['BeoordelingsCijfer']);
-                            echo('<span class="fa fa-star"></span> door <strong>Jan Willem</strong>
-                                    <br><br></h3>');
+                            echo('<span class="fa fa-star"></span> door <strong>');
+                            echo($user['UserName']);
+                            echo('</strong><br><br></h3>');
                             echo($review['BeoordelingsTekst']);
                             echo('</p></div>');
                         } ?>
