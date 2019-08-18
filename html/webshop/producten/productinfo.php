@@ -2,9 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
-echo("<PRE>");
-print_r($_SERVER);
-echo("</PRE>");
+
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 if (isset($queryresolved['notify']) && !empty($queryresolved['notify']) && isLoggedin()) {
     toevoegen('reminder',$queryresolved['notify']);
