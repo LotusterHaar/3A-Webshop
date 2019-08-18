@@ -104,6 +104,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                       <h3 class="avatar-text"><?php echo ("{$_SESSION['FirstName']} {$_SESSION['Prefix']} {$_SESSION['Surname']}" ); ?></h3>
                     <form action="/logout" method="post">
                         <button type="submit">Uitloggen</button>
+                    </form>
                         <?php else: ?>
                         <form action="/login" method="post">
                             <img src="/images/login_logo_aqua.png" alt="Avatar" id="avatar">
