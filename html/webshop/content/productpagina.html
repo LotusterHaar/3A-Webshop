@@ -189,25 +189,31 @@ die();
                     </div>
                 </article>
 
+                <?php
+
+                //Get extra info about the category
+                $database = db_con();
+                $sql = "SELECT * FROM `review` WHERE ProductID=:productid";
+                $stmt = $database->prepare($sql);
+                $stmt->execute( [
+                ':productid' => $artikelid,
+                ]);
+                $reviews= $stmt->fetchAll(PDO::FETCH_ASSOC);
+                ?>
                 <div class="wrap-collabsible">
                     <input id="collapsible" class="toggle" type="checkbox">
                     <label for="collapsible" class="lbl-toggle">Reviews</label>
                     <div class="collapsible-content">
-                        <div class="content-inner">
-                            <p>
-                                <em>18-8-2019</em> <br>
-                                <h3>4 <span class="fa fa-star"></span> door <strong>Jan Willem</strong> <br><br></h3>
-                                Ik vind deze gitaar helemaal geweldig, het is het beste instrument dat ik ooit bespeelt
-                                heb. De klanken zijn hemels. Het design is ook perfect!
-
-                            </p>
-                        </div>
-                        <div class="content-inner">
-                            <p>
-                               Wat een mooie gitaar. Helemaal super!
-
-                            </p>
-                        </div>
+                        <?php foreach ($reviews as $review) {
+                            echo('<div class="content-inner"><p><em>');
+                            echo($review['Datum']);
+                            echo('</em> <br> <h3>') ;
+                            echo($review['BeoordelingsCijfer']);
+                            echo('<span class="fa fa-star"></span> door <strong>Jan Willem</strong>
+                                    <br><br></h3>');
+                            echo($review['BeoordelingsTekst']);
+                            echo('</p></div>');
+                        } ?>
                     </div>
                 </div>
             </section>
