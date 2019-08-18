@@ -10,11 +10,10 @@ File: styles shoppingcart CSS
 <link rel="stylesheet" type="text/css" href="/css/reviewpagina.css">
 
 <section class="content">
-    <form action="#" method="post">
+    <form method="post">
         <div class="writeReview">
             <h1>Schrijf een review</h1>
-            <h2>Over de
-                <a href="/webshop/producten/productinfo?id="10">Casio CDP-130 BK Black digitale piano</a> </h2>
+            <h2>Over de <?php echo('<a href="/webshop/producten/productinfo?id="'.$artikel['id.'].'">'.$artikel['ProductName'].'</a>');?> </h2>
             <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als
                 je
                 vragen of opmerkingen hebt over bijvoorbeeld de prijs of de levertijd kunnen we je beter helpen bij
@@ -24,39 +23,40 @@ File: styles shoppingcart CSS
             <p>1. Aantal sterren<span class="required"> *</span></p>
             <div class="stars">
                 <label>
-                    <input type="radio" name="stars" value="1" />
+                    <input type="radio" name="cijfer" value="1" />
                     <span class="icon">★</span>
                 </label>
                 <label>
-                    <input type="radio" name="stars" value="2" />
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                </label>
-                <label>
-                    <input type="radio" name="stars" value="3" />
-                    <span class="icon">★</span>
+                    <input type="radio" name="cijfer" value="2" />
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                 </label>
                 <label>
-                    <input type="radio" name="stars" value="4" />
-                    <span class="icon">★</span>
+                    <input type="radio" name="cijfer" value="3" />
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                 </label>
                 <label>
-                    <input type="radio" name="stars" value="5" />
+                    <input type="radio" name="cijfer" value="4" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input type="radio" name="cijfer" value="5" />
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                     <span class="icon">★</span>
-                </label>            </div>
+                </label>
+            </div>
             <p>2. Wat vind je van het artikel?</p>
             <textarea class="text-input" name="reviewDescription" rows="9" cols="70"
                       placeholder="Beschrijf je ervaringen met het artikel ..." required></textarea>
-            <button type="submit" class="button send">Review verzenden</button>
+            <button type="submit" class="button send" value="review">Review verzenden</button>
         </div>
     </form>
 </section>

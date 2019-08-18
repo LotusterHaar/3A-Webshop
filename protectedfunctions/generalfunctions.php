@@ -101,7 +101,7 @@ function remindertoevoegen($productid,$reminderlist)
 
 function reviewinfo($productid){
     $database = db_con();
-    $sql = "SELECT AVG(BeoordelingsCijfer) AS AVGRATE FROM `review` WHERE ProductID=:productid";
+    $sql = "SELECT AVG(Cijfer) AS AVGRATE FROM `review` WHERE ProductID=:productid";
     $stmt = $database->prepare($sql);
     $stmt->execute( [
         ':productid' => $productid,
@@ -112,7 +112,7 @@ function reviewinfo($productid){
     $totaal_aantal = 0;
     for($i=1; $i<=5; $i++)
     {
-        $sql = "SELECT count(BeoordelingsCijfer) as Totaal from `review` where ProductID=:productid and BeoordelingsCijfer=:cijfer ";
+        $sql = "SELECT count(Cijfer) as Totaal from `review` where ProductID=:productid and Cijfer=:cijfer ";
         $stmt = $database->prepare($sql);
         $stmt->execute( [
             ':productid' => $productid,
