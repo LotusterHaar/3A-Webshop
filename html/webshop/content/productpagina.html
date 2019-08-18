@@ -7,7 +7,6 @@ parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
     $artikelid=$queryresolved['id'];
 
-
     //Get extra info about the category
     $database = db_con();
     $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND ID=:productid";
