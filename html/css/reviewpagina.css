@@ -1,7 +1,7 @@
 /*Template Name: TuneShop
 Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen: https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
-File: style for the product review page CSS*/
+File: style for the product reviews page CSS*/
 
 .writeReview{
     border-radius: 0.3rem;
@@ -77,4 +77,8 @@ File: style for the product review page CSS*/
     height: 8px;
     border-radius: 50%;
     background: white;
+}
+
+.stars{
+    display: flex;
 }

@@ -164,10 +164,10 @@ INSERT INTO `product_related_product` (`ProductID`, `ProductID_Related_Product`)
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `review`
+-- Tabelstructuur voor tabel `reviews`
 --
 
-CREATE TABLE `review` (
+CREATE TABLE `reviews` (
   `ReviewID` int(11) NOT NULL,
   `ProductID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
@@ -177,10 +177,10 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `review`
+-- Gegevens worden geëxporteerd voor tabel `reviews`
 --
 
-INSERT INTO `review` (`ReviewID`, `ProductID`, `UserID`, `BeoordelingsCijfer`, `BeoordelingsTekst`, `Datum`) VALUES
+INSERT INTO `reviews` (`ReviewID`, `ProductID`, `UserID`, `BeoordelingsCijfer`, `BeoordelingsTekst`, `Datum`) VALUES
 (1, 6, 1, 4, 'Beste in zijn prijsklasse, al ruim een jaar veel plezier van! Toetsen voelen goed aan, het geluid is top. Echter speelt de piano soms zomaar een noot heel erg luid af, wat me al een paar keer flink heeft laten schrikken. Dit gebeurt misschien 1 keer per 10 uur. Geen idee of ik dit als enigste heb.', '2019-05-12'),
 (2, 6, 2, 5, 'Zeer goede prijs/kwaliteit. De toetsen voelen aan als echt ivoor, en hij ziet er sober en elegant uit, zoals het een piano betaamt. Heel handig in het gebruik en een goede klank voor een digitale piano. \r\n', '2019-03-24');
 

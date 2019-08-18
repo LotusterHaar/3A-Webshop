@@ -4,54 +4,105 @@ Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen:
 File: styles shoppingcart CSS
 ==========================-->
+
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
+
+parse_str($_SERVER['QUERY_STRING'], $queryresolved);
+
+if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
+    $artikelid=$queryresolved['id'];
+    //Get extra info about the category
+    $database = db_con();
+    $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND ID=:productid";
+    $stmt = $database->prepare($sql);
+    $stmt->execute( [
+    ':productid' => $artikelid,
+    ]);
+    $artikel = $stmt->fetch(PDO::FETCH_ASSOC);
+    $artikel['ProductName']=htmlentities($artikel['ProductName']);
+    $database=null;
+}
+else {
+die();
+}
+
+?>
+
+
 <link rel="stylesheet" type="text/css" href="/css/reviewpagina.css">
 
 <section class="content">
-    <div class="writeReview">
-        <h1>Schrijf een review</h1>
-        <h2>Over de <a href="https://www.w3schools.com/html/">Yamaha piano</a></h2>
-        <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als
-            je
-            vragen of opmerkingen hebt over bijvoorbeeld de prijs of de levertijd kunnen we je beter helpen bij
-            de
-            klantenservioce.</p>
-        <h2>Je beoordeling</h2>
-        <p>1. Aantal sterren<span class="required"> *</span></p>
-        <p>2. Zou je het artikel aan vrienden aanbevelen?<span class="required"> *</span></p>
-        <form>
+    <form action="#" method="post">
+        <div class="writeReview">
+            <h1>Schrijf een review</h1>
+            <h2>Over de
+                <?php echo('<a href="/webshop/producten/productinfo?id="'.$artikelid.'">'.$artikel['ProductName'].'</a>');?> </h2>
+            <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als
+                je
+                vragen of opmerkingen hebt over bijvoorbeeld de prijs of de levertijd kunnen we je beter helpen bij
+                de
+                klantenservioce.</p>
+            <h2>Je beoordeling</h2>
+            <p>1. Aantal sterren<span class="required"> *</span></p>
+            <div class="stars">
+                <label class="radioContainer"> 1&nbsp;
+                    <input type="radio" name="stars" required>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radioContainer"> 2&nbsp;
+                    <input type="radio" name="stars">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radioContainer"> 3&nbsp;
+                    <input type="radio" name="stars">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radioContainer"> 4&nbsp;
+                    <input type="radio" name="stars">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="radioContainer"> 5&nbsp;
+                    <input type="radio" name="stars" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <p>2. Zou je het artikel aan vrienden aanbevelen?<span class="required"> *</span></p>
+
             <label class="radioContainer">Ja, een aanrader
-                <input type="radio" name="radio" checked="checked">
+                <input type="radio" name="recommendation" checked="checked required">
                 <span class="checkmark"></span>
             </label>
             <label class="radioContainer">Nee, geen aanrader
-                <input type="radio" name="radio">
+                <input type="radio" name="recommendation">
                 <span class="checkmark"></span>
             </label>
-        </form>
-        <p>3. Geef je review een titel</p>
-        <input type="text" name="titleReview">
-        <p>4. Wat vind je van het artikel?</p>
-        <textarea class="text-input" name="reviewDescription" rows="9" cols="70"
-                  placeholder="Beschrijf je ervaringen met het artikel ..."></textarea>
-        <div id="plusAndMinus"><p>5. Plus- en minpunten</p></div>
-        <h2>Je gegevens</h2>
-        <p>6. Jouw naam</p>
-        <input type="text" name="nameReview" placeholder="Je eigen naam of kies een nickname">
-        <p>7. E-mailadres</p>
-        <input type="text" placeholder="Vul emailadres in" name="email">
-        <p>8. Leeftijd</p>
-        <select>
-            <option value="fourteen">Tot 14 jaar</option>
-            <option value="fourteenNineteen">14-19</option>
-            <option value="twentyTwentynine">20-29</option>
-            <option value="thirtyThirtynine">30-39</option>
-            <option value="fortyFortynine">40-49</option>
-            <option value="fiftyFiftynine">50-59</option>
-            <option value="sixtyFiftynine">60-69</option>
-            <option value="seventyPlus">70+ jaar</option>
-        </select>
-        <p>9. Woonplaats</p>
-        <input type="text" placeholder="Vul emailadres in" name="residence" placeholder="">
-        <button type="submit" class="button send">Review verzenden</button>
-    </div>
+
+            <p>3. Geef je review een titel</p>
+            <input type="text" name="titleReview">
+            <p>4. Wat vind je van het artikel?</p>
+            <textarea class="text-input" name="reviewDescription" rows="9" cols="70"
+                      placeholder="Beschrijf je ervaringen met het artikel ..." required></textarea>
+            <div id="plusAndMinus"><p>5. Plus- en minpunten</p></div>
+            <h2>Je gegevens</h2>
+            <p>6. Jouw naam</p>
+            <input type="text" name="nameReview" placeholder="Je eigen naam of kies een nickname" required>
+            <p>7. E-mailadres</p>
+            <input type="text" placeholder="Vul emailadres in" name="email" required>
+            <p>8. Leeftijd</p>
+            <select name="age" required>
+                <option value="fourteen">Tot 14 jaar</option>
+                <option value="fourteenNineteen">14-19</option>
+                <option value="twentyTwentynine">20-29</option>
+                <option value="thirtyThirtynine">30-39</option>
+                <option value="fortyFortynine">40-49</option>
+                <option value="fiftyFiftynine">50-59</option>
+                <option value="sixtyFiftynine">60-69</option>
+                <option value="seventyPlus">70+ jaar</option>
+            </select>
+            <button type="submit" class="button send">Review verzenden</button>
+        </div>
+    </form>
 </section>
