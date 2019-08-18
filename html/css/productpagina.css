@@ -173,9 +173,10 @@ label.form-item {
 }*/
 
 #userRatings {
-    width: 50%;
+    width: 62%;
     padding: 15px;
     margin-left: 15px;
+    margin: auto;
 }
 
 .heading {
@@ -335,4 +336,10 @@ label.form-item {
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
     padding: .5rem 1rem;
+}
+
+.buttonReviewRow {
+    text-align: center;
+    padding-left: 15px;
+    padding-top: 15px;
 }
