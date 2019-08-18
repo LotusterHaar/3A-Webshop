@@ -13,19 +13,16 @@ parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 
 if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
     $artikelid=$queryresolved['id'];
-    print_r($artikelid);
     //Get extra info about the category
     $database = db_con();
     $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND ID=:productid";
     $stmt = $database->prepare($sql);
-$stmt->execute( [
-':productid' => $artikelid,
-]);
-$artikel = $stmt->fetch(PDO::FETCH_ASSOC);
-$artikel['ProductName']=htmlentities($artikel['ProductName']);
-print_r($artikel['ProductName']);
-$database=null;
-
+    $stmt->execute( [
+    ':productid' => $artikelid,
+    ]);
+    $artikel = $stmt->fetch(PDO::FETCH_ASSOC);
+    $artikel['ProductName']=htmlentities($artikel['ProductName']);
+    $database=null;
 }
 else {
 die();
@@ -41,7 +38,7 @@ die();
         <div class="writeReview">
             <h1>Schrijf een review</h1>
             <h2>Over de
-                    </h2>
+                <?php echo('<a href="/webshop/producten/productinfo?id="'.$artikelid.'">'.$artikel['ProductName'].'</a>');?> </h2>
             <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als
                 je
                 vragen of opmerkingen hebt over bijvoorbeeld de prijs of de levertijd kunnen we je beter helpen bij
