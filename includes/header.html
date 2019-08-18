@@ -161,12 +161,6 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                                 <ul class="sub-menu dropdown-content">
                                     <li><a href="/webshop/producten" class="sub-menu-link <?php if ($subpagina=='Producten'){  echo (' active"'); } ?>">Producten</a>
                                     </li>
-                                    <?php if (isAdmin()): ?>
-                                    <li><a href="/webshop/producten/beheren" class="sub-menu-link <?php if ($subpagina=='Producten-Beheren'){  echo (' active"'); } ?>">Producten beheren</a>
-                                    </li>
-                                    <li><a href="/webshop/gebruikers/beheren" class="sub-menu-link <?php if ($subpagina=='Gebruikers-Beheren'){  echo (' active"'); } ?>">Gebruikers beheren</a>
-                                    </li>
-                                    <?php endif; ?>
                                     <?php if (isLoggedin()): ?>
 <!--                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link <?php if ($subpagina=='Bestelgeschiedenis'){  echo (' active"'); } ?>">Bestelgeschiedenis</a>-->
 <!--                                    </li>-->
