@@ -5,11 +5,14 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
 
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 if (isset($queryresolved['notify']) && !empty($queryresolved['notify']) && isLoggedin()) {
-    $notifyid= $queryresolved['notify'];
-    print_r($_SESSION);
-    echo ('Notify');
+    toevoegen('reminder',$queryresolved['notify']);
 
-    toevoegen('reminder',$notifyid);
+    header('Location: /webshop/producten/');
+    die();
+}
+
+if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && isLoggedin()) {
+    toevoegen('product',$queryresolved['toevoegen']);
 
     header('Location: /webshop/producten/');
     die();
