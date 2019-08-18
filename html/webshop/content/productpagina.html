@@ -145,7 +145,7 @@ die();
                     <span class="heading">Reviews</span>
 
                     <?php
-$review['gemiddelde'] =3.73;
+
                     $fraction = $review['gemiddelde'] - floor($review['gemiddelde']);
                     $fraction = round($fraction * 2) / 2;  // Rond op halve punt
                     $review['gemiddelde'] = floor($review['gemiddelde']) + $fraction;  // Bepaal getal op halve punt
@@ -157,11 +157,6 @@ $review['gemiddelde'] =3.73;
                         $halfstar = $fraction / 0.5;
                         else
                         $halfstar = 0;
-
-
-                    echo ("Floor: ".$floor);
-                    echo (" / Rest: ".$fraction);
-                    echo (" / Halfstar: ".$halfstar );
 
                     for ($i = 1; $i <= $floor; $i++) {
                         echo ('<span class="fa fa-star checked"></span>'."\r\n");
