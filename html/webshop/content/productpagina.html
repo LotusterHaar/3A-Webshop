@@ -63,7 +63,6 @@ die();
                                 </div>
                                 <div class="productToCart">
                                     <form method="get">
-                                        <label class="form-item" for="input-number"><strong>Aantal: <?php echo ($artikel['Stock']) ?></strong></label>
                                         <input class="form-item" id="input-number" type="text" size="3" name="amount"
                                                value="1">
                                         <?php if ($opvoorraad=='Ja') { echo ('<button class="form-item button" type="submit"><i class="fa fa-cart-plus"
@@ -144,12 +143,33 @@ die();
                 <article id="userRatings">
 
                     <span class="heading">Reviews</span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <p><strong><?php echo(round($review['gemiddelde'],2));?></strong> van de 5, gebaseerd op <?php echo($review['totaal_aantal']);?> reviews.</p>
+
+                    <?php
+
+                    $floor = floor($review['gemiddelde']);
+                    $fraction = $review['gemiddelde'] - $floor;
+                    $fraction = round($fraction * 2) / 2;
+                    $ceil = ceil($review['gemiddelde']);
+                    $halfstar = $fraction - 0.5;
+
+                    echo ("Floor: ".$floor);
+                    echo (" / Rest: ".$fraction);
+                    echo (" / Halfstar: ".$halfstar );
+
+                    for ($i = 1; $i <= $floor; $i++) {
+                        echo ('<span class="fa fa-star checked"></span>'."\r\n");
+                    }
+
+                    for( $i= 1 ; $i <= $halfstar ; $i++ ) {
+                        echo ('<span class="fa fa-star-half-alt checked"></span>'."\r\n");
+                    }
+
+                    for ($i = 5; $i > $ceil; $i--) {
+                        echo ('<span class="fa fa-star"></span>'."\r\n");
+                    }
+
+                    ?>
+                    <p><strong><?php echo($review['gemiddelde']);?></strong> van de 5, gebaseerd op <?php echo($review['totaal_aantal']);?> reviews.</p>
                     <hr>
 
                     <div class="rowUserRating">

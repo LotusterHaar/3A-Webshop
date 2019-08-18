@@ -82,7 +82,7 @@ function reviewinfo($productid){
     }
     $review['totaal_aantal'] = $totaal_aantal;
     $review['product'] = $product;
-    $review['gemiddelde'] = $gemiddelde;
+    $review['gemiddelde'] = round($gemiddelde,2);
 
     return $review;
 }
