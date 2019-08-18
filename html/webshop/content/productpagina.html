@@ -145,12 +145,20 @@ die();
                     <span class="heading">Reviews</span>
 
                     <?php
-
+$review['gemiddelde'] =3.76;
                     $floor = floor($review['gemiddelde']);
                     $fraction = $review['gemiddelde'] - $floor;
-                    $fraction = round($fraction * 2) / 2;
+                    $fraction = round($fraction * 2) / 2;  // Rond omhoog naar eerst volgende halve punt
+                    $review['gemiddelde'] = $floor+$fraction;  // Rond omhoog naar eerst volgende halve punt
+                    $floor = floor($review['gemiddelde']);
+                    $fraction = $review['gemiddelde'] - $floor;
+
                     $ceil = ceil($review['gemiddelde']);
-                    $halfstar = $fraction - 0.5;
+                    if ($fraction < 0.6)
+                        $halfstar = $fraction / 0.5;
+                        else
+                        $halfstar = 0;
+
 
                     echo ("Floor: ".$floor);
                     echo (" / Rest: ".$fraction);
