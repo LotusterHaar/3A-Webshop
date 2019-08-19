@@ -6,13 +6,7 @@ Bronnen: https://codepen.io/torbencolding/pen/ogYjJP
 https://coder-coder.com/build-flexbox-website-layout/
 Associated files: index CSS
 ==========================-->
-<PRE>
-<?php
-<!-- debug -->
-if (isset($_SESSION['shoppingcart']))
-    print_r($_SESSION['shoppingcart']);
-?>
-    </PRE>
+
             <!-- Content -->
             <H2 class="content flex-columnContainer">
                 <div class="tablecontainer">
@@ -62,7 +56,7 @@ if (isset($_SESSION['shoppingcart']))
                             </td>
                             <td>€ <?php echo (number_format($articletotal,2)); ?></td>
                             <td>
-                                <button class="deleteBtn" name="verwijder" type="submit" value="<?php echo ($artikel['ID']); ?>"><span><a href="winkelwagen/toevoegen?id=2552"><i
+                                <button class="deleteBtn" name="verwijder" type="submit" value="<?php echo ($artikel['ID']); ?>"><span><a href="?verwijderen=<?php echo ($artikel['ID']); ?>"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a></span></button>
                             </td>
                         </tr>

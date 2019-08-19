@@ -213,13 +213,14 @@ die();
                     <label for="collapsible" class="lbl-toggle">Reviews</label>
                     <div class="collapsible-content">
                         <?php foreach ($reviews as $review) {
-                        $database = db_con();
-                        $sql = "SELECT * FROM `user` WHERE ID=:userid";
-                        $stmt = $database->prepare($sql);
-                                $stmt->execute( [
+                            $database = db_con();
+                            $sql = "SELECT * FROM `user` WHERE ID=:userid";
+                            $stmt = $database->prepare($sql);
+                            $stmt->execute( [
                                 ':userid' => $review['UserID']
                                 ]);
                             $user= $stmt->fetch(PDO::FETCH_ASSOC);
+
                             echo('<div class="content-inner"><p><em>');
                             echo($review['Datum']);
                             echo('</em> <br> <h3>') ;

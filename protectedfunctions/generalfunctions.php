@@ -32,9 +32,7 @@ function resetsession()
 }
 
 function toevoegen($soort,$productid) {
-//Ophalen uit database
-    echo ($soort.' product '.$productid);
-    
+    //Ophalen uit database
     $database = db_con();
     $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock`, `ReminderList` FROM `product` WHERE Disabled!=1 AND ID=".$productid.";";
     $stmt = $database->prepare($sql);
@@ -49,19 +47,28 @@ function toevoegen($soort,$productid) {
         'Prijs' => $articleinfo['Price'],
     );
 
-    if ($articleinfo['Stock']>=1 && $soort == 'toevoegen') {
+    if (($articleinfo['Stock']>=1 && $soort == 'toevoegen') && isset( $_SESSION['shoppingcart'][$articleinfo['ID']])) {
+        $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' zat al in winkelmand, een extra toegevoegd.';
+        $_SESSION['shoppingcart'][$articleinfo['ID']]['Aantal'] += 1;
+    }
+    else if (($articleinfo['Stock']>=1 && $soort == 'toevoegen') && !isset( $_SESSION['shoppingcart'][$articleinfo['ID']])) {
         $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
         $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
+
     }
     else if ($articleinfo['Stock']<1 && $soort == 'toevoegen') {
         $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden. Toegevoegd aan je herinneringlijst.';
         remindertoevoegen($productid,$articleinfo['ReminderList']);
     }
-    else if ($articleinfo['Stock']>=1 && $soort == 'reminder') {
-        $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
-        $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
+    else if (($articleinfo['Stock']>=1 && $soort == 'reminder')&& isset( $_SESSION['shoppingcart'][$articleinfo['ID']])) {
+        $_SESSION['shoppingcart'][$articleinfo['ID']]['Aantal'] += 1;
+        $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is toch op voorraad maar zat al in winkelmand een extra toegevoegd.';
     }
-        else if ($articleinfo['Stock']<1 && $soort == 'reminder') {
+    else if (($articleinfo['Stock']>=1 && $soort == 'reminder')&& !isset( $_SESSION['shoppingcart'][$articleinfo['ID']])) {
+        $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
+        $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is toch op voorraad, toegevoegd aan winkelmand.';
+    }
+    else if ($articleinfo['Stock']<1 && $soort == 'reminder') {
         $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden. Toegevoegd aan je herinneringlijst.';
         remindertoevoegen($productid,$articleinfo['ReminderList']);
     }
