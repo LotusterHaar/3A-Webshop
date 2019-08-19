@@ -64,20 +64,6 @@ if (isset($queryresolved['reminder']))
 
 ?>
 <!-- Content -->
-<?php if ((isset($_SESSION['infobox']) && !empty($_SESSION['infobox']))): ?>
-<div class="alert info">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <?php echo $_SESSION['infobox']; ?>
-</div>
-<?php unset($_SESSION['infobox']); endif; ?>
-
-<?php if ((isset($_SESSION['errorbox']) && !empty($_SESSION['errorbox']))): ?>
-<div class="alert error">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <?php echo $_SESSION['errorbox']; ?>
-</div>
-<?php unset($_SESSION['errorbox']); endif; ?>
-
 <section class="content">
     <form></form> <!-- first form tag gets autoremoved for some wierd reason so workaround-->
 
