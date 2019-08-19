@@ -42,6 +42,11 @@ if ($_SERVER['REQUEST_METHOD']=='POST' && isLoggedin()) {
                 die();
             }
 
+            if (isset($_SESSION['infobox']) && !empty($_SESSION['infobox'])) {
+                include '../content/productinfo.html';
+                include $_SERVER['DOCUMENT_ROOT'] . '/../includes/footer.html';
+                die();
+            }
         }
     }
   }

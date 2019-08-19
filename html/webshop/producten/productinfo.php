@@ -44,7 +44,7 @@ if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
 }
 
 include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
-include '../content/productpagina.html';
+include '../content/productinfo.html';
 include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
 
 ?>
