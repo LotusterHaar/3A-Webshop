@@ -1,5 +1,4 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
 
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 if (isset($queryresolved['verwijderen']) && !empty($queryresolved['verwijderen'])) {
@@ -18,6 +17,7 @@ if (isset($queryresolved['verwijderen']) && !empty($queryresolved['verwijderen']
 
 }
 
+include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
 
 if (isLoggedin())
     include './content/winkelwagen.html';

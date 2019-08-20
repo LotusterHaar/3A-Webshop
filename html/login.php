@@ -52,6 +52,7 @@ else
     $_SESSION['loginform']=$username;
 }
 toonRedirectHeader();
+
 function toonRedirectHeader(){
     if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER']))
 #echo ('--');
