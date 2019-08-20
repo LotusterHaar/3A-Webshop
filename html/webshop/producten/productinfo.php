@@ -7,18 +7,15 @@ parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 if (isset($queryresolved['notify']) && !empty($queryresolved['notify']) && isLoggedin()) {
     toevoegen('reminder',$queryresolved['notify']);
 
-    header('Location: /webshop/producten/');
-    die();
+    //header('Location: /webshop/producten/');
+    //die();
 }
-
-if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && isLoggedin()) {
+else if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && isLoggedin()) {
     toevoegen('product',$queryresolved['toevoegen']);
-
-    header('Location: /webshop/producten/');
-    die();
+    //header('Location: /webshop/producten/');
+    //die();
 }
-
-if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
+else if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
     $artikelid = $queryresolved['id'];
 
     //Get extra info about the category
@@ -38,8 +35,12 @@ if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
     }
 
     if (empty($artikel)) {
-        header('Location: /webshop/producten/');
+        include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
+        include '../content/productoverzicht.html';
+        include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
         die();
+        //header('Location: /webshop/producten/');
+        //die();
     }
 }
 
