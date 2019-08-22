@@ -1,0 +1,13 @@
+.buttonRow {
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+#headingOrderHistory{
+    text-align: center;
+}
+
+.websitephoto {
+    max-height: 100px;
+    float: left;
+}
