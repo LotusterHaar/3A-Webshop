@@ -1,8 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
-?> <PRE> <?php print_r($_SESSION['shoppingcart']); ?> </PRE>
-<?php
 
 //Get extra info about the category
 $database = db_con();
@@ -10,7 +8,6 @@ $sql = "SELECT * FROM `orders`";
 $stmt = $database->prepare($sql);
 $stmt->execute();
 $bestellingen= $stmt->fetchAll(PDO::FETCH_ASSOC);
-print_r($bestellingen);
 $database=null;
 ?>
 
@@ -23,11 +20,21 @@ $database=null;
         $winkelwagenBestellingen = unserialize($serializedWinkelwagenBestellingen['Cart']);
         foreach($winkelwagenBestellingen as $bestelling)
         {
+
+            //Get extra info about the category
+            $database = db_con();
+            $sql = "SELECT `SKU`, `ProductName`, `Picture_Big` FROM `product` WHERE Disabled!=1 AND SKU=:SKU;";
+            $stmt = $database->prepare($sql);
+            $stmt->execute( [
+            ':SKU' => $bestelling['SKU'],
+            ]);
+            $artikelinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+            $database=null;
             echo(' <div class="orderedArticle"><article><p>');
             echo($serializedWinkelwagenBestellingen['Date'].' Bestelnummer '.$serializedWinkelwagenBestellingen['OrderID']);
             echo('</p><hr><div class="clearfix">');?>
-            <img src="/webshop/producten/images/<?php echo ($bestelling['Picture_Small']);?>"  class="websitephoto" alt="Image <?php echo (trim($bestelling['ProductName'])); ?>">
-            <p><strong>&nbsp;&nbsp;<?php $bestelling['Omschrijving'];?>
+            <img src="/webshop/producten/images/<?php echo ($artikelinfo['Picture_Big']);?>"  class="websitephoto" alt="Image <?php echo (trim($artikelinfo['ProductName'])); ?>">
+            <p><strong>&nbsp;&nbsp;<?php echo($artikelinfo['ProductName']);?>
             </strong></p></div>
             </article>
             </div>
