@@ -1,37 +1,37 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/generalfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php');
+?> <PRE> <?php print_r($_SESSION['shoppingcart']); ?> </PRE>
+<?php
+
+//Get extra info about the category
+$database = db_con();
+$sql = "SELECT * FROM `orders`";
+$stmt = $database->prepare($sql);
+$stmt->execute();
+$bestellingen= $stmt->fetchAll(PDO::FETCH_ASSOC);
+print_r($bestellingen);
+$database=null;
+?>
+
 <section class="content">
     <div class="buttonRow">
         <button class="button buttonShopMore"><a href="/webshop"> <i class="fas fa-shopping-basket"></i> Verder winkelen </a></button>
     </div>
     <h1 id="headingOrderHistory">Mijn bestellingsgeschiedenis</h1>
-    <div class="orderedArticle">
-        <article>
-            <p>1 augustus 2019 | Bestelnummer 20239494</p>
-            <hr>
-            <div class="clearfix">
-                <img src="/webshop/producten/images/Fazley_FLP300SB_Sunburst_01.JPG"  class="websitephoto" alt="Instrument">
-                <p><strong>&nbsp;&nbsp;Fazley FLP318SB elektrische gitaar sunburst</strong>
-                </p></div>
-        </article>
-    </div>
-    <div class="orderedArticle">
-        <article>
-            <p>1 augustus 2019 | Bestelnummer 20239494</p>
-            <hr>
-            <div class="clearfix">
-                <img src="/webshop/producten/images/Fazley_FLP300SB_Sunburst_01.JPG"  class="websitephoto" alt="Instrument">
-                <p><strong>&nbsp;&nbsp;Fazley FLP318SB elektrische gitaar sunburst</strong>
-                </p></div>
-        </article>
-    </div>
-    <div class="orderedArticle">
-        <article>
-            <p>1 augustus 2019 | Bestelnummer 20239494</p>
-            <hr>
-            <div class="clearfix">
-                <img src="/webshop/producten/images/Fazley_FLP300SB_Sunburst_01.JPG"  class="websitephoto" alt="Instrument">
-                <p><strong>&nbsp;&nbsp;Fazley FLP318SB elektrische gitaar sunburst</strong>
-                </p></div>
-        </article>
-    </div>
+    <?php foreach($bestellingen as $serializedWinkelwagenBestellingen){
+        $winkelwagenBestellingen = unserialize($serializedWinkelwagenBestellingen['Cart']);
+        foreach($winkelwagenBestellingen as $bestelling)
+        {
+            echo(' <div class="orderedArticle"><article><p>');
+            echo($serializedWinkelwagenBestellingen['Date'].' Bestelnummer '.$serializedWinkelwagenBestellingen['OrderID']);
+            echo('</p><hr><div class="clearfix">');?>
+            <img src="/webshop/producten/images/<?php echo ($bestelling['Picture_Small']);?>"  class="websitephoto" alt="Image <?php echo (trim($bestelling['ProductName'])); ?>">
+            <p><strong>&nbsp;&nbsp;<?php $bestelling['Omschrijving'];?>
+            </strong></p></div>
+            </article>
+            </div>
+        <?php }
+    }?>
 
 </section>
