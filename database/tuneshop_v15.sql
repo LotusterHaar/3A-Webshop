@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3333
--- Generation Time: Aug 22, 2019 at 01:46 PM
+-- Generation Time: Aug 22, 2019 at 02:07 PM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -111,8 +111,15 @@ CREATE TABLE `orders` (
   `Date` date NOT NULL,
   `Payment` date DEFAULT NULL,
   `Cart` text NOT NULL,
-  `Total` int(11) NOT NULL
+  `Total` decimal(11,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`OrderID`, `UserID`, `Date`, `Payment`, `Cart`, `Total`) VALUES
+(1002, 1, '2019-08-22', NULL, 'a:2:{i:10;a:5:{s:2:\"ID\";s:2:\"10\";s:6:\"Aantal\";i:3;s:3:\"SKU\";s:16:\"casio_cdp_130_bk\";s:12:\"Omschrijving\";s:40:\"10-Casio CDP-130 BK Black digitale piano\";s:5:\"Prijs\";s:6:\"507.00\";}i:11;a:5:{s:2:\"ID\";s:2:\"11\";s:6:\"Aantal\";i:2;s:3:\"SKU\";s:20:\"Fazley_FLP300SB_Sunb\";s:12:\"Omschrijving\";s:46:\"11-Fazley FLP318SB elektrische gitaar sunburst\";s:5:\"Prijs\";s:6:\"179.00\";}}', '1879.00');
 
 -- --------------------------------------------------------
 
@@ -301,7 +308,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
 
 --
 -- AUTO_INCREMENT for table `product`
