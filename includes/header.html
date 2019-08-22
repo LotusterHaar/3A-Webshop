@@ -54,7 +54,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
         $actievepagina = 'Webshop';
         $subpagina = 'Bestelgeschiedenis';
     } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/winkelwagen') !== false) {
-    //echo '<link rel="stylesheet" type="text/css" href="/css/winkelwagen.css">'."\r\n";
+        echo '<link rel="stylesheet" type="text/css" href="/css/winkelwagen.css">'."\r\n";
     $actievepagina = 'Webshop';
     $subpagina = 'Winkelwagen';
     } else if (strpos(strtolower($_SERVER['REQUEST_URI']),'/webshop/afrekenen') !== false) {

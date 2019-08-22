@@ -13,8 +13,6 @@ if (isset($queryresolved['verwijderen']) && !empty($queryresolved['verwijderen']
     {
         $_SESSION['errorbox'] = 'Kan artikel '.$artikelid.' niet uit winkelwagen verwijderen. Artikel niet gevonden';
     }
-
-
 }
 
 include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
