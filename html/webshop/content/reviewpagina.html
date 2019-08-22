@@ -23,7 +23,7 @@ if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
     ]);
     $artikel = $stmt->fetch(PDO::FETCH_ASSOC);
     $artikel['ProductName']=htmlentities($artikel['ProductName']);
-    print_r($artikel['ProductName']);
+    
     $database=null;
     }
     else {
@@ -37,9 +37,8 @@ if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
     <form method="post">
         <div class="writeReview">
             <h1>Schrijf een review</h1>
-            <h2>Over de <?php echo('<a href="/webshop/producten/productinfo?id="'.$artikelid.'">'.$artikel['ProductName'].'</a>');?></h2>
-            <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als
-                je
+            <h2>Over de <?php echo('<a href="/webshop/producten/productinfo?id='.$artikel['ID'].'">'.$artikel['ProductName'].'</a>');?></h2>
+            <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als je
                 vragen of opmerkingen hebt over bijvoorbeeld de prijs of de levertijd kunnen we je beter helpen bij
                 de
                 klantenservioce.</p>
