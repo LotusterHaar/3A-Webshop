@@ -84,6 +84,27 @@ function remindertoevoegen($productid,$reminderlist)
             $reminderlist = $reminderlist . ',' . $_SESSION['ID'];
         else
             $_SESSION['errorbox']='Product staat al op je reminderlijst.';
+            parse_str($_SERVER['QUERY_STRING'], $queryresolved);
+
+            $querystring="?";
+            if (isset($queryresolved['zoeken']) && !empty($queryresolved['zoeken']))
+                $querystring = $querystring ."zoeken=".$queryresolved['zoeken']."&";
+
+            if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal']))
+                $querystring = $querystring ."aantal=".$queryresolved['aantal']."&";
+
+            if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']))
+                $querystring = $querystring ."pagina=".$queryresolved['pagina']."&";
+
+            if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid']))
+                $querystring = $querystring ."categorieid=".$queryresolved['categorieid']."&";
+
+            if (isset($queryresolved['categorienaam']) && !empty($queryresolved['categorienaam']))
+                $querystring = $querystring . "categorienaam=".$queryresolved['categorienaam'];
+            else
+                $querystring=substr($querystring, 0, -1); // remove last characther
+
+            header ("Location: /webshop/producten/".$querystring);
             die();
     }
 
@@ -135,4 +156,22 @@ function reviewinfo($productid){
     $review['gemiddelde'] = round($gemiddelde,2);
 
     return $review;
+}
+
+function berekentotal() {
+foreach ($_SESSION['shoppingcart'] as $artikel) {
+
+//Get extra info about the category
+    $database = db_con();
+    $sql = "SELECT `SKU`, `Picture_Big` FROM `product` WHERE Disabled!=1 AND SKU=:SKU;";
+    $stmt = $database->prepare($sql);
+    $stmt->execute([
+        ':SKU' => $artikel['SKU'],
+    ]);
+    $artikelinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    $database = null;
+
+    return number_format(($artikel['Aantal'] * $artikel['Prijs']),2);
+}
+
 }

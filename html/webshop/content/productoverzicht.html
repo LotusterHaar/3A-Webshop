@@ -5,6 +5,7 @@ Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen:
 Associated files: producten CSS
 ==========================-->
+
 <?php
 
 $categorieid = 22; // Standaard bij Piano's beginnen
@@ -31,36 +32,17 @@ if (isset($queryresolved['categorieid']) && !empty($queryresolved['categorieid']
     if (isset($categorieinfo['CategoryID']))
         $categorieid=$categorieinfo['CategoryID'];
     else
-        $categorieid=0;
-
-    if (isset($categorieinfo['CategoryNaam']))
-        $categorienaam=$categorieinfo['CategoryNaam'];
+     $categorieid=0;
 }
 
-if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal']) && is_numeric($queryresolved['aantal'])) {
+if (isset($categorieinfo['CategoryNaam']))
+    $categorienaam=$categorieinfo['CategoryNaam'];
+
+if (isset($queryresolved['aantal']) && !empty($queryresolved['aantal']) && is_numeric($queryresolved['aantal']))
     $aantal=$queryresolved['aantal'];
-}
 
-if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_numeric($queryresolved['pagina'])) {
+if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_numeric($queryresolved['pagina']))
     $pagina=$queryresolved['pagina'];
-}
-
-// Toevoegen aan Winkelwagen
-
-if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && is_numeric($queryresolved['toevoegen']) && isLoggedin()) {
-
-toevoegen('toevoegen',$queryresolved['toevoegen']);
-if (isset($queryresolved['toevoegen']))
-    unset ($queryresolved['toevoegen']);
-}
-
-// Toevoegen aan Reminder
-if (isset($queryresolved['reminder']) && !empty($queryresolved['reminder']) && is_numeric($queryresolved['reminder']) && isLoggedin()) {
-
-toevoegen('reminder',$queryresolved['reminder']);
-if (isset($queryresolved['reminder']))
-    unset ($queryresolved['reminder']);
-}
 
 ?>
 <!-- Content -->
