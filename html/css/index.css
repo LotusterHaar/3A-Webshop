@@ -305,6 +305,7 @@ li.dropdown {
     text-align: end;
     padding:10px;
     padding-right:50px;
+    font-size:24px;
 }
 #lblCartCount {
     font-size: 12px;
