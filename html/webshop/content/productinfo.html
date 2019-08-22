@@ -191,11 +191,13 @@ die();
                     </div>
                 </article>
 
+                <?php if ($review['gemaakt']==0): ?>
                 <div class="buttonReviewRow">
                     <button class="button buttonReview"><?php echo('<a href="/webshop/reviews/review?id='.$artikelid.'" target="_blank">');?>
                         <i class="fas fa-angle-right"></i> Schrijf een review</a>
                     </button>
                 </div>
+                <?php endif; ?>
 
                 <?php
 

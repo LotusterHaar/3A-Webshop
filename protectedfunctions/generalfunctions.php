@@ -128,6 +128,8 @@ function remindertoevoegen($productid,$reminderlist)
 }
 
 function reviewinfo($productid){
+    $review['gemaakt']= 0;
+
     $database = db_con();
     $sql = "SELECT AVG(Score) AS AVGRATE FROM `review` WHERE ProductID=:productid";
     $stmt = $database->prepare($sql);
@@ -136,6 +138,20 @@ function reviewinfo($productid){
     ]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $gemiddelde = $result['AVGRATE'];
+
+    if (isLoggedin())
+    {
+        $sql = "SELECT count(1) AS Reviewgemaakt FROM `review` WHERE ProductID=:productid AND UserID=:userid";
+        $stmt = $database->prepare($sql);
+        $stmt->execute( [
+            ':productid' => $productid,
+            ':userid' => $_SESSION['ID'],
+        ]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result['Reviewgemaakt']>0)
+            $review['gemaakt'] = 1;
+    }
 
     $totaal_aantal = 0;
     for($i=1; $i<=5; $i++)
