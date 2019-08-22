@@ -13,24 +13,22 @@ parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 
 if (isset($queryresolved['id']) && !empty($queryresolved['id'])) {
     $artikelid=$queryresolved['id'];
-    print_r($artikelid);
+
     //Get extra info about the category
     $database = db_con();
     $sql = "SELECT * FROM `product` WHERE Disabled!=1 AND ID=:productid";
     $stmt = $database->prepare($sql);
-$stmt->execute( [
-':productid' => $artikelid,
-]);
-$artikel = $stmt->fetch(PDO::FETCH_ASSOC);
-$artikel['ProductName']=htmlentities($artikel['ProductName']);
-print_r($artikel['ProductName']);
-$database=null;
-
-}
-else {
-die();
-}
-
+    $stmt->execute( [
+    ':productid' => $artikelid,
+    ]);
+    $artikel = $stmt->fetch(PDO::FETCH_ASSOC);
+    $artikel['ProductName']=htmlentities($artikel['ProductName']);
+    
+    $database=null;
+    }
+    else {
+        die();
+    }
 ?>
 
 <link rel="stylesheet" type="text/css" href="/css/reviewpagina.css">
@@ -39,9 +37,8 @@ die();
     <form method="post">
         <div class="writeReview">
             <h1>Schrijf een review</h1>
-            <h2>Over de <?php echo('<a href="/webshop/producten/productinfo?id="'.$artikelid.'">'.$artikel['ProductName'].'</a>');?></h2>
-            <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als
-                je
+            <h2>Over de <?php echo('<a href="/webshop/producten/productinfo?id='.$artikel['ID'].'">'.$artikel['ProductName'].'</a>');?></h2>
+            <p>We zijn blij dat je een review wilt schrijven. Je helpt anderen zo bij het maken van hun keuze. Als je
                 vragen of opmerkingen hebt over bijvoorbeeld de prijs of de levertijd kunnen we je beter helpen bij
                 de
                 klantenservioce.</p>
@@ -49,29 +46,29 @@ die();
             <p>1. Aantal sterren<span class="required"> *</span></p>
             <div class="stars">
                 <label>
-                    <input type="radio" name="cijfer" value="1" />
+                    <input type="radio" name="score" value="1" />
                     <span class="icon">★</span>
                 </label>
                 <label>
-                    <input type="radio" name="cijfer" value="2" />
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                </label>
-                <label>
-                    <input type="radio" name="cijfer" value="3" />
-                    <span class="icon">★</span>
+                    <input type="radio" name="score" value="2" />
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                 </label>
                 <label>
-                    <input type="radio" name="cijfer" value="4" />
-                    <span class="icon">★</span>
+                    <input type="radio" name="score" value="3" />
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                 </label>
                 <label>
-                    <input type="radio" name="cijfer" value="5" />
+                    <input type="radio" name="score" value="4" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input type="radio" name="score" value="5" />
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                     <span class="icon">★</span>

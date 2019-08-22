@@ -108,7 +108,7 @@ function remindertoevoegen($productid,$reminderlist)
 
 function reviewinfo($productid){
     $database = db_con();
-    $sql = "SELECT AVG(Cijfer) AS AVGRATE FROM `review` WHERE ProductID=:productid";
+    $sql = "SELECT AVG(Score) AS AVGRATE FROM `review` WHERE ProductID=:productid";
     $stmt = $database->prepare($sql);
     $stmt->execute( [
         ':productid' => $productid,
@@ -119,11 +119,11 @@ function reviewinfo($productid){
     $totaal_aantal = 0;
     for($i=1; $i<=5; $i++)
     {
-        $sql = "SELECT count(Cijfer) as Totaal from `review` where ProductID=:productid and Cijfer=:cijfer ";
+        $sql = "SELECT count(Score) as Totaal from `review` where ProductID=:productid and Score=:score";
         $stmt = $database->prepare($sql);
         $stmt->execute( [
             ':productid' => $productid,
-            ':cijfer' => $i,
+            ':score' => $i,
         ]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
