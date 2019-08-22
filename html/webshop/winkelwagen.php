@@ -1,4 +1,7 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/../protectedfunctions/generalfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/../protectedfunctions/dbfunctions.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/../protectedfunctions/user.php');
 
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 if (isset($queryresolved['verwijderen']) && !empty($queryresolved['verwijderen'])) {
