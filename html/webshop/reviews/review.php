@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST' && isLoggedin()) {
                         $_SESSION['errorbox'] = "Deze review is al gemaakt, je kan als gebruiker maar een keer je review opgeven per product";
                     } else {
                         toevoegenreview();
+                        $_SESSION['infobox'] = "Review toegevoegd";
                     }
                 } else {
                     $_SESSION['errorbox'] = "Erg ging iets mis bij controleren van de review";
@@ -83,7 +84,7 @@ function toevoegenreview()
                     ':productid' => $productid,
                     ':userid' => $_SESSION['ID'],
                     ':score' => $_POST['score'],
-                    ':review' => $_POST['review'],
+                    ':review' => strip_tags($_POST['review']),
                     ':date' => date("Y-m-d"),
                 ]
             )) {
