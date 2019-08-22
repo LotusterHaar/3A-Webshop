@@ -182,8 +182,8 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                         $aantal+= $item['Aantal'];
                         }?>
                         <div class="shopping-cart-icon">
-                            <i class="fa">&#xf07a;</i>
-                            <span class='badge badge-warning' id='lblCartCount'> <?php echo($aantal) ?></span></div>
+                            <a href="/webshop/winkelwagen"><i class="fa">&#xf07a;</i>
+                            <span class='badge badge-warning' id='lblCartCount'><?php echo($aantal) ?></span></a></div>
                     </ul>
 
                    <!-- <pre><?php print_r($_SESSION['shoppingcart']); print (sizeof($_SESSION['shoppingcart'])); ?></pre>-->

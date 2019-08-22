@@ -302,11 +302,18 @@ li.dropdown {
 /* Shopping Cart */
 
 .shopping-cart-icon{
+    text-decoration: none! important;
     text-align: end;
     padding:10px;
     padding-right:50px;
     font-size:24px;
 }
+
+.shopping-cart-icon a{
+    text-decoration: none! important;
+    color: black;
+}
+
 #lblCartCount {
     font-size: 12px;
     background: #ffd42e;
