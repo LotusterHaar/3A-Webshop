@@ -175,10 +175,18 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                                 </ul>
                             </div>
                         </li>
+
+                        <?php if (isset($_SESSION['shoppingcart']) && sizeof($_SESSION['shoppingcart'])>0):
+                        $aantal = 0;
+                        foreach($_SESSION['shoppingcart'] as $item){
+                        $aantal+= $item['Aantal'];
+                        }?>
+                        <div class="shopping-cart-icon">
+                            <i class="fa" style="font-size:24px">&#xf07a;</i>
+                            <span class='badge badge-warning' id='lblCartCount'> <?php echo($aantal) ?></span></div>
                     </ul>
-                    <?php if (isset($_SESSION['shoppincart']) && sizeof($_SESSION['shoppingcart'])>0) : ?>
-                        <i class="fas fa-shopping-basket"></i>
-                    <pre><?php print_r($_SESSION['shoppincart']); print (sizeof($_SESSION['shoppingcart'])); ?></pre>
+
+                   <!-- <pre><?php print_r($_SESSION['shoppingcart']); print (sizeof($_SESSION['shoppingcart'])); ?></pre>-->
                     <?php endif; ?>
 </nav>
             </section>
