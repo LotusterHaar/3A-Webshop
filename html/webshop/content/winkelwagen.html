@@ -50,7 +50,7 @@ Associated files: index CSS
                             <td>€ <?php echo $artikel['Prijs']; ?></td>
                             <td>
                                 <form action="/action_page.php">
-                                  <input type="text" value="<?php echo $artikel['Aantal'] ?>">
+                                  <input type="number" min="0" value="<?php echo $artikel['Aantal'] ?>">
                                 </form>
                             </td>
                             <td>€ <?php echo (number_format($articletotal,2)); ?></td>
