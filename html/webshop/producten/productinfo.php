@@ -6,14 +6,13 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 if (isset($queryresolved['notify']) && !empty($queryresolved['notify']) && isLoggedin()) {
     toevoegen('reminder',$queryresolved['notify']);
-
-    //header('Location: /webshop/producten/');
-    //die();
-}
+    header('Location: '.$queryresolved['refererurl']);
+    die();}
 else if (isset($queryresolved['toevoegen']) && !empty($queryresolved['toevoegen']) && isLoggedin()) {
-    toevoegen('product',$queryresolved['toevoegen']);
-    //header('Location: /webshop/producten/');
-    //die();
+    echo ("Toevoegen: ".$queryresolved['toevoegen']);
+    toevoegen('toevoegen',$queryresolved['toevoegen']);
+    header('Location: '.$queryresolved['refererurl']);
+    die();
 }
 
 include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';

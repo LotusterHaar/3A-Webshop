@@ -4,9 +4,11 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/dbfunctions.php')
 
 //Get extra info about the category
 $database = db_con();
-$sql = "SELECT * FROM `orders`";
+$sql = "SELECT * FROM `orders` WHERE UserID=:userid;";
 $stmt = $database->prepare($sql);
-$stmt->execute();
+$stmt->execute([
+':userid' => $_SESSION['ID'],
+]);
 $bestellingen= $stmt->fetchAll(PDO::FETCH_ASSOC);
 $database=null;
 ?>

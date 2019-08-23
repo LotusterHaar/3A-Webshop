@@ -33,6 +33,12 @@ function resetsession()
 }
 
 function toevoegen($soort,$productid) {
+    $aantal =1;
+
+    if (isset($_GET['cartamount']) && !empty($_GET['cartamount']) && isLoggedin()) {
+        $aantal=$_GET['cartamount'];
+    }
+
     //Ophalen uit database
     $database = db_con();
     $sql = "SELECT `ID`,`SKU`, `ProductName`, `Price`, `Stock`, `ReminderList` FROM `product` WHERE Disabled!=1 AND ID=".$productid.";";
@@ -42,7 +48,7 @@ function toevoegen($soort,$productid) {
     $database=null;
     $bestelling = array(
         'ID' => $articleinfo['ID'],
-        'Aantal' => 1,
+        'Aantal' => $aantal,
         'SKU' => $articleinfo['SKU'],
         'Omschrijving' => $articleinfo['ProductName'],
         'Prijs' => $articleinfo['Price'],
@@ -55,7 +61,6 @@ function toevoegen($soort,$productid) {
     else if (($articleinfo['Stock']>=1 && $soort == 'toevoegen') && !isset( $_SESSION['shoppingcart'][$articleinfo['ID']])) {
         $_SESSION['shoppingcart'][$articleinfo['ID']] = $bestelling;
         $_SESSION['infobox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' toegevoegd aan winkelmand.';
-
     }
     else if ($articleinfo['Stock']<1 && $soort == 'toevoegen') {
         $_SESSION['errorbox']='Artikel '.$articleinfo['SKU'].' - '.$articleinfo['ProductName']. ' is niet op vooraad en kan helaas niet besteld worden. Toegevoegd aan je herinneringlijst.';
@@ -104,9 +109,6 @@ function remindertoevoegen($productid,$reminderlist)
                 $querystring = $querystring . "categorienaam=".$queryresolved['categorienaam'];
             else
                 $querystring=substr($querystring, 0, -1); // remove last characther
-
-            header ("Location: /webshop/producten/".$querystring);
-            die();
     }
 
     //Ophalen uit database
