@@ -38,6 +38,8 @@ function toevoegen($soort,$productid) {
     if (isset($_GET['cartamount']) && !empty($_GET['cartamount']) && isLoggedin()) {
         $aantal=$_GET['cartamount'];
     }
+    if ($aantal < 1)
+        $aantal =1;
 
     //Ophalen uit database
     $database = db_con();

@@ -51,7 +51,7 @@ Associated files: winkelwagen CSS
                             <td><?php echo $artikel['Omschrijving']; ?></td>
                             <td>€ <?php echo number_format($artikel['Prijs'], 2, ',', ' '); ?></td>
                             <td>
-                                  <input type="number" min="0" name="<?php echo($artikel['ID']); ?>" value="<?php echo $artikel['Aantal'] ?>">
+                                  <input type="number" min="1" name="<?php echo($artikel['ID']); ?>" value="<?php echo $artikel['Aantal'] ?>">
                             </td>
                             <td>€ <?php echo number_format($articletotal, 2, ',', ' '); ?></td>
                             <td>
