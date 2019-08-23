@@ -30,11 +30,12 @@ $database=null;
             ]);
             $artikelinfo = $stmt->fetch(PDO::FETCH_ASSOC);
             $database=null;
+
             echo(' <div class="orderedArticle"><article><p>');
             echo($serializedWinkelwagenBestellingen['Date'].' | Bestelnummer '.$serializedWinkelwagenBestellingen['OrderID']);
             echo('</p><hr><div class="clearfix">');?>
             <img src="/webshop/producten/images/<?php echo ($artikelinfo['Picture_Big']);?>"  class="websitephoto" alt="Image <?php echo (trim($artikelinfo['ProductName'])); ?>">
-            <p><strong>&nbsp;&nbsp;<?php echo($artikelinfo['ProductName']);?>
+            <p><strong>&nbsp;<?php echo($bestelling['Aantal'].'x '.$artikelinfo['ProductName']);?>
             </strong></p></div>
             </article>
             </div>

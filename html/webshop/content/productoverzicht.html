@@ -137,9 +137,9 @@ if (isset($queryresolved['pagina']) && !empty($queryresolved['pagina']) && is_nu
 
             // Now load the products we want to see with the limit
             if ($totaalproducten>0 && $aantal>0)
-            $totalpages = round(($totaalproducten/$aantal)+0.4);
+                $totalpages = round(($totaalproducten/$aantal)+0.4);
             else {
-            $pagina=1;
+                $pagina=1;
             }
 
             if ($totaalproducten-$aantal <= 0)
@@ -230,10 +230,11 @@ foreach ($products as $product) {
     echo(substr($product['ProductName'],0, 50));
     echo('</h1>');
     echo('<div class="priceline"><h2>');
-    echo('€ '.$product['Price']);
+    echo('€ '.number_format($product['Price'], 2, ',', ' '));
+
     echo('</h2></a>');
 
-    $querystring='';
+    $querystring='?';
     unset ($queryresolved['toevoegen']);
     foreach ($queryresolved as $key => $value ){
         if (empty($querystring))
@@ -241,7 +242,7 @@ foreach ($products as $product) {
         else
             $querystring = $querystring.'&'.$key.'='.$value;
     }
-
+    
     if (isLoggedin() && $product['Stock']>1) {
         echo ('<a href="'.$querystring.'&toevoegen='.$product['ID'].'"><div class="shopping-cart-button">');
         echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></div></a>'."\r\n                ");
