@@ -1,10 +1,10 @@
 <!--========================
-Page: About Us
+Page: Winkelwagen
 Template Name: TuneShop
 Author: Jan Willem Lenting, Lotus ter Haar
 Bronnen: https://codepen.io/torbencolding/pen/ogYjJP
 https://coder-coder.com/build-flexbox-website-layout/
-Associated files: index CSS
+Associated files: winkelwagen CSS
 ==========================-->
             <!-- Content -->
             <section class="content flex-columnContainer">
@@ -17,6 +17,8 @@ Associated files: index CSS
                         if (isset($_SESSION['shoppingcart']) && sizeof($_SESSION['shoppingcart'])>0) {
                         $shoppingcarttotal = (float) 0;
                      ?>
+
+                    <form action="#" method="post">
                     <table>
                         <tr>
                             <th></th>
@@ -47,15 +49,13 @@ Associated files: index CSS
                         <tr>
                             <td class="pImage"><img height="150px" width="150px" src="/webshop/producten/images/<?php echo $artikelinfo['Picture_Big']; ?>" alt="Instrument Image" class="productImage"></td>
                             <td><?php echo $artikel['Omschrijving']; ?></td>
-                            <td>€ <?php echo $artikel['Prijs']; ?></td>
+                            <td>€ <?php echo number_format($artikel['Prijs'], 2, ',', ' '); ?></td>
                             <td>
-                                <form action="/action_page.php">
-                                  <input type="number" min="0" value="<?php echo $artikel['Aantal'] ?>">
-                                </form>
+                                  <input type="number" min="0" name="<?php echo($artikel['ID']); ?>" value="<?php echo $artikel['Aantal'] ?>">
                             </td>
-                            <td>€ <?php echo (number_format($articletotal,2)); ?></td>
+                            <td>€ <?php echo number_format($articletotal, 2, ',', ' '); ?></td>
                             <td>
-                                <button class="deleteBtn" name="verwijder" type="submit" value="<?php echo ($artikel['ID']); ?>"><span><a href="?verwijderen=<?php echo ($artikel['ID']); ?>"><i
+                                <button class="deleteBtn" name="verwijder" value="<?php echo ($artikel['ID']); ?>" type="submit"><span><a href="?verwijderen=<?php echo ($artikel['ID']); ?>"><i
                                         class="fa fa-trash" aria-hidden="true"></i></a></span></button>
                             </td>
                         </tr>
@@ -67,16 +67,17 @@ Associated files: index CSS
                     <table>
                         <tr id="endTotalRow">
                             <td id="firstColumnTotalRow">
-                                <button type="submit" class="button recalculate" name="herbereken"><i class="fas fa-calculator"></i> Herbereken bedrag</button>
+                                <button class="button recalculate" name="herbereken" type="submit" ><i class="fas fa-calculator"></i> Herbereken bedrag</button>
                             </td>
                             <td class="colorColumn">Eindtotaal:</td>
-                            <td class="colorColumn">€ <?php print ($shoppingcarttotal); ?></td>
+                            <td class="colorColumn">€ <?php echo number_format($shoppingcarttotal, 2, ',', ' '); ?></td>
                         </tr>
                     </table>
 
                 </div>
                 <div class="payButton">
-                    <button type="submit" class="button"><i class="fas fa-cart-arrow-down"></i> Afrekenen</button>
+                    <button class="button" name="afrekenen" type="submit"><i class="fas fa-cart-arrow-down"></i> Afrekenen</button>
                 </div>
+                </form>
                 <?php } else { echo ('<H2>Uw winkelwagen is leeg</section>'); }?>
-            </section>
+</section>

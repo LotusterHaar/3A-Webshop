@@ -180,27 +180,24 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
                         $aantal = 0;
                         foreach($_SESSION['shoppingcart'] as $item){
                         $aantal+= $item['Aantal'];
-                        }?>
-                        <div class="shopping-cart-icon">
+                        }?><div class="shopping-cart-icon">
                             <a href="/webshop/winkelwagen"><i class="fa">&#xf07a;</i>
-                            <span class='badge badge-warning' id='lblCartCount'><?php echo($aantal) ?></span></a></div>
-                    </ul>
+                            <span class='badge badge-warning' id='lblCartCount'><?php echo($aantal) ?></span></a></div><?php endif; ?>
 
-                   <!-- <pre><?php print_r($_SESSION['shoppingcart']); print (sizeof($_SESSION['shoppingcart'])); ?></pre>-->
-                    <?php endif; ?>
-</nav>
+                    </ul>
+                </nav>
             </section>
 
-            <?php if ((isset($_SESSION['infobox']) && !empty($_SESSION['infobox']))): ?>
-            <div class="alert info">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <?php echo $_SESSION['infobox']; ?>
-            </div>
-            <?php unset($_SESSION['infobox']); endif; ?>
+<?php if ((isset($_SESSION['infobox']) && !empty($_SESSION['infobox']))): ?>
+<div class="alert info">
+<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+<?php echo $_SESSION['infobox']; ?>
+</div>
+<?php unset($_SESSION['infobox']); endif; ?>
 
-            <?php if ((isset($_SESSION['errorbox']) && !empty($_SESSION['errorbox']))): ?>
-            <div class="alert error">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                <?php echo $_SESSION['errorbox']; ?>
-            </div>
-            <?php unset($_SESSION['errorbox']); endif; ?>
+<?php if ((isset($_SESSION['errorbox']) && !empty($_SESSION['errorbox']))): ?>
+<div class="alert error">
+<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+<?php echo $_SESSION['errorbox']; ?>
+</div>
+<?php unset($_SESSION['errorbox']); endif; ?>

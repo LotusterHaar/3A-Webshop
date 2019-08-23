@@ -13,7 +13,7 @@ $categorieid = 22; // Standaard bij Piano's beginnen
 $aantal = 10; // Standaard aantal per pagina
 $pagina = 1; //Standaard beginpagina
 $totalpages = 1;
-//print_r($_SERVER);
+
 parse_str($_SERVER['QUERY_STRING'], $queryresolved);
 
 if (isset($queryresolved['zoeken']) && !empty($queryresolved['zoeken'])) {

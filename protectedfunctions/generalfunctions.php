@@ -4,6 +4,7 @@ startprotectedsession();
 function startprotectedsession()
 {
     session_start();
+    setlocale(LC_MONETARY, 'nl_NL');
 }
 
 function fullydestroysession()
@@ -43,7 +44,7 @@ function toevoegen($soort,$productid) {
         'ID' => $articleinfo['ID'],
         'Aantal' => 1,
         'SKU' => $articleinfo['SKU'],
-        'Omschrijving' => $articleinfo['ID'].'-'.$articleinfo['ProductName'],
+        'Omschrijving' => $articleinfo['ProductName'],
         'Prijs' => $articleinfo['Price'],
     );
 
