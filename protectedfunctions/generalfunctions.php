@@ -176,19 +176,20 @@ function reviewinfo($productid){
 }
 
 function berekentotal() {
-foreach ($_SESSION['shoppingcart'] as $artikel) {
+    $total =0;
+    foreach ($_SESSION['shoppingcart'] as $artikel) {
+        //Get extra info about the category
+        $database = db_con();
+        $sql = "SELECT `Price` FROM `product` WHERE Disabled!=1 AND ID=:id;";
+        $stmt = $database->prepare($sql);
+        $stmt->execute([
+            ':id' => $artikel['ID'],
+        ]);
+        $artikelinfo = $stmt->fetch(PDO::FETCH_ASSOC);
+        $database = null;
 
-//Get extra info about the category
-    $database = db_con();
-    $sql = "SELECT `SKU`, `Picture_Big` FROM `product` WHERE Disabled!=1 AND SKU=:SKU;";
-    $stmt = $database->prepare($sql);
-    $stmt->execute([
-        ':SKU' => $artikel['SKU'],
-    ]);
-    $artikelinfo = $stmt->fetch(PDO::FETCH_ASSOC);
-    $database = null;
+        $total += $artikel['Aantal'] * $artikelinfo['Price'];
+    }
 
-    return number_format(($artikel['Aantal'] * $artikel['Prijs']),2);
-}
-
+    return $total;
 }

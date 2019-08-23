@@ -242,7 +242,7 @@ foreach ($products as $product) {
         else
             $querystring = $querystring.'&'.$key.'='.$value;
     }
-    
+
     if (isLoggedin() && $product['Stock']>1) {
         echo ('<a href="'.$querystring.'&toevoegen='.$product['ID'].'"><div class="shopping-cart-button">');
         echo ('<i class="fa fa-cart-plus" aria-hidden="true"></i></div></a>'."\r\n                ");
@@ -250,7 +250,7 @@ foreach ($products as $product) {
                 echo ('<a href="'.$querystring.'&reminder='.$product['ID'].'"><div class="shopping-cart-button">');
                 echo ('<i class="fa fa-calendar-alt" aria-hidden="true"></i></div></a>'."\r\n                ");
     } else {
-        echo('<a href="/webshop/registreren"><div class="shopping-cart-button"><span>');
+        echo('<a href="/webshop/registreer"><div class="shopping-cart-button"><span>');
         echo ('<i class="fa fa-user-plus" aria-hidden="true"></i></span></div></a>');
     }
                       echo('</div>  </div> </div>');

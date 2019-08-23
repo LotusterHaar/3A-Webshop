@@ -40,17 +40,9 @@ if ($_SERVER['REQUEST_METHOD']=='POST' && isLoggedin()) {
                 }
             }
 
-            if (isset($_SESSION['errorbox']) && !empty($_SESSION['errorbox'])) {
-                include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
-                include '../content/reviewpagina.html';
-                include $_SERVER['DOCUMENT_ROOT'] . '/../includes/footer.html';
-                die();
-            }
-
-            if (isset($_SESSION['infobox']) && !empty($_SESSION['infobox'])) {
-                include $_SERVER['DOCUMENT_ROOT'].'/../includes/header.html';
-                include '../content/productinfo.html';
-                include $_SERVER['DOCUMENT_ROOT'] . '/../includes/footer.html';
+            if ((isset($_SESSION['errorbox']) && !empty($_SESSION['errorbox'])) ||
+                (isset($_SESSION['infobox']) && !empty($_SESSION['infobox']))) {
+                header('Location: /webshop/producten/productinfo?id='.$productid);
                 die();
             }
         }

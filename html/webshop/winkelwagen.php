@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST" && isLoggedin()) {
                     ':userid' => $_SESSION['ID'],
                     ':data' => date("Y-m-d"),
                     ':cart' => serialize($_SESSION['shoppingcart']),
-                    ':total' => 123.53,
+                    ':total' => berekentotal(),
                 ]
             )) {
                 //Success!
@@ -60,5 +60,6 @@ if (isLoggedin())
     include './content/winkelwagen.html';
 else
     include $_SERVER['DOCUMENT_ROOT'].'/../content/over-ons.html';
+
 include $_SERVER['DOCUMENT_ROOT'].'/../includes/footer.html';
 ?>
