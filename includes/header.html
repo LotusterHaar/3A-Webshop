@@ -139,37 +139,35 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../protectedfunctions/user.php');
             <section class="nav">
                 <nav id="top-menu-nav">
                     <ul id="top-menu" class="nav">
-                        <li><a href="/" <?php if ($actievepagina=='Home'){  echo ('class="active"'); } ?>>Home</a></li>
-                        <li><a href="/nieuws" <?php if ($actievepagina=='Nieuws'){  echo ('class="active"'); } ?>>Nieuws</a></li>
-                        <li><a href="/acties" <?php if ($actievepagina=='Acties'){  echo ('class="active"'); } ?>>Acties</a></li>
+                        <li><a href="/"<?php if ($actievepagina=='Home'){ echo (' class="active"'); }?>>Home</a></li>
+                        <li><a href="/nieuws"<?php if ($actievepagina=='Nieuws'){ echo (' class="active"'); }?>>Nieuws</a></li>
+                        <li><a href="/acties"<?php if ($actievepagina=='Acties'){ echo (' class="active"'); }?>>Acties</a></li>
                         <li class="dropdown">
-                            <a href="/over-ons" class="dropbtn<?php if ($actievepagina=='Over-Ons'){  echo (' active"'); } ?>">Over Ons</a>
+                            <a href="/over-ons" class="dropbtn<?php if ($actievepagina=='Over-Ons'){ echo (' active'); } ?>">Over Ons</a>
                             <div class="dropdown-content">
                                 <ul class="sub-menu dropdown-content">
-                                    <li><a href="/over-ons/contact" class="sub-menu-link <?php if ($subpagina=='Contact'){  echo (' active"'); } ?>">Contact</a>
+                                    <li><a href="/over-ons/contact" class="sub-menu-link<?php if ($subpagina=='Contact'){ echo (' active'); } ?>">Contact</a>
                                     </li>
-                                    <li><a href="/over-ons/team" class="sub-menu-link <?php if ($subpagina=='Team'){  echo (' active"'); } ?>">Team</a>
+                                    <li><a href="/over-ons/team" class="sub-menu-link<?php if ($subpagina=='Team'){ echo (' active'); } ?>">Team</a>
                                     </li>
-                                    <li><a href="/over-ons/betaalmethodes" class="sub-menu-link <?php if ($subpagina=='Betaalmethodes'){  echo (' active"'); } ?>">Betaalmethodes</a>
+                                    <li><a href="/over-ons/betaalmethodes" class="sub-menu-link<?php if ($subpagina=='Betaalmethodes'){ echo (' active'); } ?>">Betaalmethodes</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="/vacatures" <?php if ($actievepagina=='Vacatures'){  echo ('class="active"'); } ?>>Vacatures</a></li>
-                        <li class="dropdown"><a href="/webshop" class="dropbtn <?php if ($actievepagina=='Webshop'){  echo (' active"'); } ?>">Webshop</a>
+                        <li><a href="/vacatures"<?php if ($actievepagina=='Vacatures'){ echo (' class="active"'); } ?>>Vacatures</a></li>
+                        <li class="dropdown"><a href="/webshop" class="dropbtn<?php if ($actievepagina=='Webshop'){ echo (' active'); } ?>">Webshop</a>
                             <div class="dropdown-content">
                                 <ul class="sub-menu dropdown-content">
-                                    <li><a href="/webshop/producten" class="sub-menu-link <?php if ($subpagina=='Producten'){  echo (' active"'); } ?>">Producten</a>
+                                    <li><a href="/webshop/producten" class="sub-menu-link<?php if ($subpagina=='Producten'){ echo (' active'); } ?>">Producten</a>
                                     </li>
                                     <?php if (isLoggedin()): ?>
-<!--                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link <?php if ($subpagina=='Bestelgeschiedenis'){  echo (' active"'); } ?>">Bestelgeschiedenis</a>-->
-<!--                                    </li>-->
-                                    <li><a href="/webshop/winkelwagen" class="sub-menu-link <?php if ($subpagina=='Winkelwagen'){  echo (' active"'); } ?>">Winkelwagen</a>
+                                    <li><a href="/webshop/winkelwagen" class="sub-menu-link<?php if ($subpagina=='Winkelwagen'){ echo (' active'); } ?>">Winkelwagen</a>
                                     </li>
-                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link <?php if ($subpagina=='Bestelgeschiedenis'){  echo (' active"'); } ?>">Bestelgeschiedenis</a>
+                                    <li><a href="/webshop/bestelgeschiedenis" class="sub-menu-link<?php if ($subpagina=='Bestelgeschiedenis'){ echo (' active'); } ?>">Bestelgeschiedenis</a>
                                     </li>
                                     <?php else : ?>
-                                    <li><a href="/webshop/registreer" class="sub-menu-link <?php if ($subpagina=='Registreren'){  echo (' active"'); } ?>">Registreren</a>
+                                    <li><a href="/webshop/registreer" class="sub-menu-link<?php if ($subpagina=='Registreren'){ echo (' active'); } ?>">Registreren</a>
                                     </li>
                                     <?php endif; ?>
                                 </ul>
